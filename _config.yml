@@ -74,4 +74,4 @@ deploy:
   type: git
   repo: 
     github: https://github.com/cinoliu/cinoliu.github.io,master
-   
+
