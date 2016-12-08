@@ -1,0 +1,22 @@
+<a ui-sref="layout.addarticle" class="btn btn-info">
+    添加文章
+</a>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>标题</th>
+        <th>标签</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in list">
+        <td>{{$index}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.tag}}</td>
+        <td><a ng-click="del(item.objectId,$index,item.fileId)">删除</a> <a ui-sref="layout.updatearticle({id:item.objectId})">修改</a>
+        </td>
+    </tr>
+    </tbody>
+</table>

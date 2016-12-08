@@ -1,0 +1,23 @@
+<div class="addCategory">
+    <div class="col-sm-12">
+        <div class="col-sm-1">网站标题</div>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder="请输入网站标题" ng-model="info.title">
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="col-sm-1">网站描述</div>
+        <div class="col-sm-6">
+            <textarea placeholder="请输入网站描述" class="form-control" ng-model="info.describe"></textarea>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="col-sm-1">关键词</div>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" placeholder="请输入关键词" ng-model="info.keyword">
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <button type="submit" class="btn btn-default" ng-click="submit()">提交</button>
+    </div>
+</div>
