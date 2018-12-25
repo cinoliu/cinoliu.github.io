@@ -9,7 +9,7 @@
 <script>
 function myBrowser(){
     var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
-        alert(userAgent)
+
     if (userAgent.indexOf("AliApp") > -1) {
         return "AliApp"
     }; 
@@ -26,6 +26,9 @@ if ("AliApp" == mb) {
 }
 if ("MicroMessenger" == mb) {
     alert("我是微信打开的");
+}else{
+    alert("我是淘宝打开的");
+
 }
 
 </script>
