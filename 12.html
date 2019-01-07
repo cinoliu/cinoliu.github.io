@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+
+<script>
+function myBrowser(){
+    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+
+    if (userAgent.indexOf("AliApp") > -1) {
+        return "AliApp"
+    }; 
+    if (userAgent.indexOf("MicroMessenger") > -1) {
+        return "MicroMessenger";
+    } 
+ 
+  
+}
+//以下是调用上面的函数
+var mb = myBrowser();
+if ("AliApp" == mb) {
+    alert("我是支付宝打开的");
+}
+if ("MicroMessenger" == mb) {
+    alert("我是微信打开的");
+}
+
+</script>
+
+</body>
+</html>
