@@ -1,0 +1,200 @@
+/*UESFTL-5148 10月注册送流量活动 15.9.25 开始*/
+#sl_img2 .sl_psa{position: absolute;top:0;left:0;width:100%;text-align: center;}
+#sl_img2 .sl_link1 a{background: #ffef00;color: #583c05;font-size: .866rem;padding: .4rem 2.5rem;border-radius: 50px;display: inline-block;margin-bottom: .2rem;box-shadow: 0 2px 7px #BE6D16;}
+#sl_img2 .sl_link2 a{color: #583c05;font-size: .666rem;display: inline-block;}
+/*UESFTL-5148 10月注册送流量活动 15.9.25 结束*/
+
+/*UESFTL-5622 年味活动 16.01.15 开始*/
+.year-list{background-color: #dbcdae;}.year-inner{border-bottom: 1px solid #a4987a;margin:0 10px;padding:10px 0;font-size: 14px;}
+.year-list:last-of-type .year-inner{border-bottom: none !important;}
+.year-num{color: #a7252a;}
+.year-content{padding-left: 35px;position: relative;color: #373737;}
+.year-content .year-head{width: 25px;height: 25px;border-radius: 3px;position: absolute;left: 0;top: 4px;}
+.year-content-top{overflow: hidden;margin-bottom: 3px;}
+.year-content-top .year-pl{color: #a7252a;background: url(../../image/s100/year_icon.png) left -5px no-repeat;padding-left: 18px;background-size: 18px auto;font-size: 12px;margin-left: 4px;}
+.year-content-top .year-zan{color: #a7252a;background: url(../../image/s100/year_icon.png) left -32px no-repeat;padding-left: 18px;background-size: 18px auto;margin-left: 6px;font-size: 12px;}
+.year-content-top .year-zan.on{background: url(../../image/s100/year_icon.png) left -59px no-repeat;background-size: 18px auto;}
+.year-content-top .name{font-size: 13px;padding-right: 5px;}
+.year-content-top .time{color: #6c6868;font-size: 12px;}
+.year-content-desc{overflow:hidden;}.year-content-fulldesc{overflow:hidden;display: none;}.year-content-desc .show-full,.year-content-fulldesc .hide-full{color: #a7252a;float:right;cursor:pointer;}
+.year-content-pic{margin-top: 10px;overflow:hidden;}.year-content-pic .bg-pic{width: 82px;height: 82px;float:left;margin-right: 5px;overflow:hidden;}
+.year-comment{background-color: #ccc1a6;padding: 10px 10px 5px;position:relative;margin-top: 10px;}
+.year-comment .jb{position:absolute;top: -16px;left: 10px;border-width: 8px; border-style: solid;border-color: rgba(0,0,0,0) rgba(0,0,0,0) #ccc1a6 rgba(0,0,0,0);}
+.year-comment-list{position: relative;padding-left: 35px;border-bottom: 1px dashed #b1a689;padding-bottom: 5px;margin-bottom: 5px;}
+.year-comment-list img{width: 25px;height: 25px;border-radius: 3px;position: absolute;left: 0;top: 4px;}
+.year-comment-top .name{font-size: 13px;padding-right: 5px;}
+.year-comment-top .time{color: #6c6868;font-size: 12px;}
+a.year-more-comment{display: block;color:#706c6a;font-size:13px;text-align:center;}
+.year-text,.year-example{background-color:#dbcdae;padding:0 10px 10px;color:#a7252a;font-size:13px;line-height: 160%;}
+.year-text .title{font-weight:bold;padding-top:5px;}.year-text .img img{width:20%;}
+.year-example{background-color:#a7252a;color:#dbcdae;}
+.year-example img{width:100%;padding-bottom:5px;}
+.year-btn{background-color:#dbcdae;padding:10px 0 30px;}
+.year-delete img{width: 18px;margin-top: -4px;margin-right: 2px;}
+.comment-delete{float:right;}.comment-delete img{width: 18px;height:auto;position:initial;margin-top: -2px;}
+  /*UESFTL-6072排序tab*/
+.active-list-tab{padding:5px 0;}.list-tab-2l{width:50%;margin: 0 auto;overflow:hidden;text-align:center;border-radius:5px;border:1px solid #f784a7;color:#828282;}
+.list-tab-2l span{float:left;width:50%;line-height: 32px;}.list-tab-2l .on{background-color:#f784a7;color:#fff;}
+@media (min-width:376px){
+	.year-inner{font-size:15px;}.year-content-top .name,.year-comment-top .name{font-size:14px;}.year-text, .year-example{font-size:14px;padding: 0 15px 10px;}.year-inner{margin: 0 15px;padding: 15px 0;}
+}
+@media (min-width:360px){.year-content-pic .bg-pic{width: 92px;height: 92px;margin-right: 7px;}.list-tab-2l span{line-height: 36px;}}
+@media (min-width:375px){.year-content-pic .bg-pic{width: 96px;height: 96px;margin-right: 8px;}}
+@media (min-width:414px){.year-content-pic .bg-pic{width: 105px;height: 105px;margin-right: 10px;}}
+    /*发表评论*/
+.year-textarea{padding:10px 12px; overflow:hidden; background:#fff;}
+.year-textarea textarea{border:none; width:100%; background: transparent;color:#333;font-size:14px;}
+.year-plpic{padding: 0 12px 5px; overflow:hidden; background:#fff;}
+.year-plpic .pic{overflow:hidden;}
+.year-plpic .op{position:relative;}
+.year-op-pic{position: relative;margin-right:8px;float:left;width:60px;height:60px;}
+.year-op-pic .del{ width: 16px; height: 16px; border-radius:20px;-moz-border-radius:20px; -webkit-border-radius: 20px; position:absolute; right: 2px; background: rgba(0,0,0,.5); top: 2px;}
+.year-op-pic .del:before,.year-op-pic .del:after{content:""; width:2px; height: 10px; position:absolute; top: 3px; background-color:#fff;}
+.year-op-pic .del:before{-webkit-transform:rotate(-45deg);transform:rotate(-45deg); left: 7px;}
+.year-op-pic .del:after{-webkit-transform:rotate(45deg);transform:rotate(45deg); right: 7px;}
+.year-plpic .pic .sh,.year-plpic .pic .add{width:60px;min-height:60px;}
+.year-plbtn{margin:12px;}.year-plbtn .plbtn{border:1px solid #e7e7e7;background-color:#fff;border-radius:2px;text-align:center;line-height:38px;display:block;font-size:14px;}
+.cropit-pop{display:none;position: fixed;width: 100%;height: 100%;top: 0;left: 0;background-color: #fff;}
+.cropit-pop .inner-pop{margin:50px 0  0 50px;}
+.cropit-pop .middle{position:absolute;top: 50%;margin-top: -160px;left: 50%;margin-left: -100px;}.cropit-image-background-container{overflow:hidden;}
+.cropit-image-preview {background-color: #f8f8f8;background-size: cover;border: 1px solid #ccc;border-radius: 3px;width: 200px;height: 300px;cursor: move;}
+.cropit-image-zoom-input{  margin: 20px auto;width: 200px;  position: absolute;left: 50%;margin-left: -100px;  bottom: 40px;}
+.cropit-btn{width: 280px;margin:0 auto;overflow:hidden;position: absolute;bottom:10px;left: 50%;margin-left: -140px;}  
+.cropit-btn .delete{width: 70px;line-height:32px;font-size:14px;text-align:center;background-color: #fff;border: 1px solid #ddd;border-radius: 3px;}
+.cropit-btn .save{width: 70px;line-height:32px;font-size:14px;text-align:center;background-color: #33b495;border: 1px solid #ddd;color: #fff;border-radius: 3px;}
+.cropit-image-background {opacity: .2;cursor: auto;position: absolute;}
+.cropit-pop .upload{position: relative;top: 45px;left: 50%;width: 250px;margin-left: -140px;z-index:9;/* text-align: right; */}
+.cropit-pop .upload-btn{width: 70px;line-height:32px;font-size:14px;text-align:center;background-color: #F4F4F4;border: 1px solid #ddd;color: #333;border-radius: 3px;display: inline-block;}
+.cropit-pop .yearPic{position:absolute;top:0;opacity: 0;width: 72px;height: 34px;left: 0;}
+.spinner{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}
+.spinner .spinner-dot{width:12px;height:12px;background:rgba(85,85,85,0.5);-webkit-border-radius:50%;border-radius:50%;display:inline-block;margin:0 5px;-webkit-animation:bounce 1.4s infinite ease-in-out;-moz-animation:bounce 1.4s infinite ease-in-out;-o-animation:bounce 1.4s infinite ease-in-out;-ms-animation:bounce 1.4s infinite ease-in-out;animation:bounce 1.4s infinite ease-in-out;-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-o-animation-fill-mode:both;-ms-animation-fill-mode:both;animation-fill-mode:both;}
+.spinner .spinner-dot:nth-child(1){-webkit-animation-delay:-.32s;-moz-animation-delay:-.32s;-o-animation-delay:-.32s;-ms-animation-delay:-.32s;animation-delay:-.32s}
+.spinner .spinner-dot:nth-child(2){-webkit-animation-delay:-.16s;-moz-animation-delay:-.16s;-o-animation-delay:-.16s;-ms-animation-delay:-.16s;animation-delay:-.16s}
+.cropit-image-preview .spinner{opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";filter:alpha(opacity=0);-webkit-transition:opacity 1s;-moz-transition:opacity 1s;-o-transition:opacity 1s;-ms-transition:opacity 1s;transition:opacity 1s}
+.cropit-image-preview.cropit-image-loading .spinner{opacity:1;-ms-filter:none;filter:none}.cropit-image-preview.cropit-image-loaded{cursor:move}
+@-webkit-keyframes bounce{0%,80%,100%{-webkit-transform:scale(0);-moz-transform:scale(0);-o-transform:scale(0);-ms-transform:scale(0);transform:scale(0)}40%{-webkit-transform:scale(1);-moz-transform:scale(1);-o-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@-o-keyframes bounce{0%,80%,100%{-webkit-transform:scale(0);-moz-transform:scale(0);-o-transform:scale(0);-ms-transform:scale(0);transform:scale(0)}40%{-webkit-transform:scale(1);-moz-transform:scale(1);-o-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@keyframes bounce{0%,80%,100%{-webkit-transform:scale(0);-moz-transform:scale(0);-o-transform:scale(0);-ms-transform:scale(0);transform:scale(0)}40%{-webkit-transform:scale(1);-moz-transform:scale(1);-o-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}
+  /*查看大图*/
+.swiper-year{display:none;position: fixed;top:0;left:0;width:100%;height:100%;background-color:#000;z-index:9999;}
+.swiper-year .swiper-container{width: 100%;height: 100%;}
+.swiper-year .swiper-slide{height:100%;width:100%;text-align: center;display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;-webkit-align-items: center;align-items: center;}
+.swiper-year .swiper-slide img{max-width:100%;max-height:100%;}
+.swiper-year .swiper-pagination{z-index: 9;position: absolute;bottom: 10px;width: 100%;text-align: center;color: #888;}
+
+.ovfHiden{overflow: hidden;height: 100%;}
+/*UESFTL-5622 年味活动 16.01.15 结束*/
+
+/*UESFTL-6032 微专业 16.05.18 开始*/
+.wzy-page{padding:12px 12px 0;background-color:#fff;border-top: 1px solid #f2f6f5;}
+.wzy-pic img{width: 100%;min-height: 60px;opacity:0;}.wzy-pic img[lazy="y"]{opacity:1;}.wzy-name{font-size: 16px;padding: 10px 0 8px;}
+.wzy-info{font-size: 12px;overflow: hidden;color: #7c7c7c;line-height: 140%;padding-bottom: 12px;}a.wzy-btn,.wzy-btn{float:right;color: #37b991;}
+.onePic+.wzy-page{margin-top:-12px;border-top:0;}
+
+.detail-top-title{position: absolute;top: 15px;width: 100%;text-align: center;color: #fff;font-size: 16px;}
+.detail-top-play{position:absolute;top: 50%;left: 50%;width: 52px;height: 52px;margin-left: -26px;margin-top: -26px;background: url(../../image/s100/wzy_play.png) no-repeat;background-size: 52px 52px;}
+.wzy-detail-opt{padding: 15px 10px;overflow:hidden;font-size:12px;line-height: 100%;background-color: #f6f6f6;}
+.wzy-detail-opt .orange{color:#ffa000;}.wzy-detail-opt .gray{color:#999;}.wzy-detail-opt .price{font-size:22px;}.wzy-detail-opt .old{text-decoration:line-through;}
+.wzy-detail-bottom{position:fixed;bottom:0;width:100%;background-color:#fff;border-top:1px solid #dce4e1;z-index:1;}
+a.detail-opt-btn{font-size: 15px;width: 37%;height: 44px;background: #ffa000;color: #ffffff;text-align: center;line-height: 44px;}
+.detail-opt-list{font-size: 13px;width: 63%;color: #ffa000;position: relative;}
+.opt-list-first{height: 44px;line-height: 44px;padding: 0 35px 0 15px;position:relative;overflow: hidden;}
+.opt-list-first .reg{position:absolute;right: 18px;border-top: 9px solid #ffa000;border-bottom: 6px solid transparent;border-right: 6px solid transparent;border-left: 6px solid transparent;top: 18px;border-radius: 2px;}
+.opt-list-first.on .reg{border-bottom: 9px solid #ffa000;border-top: 6px solid transparent;top: 12px;}
+.detail-opt-list ul{ display:none; position: absolute;width: 100%;bottom: 45px;background-color: #fff;}
+.detail-opt-list li{height: 44px;line-height: 44px;padding:0 10px 0 15px;position:relative;overflow: hidden;}
+.detail-opt-list li.olddate{color:#DEDCDC;}.detail-opt-list li.on{background-color:#ffa000;color:#fff;}
+
+.wzy-tab{height:42px;background-color:#fff;border-bottom: 2px solid #dbdfdf;padding: 0 12px;}
+.wzy-tab li{float: left;width:50%;position: relative;cursor:pointer;}
+.wzy-tab li h2{display:block;line-height: 42px;text-align: center;font-size:16px;font-weight:normal;}
+.wzy-tab li.cur h2{border-bottom: 2px solid #33b495;color: #33b495;}
+#wzytablist1{padding-bottom: 10px;background: #fff;}
+.wzy-tab-desc{padding:12px 12px 0;background-color: #fff;}
+.wzy-tab-desc p{color: #61726c;font-size: 13px;background-color: #edf3f1;padding: 12px;line-height:150%;}
+#wzytablist2{display:none;background-color:#fff;}
+.detail-course-list{padding: 10px;position: relative;overflow: hidden;}
+.detail-course-list:after{content:"";position:absolute;bottom:0;left:40px;width:100%;height:1px;background-color:#dbdfdf;}
+.detail-course-list:last-child:after{height:0;}
+.detail-course-title{overflow: hidden;padding-left: 30px;padding-right: 18px;font-size: 14px;}
+.detail-course-title .num{color:#ffa000;width: 18px;height: 18px;text-align: center;border: 1px solid #ffa000;border-radius: 30px;line-height: 18px;position: absolute;left: 10px;margin-top: 1px;}
+.detail-course-title .text{line-height: 150%;}.detail-course-title .text a{color:#ffa000;margin-left: 10px;float: right;background: url(../../image/s100/wzy_video.png) left center no-repeat;background-size: 16px auto;padding-left: 20px;}
+.detail-course-title .reg{position:absolute;right: 10px;border-top: 9px solid #ffa000;border-bottom: 6px solid transparent;border-right: 6px solid transparent;border-left: 6px solid transparent;top: 18px;border-radius: 2px;}
+.on .detail-course-title{background-color:#fff;}
+.on .detail-course-title .reg{border-bottom: 9px solid #ffa000;border-top: 6px solid transparent;top: 12px;}
+.detail-course-page{display:none;overflow: hidden;padding: 15px 0 0 30px;font-size: 12px;}
+.detail-course-pic img{width: 70px;height: 49px;}
+.detail-course-text{margin-left: 80px;line-height: 150%;margin-top: -2px;}
+
+.wzy-detail-tip{position:relative;z-index:99}
+.wzy-detail-tip .bg{position:fixed;top:0;width:100%;height:100%;background-color:rgba(0,0,0,.3);}
+.wzy-detail-tip .content{font-size:13px;position:fixed;top:30%;left:7%;width:86%;background-color:#fff;border-radius:5px;}
+.wzy-detail-tip .head{font-size: 15px;text-align: center;line-height: 40px;}
+.wzy-detail-tip .close{margin: 10px 10px 0;color: #59cca7;text-align: center;padding: 10px 0;border-top: 1px solid #dbdfdf;}
+.wzy-detail-tip p{margin: 0 10px;line-height: 150%;}
+
+@media (max-width: 1080px) and (min-width: 321px){
+.wzy-name{font-size: 18px;}.wzy-info{font-size: 13px;}.detail-top-title{font-size: 18px;}.detail-course-title{font-size: 15px;}.wzy-detail-tip .content{font-size:15px;}.wzy-detail-tip .head{font-size: 16px;}
+}
+/*UESFTL-6032 微专业 16.05.18 结束*/
+
+/*UESFTL-5916 咪咕六周年活动 16.04.18 开始*/
+.mfree-desc{position:absolute;top: 8px;right:0;z-index: 99;width: 100%;text-align: right;}.mfree-desc img{width: 32%;}
+.mfree-toast{display:none;}.mfree-pop{position:fixed;top:30%;z-index:9999;width:100%;}
+.mfree-pop-box{margin:0 auto;width:76%;box-sizing:border-box;background:#f5f5f5;border-radius:8px;padding: 15px 20px;font-size: .86em;}
+a.mfree-pop-hide{color: #fff;display:block;width: 40%;margin: 20px auto 5px;line-height:30px;background:#33b495;text-align:center;border-radius:3px;}
+/*UESFTL-5916 咪咕六周年活动 16.04.18 结束*/
+
+/*UESFTL-6043 专题碎片开发 16.05.24 开始*/
+.zt-tab-pic{font-size:0;padding:15px 20px;position:relative;}
+.zt-tab-pic .swiper-container{position:static;}.zt-tab-pic .swiper-slide{text-align: center;}
+.zt-tab-pic .swiper-slide img{height: 120px; }
+.zt-tab-pic .swiper-button-prev{position:absolute;left: 5px;top: 50%;margin-top: -15px;width: 15px;height: 25px;}
+.zt-tab-pic .swiper-button-prev:before{content: "";background-color: #cfd8d9;width: 16px;height: 3px;-webkit-transform: rotate(-50deg);transform: rotate(-50deg);position: absolute;top: 5px;}
+.zt-tab-pic .swiper-button-prev:after{content: "";background-color: #cfd8d9;width: 16px;height: 3px;-webkit-transform: rotate(50deg);transform: rotate(50deg);position: absolute;top: 15px;}
+.zt-tab-pic .swiper-button-next{position:absolute;right: 5px;top: 50%;margin-top: -15px;width: 15px;height: 25px;}
+.zt-tab-pic .swiper-button-next:before{content: "";background-color: #cfd8d9;width: 16px;height: 3px;-webkit-transform: rotate(-130deg);transform: rotate(-130deg);position: absolute;top: 5px;right: 0;}
+.zt-tab-pic .swiper-button-next:after{content: "";background-color: #cfd8d9;width: 16px;height: 3px;-webkit-transform: rotate(130deg);transform: rotate(130deg);position: absolute;top: 15px;right: 0;}
+.zt-tab-pic .swiper-button-disabled{opacity:0.4;}
+.zt-tab-content{font-size:0;overflow:hidden;padding:0 7px 15px 10px;}
+.tab-content-2l{overflow:hidden;}.tab-content-2l a{float:left;width:50%;}
+@media (max-width: 1080px) and (min-width: 321px){.zt-tab-pic .swiper-slide img{height: 130px;}}
+@media (max-width: 1080px) and (min-width: 361px){.zt-tab-pic .swiper-slide img{height: 140px;}}
+/*UESFTL-6043 专题碎片开发 16.05.24 结束*/
+
+/*UESFTL-6162 传统文化专题 16.06.29 开始*/
+.cultureNav-kong{height:4.27rem;display:none;}
+#cultureNav{height:4.27rem;}#cultureNav.fixed{position:fixed;width:100%;z-index:9;top:0;}
+.zt-culture-nav{font-size:0;padding: 0.8rem 1.8rem;position:relative;background-color:#f3f3f3;}
+.zt-culture-nav .swiper-container{position:static;}.zt-culture-nav .swiper-slide{text-align: center;}
+.zt-culture-nav .swiper-slide img{height: 2.666rem;width: 5.65rem; }
+.zt-culture-nav .swiper-button-prev{position:absolute;left: 0.666rem;top: 50%;margin-top: -0.666rem;width: 0.733rem;height: 1.333rem;background: url(../../image/s100/wapCulture_jt.png) no-repeat;background-size: 0.733rem;}
+.zt-culture-nav .swiper-button-next{position:absolute;right: 0.666rem;top: 50%;margin-top: -0.666rem;width: 0.733rem;height: 1.333rem;background: url(../../image/s100/wapCulture_jt.png) no-repeat;background-size: 0.733rem;transform: rotate(180deg);-webkit-transform: rotate(180deg);}
+.zt-culture-nav .swiper-button-disabled{ opacity:0.4; }
+.culturePic2l{font-size:0}.culturePic2l img{width:50%;}
+/*UESFTL-6162 传统文化专题 16.06.29 结束*/
+
+/*UESFTL-6229 答题小游戏 16.07.25 开始*/
+.zt-test-total{margin: 12px 20px;font-size:15px;color:#ff8400;}
+.zt-test-process{margin: 0 20px 18px;font-size:0;line-height: 18px;}
+.process-text{font-size:12px;display:inline-block;width:30%;vertical-align: middle;}
+.process-full-bar{display:inline-block;width:70%;background-color:#dbdbdb;height: 5px;vertical-align: middle;border-radius: 5px;position: relative;}
+.process-bar{display: inline-block;width: 0;background-color: #7cbdff;height: 5px;position: absolute;border-radius: 5px;webkit-transition:width .3s .1s;transition:width .3s .1s;}
+.zt-test-page{margin: 0 20px 20px;background-color:#fff;display:none;opacity:0;}.zt-test-page img{width:100%;}
+.zt-test-page.test-show{display:block;opacity:1;-webkit-animation: fadeIn .4s ease-in-out forwards;animation: fadeIn .4s ease-in-out forwards;}
+@-webkit-keyframes fadeIn{0%{opacity:0}100%{opacity:1}}@keyframes fadeIn{0%{opacity:0}100%{opacity:1}}
+.tpage-title{padding: 15px 12px 10px;font-size:17px;}.tpage-select{padding-bottom:10px;}
+.tpage-select li{padding: 0 20px;font-size:15px;color:#494949;line-height: 150%;position:relative;}
+.tpage-select li.checked{background: -webkit-linear-gradient(left, rgba(255,234,115,.3) 0%, rgba(255,234,115,1) 8%, rgba(255,234,115,1) 92%, rgba(255,234,115,.3) 100%);}
+.tpage-select li.checked .testl-radio:after{content:"";position:absolute;width: 24px;height: 18px;background:url(../../image/s100/test_select.png) no-repeat;background-size: 24px auto;left: 16px;top: 15px;}
+.testl-radio{border-bottom:1px dashed #e5e5e5;display: block;padding: 10px 0;}.tpage-select li:last-child .testl-radio{border:none;}.testr-radio{display: none;}
+.zt-test-btn{margin: 30px 30px 15px;text-align: center;font-size: 0;}
+.test-btn-prev,.test-btn-next,.test-btn-submit{font-size:15px;color:#132a77 !important;display: inline-block;width: 46%;line-height: 40px;margin: 0 2%;background: #fff;border: 2px solid #a7d0f5;box-sizing: border-box;border-radius: 8px;}
+.test-btn-submit{background:#3a5ed6;border-color:#3a5ed6;color:#fff !important;display:none;}.test-btn-prev{display:none;}
+.test-result{display:block;opacity:1;line-height: 160%;padding-bottom: 15px;}.tpage-tip{font-size:15px;padding:10px 12px;}.tpage-text{font-size:17px;color:#ff8400;padding:2px 12px;}.tpage-desc{font-size:15px;color:#494949;padding:10px 12px;}
+.zt-test-else{line-height: 20px;margin: 0 12px 16px;color: #494949;font-size:15px;text-align: center;position: relative;}
+.zt-test-else:before{content:"";position:absolute;left:0;top:10px;height:1px;width:23%;background-color:#d2d2d2;}
+.zt-test-else:after{content:"";position:absolute;right:0;top:10px;height:1px;width:23%;background-color:#d2d2d2;}
+.restart{text-align: center}.zt-test-page .restart img{width: 60%}
+@media screen and (max-width:320px){
+.zt-test-total{margin: 10px 14px;font-size: 14px;}.zt-test-process{margin: 0 14px 12px;}.zt-test-page{margin: 0 14px 14px;}.tpage-title{padding: 12px 12px 8px;font-size: 16px;}.tpage-select li{font-size: 14px;}.zt-test-btn{margin: 20px 30px 15px;}.test-btn-prev,.test-btn-next,.test-btn-submit{font-size: 14px;line-height:36px;}.tpage-tip,.tpage-desc,.zt-test-else{font-size:14px;}.tpage-text{font-size:16px;padding:0 12px;}
+}
+/*UESFTL-6229 答题小游戏 16.07.25 结束*/
