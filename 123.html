@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>iview example</title>
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
+</head>
+<body>
+<div id="app">
+ <form name="formHead" method="post" action="" id="formHead" enctype="multipart/form-data" target="uploadfrm">
+
+   <div>
+      <div>
+         <input type="file" name="file_head" id="file_head" @click="setImagePreview();" />
+      </div>
+      <div>
+         <div id="DivUp" style="display: none">
+         <Button type="primary" @click="save">确认上传</Button>
+          
+         </div>
+      </div>
+   </div>
+</form>
+
+<div data-role="fieldcontain">
+   <div id="localImag">
+      <img id="preview" width="-1" height="-1" style="display: none" />
+   </div>
+</div>
+
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            visible: false
+        },
+        methods: {
+            setImagePreview() {
+        var preview, img_txt, localImag, file_head = document.getElementById("file_head"),
+            picture = file_head.value;
+        if (!picture.match(/.jpg|.gif|.png|.bmp/i)) return alert("您上传的图片格式不正确，请重新选择！"),
+            !1;
+        if (preview = document.getElementById("preview"), file_head.files && file_head.files[0]) preview.style.display = "block",
+            preview.style.width = "63px",
+            preview.style.height = "63px",
+            preview.src = window.navigator.userAgent.indexOf("Chrome") >= 1 || window.navigator.userAgent.indexOf("Safari") >= 1 ? window.webkitURL.createObjectURL(file_head.files[0]) : window.URL.createObjectURL(file_head.files[0]);
+        else {
+            file_head.select(),
+                file_head.blur(),
+                img_txt = document.selection.createRange().text,
+                localImag = document.getElementById("localImag"),
+                localImag.style.width = "63px",
+                localImag.style.height = "63px";
+            try {
+                localImag.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)",
+                    localImag.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = img_txt
+            } catch(f) {
+                return alert("您上传的图片格式不正确，请重新选择！"),
+                    !1
+            }
+            preview.style.display = "none",
+                document.selection.empty()
+        }
+        return document.getElementById("DivUp").style.display = "block",
+            !0
+    },
+            save: function () {
+                this.visible = true;
+            }
+        }
+    })
+  </script>
+</body>
+</html>
