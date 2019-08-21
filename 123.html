@@ -44,16 +44,16 @@
         if (!picture.match(/.jpg|.gif|.png|.bmp/i)) return alert("您上传的图片格式不正确，请重新选择！"),
             !1;
         if (preview = document.getElementById("preview"), file_head.files && file_head.files[0]) preview.style.display = "block",
-            preview.style.width = "63px",
-            preview.style.height = "63px",
+            preview.style.width = "163px",
+            preview.style.height = "163px",
             preview.src = window.navigator.userAgent.indexOf("Chrome") >= 1 || window.navigator.userAgent.indexOf("Safari") >= 1 ? window.webkitURL.createObjectURL(file_head.files[0]) : window.URL.createObjectURL(file_head.files[0]);
         else {
             file_head.select(),
                 file_head.blur(),
                 img_txt = document.selection.createRange().text,
                 localImag = document.getElementById("localImag"),
-                localImag.style.width = "63px",
-                localImag.style.height = "63px";
+                localImag.style.width = "163px",
+                localImag.style.height = "163px";
             try {
                 localImag.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)",
                     localImag.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = img_txt
