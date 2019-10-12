@@ -1,402 +1,306 @@
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 <head>
-	<meta charset="UTF-8">
-	<meta name="x5-fullscreen" content="true">
-	<meta name="full-screen" content="yes">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
-	<meta http-equiv="cache-control" content="max-age=0" />
-	<meta http-equiv="cache-control" content="no-cache" />
-	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-	<meta http-equiv="Pragma" content="no-cache" />
-	<meta http-equiv="Expires" content="0" />
-	<title id="title"></title>
-	<link rel="stylesheet" href="../css/reset.css" />
-	<link rel="stylesheet" href="../css/plugins/weui.min.css" />
-	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-	<script type="text/javascript" src="../js/plugins/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/vue.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/hammer.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/vue-touch.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/md5.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/jsencrypt.min.js"></script>
-	<script type="text/javascript" src="../js/zexUtility.js"></script>
-	<script type="text/javascript" src="../js/zexService.js"></script>
-	<script type="text/javascript" src="../js/zexApis.js"></script>
-
-	<style>
-	    body{
-        background-repeat:no-repeat ;
-        background-size:100% 100%;
-        background-repeat:no-repeat;
-    	background-attachment:fixed;
-  
-        }
-		
-		.shop_box {
-			margin-left: 10%;
-			top: 70%;
-			position: absolute;
-			width: 90%;
-		}
-		
-		.shop_box_bg {
-			width: 90%;
-			height: 50px;
-			background-image: url('http://image.sweetmartmarketing.com/wxcamp_thumb/CiwdQr67Jh.png');
-			background-size: cover;
-		}
-		
-		.check_shop {
-			float: left;
-			width: 30%;
-			color: #fff;
-			font-size: 18px;
-			text-align: center;
-			line-height: 50px;
-		}
-		
-		.select_shop {
-			width: 100%;
-			height: 50px;
-			color: rgba(102, 102, 102, 0.73);
-			padding-left: 14px;
-			font-size: 14px;
-		}
-		
-		.liqu {
-			margin-left: 10%;
-			margin-top: 22px;
-			position: absolute;
-			width: 90%;
-			top: 78%;
-		}
-		
-		.shuoming {
-			color: #fff;
-			text-align: center;
-			font-size: 14px;
-			width: 100%;
-			top: 92%;
-			position: fixed;
-		}
-		
-		.rule_btn_pic_url {
-			width: 18.75%;
-			height: auto;
-			position: absolute;
-			top: 5%;
-			right: 2%;
-			/*border: 1px solid #000;*/
-		}
-		
-		.rule_img_wrap {
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			top: 0;
-			left: 0;
-			background: rgba(0, 0, 0, .7);
-		}
-		
-		.rule_container {
-			width: 100%;
-			height: 100%;
-			max-height: 100%;
-			position: absolute;
-			overflow-y: scroll;
-			-webkit-overflow-scrolling: touch;
-		}
-		
-		.rule_img {
-			width: 100%;
-			height: 100%;
-		}
-		
-		.btn_hide_rule_img {
-			width: 80%;
-			height: 6.5%;
-			background: #ffffff;
-			position: absolute;
-			bottom: 0.6%;
-			left: 10%;
-			border-radius: 2rem;
-			display: -webkit-inline-flex;
-			align-items: center;
-			-webkit-align-items: center;
-			justify-content: center;
-			-webkit-justify-content: center;
-			font-size: 1.8rem;
-			color: #10aeff;
-		}
-		
-
-		select {
-			font-family: "微软雅黑";
-			background: #fff;
-			color: white;
-			text-align: center;
-			border: 1px #fff solid;
-		}
-		
-		option {
-			color: black;
-			background: #fff;
-			line-height: 20px;
-		}
-		
-		select:focus {
-			border: 2px #ddd solid;
-			box-shadow: 0 0 15px 1px #fff;
-		}
-		
-		option:hover {
-			background: #fff;
-		}
-
-
-	</style>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>刘宗宇个人简历网站</title>
+<meta name="keywords" content="刘宗宇,刘宗宇简历,web前端,web前端简历,web前端工程师,web前端招聘,广州web前端招聘,web前端工程师简历" />
+<meta name="description" content="刘宗宇的个人简历，职业定位为web前端工程师" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/templatemo-style.css">
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
+<body>
 
 
-<body id="container" background="http://image.sweetmartmarketing.com/wxcamp_thumb/mKdeq2y2oD.jpg" class="bg">
+<div class="site-bg"></div>
+<div class="site-bg-overlay"></div>
+<div class="top-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <p class="phone-info">刘宗宇 | web前端工程师 | 邮箱 <a href="mailto:zongyu.liu@foxmail.com">zongyu.liu@foxmail.com</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="visible-xs visible-sm responsive-menu"> <a href="#" class="toggle-menu"> <i class="fa fa-bars"></i> 个人主页 </a>
+  <div class="show-menu">
+    <ul class="main-menu">
+      <li> <a class="show-1 active homebutton" href="#"><i class="fa fa-home"></i>主页</a> </li>
+      <li> <a class="show-2 aboutbutton" href="#"><i class="fa fa-user"></i>关于我</a> </li>
+      <li> <a class="show-3 projectbutton" href="#"><i class="fa fa-list-alt"></i>项目经验</a> </li>
+      <li> <a class="show-5 contactbutton" href="#"><i class="fa fa-pencil"></i>自我评价</a> </li>
+    </ul>
+  </div>
+</div>
+<div class="container" id="page-content">
+  <div class="row">
+    <div class="col-md-9 col-sm-12 content-holder"> 
+      <!-- CONTENT -->
+      <div id="menu-container">
+        <div class="logo-holder logo-top-margin"> <a href="#" class="site-brand"><img src="images/logo.png" alt=""></a> </div>
+        <div id="menu-1" class="homepage home-section text-center">
+          <div class="welcome-text">
+            <h2>刘宗宇</h2>
+            <p>web前端工程师</p>
+            <br>
+            <p>邮箱：<a href="mailto:zongyu.liu@foxmail.com">zongyu.liu@foxmail.com</a></p>
+          </div>
+        </div>
+        <div id="menu-2" class="content about-section">
+          <div class="row">
+            <div class="col-md-8 col-sm-8">
+              <div class="box-content profile">
+                <h3 class="widget-title">关于我</h3>
+                <div class="profile-thumb"> <img src="images/8.jpg" alt=""> </div>
+                <div class="profile-content">
+                  <h5 class="profile-name">刘宗宇</h5>
+                  <span class="profile-role">web前端工程师</span>
+                  <p>毕业院校：广州大学</p>
+                  <p>专 业：互联网信息软件开发</P>
+                  <p> 目前状态：就职于SweetMart Development Ltd </p>
+                  <P>工作经验：4年</P>
+                  <p>邮箱：<a href="mailto:zongyu.liu@foxmail.com">zongyu.liu@foxmail.com</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <div class="box-content">
+                <h3 class="widget-title">工作描述</h3>
+                <p>1、根据后台业务接口，使用 Vue.js+ Vue-Resource+Vue-Router+Vuex + Element UI 实现界面功能的开发
+</p>
+                <p>2、配合后端对需求的功能做单元测试、集成测试,分析、定位和修复测试发现的前端bug</p>
+                <p>3、使用node.js + express +mysqljs 独立开发微信公众号抽奖活动项目</p>
+                <p>4、利用html5+ JavaScript+CSS 将UI设计图转化为标准web页面 实现前端交互效果，解决兼容性问题 ，熟悉使用开源Bootstrap框架</p>
+               
+              </div>
+            </div>
+          </div>
+        <div class="row">
+           
+            <div class="col-md-7 col-sm-7">
+              <div class="box-content">
+                <h3 class="widget-title">专业技能</h3>
+                <ul class="progess-bars">
+                  <li> <span>HTML5+ CSS      95%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
+                    </div>
+                  </li>
+                   <li> <span>vue.js+Element UI      95%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
+                    </div>
+                  </li>
+                   <li> <span>boostrap      95%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
+                    </div>
+                  </li>
+                  <li> <span>PHOTOSHOP     90%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+                    </div>
+                  </li>
+                  <li> <span>JAVASCRIPT    70%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
+                    </div>
+                  </li>
+                  <li> <span>node.js        60%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                    </div>
+                  <li> <span>Mysql      60%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                    </div>
+                
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="menu-3" class="content gallery-section">
+          <div class="box-content">
+            <h3 class="widget-title">我的作品</h3>
+            <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/1.jpg" >
+                  <div class="project-hover">
+                    <h4><a href="http://apps.lastmilecn.com/apple/">aMessenger官网</a></h4>
+                  </div>
+                </div>
+              </div>
+            
+              
+				 <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/miben.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="#">微信小程序-密本</a></h4>
+                  </div>
+                </div>
+              </div>
+              
+					 <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/chaoshihui.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="#">微信超市惠</a></h4>
+                  </div>
+                </div>
+              </div>
+				    <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/11.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="http://cpre.sweetmartmarketing.com/wechatMember/login.jsp">知而行管理系统</a></h4>
+                  </div>
+                </div>
+              </div>
+              
+            
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/2.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="http://www.lastmilecn.com/hr/Login.aspx">LastMile</a></h4>
+                  </div>
+                </div>
+              </div>
+			
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/3.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="http://data.lastmilecn.com/Salary/">BI@R项目数据收集系统</a></h4>
+                  </div>
+                </div>
+              </div>
+				
+				
+				
+					   <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/5.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="https://www.aliyun.com/error/">G衣柜</a></h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/4.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="http://lastmilecn.com/">那些麦儿网络科技有限公司</a></h4>
+                  </div>
+                </div>
+              </div>
+              
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/6.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="#">PG数据管理系统WEB录入系统</a></h4>
+                  </div>
+                </div>
+              </div>
+              
+              
+              
+            
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/gengxin.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="zuopin.html">其他作品整理中</a></h4>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            
+       </div>
+        </div>
+        <div id="menu-4" class="content contact-section">
+          <div class="row">
+            <div class="col-md-8 col-sm-8">
+              <div class="box-content">
+                <h3 class="widget-title">自我评价</h3>
+				 <p> 
+					 主攻前端和NodeJS开发，4年+前端开发经验，呆过大公司和小团队，带领团队利用最新技术解决业务快速发展过程中的各种业务场景问题。熟悉客户端开发，有多个上线项目。</p>
 
+				  
+<!--
+                <p>精通VueJS ，Element UI ，html5，axioos,webpack,掌握mysql nodejs express mysqljs; </p>
+                <p> 具有扎实html5,css3，javascript，C#，swift语言基础,熟练掌握SQL语言</p>
+                <br>
+                <p> 掌握DIV+CSS页面架构和布局方式，能够熟练应用HTML5/CSS/JavaScript技术</p>
+                <br>
+                <p> 开发符合W3C标准的网站前端页面对表现与数据分离、Web语义化等有深刻理解</p>
+                <br>
+                <p> 熟悉使用HTML5的Local_Storage本地存储和离线存储</p>
+-->
+				  
+				  
+<p>个人网站http://cinoliu.github.io/   </p>
+<p>个人github：https://github.com/cinoliu</p>
+<p>博客：http://www.jianshu.com/u/cd9914d683ec</p>
+				  
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <div class="box-content">
+                <h3 class="widget-title">奖励情况</h3>
+                <p>2012．6：<br>
+                  获得学生奖学金</p>
+                <p>2012．9：<br>
+                  获得广州大学创业设计大赛银奖（参赛项目为 航天通信系统）</p>
+                <p>2013．6：<br>
+                  获得学生奖学金</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 hidden-sm">
+      <nav id="nav" class="main-navigation hidden-xs hidden-sm">
+        <ul class="main-menu">
+          <li> <a class="show-1 active homebutton" href="#"><i class="fa fa-home"></i>主页</a> </li>
+          <li> <a class="show-2 aboutbutton" href="#"><i class="fa fa-user"></i>关于我</a> </li>
+          <li> <a class="show-3 projectbutton" href="#"><i class="fa fa-list-alt"></i>项目经验</a> </li>
+          <li> <a class="show-5 contactbutton" href="#"><i class="fa fa-pencil"></i>自我评价</a> </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
 
-	<div class="shop_box">
+<!-- SITE-FOOTER -->
 
-		<div class="shop_box_bg">
+<!-- .site-footer --> 
+<!--百度统计代码开始-->
 
-			<div class="check_shop"> 选择门店</div>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?3caeaaf39eadaed916ca69452935bdcc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--百度统计代码结束-->
+<script src="js/vendor/jquery-1.10.2.min.js"></script> 
+<script src="js/plugins.js"></script> 
+<script src="js/main.js"></script>
+</body>
 
-			<div style="float:left; line-height: 50px;width: 70%;">
-				<Select v-model="actId" class="select_shop">
-					<Option value="" key="">请选择</Option>
-					<Option v-for="item in shopList" :value="item.value" :key="item.value">{{ item.label }}</Option>
-				</Select>
-			</div>
-		</div>
-	</div>
-
-
-
-	<div class="liqu">
-		<img src="http://image.sweetmartmarketing.com/wxcamp_thumb/hQNGasxNBn.png" style="width:90%;height: 50px;" v-touch:tap="getID">
-
-	</div>
-
-
-	<div class="shuoming">
-		<u v-touch:tap="is_show=true">活动说明</u>
-	</div>
-
-
-	<div class="btn rule_img_wrap" v-show="is_show" style="display: none">
-		<div class="rule_container">
-			<img class="rule_img" src="http://image.sweetmartmarketing.com/wxcamp_thumb/ZIzWV8jQ77.jpg" />
-		</div>
-		<div class="btn_hide_rule_img" v-touch:tap="is_show=false">隐藏</div>
-	</div>
-
-
-
-
-
-	<div v-show="tip_is_show">
-		<div class="weui-mask"></div>
-		<div class="weui-dialog">
-			<div class="weui-dialog__hd"><strong class="weui-dialog__title">提示</strong></div>
-			<div class="weui-dialog__bd" v-text="tip_text"></div>
-			<div class="weui-dialog__ft">
-				<a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" v-touch:tap="tip_is_show=false">确定</a>
-			</div>
-		</div>
-	</div>
-
-
-	<div id="loadingToast" v-show="is_loading">
-		<div class="weui-mask_transparent load"></div>
-		<div class="weui-toast center">
-			<i class="weui-loading weui-icon_toast"></i>
-			<p class="weui-toast__content">领取加载中</p>
-		</div>
-	</div>
 
 
 </body>
-<script>
-	var urlParams = {
-		'component_appid': zexUtil.GetQueryString('component_appid') || "",
-		'appid': zexUtil.GetQueryString('appid'),
-		'outer_str': zexUtil.GetQueryString('outer_str'),
-
-	};
-
-
-	var realOpenid = zexUtil.rsaDecrypt(urlParams.openid, zexUtil.getRsaClientPrivateKey());
-
-	var template = new Vue({
-		el: "#container",
-		data: {
-			is_loading: false,
-			is_show: false,
-			tip_is_show: false,
-			tip_text: "",
-			actId: "",
-			shopList: [{
-					value: '1000108',
-					label: '文和友龙虾馆'
-				},
-				{
-					value: '1',
-					label: '升记私伙牛杂煲'
-				},
-				{
-					value: '2',
-					label: '铭泰煲仔饭'
-				},
-				{
-					value: '1000113',
-					label: '潮人潮品'
-				},
-				{
-					value: '1000114',
-					label: '花椒燚'
-				},
-				{
-					value: '1000115',
-					label: '牛a'
-				},
-				{
-					value: '1000116',
-					label: '袍哥码头'
-				},
-				{
-					value: '1000117',
-					label: '松哥油焖大虾'
-				},
-				{
-					value: '1000118',
-					label: '蛙小侠'
-				},
-				{
-					value: '1000119',
-					label: '珍姐龙虾'
-				}
-			],
-			tip_text: "",
-			tip_is_show: false
-		},
-
-		created: function() {
-
-			var wxConfigParams = {
-				component_appid: urlParams.component_appid,
-				appid: urlParams.appid,
-				url: window.location.href,
-				type: "jsapi"
-			};
-			zexApis.httpWxCheck(wxConfigParams).done(function(resJson) {
-
-				wx.config({ //微信权限验证
-					debug: false,
-					appId: wxConfigParams.appid,
-					timestamp: resJson.timestamp,
-					nonceStr: resJson.noncestr,
-					signature: resJson.signature,
-					jsApiList: ['hideOptionMenu', 'addCard', 'openCard']
-				});
-				wx.ready(function(res) {
-
-				});
-				wx.error(function(res) {
-					console.log("配置失败");
-				});
-			});
-		},
-		methods: {
-
-
-			setTipText: function(text) {
-				this.tip_text = text;
-				this.tip_is_show = true;
-			},
-
-
-			getID() {
-				if (this.actId == "") {
-					this.setTipText("请选择门店");
-					return;
-				}
-
-				if (this.actId == 1) {
-					window.location.href = "type1.html?component_appid=" + urlParams.component_appid + '&appid=' + urlParams.appid + '&outer_str=' + urlParams.outer_str;
-				} else if (this.actId == 2) {
-					window.location.href = "type2.html?component_appid=" + urlParams.component_appid + '&appid=' + urlParams.appid + '&outer_str=' + urlParams.outer_str;
-
-				} else {
-					this.receiveWxCard()
-				}
-
-
-			},
-
-			receiveWxCard: function() {
-				var self = this;
-				var receiveCouponParams = {
-					component_appid: urlParams.component_appid,
-					appid: urlParams.appid,
-					outer_str: urlParams.outer_str,
-					actId: this.actId,
-					timestamp: zexUtil.getTimestamp()
-				};
-				self.is_loading = true;
-				console.log("领取请求参数", JSON.stringify(receiveCouponParams));
-				zexApis.batchAddWxCard(receiveCouponParams).done(function(resJson) {
-
-					if (resJson.code == 200) {
-						var cardList = resJson.cardList;
-						$.each(cardList, function(i, card) {
-							card.cardExt = JSON.stringify(card.cardExt);
-						});
-						wx.addCard({
-							cardList: cardList, // 需要添加的卡券列表
-							success: function(res) {
-
-								self.setTipText('请至 " 我-卡包-我的票券 " 查看');
-							},
-							cancel: function(res) {
-								console.log('success=>', JSON.stringify(res));
-							},
-							fail: function(res) {
-								console.log('success=>', JSON.stringify(res));
-							}
-						});
-					} else if (resJson.code == 4003) {
-						self.setTipText("活动未开始或已下架  -" + self.b_info.activId);
-					} else {
-						self.setTipText("系统繁忙   -" + resJson.code);
-					}
-
-					self.is_loading = false;
-
-				});
-
-
-
-			}
-
-
-
-		},
-
-
-
-
-	});
-
-</script>
 
 </html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>iview example</title>
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
+    <script type="text/javascript" src="http://v1.vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/iview@1.0.1/dist/iview.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <i-button @click="show">Click me!</i-button>
+    <Modal :visible.sync="visible" title="Welcome">欢迎使用 iView</Modal>
+
+
+      <input id="camp_img" type="file" accept="image/*" value="上传文件" @change="campUploadFile"
+                               required="required"/>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            visible: false
+        },
+        methods: {
+            show: function () {
+                this.visible = true;
+            },
+                     // 图片上传
+            campUploadFile: function (event) {
+
+                var self = this;
+
+                var file = event.target.files[0];    //获取第一个file文件
+                console.log("file", file);
+
+                if (file.type != "image/png" && file.type != "image/jpeg" && file.type != "image/jpg") {
+
+                    // alert("图片格式只能选择png/jpeg/jpg");
+                    self.is_show = true;
+                    self.post_status = "图片格式只能选择png/jpeg/jpg";
+                    $("#camp_img").val('');
+                    return;
+
+                } else if (file.size > 1048576) {
+                    // alert("图片不能大于1M");
+                    self.is_show = true;
+                    self.post_status = "图片不能大于1M";
+
+                    $("#camp_img").val('');
+                    return;
+                }
+
+                var reqObj = new FormData();
+                reqObj.append('file', file);
+           
+             
+                //上传图片
+                zexApis.uploadFile2(reqObj).done(function (response) {
+                    if (response.code == "200") {
+                        self.brand_logo_url = "http://image.sweetmartmarketing.com/" + response.image_url;
+                        self.camp_status = file.name + "  上传成功！"
+
+                    } else {
+                        self.camp_status = "图片上传失败，请重新上传！"
+                        $("#camp_img").val('');    //清空当前值
+                        return;
+                    }
+                });
+            },
+
+        }
+    })
+  </script>
+</body>
+</html>
