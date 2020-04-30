@@ -2,34 +2,49 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<title>二维码</title>
-
+    <meta charset="utf-8">
+    <title>二维码</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/view-design/dist/styles/iview.css">
+    <script type="text/javascript" src="https://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/view-design/dist/iview.min.js"></script>
 </head>
 
 <body>
+    <div id="app">
+        {{text}}
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                text: "",
+                text1: "",
+            },
+            created: function() {
 
 
-	<p id="txt"></p>
+                let ua = navigator.userAgent.toLowerCase();
 
-	<p id="txt1"></p>
-	<script>
-		let domT = document.querySelector('#txt');
+                this.text1 = ua
 
+                if (ua.match(/MicroMessenger/i) === 'micromessenger') {
+                    this.text = 'wechatClient';
+                    window.location.href = "https://mp.weixin.qq.com"
+                } else if (ua.match(/AlipayClient/i) === 'alipayclient') {
+                    this.text = 'aliClient';
+                    window.location.href = "https://www.aliyun.com/"
 
-		let ua = window.navigator.userAgent.toLowerCase();
+                } else {
+                    this.text = 'unknown';
+                    window.location.href = "https://www.baidu.com"
+                }
 
-		document.querySelector('#txt1').innerHTML = ua
+            },
+            methods: {
 
-		if (ua.indexOf("micromessenger") > 0) {
-			domT.innerHTML = '微信扫码';
-		} else if (ua.indexOf("alipayclient") > 0) {
-			domT.innerHTML = '支付宝扫码';
-		} else {
-			domT.innerHTML = '未知扫描';
-		}
-
-	</script>
+            }
+        })
+    </script>
 </body>
 
 </html>
