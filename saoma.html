@@ -12,7 +12,6 @@
 
 	<p id="txt"></p>
 
-	<p id="txt1"></p>1
 	<script>
 
 
@@ -21,14 +20,14 @@
 		
 			let ua = window.navigator.userAgent.toLowerCase();
 			
-    	document.querySelector('#txt1').innerHTML =ua
+    
 			
 			if (ua.indexOf("micromessenger") > 0) {
-				domT.innerHTML = 'wechatClient';
+				domT.innerHTML = '微信扫码';
 			} else if (ua.indexOf("alipayclient") > 0) {
-				domT.innerHTML = 'aliClient';
+				domT.innerHTML = '支付宝扫码';
 			} else {
-				domT.innerHTML = 'unknown';
+				domT.innerHTML = '未知扫描';
 			}
 	
 
