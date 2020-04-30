@@ -3,47 +3,57 @@
 <head>
     <meta charset="utf-8">
     <title>二维码</title>
-    <link rel="stylesheet" type="text/css" href="http://unpkg.com/view-design/dist/styles/iview.css">
-    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
-    <script type="text/javascript" src="http://unpkg.com/view-design/dist/iview.min.js"></script>
+  
 </head>
 <body>
-<div id="app">
-  {{text}}
+
 	
-</div>
+	<p id="txt"></p>
 	
-	
-	
-	
+</body>	
 <script>
 
+//
+// function IsWeixinOrAlipay(){
+//
+//    var ua = window.navigator.userAgent.toLowerCase();
+//
+//    //判断是不是微信
+//
+//    if ( ua.match(/MicroMessenger/i) == 'micromessenger' ) { 
+//
+//        return "WeiXIN"; 
+//
+//    }   
+//
+//    //判断是不是支付宝
+//
+//    if (ua.match(/AlipayClient/i) == 'alipayclient') {
+//
+//        return "Alipay"; 
+//
+//    }
+//
+//    //哪个都不是
+//
+//    return "false";
+//
+//}
+	
+	let domT = document.querySelector('#txt');
+function isWechatOrAli() {
+  let ua = window.navigator.userAgent.toLowerCase();
+  if ( ua.match(/MicroMessenger/i) === 'micromessenger' ) {  
+    domT.innerHTML =  'wechatClient';
+  } else if (ua.match(/AlipayClient/i) === 'alipayclient') {
+    domT.innerHTML =  'aliClient';
+  } else {
+  	domT.innerHTML =  'unknown';
+  }
+}
 
-    new Vue({
-        el: '#app',
-        data: {
-            text: "",
-			text1:"",
-        },
-	  created: function () {
-		  
-	 var ua = window.navigator.userAgent;
-    //判断是不是微信
-		if (ua.indexOf("MicroMessenger")) > 0 ) {  
-			this.text="WeiXIN";  
-		}    
-
-		if (ua.indexOf("Alipayclient") > 0) {
-			this.text= "Alipay";  
-		}
 
 
-
-		},
-        methods: {
-          
-        }
-    })
   </script>
 </body>
 </html>
