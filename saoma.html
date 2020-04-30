@@ -21,18 +21,17 @@
         },
 	  created: function () {
 		  
-		  
-		 let ua =  navigator.userAgent.toLowerCase();
-		 
-		  this.text1=ua
-		  
-			  if ( ua.match(/MicroMessenger/i) === 'micromessenger' ) {  
-				this.text =  'wechatClient';
-			  } else if (ua.match(/AlipayClient/i) === 'alipayclient') {
-				this.text =  'aliClient';
-			  } else {
-				this.text  =  'unknown';
-			  }
+	 var ua = window.navigator.userAgent;
+    //判断是不是微信
+		if ( ua.indexOf("MicroMessenger") > 0 ) {  
+			this.text="WeiXIN";  
+		}    
+
+		if ua.indexOf("Alipayclient") > 0'') {
+			this.text= "Alipay";  
+		}
+
+
 
 		},
         methods: {
