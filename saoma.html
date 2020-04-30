@@ -12,6 +12,7 @@
 
 	<p id="txt"></p>
 
+	<p id="txt1"></p>
 	<script>
 
 
@@ -20,7 +21,7 @@
 		
 			let ua = window.navigator.userAgent.toLowerCase();
 			
-    
+    	document.querySelector('#txt1').innerHTML =ua
 			
 			if (ua.indexOf("micromessenger") > 0) {
 				domT.innerHTML = '微信扫码';
