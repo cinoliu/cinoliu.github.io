@@ -14,23 +14,20 @@
 
 	<p id="txt1"></p>
 	<script>
-
-
 		let domT = document.querySelector('#txt');
 
-		
-			let ua = window.navigator.userAgent.toLowerCase();
-			
-    	document.querySelector('#txt1').innerHTML =ua
-			
-			if (ua.indexOf("micromessenger") > 0) {
-				domT.innerHTML = '微信扫码';
-			} else if (ua.indexOf("alipayclient") > 0) {
-				domT.innerHTML = '支付宝扫码';
-			} else {
-				domT.innerHTML = '未知扫描';
-			}
-	
+
+		let ua = window.navigator.userAgent.toLowerCase();
+
+		document.querySelector('#txt1').innerHTML = ua
+
+		if (ua.indexOf("micromessenger") > 0) {
+			domT.innerHTML = '微信扫码';
+		} else if (ua.indexOf("alipayclient") > 0) {
+			domT.innerHTML = '支付宝扫码';
+		} else {
+			domT.innerHTML = '未知扫描';
+		}
 
 	</script>
 </body>
