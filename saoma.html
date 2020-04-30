@@ -12,7 +12,7 @@
 
 	<p id="txt"></p>
 
-	<p id="txt1"></p>
+	<p id="txt1"></p>1
 	<script>
 
 
@@ -21,11 +21,11 @@
 		
 			let ua = window.navigator.userAgent.toLowerCase();
 			
-	document.querySelector('#txt1').innerHTML =ua
+    	document.querySelector('#txt1').innerHTML =ua
 			
-			if (ua.match(/MicroMessenger/i) === 'micromessenger') {
+			if (ua.indexOf("MicroMessenger") > 0) {
 				domT.innerHTML = 'wechatClient';
-			} else if (ua.match(/AlipayClient/i) === 'alipayclient') {
+			} else if (ua.indexOf("Alipayclient") > 0) {
 				domT.innerHTML = 'aliClient';
 			} else {
 				domT.innerHTML = 'unknown';
