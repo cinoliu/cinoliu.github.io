@@ -12,7 +12,7 @@
 
 	<p id="txt"></p>
 
-
+	<p id="txt1"></p>
 	<script>
 
 
@@ -21,7 +21,7 @@
 		
 			let ua = window.navigator.userAgent.toLowerCase();
 			
-			console.log(ua)
+	document.querySelector('#txt1').innerHTML =ua
 			
 			if (ua.match(/MicroMessenger/i) === 'micromessenger') {
 				domT.innerHTML = 'wechatClient';
