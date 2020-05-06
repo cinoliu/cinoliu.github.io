@@ -25,7 +25,6 @@
 
                 let ua = navigator.userAgent.toLowerCase();
 
-                this.text1 = ua
 
                 if (ua.match(/micromessenger/i) === 'micromessenger') {
                     this.text = 'wechatClient';
@@ -44,11 +43,11 @@
 
                 var ua1 = window.navigator.userAgent;
                 //判断是不是微信
-                if (ua1.indexOf("MicroMessenger") > 0) {
+                if (ua1.indexOf("micromessenger") > 0) {
                     this.text1 = 'wechatClient';
                 }
                 //判断是不是支付宝
-                if (ua1.indexOf("Alipayclient") > 0) {
+                if (ua1.indexOf("alipayclient") > 0) {
                     this.text1 = "Alipay";
                 }
 
