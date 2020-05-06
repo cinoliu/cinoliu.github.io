@@ -41,7 +41,7 @@
 
 
 
-                var ua1 = window.navigator.userAgent;
+                var ua1 = window.navigator.userAgent.toLowerCase();
                 //判断是不是微信
                 if (ua1.indexOf("micromessenger") > 0) {
                     this.text1 = 'wechatClient';
