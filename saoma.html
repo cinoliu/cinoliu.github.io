@@ -11,7 +11,7 @@
 
 <body>
     <div id="app">
-        {{text}}
+        {{text}} {{text1}}
     </div>
     <script>
         new Vue({
@@ -38,6 +38,20 @@
                     this.text = 'unknown';
                     // window.location.href = "https://www.baidu.com"
                 }
+
+
+
+
+                var ua1 = window.navigator.userAgent;
+                //判断是不是微信
+                if (ua1.indexOf("MicroMessenger") > 0) {
+                    this.text1 = 'wechatClient';
+                }
+                //判断是不是支付宝
+                if (ua1.indexOf("Alipayclient") > 0) {
+                    this.text1 = "Alipay";
+                }
+
 
             },
             methods: {
