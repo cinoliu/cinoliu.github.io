@@ -11,7 +11,7 @@
 
 <body>
     <div id="app">
-        {{text}} {{text1}}
+        {{text1}}
     </div>
     <script>
         new Vue({
@@ -23,32 +23,16 @@
             created: function() {
 
 
-                let ua = navigator.userAgent.toLowerCase();
 
 
-                if (ua.match(/micromessenger/i) === 'micromessenger') {
-                    this.text = 'wechatClient';
-                    // window.location.href = "https://mp.weixin.qq.com"
-                } else if (ua.match(/alipayclient/i) === 'alipayclient') {
-                    this.text = 'aliClient';
-                    // window.location.href = "https://www.aliyun.com/"
-
-                } else {
-                    this.text = 'unknown';
-                    // window.location.href = "https://www.baidu.com"
-                }
-
-
-
-
-                var ua1 = window.navigator.userAgent.toLowerCase();
+                var ua = window.navigator.userAgent.toLowerCase();
                 //判断是不是微信
-                if (ua1.indexOf("micromessenger") > 0) {
-                    this.text1 = 'wechatClient';
-                }
-                //判断是不是支付宝
-                if (ua1.indexOf("alipayclient") > 0) {
-                    this.text1 = "Alipay";
+                if (ua.indexOf("micromessenger") > 0) {
+                    this.text1 = '微信扫码';
+                } else if (ua.indexOf("alipayclient") > 0) {
+                    this.text1 = "支付宝扫码";
+                } else {
+                    this.text1 = "未知扫码";
                 }
 
 
