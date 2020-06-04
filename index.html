@@ -1,682 +1,306 @@
+
 <!DOCTYPE html>
-<html lang="en">
-
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 <head>
-	<meta charset="UTF-8">
-	<meta name="x5-fullscreen" content="true">
-	<meta name="full-screen" content="yes">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
-	<meta http-equiv="cache-control" content="max-age=0" />
-	<meta http-equiv="cache-control" content="no-cache" />
-	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-	<meta http-equiv="Pragma" content="no-cache" />
-	<meta http-equiv="Expires" content="0" />
-	   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no"/>
-	<title>Little Freddie小皮辅食泥</title>
-	<link rel="stylesheet" href="xiaopi_h5/css/loading.css" />
-	<link rel="stylesheet" href="xiaopi_h5/css/weui.min.css" />
-	<link rel="stylesheet" href="xiaopi_h5/css/index.css" />
-
-	<script type="text/javascript" src="xiaopi_h5/js/vue.min.js"></script>
-	<script type="text/javascript" src="xiaopi_h5/js/zexUtility.js"></script>
-
-	<script type="text/javascript" src="xiaopi_h5/js/jquery.js"></script>
-	<link rel="stylesheet" href="xiaopi_h5/js/swiper.min.css">
-	<script type="text/javascript" src="xiaopi_h5/js/swiper.min.js"></script>
-	<script type="text/javascript">
-	</script>
-	<style>
-		.weui-mask {
-			background: rgba(0, 0, 0, .8);
-		}
-
-		html,
-		body {
-			position: relative;
-			height: 100%;
-		}
-
-		body {
-			background: #eee;
-			font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-			font-size: 14px;
-			color: #000;
-			margin: 0;
-			padding: 0;
-		}
-
-		.swiper-container1 {
-			width: 86%;
-			/*			height: 85%;*/
-			margin-left: auto;
-			margin-right: auto;
-
-		}
-
-		.swiper-container2 {
-			width: 86%;
-			/*			height: 85%;*/
-			margin-left: auto;
-			margin-right: auto;
-
-		}
-
-		.swiper-container3 {
-			width: 86%;
-			/*			height: 85%;*/
-			margin-left: auto;
-			margin-right: auto;
-
-		}
-
-		.swiper-container4 {
-			width: 86%;
-			/*			height: 85%;*/
-			margin-left: auto;
-			margin-right: auto;
-
-		}
-
-		.swiper-container5 {
-			width: 86%;
-			/*			height: 85%;*/
-			margin-left: auto;
-			margin-right: auto;
-
-		}
-
-		.swiper-container6 {
-			width: 86%;
-			/*			height: 85%;*/
-			margin-left: auto;
-			margin-right: auto;
-
-		}
-
-
-		.swiper-slide {
-			text-align: center;
-			font-size: 18px;
-			background: #fff;
-
-			/* Center slide text vertically */
-			display: -webkit-box;
-			display: -ms-flexbox;
-			display: -webkit-flex;
-			display: flex;
-			-webkit-box-pack: center;
-			-ms-flex-pack: center;
-			-webkit-justify-content: center;
-			justify-content: center;
-			-webkit-box-align: center;
-			-ms-flex-align: center;
-			-webkit-align-items: center;
-			align-items: center;
-		}
-
-		.swiper-button-prev,
-		.swiper-container-rtl .swiper-button-next {
-			background-image: url(xiaopi_h5/images/left.png);
-			left: 16%;
-			right: auto;
-			top: 30%;
-			z-index: 999;
-		}
-
-		.swiper-button-next,
-		.swiper-container-rtl .swiper-button-prev {
-			background-image: url(xiaopi_h5/images/rgiht.png);
-			right: 16%;
-			left: auto;
-			top: 30%;
-			z-index: 999;
-		}
-
-		.btn6-main2 {
-			height: auto;
-			width: 5rem;
-			position: absolute;
-			top: 69.7rem;
-/*			left: calc((100% - 2.5rem)/ 2);*/
-			display: block;
-		}
-
-		.btn6-2-1 {
-			display: block;
-			height: 0.6rem;
-			width: 41%;
-			float: left;
-			margin-right: 0.5rem
-		}
-
-		.btn6-2-2 {
-			display: block;
-			height: 0.6rem;
-			width: 41%;
-			float: left;
-		}
-
-	</style>
-
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>刘宗宇个人简历网站</title>
+<meta name="keywords" content="刘宗宇,刘宗宇简历,web前端,web前端简历,web前端工程师,web前端招聘,广州web前端招聘,web前端工程师简历" />
+<meta name="description" content="刘宗宇的个人简历，职业定位为web前端工程师" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/templatemo-style.css">
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
-
 <body>
-	<div id="container">
 
-		<div class="page-loading" v-show="loading">
-			<div class="page-loading-control">
-				<div class="rect1"></div>
-				<div class="rect2"></div>
-				<div class="rect3"></div>
-				<div class="rect4"></div>
-			</div>
-		</div>
 
-		<div class="page_bg" v-if="is_bgNoShow ==true"> <img src="xiaopi_h5/images/bg1.png" /> </div>
-
-		<div class="page_bg" v-if="is_bgTwoShow ==true"> <img src="https://image.sweetmartmarketing.com/wxcamp_thumb/DOR2fCc8cc.png" /> </div>
-
-
-		<div class="video-main">
-
-			<img src="xiaopi_h5/images/shipin.png" v-if="!videoImgShow" @click="getVideo" class="videoclss">
-
-		</div>
-		<div class="video-main">
-			<video id="player" controls class="videoclss" v-if="videoImgShow">
-				<source src="xiaopi_h5/shiping.mp4" type="video/mp4">
-				您的浏览器不支持 video 标签。
-				<video>
-		</div>
-
-
-		<div class="btn1-main">
-			<img src="xiaopi_h5/images/1.png" class="btn1" @click="getShow(1)" />
-			<img src="xiaopi_h5/images/2.png" class="btn11" @click="getShow(2)" />
-		</div>
-
-		<div class="btn2-main">
-			<img src="xiaopi_h5/images/3.png" class="btn2" @click="getShow(3)" />
-		</div>
-
-		<div class="btn3-main">
-			<img src="xiaopi_h5/images/4.png" class="btn3" @click="getShow(4)" />
-		</div>
-
-		<div class="btn4-main">
-			<img src="xiaopi_h5/images/5.png" class="btn4" @click="getShow(5)" />
-		</div>
-
-
-		<div class="btn5-main">
-			<img src="xiaopi_h5/images/6.png" class="btn5" @click="getShow(6)" />
-		</div>
-
-		 
-		<div v-if="is_bgTwoShow ==true" style="position: absolute;top:68.6rem;display: block;width: 30%;margin-left: 5%;float: left">
-			 <img  src="xiaopi_h5/images/erweima1.png" style="width: 80px;height:80px"/>
-		</div>
-		
-				
-				
-	<div v-if="is_bgTwoShow ==true" style="position: absolute;top:68.6rem;display: block;width: 30%;margin-left: 30%;float: left">
-			 <img  src="xiaopi_h5/images/erweima2.png" style="width: 80px;height:80px"/>
-		</div>
-		
-				
-<!--
-		 
-		<div v-if="is_bgTwoShow ==true" style="position: absolute;top:68rem;display: block;width: 30%">
-			 <img  src="xiaopi_h5/images/erweima1.png" style="width: 60px;height:60px"/>
-		</div>
-				
-				
--->
-				
-				
-
-		<div class="weui-mask" v-show="product_show1"></div>
-		<div v-show="product_show1" id="cover1" class="act_rule_img_wrap">
-			<div class="swiper-container1" v-bind:style="{ marginTop: showTop}">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide"><img src="xiaopi_h5/images/1-1.png" style="width: 100%;height: 100%"></div>
-					<div class="swiper-slide"><img src="xiaopi_h5/images/1-2.png" style="width: 100%;height: 100%"></div>
-					<div class="swiper-slide"><img src="xiaopi_h5/images/1-3.png" style="width: 100%;height: 100%"></div>
-
-
-				</div>
-				<!-- Add Pagination -->
-				<div class="swiper-pagination" style="display: none"></div>
-				<!-- Add Arrows -->
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
-			</div>
-
-			<img src="xiaopi_h5/images/close.png" alt="" class="close_act_rule_btn" @click="colseShow(1)" v-bind:style="{ marginTop: closeTop}" />
-
-		</div>
-
-
-		<div class="weui-mask" v-show="product_show2"></div>
-		<div v-show="product_show2" id="cover2" class="act_rule_img_wrap">
-			<div class="swiper-container2" v-bind:style="{ marginTop: showTop}">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide"><img src="xiaopi_h5/images/2-1.png" style="width: 100%;height: 100%"></div>
-					<div class="swiper-slide"><img src="xiaopi_h5/images/2-2.png" style="width: 100%;height: 100%"></div>
-
-
-				</div>
-				<!-- Add Pagination -->
-				<div class="swiper-pagination" style="display: none"></div>
-				<!-- Add Arrows -->
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
-			</div>
-
-			<img src="xiaopi_h5/images/close.png" alt="" class="close_act_rule_btn" @click="colseShow(2)" v-bind:style="{ marginTop: closeTop}" />
-
-		</div>
-
-
-
-		<div class="weui-mask" v-show="product_show3"></div>
-		<div v-show="product_show3" id="cover3" class="act_rule_img_wrap">
-			<div class="swiper-container3" v-bind:style="{ marginTop: showTop}">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide"><img src="xiaopi_h5/images/3-1.png" style="width: 100%;height: 100%"></div>
-					<div class="swiper-slide"><img src="xiaopi_h5/images/3-2.png" style="width: 100%;height: 100%"></div>
-					<div class="swiper-slide"><img src="xiaopi_h5/images/3-3.png" style="width: 100%;height: 100%"></div>
-					<div class="swiper-slide"><img src="xiaopi_h5/images/3-4.png" style="width: 100%;height: 100%"></div>
-				</div>
-				<!-- Add Pagination -->
-				<div class="swiper-pagination" style="display: none"></div>
-				<!-- Add Arrows -->
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
-			</div>
-
-			<img src="xiaopi_h5/images/close.png" alt="" class="close_act_rule_btn" @click="colseShow(3)" v-bind:style="{ marginTop: closeTop}" />
-
-		</div>
-
-
-		<div class="weui-mask" v-show="product_show4"></div>
-		<div v-show="product_show4" id="cover4" class="act_rule_img_wrap">
-			<div class="swiper-container4" v-bind:style="{ marginTop: showTop}">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide"><img src="xiaopi_h5/images/4-1.png" style="width: 100%;height: 100%"></div>
-					<div class="swiper-slide"><img src="xiaopi_h5/images/4-2.png" style="width: 100%;height: 100%"></div>
-					<div class="swiper-slide"><img src="xiaopi_h5/images/4-3.png" style="width: 100%;height: 100%"></div>
-					<div class="swiper-slide"><img src="xiaopi_h5/images/4-4.png" style="width: 100%;height: 100%"></div>
-
-					<div class="swiper-slide"><img src="xiaopi_h5/images/4-5.png" style="width: 100%;height: 100%"></div>
-					<div class="swiper-slide"><img src="xiaopi_h5/images/4-6.png" style="width: 100%;height: 100%"></div>
-					<div class="swiper-slide"><img src="xiaopi_h5/images/4-7.png" style="width: 100%;height: 100%"></div>
-					<div class="swiper-slide"><img src="xiaopi_h5/images/4-8.png" style="width: 100%;height: 100%"></div>
-
-				</div>
-				<!-- Add Pagination -->
-				<div class="swiper-pagination" style="display: none"></div>
-				<!-- Add Arrows -->
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
-			</div>
-
-			<img src="xiaopi_h5/images/close.png" alt="" class="close_act_rule_btn" @click="colseShow(4)" v-bind:style="{ marginTop: closeTop}" />
-
-		</div>
-
-		<div class="weui-mask" v-show="product_show5"></div>
-		<div v-show="product_show5" id="cover5" class="act_rule_img_wrap">
-			<div class="swiper-container5" v-bind:style="{ marginTop: showTop}">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide"><img src="xiaopi_h5/images/5-1.png" style="width: 100%;height: 100%"></div>
-					<div class="swiper-slide"><img src="xiaopi_h5/images/5-2.png" style="width: 100%;height: 100%"></div>
-
-				</div>
-				<!-- Add Pagination -->
-				<div class="swiper-pagination" style="display: none"></div>
-				<!-- Add Arrows -->
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
-			</div>
-
-			<img src="xiaopi_h5/images/close.png" alt="" class="close_act_rule_btn" @click="colseShow(5)" v-bind:style="{ marginTop: closeTop}" />
-
-		</div>
-
-		<div class="weui-mask" v-show="product_show6"></div>
-		<div v-show="product_show6" id="cover6" class="act_rule_img_wrap">
-			<div class="swiper-container6" v-bind:style="{ marginTop: showTop}">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide"><img src="xiaopi_h5/images/6-1.png" style="width: 100%;height: 100%"></div>
-					<div class="swiper-slide"><img src="xiaopi_h5/images/6-2.png" style="width: 100%;height: 100%"></div>
-
-				</div>
-				<!-- Add Pagination -->
-				<div class="swiper-pagination" style="display: none"></div>
-				<!-- Add Arrows -->
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
-			</div>
-
-			<img src="xiaopi_h5/images/close.png" alt="" class="close_act_rule_btn" @click="colseShow(6)" v-bind:style="{ marginTop: closeTop}" />
-
-		</div>
-
-
-	</div>
-</body>
-<script type="text/javascript">
-	var swiper = new Swiper('.swiper-container1', {
-		pagination: '.swiper-pagination',
-		nextButton: '.swiper-button-next',
-		prevButton: '.swiper-button-prev',
-		slidesPerView: 1,
-		paginationClickable: true,
-		spaceBetween: 30,
-		loop: true,
-
-	});
-
-
-
-	var swiper = new Swiper('.swiper-container2', {
-		pagination: '.swiper-pagination',
-		nextButton: '.swiper-button-next',
-		prevButton: '.swiper-button-prev',
-		slidesPerView: 1,
-		paginationClickable: true,
-		spaceBetween: 30,
-		loop: true,
-
-	});
-
-	var swiper = new Swiper('.swiper-container3', {
-		pagination: '.swiper-pagination',
-		nextButton: '.swiper-button-next',
-		prevButton: '.swiper-button-prev',
-		slidesPerView: 1,
-		paginationClickable: true,
-		spaceBetween: 30,
-		loop: true,
-
-	});
-
-
-	var swiper = new Swiper('.swiper-container4', {
-		pagination: '.swiper-pagination',
-		nextButton: '.swiper-button-next',
-		prevButton: '.swiper-button-prev',
-		slidesPerView: 1,
-		paginationClickable: true,
-		spaceBetween: 30,
-		loop: true,
-
-	});
-
-
-
-	var swiper = new Swiper('.swiper-container5', {
-		pagination: '.swiper-pagination',
-		nextButton: '.swiper-button-next',
-		prevButton: '.swiper-button-prev',
-		slidesPerView: 1,
-		paginationClickable: true,
-		spaceBetween: 30,
-		loop: true,
-
-	});
-
-
-	var swiper = new Swiper('.swiper-container6', {
-		pagination: '.swiper-pagination',
-		nextButton: '.swiper-button-next',
-		prevButton: '.swiper-button-prev',
-		slidesPerView: 1,
-		paginationClickable: true,
-		spaceBetween: 30,
-		loop: true,
-
-	});
-
-</script>
-<script>
-	var container = new Vue({
-		el: "#container",
-		data: function() {
-			return {
-				loading: true,
-				product_show1: false,
-				product_show2: false,
-				product_show3: false,
-				product_show4: false,
-				product_show5: false,
-				product_show6: false,
-				page_bg: "",
-
-				closeTop: "",
-				showTop: "",
-				videoImgShow: false,
-				is_bgNoShow: false,
-				is_bgTwoShow: false,
-				channel_id: "",
-
-			};
-		},
-		created: function() {
-			this.loading = false;
-
-			this.channel_id = zexUtil.GetQueryString("channel_id")
-
-
-
-			if (["1", "2", "3", "4", "5"].includes(this.channel_id)) {
-					    this.is_bgNoShow = false;
-					this.is_bgTwoShow = true;
-			}
-
-
-			if (["C1", "C2", "C3", "C4", "C5"].includes(this.channel_id)) {
-				
-				
-				this.is_bgNoShow = true;
-					this.is_bgTwoShow = false;
-			}
-
-
-
-			if (window.screen.height >= 724) {
-				this.closeTop = "10%";
-				this.showTop = "10%";
-
-			} else {
-				this.closeTop = "6%";
-				this.showTop = "6%";
-			}
+<div class="site-bg"></div>
+<div class="site-bg-overlay"></div>
+<div class="top-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <p class="phone-info">刘宗宇 | web前端工程师 | 邮箱 <a href="mailto:zongyu.liu@foxmail.com">zongyu.liu@foxmail.com</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="visible-xs visible-sm responsive-menu"> <a href="#" class="toggle-menu"> <i class="fa fa-bars"></i> 个人主页 </a>
+  <div class="show-menu">
+    <ul class="main-menu">
+      <li> <a class="show-1 active homebutton" href="#"><i class="fa fa-home"></i>主页</a> </li>
+      <li> <a class="show-2 aboutbutton" href="#"><i class="fa fa-user"></i>关于我</a> </li>
+      <li> <a class="show-3 projectbutton" href="#"><i class="fa fa-list-alt"></i>项目经验</a> </li>
+      <li> <a class="show-5 contactbutton" href="#"><i class="fa fa-pencil"></i>自我评价</a> </li>
+    </ul>
+  </div>
+</div>
+<div class="container" id="page-content">
+  <div class="row">
+    <div class="col-md-9 col-sm-12 content-holder"> 
+      <!-- CONTENT -->
+      <div id="menu-container">
+        <div class="logo-holder logo-top-margin"> <a href="#" class="site-brand"><img src="images/logo.png" alt=""></a> </div>
+        <div id="menu-1" class="homepage home-section text-center">
+          <div class="welcome-text">
+            <h2>刘宗宇</h2>
+            <p>web前端工程师</p>
+            <br>
+            <p>邮箱：<a href="mailto:zongyu.liu@foxmail.com">zongyu.liu@foxmail.com</a></p>
+          </div>
+        </div>
+        <div id="menu-2" class="content about-section">
+          <div class="row">
+            <div class="col-md-8 col-sm-8">
+              <div class="box-content profile">
+                <h3 class="widget-title">关于我</h3>
+                <div class="profile-thumb"> <img src="images/8.jpg" alt=""> </div>
+                <div class="profile-content">
+                  <h5 class="profile-name">刘宗宇</h5>
+                  <span class="profile-role">web前端工程师</span>
+                  <p>毕业院校：广州大学</p>
+                  <p>专 业：互联网信息软件开发</P>
+                  <p> 目前状态：就职于SweetMart Development Ltd </p>
+                  <P>工作经验：4年</P>
+                  <p>邮箱：<a href="mailto:zongyu.liu@foxmail.com">zongyu.liu@foxmail.com</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <div class="box-content">
+                <h3 class="widget-title">工作描述</h3>
+                <p>1、根据后台业务接口，使用 Vue.js+ Vue-Resource+Vue-Router+Vuex + Element UI 实现界面功能的开发
+</p>
+                <p>2、配合后端对需求的功能做单元测试、集成测试,分析、定位和修复测试发现的前端bug</p>
+                <p>3、使用node.js + express +mysqljs 独立开发微信公众号抽奖活动项目</p>
+                <p>4、利用html5+ JavaScript+CSS 将UI设计图转化为标准web页面 实现前端交互效果，解决兼容性问题 ，熟悉使用开源Bootstrap框架</p>
+               
+              </div>
+            </div>
+          </div>
+        <div class="row">
+           
+            <div class="col-md-7 col-sm-7">
+              <div class="box-content">
+                <h3 class="widget-title">专业技能</h3>
+                <ul class="progess-bars">
+                  <li> <span>HTML5+ CSS      95%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
+                    </div>
+                  </li>
+                   <li> <span>vue.js+Element UI      95%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
+                    </div>
+                  </li>
+                   <li> <span>boostrap      95%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
+                    </div>
+                  </li>
+                  <li> <span>PHOTOSHOP     90%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+                    </div>
+                  </li>
+                  <li> <span>JAVASCRIPT    70%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
+                    </div>
+                  </li>
+                  <li> <span>node.js        60%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                    </div>
+                  <li> <span>Mysql      60%</span>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                    </div>
+                
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="menu-3" class="content gallery-section">
+          <div class="box-content">
+            <h3 class="widget-title">我的作品</h3>
+            <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/1.jpg" >
+                  <div class="project-hover">
+                    <h4><a href="http://apps.lastmilecn.com/apple/">aMessenger官网</a></h4>
+                  </div>
+                </div>
+              </div>
+            
+              
+				 <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/miben.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="#">微信小程序-密本</a></h4>
+                  </div>
+                </div>
+              </div>
+              
+					 <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/chaoshihui.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="#">微信超市惠</a></h4>
+                  </div>
+                </div>
+              </div>
+				    <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/11.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="http://cpre.sweetmartmarketing.com/wechatMember/login.jsp">知而行管理系统</a></h4>
+                  </div>
+                </div>
+              </div>
+              
+            
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/2.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="http://www.lastmilecn.com/hr/Login.aspx">LastMile</a></h4>
+                  </div>
+                </div>
+              </div>
 			
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/3.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="http://data.lastmilecn.com/Salary/">BI@R项目数据收集系统</a></h4>
+                  </div>
+                </div>
+              </div>
+				
+				
+				
+					   <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/5.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="https://www.aliyun.com/error/">G衣柜</a></h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/4.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="http://lastmilecn.com/">那些麦儿网络科技有限公司</a></h4>
+                  </div>
+                </div>
+              </div>
+              
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/6.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="#">PG数据管理系统WEB录入系统</a></h4>
+                  </div>
+                </div>
+              </div>
+              
+              
+              
+            
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="project-item"> <img src="images/gengxin.jpg" alt="">
+                  <div class="project-hover">
+                    <h4><a href="zuopin.html">其他作品整理中</a></h4>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            
+       </div>
+        </div>
+        <div id="menu-4" class="content contact-section">
+          <div class="row">
+            <div class="col-md-8 col-sm-8">
+              <div class="box-content">
+                <h3 class="widget-title">自我评价</h3>
+				 <p> 
+					 主攻前端和NodeJS开发，4年+前端开发经验，呆过大公司和小团队，带领团队利用最新技术解决业务快速发展过程中的各种业务场景问题。熟悉客户端开发，有多个上线项目。</p>
 
+				  
+<!--
+                <p>精通VueJS ，Element UI ，html5，axioos,webpack,掌握mysql nodejs express mysqljs; </p>
+                <p> 具有扎实html5,css3，javascript，C#，swift语言基础,熟练掌握SQL语言</p>
+                <br>
+                <p> 掌握DIV+CSS页面架构和布局方式，能够熟练应用HTML5/CSS/JavaScript技术</p>
+                <br>
+                <p> 开发符合W3C标准的网站前端页面对表现与数据分离、Web语义化等有深刻理解</p>
+                <br>
+                <p> 熟悉使用HTML5的Local_Storage本地存储和离线存储</p>
+-->
+				  
+				  
+<p>个人网站http://cinoliu.github.io/   </p>
+<p>个人github：https://github.com/cinoliu</p>
+<p>博客：http://www.jianshu.com/u/cd9914d683ec</p>
+				  
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <div class="box-content">
+                <h3 class="widget-title">奖励情况</h3>
+                <p>2012．6：<br>
+                  获得学生奖学金</p>
+                <p>2012．9：<br>
+                  获得广州大学创业设计大赛银奖（参赛项目为 航天通信系统）</p>
+                <p>2013．6：<br>
+                  获得学生奖学金</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 hidden-sm">
+      <nav id="nav" class="main-navigation hidden-xs hidden-sm">
+        <ul class="main-menu">
+          <li> <a class="show-1 active homebutton" href="#"><i class="fa fa-home"></i>主页</a> </li>
+          <li> <a class="show-2 aboutbutton" href="#"><i class="fa fa-user"></i>关于我</a> </li>
+          <li> <a class="show-3 projectbutton" href="#"><i class="fa fa-list-alt"></i>项目经验</a> </li>
+          <li> <a class="show-5 contactbutton" href="#"><i class="fa fa-pencil"></i>自我评价</a> </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
 
+<!-- SITE-FOOTER -->
 
+<!-- .site-footer --> 
+<!--百度统计代码开始-->
 
-			this.getPageInfo();
-		},
-		methods: {
-			//页面初始化
-			getPageInfo: function() {
-				var reqParams = {
-					open_id: zexUtil.GetQueryString("channel_id"),
-					operator_type: "login",
-					note: "SH20048003-ZEX",
-					source: zexUtil.GetQueryString("channel_id"),
-
-				};
-
-
-
-				$.ajax({
-					url: "https://c.sweetmartmarketing.com/wechatSrv/promotionLog/log.do",
-					type: "POST",
-					//					contentType: "application/json;charset=utf-8",
-					data: reqParams,
-					dataType: "json",
-					success: function(result) {
-
-					},
-					error: function(msg) {
-
-					}
-				})
-
-
-			},
-
-			getShow(obj) {
-				switch (obj) {
-					case 1:
-						this.product_show1 = true;
-						$("body").css("overflow", "hidden");
-						$("#cover1").show();
-
-						break;
-					case 2:
-						this.product_show2 = true;
-						$("body").css("overflow", "hidden");
-						$("#cover2").show();
-						break;
-					case 3:
-						this.product_show3 = true;
-						$("body").css("overflow", "hidden");
-						$("#cover3").show();
-						break;
-					case 4:
-						this.product_show4 = true;
-						$("body").css("overflow", "hidden");
-						$("#cover4").show();
-						break;
-					case 5:
-						this.product_show5 = true;
-						$("body").css("overflow", "hidden");
-						$("#cover5").show();
-						break;
-					case 6:
-						this.product_show6 = true;
-						$("body").css("overflow", "hidden");
-						$("#cover6").show();
-						break;
-					case 7:
-						location.href = "https://w.url.cn/s/AUSWz0C";
-						break;
-					case 8:
-						location.href = "https://w.url.cn/s/AUSWz0C";
-						break;
-				}
-			},
-
-			colseShow(obj) {
-				switch (obj) {
-					case 1:
-						this.product_show1 = false;
-						var swiper = new Swiper('.swiper-container1', {
-							pagination: '.swiper-pagination',
-							nextButton: '.swiper-button-next',
-							prevButton: '.swiper-button-prev',
-							slidesPerView: 1,
-							paginationClickable: true,
-							spaceBetween: 30,
-							loop: true,
-
-						});
-						break;
-					case 2:
-						this.product_show2 = false;
-						var swiper = new Swiper('.swiper-container2', {
-							pagination: '.swiper-pagination',
-							nextButton: '.swiper-button-next',
-							prevButton: '.swiper-button-prev',
-							slidesPerView: 1,
-							paginationClickable: true,
-							spaceBetween: 30,
-							loop: true,
-
-						});
-						break;
-					case 3:
-						this.product_show3 = false;
-						var swiper = new Swiper('.swiper-container3', {
-							pagination: '.swiper-pagination',
-							nextButton: '.swiper-button-next',
-							prevButton: '.swiper-button-prev',
-							slidesPerView: 1,
-							paginationClickable: true,
-							spaceBetween: 30,
-							loop: true,
-
-						});
-						break;
-					case 4:
-						this.product_show4 = false;
-						var swiper = new Swiper('.swiper-container4', {
-							pagination: '.swiper-pagination',
-							nextButton: '.swiper-button-next',
-							prevButton: '.swiper-button-prev',
-							slidesPerView: 1,
-							paginationClickable: true,
-							spaceBetween: 30,
-							loop: true,
-
-						});
-						break;
-					case 5:
-						this.product_show5 = false;
-						var swiper = new Swiper('.swiper-container5', {
-							pagination: '.swiper-pagination',
-							nextButton: '.swiper-button-next',
-							prevButton: '.swiper-button-prev',
-							slidesPerView: 1,
-							paginationClickable: true,
-							spaceBetween: 30,
-							loop: true,
-
-						});
-						break;
-					case 6:
-						this.product_show6 = false;
-						var swiper = new Swiper('.swiper-container6', {
-							pagination: '.swiper-pagination',
-							nextButton: '.swiper-button-next',
-							prevButton: '.swiper-button-prev',
-							slidesPerView: 1,
-							paginationClickable: true,
-							spaceBetween: 30,
-							loop: true,
-
-						});
-						break;
-				}
-				this.delMask();
-
-
-			},
-
-			delMask() {
-				$("body").css("overflow", "inherit");
-			},
-
-			getVideo() {
-				this.videoImgShow = true;
-				var myVideo = document.getElementById("video1");
-
-				myVideo.play();
-
-
-			},
-
-		},
-	});
-
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?3caeaaf39eadaed916ca69452935bdcc";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
+<!--百度统计代码结束-->
+<script src="js/vendor/jquery-1.10.2.min.js"></script> 
+<script src="js/plugins.js"></script> 
+<script src="js/main.js"></script>
+</body>
+
+
+
+</body>
 
 </html>
