@@ -56,7 +56,49 @@
     };
 	
 	
-	
+	function iosCheck() {
+    return new Promise((resolve, reject) => {
+        if (typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function") {
+            getPermission().then(() => {
+                resolve();
+            }).catch((e) => {
+                // 用户拒绝
+                if (e.type === 1) {
+                    // 用户上次状态为拒绝，提示弹窗
+                } else if (e.type === 2) { // 用户首次进入，获取权限失败，需手动开启，弹窗引导
+                    // bind event
+                    $(modal).on('touchstart', () => {
+                            getPermission().then(() => {
+                                resolve();
+                            }).catch(() => {
+                                // 用户拒绝授权，提示
+                            });
+                    })
+                }
+            });
+        } else {
+            resolve();
+        }
+    })
+}
+function getPermission() {
+    return new Promise((resolve, reject) => {
+        DeviceMotionEvent.requestPermission()
+            .then( response => {
+                if ( response == "granted" ) {
+                    resolve();
+                } else {
+                    reject({type: 1});
+                }
+            }).catch(() => {
+                reject({type: 2});
+            })
+    })
+
+}
+iosCheck().then(() => {
+    window.addEventListener('devicemotion', deviceMotionHandler, false);
+})
 	
 	
 
