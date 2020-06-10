@@ -13,16 +13,16 @@
     <meta http-equiv="Pragma" content="no-cache"/>
     <meta http-equiv="Expires" content="0"/>
     <title>摇一摇抽奖页</title>
-    <script type="text/javascript" src="../../js/plugins/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="../../js/plugins/jweixin-1.2.0.js"></script>
-    <script type="text/javascript" src="../../js/plugins/md5.min.js"></script>
-    <script type="text/javascript" src="../../js/plugins/vue.min.js"></script>
-    <script type="text/javascript" src="../../js/plugins/hammer.min.js"></script>
-    <script type="text/javascript" src="../../js/plugins/vue-touch.min.js"></script>
-    <script type="text/javascript" src="../../js/plugins/jsencrypt.min.js"></script>
-    <script type="text/javascript" src="../../js/zexUtility.js"></script>
-    <script type="text/javascript" src="../../js/zexService.js"></script>
-    <script type="text/javascript" src="../../js/wxConfig.js"></script>
+    <script type="text/javascript" src="../../js1/plugins/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../../js1/plugins/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="../../js1/plugins/md5.min.js"></script>
+    <script type="text/javascript" src="../../js1/plugins/vue.min.js"></script>
+    <script type="text/javascript" src="../../js1/plugins/hammer.min.js"></script>
+    <script type="text/javascript" src="../../js1/plugins/vue-touch.min.js"></script>
+    <script type="text/javascript" src="../../js1/plugins/jsencrypt.min.js"></script>
+    <script type="text/javascript" src="../../js1/zexUtility.js"></script>
+    <script type="text/javascript" src="../../js1/zexService.js"></script>
+    <script type="text/javascript" src="../../js1/wxConfig.js"></script>
 </head>
 <style>
     .col_red{color: red;}
@@ -43,20 +43,50 @@
                     var acceleration = event.accelerationIncludingGravity;
                     x = acceleration.x;
                     y = acceleration.y;
-                    if(!shake_container.isyao){
-                        if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
-                            $('#prize').addClass('prize_yd');
-                            shake_container.isyao = true;
-                            var timeyaoyiyao = setTimeout(function(){
-                                shake_container.luckyDraw();
-                            }, 2000);
-                        };
-                    };
+                    
                     lastX = x;
                     lastY = y;
                 },false);
-    } else {
-        $('#tishi_title').html('您的手机不支持摇一摇功能');
-        $('#error_cuowu').css('display','-webkit-box');
+		
+			alert("摇一摇")
+	} else {
+			alert("您的手机不支持摇一摇功能")
+     
     };
+	
+	
+	
+	
+	
+	
+	// 判断系统
+if (typeof DeviceMotionEvent.requestPermission === 'function') {
+  // iOS 13+
+} else {
+  // non iOS 13+
+}
+
+// 事件授权
+DeviceMotionEvent.requestPermission()
+.then(response => {
+  if (response == 'granted') {
+    window.addEventListener('devicemotion', (e) => {
+      // do something with e
+    })
+  }
+})
+.catch(console.error)
+
+DeviceOrientationEvent.requestPermission()
+.then(response => {
+  if (response == 'granted') {
+    window.addEventListener('deviceorientation', (e) => {
+      // do something with e
+    })
+  }
+})
+.catch(console.error)
+
+	
+	
 </script>
