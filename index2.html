@@ -41,69 +41,59 @@
 
 </html>
 <script>
-    // if (window.DeviceMotionEvent){
-    //     var speed = 10;
-    //     var x = y = z = lastX = lastY = lastZ = 0;
-    //     window.addEventListener('devicemotion',
-    //             function () {
-    //                 var acceleration = event.accelerationIncludingGravity;
-    //                 x = acceleration.x;
-    //                 y = acceleration.y;
-
-    //                 lastX = x;
-    //                 lastY = y;
-    //             },false);
-
-    // 		alert("摇一摇")
-    // } else {
-    // 		alert("您的手机不支持摇一摇功能")
-
-    // };
-
-
-    // if (location.protocol != "https:") {
-    //     location.href = "https:" + window.location.href.substring(window.location.protocol.length);
-    // }
-
-    // function permission() {
-    //     if (typeof(DeviceMotionEvent) !== "undefined" && typeof(DeviceMotionEvent.requestPermission) === "function") {
-    //         // (optional) Do something before API request prompt.
-    //         DeviceMotionEvent.requestPermission()
-    //             .then(response => {
-    //                 // (optional) Do something after API prompt dismissed.
-    //                 if (response == "granted") {
-    //                     window.addEventListener("devicemotion", (e) => {
-    //                         alert("可以")
-    //                     })
-    //                 }
-    //             })
-    //             .catch(console.error)
-    //     } else {
-    //         alert("DeviceMotionEvent is not defined");
-    //     }
-    // }
-    // const btn = document.getElementById("request");
-    // btn.addEventListener("click", permission);
-
-
-
-
-
     function permission() {
         if (typeof(DeviceMotionEvent) !== "undefined" && typeof(DeviceMotionEvent.requestPermission) === "function") {
-            // (optional) Do something before API request prompt.
             DeviceMotionEvent.requestPermission()
                 .then(response => {
-                    // (optional) Do something after API prompt dismissed.
+                    console.log(response);
                     if (response == "granted") {
                         window.addEventListener("devicemotion", (e) => {
-                            alert("支持摇一摇")
+                            console.log(e.acceleration);
+                            //do sth.（同样可以在这里进行摇一摇判断，相当于如果是iOS13+,则执行这里）
+                            //进入摇一摇判断
+                            var acc = e.acceleration;
+                            x = acc.x;
+                            y = acc.y;
+                            if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+                                //触发摇一摇
+                                //do sth.
+                            }
+                            lastX = x;
+                            lastY = y;
                         })
                     }
                 })
                 .catch(console.error)
         } else {
-            alert("支持摇一摇2")
+            alert("DeviceMotionEvent is not defined");
         }
+    }
+
+
+
+
+    var speed = 15; //5~25，数字越大灵敏度越低
+    var x = y = z = lastX = lastY = lastZ = 0;
+    if (window.DeviceOrientationEvent) {
+        if (navigator.userAgent.indexOf('MicroMessenger/7.0.12') > -1 && navigator.userAgent.indexOf('iPhone OS 13') > -
+            1)
+            permission();
+        else {
+            console.log('普通ios或安卓');
+            window.addEventListener("devicemotion", (e) => {
+                //进入摇一摇判断
+                var acc = e.acceleration;
+                x = acc.x;
+                y = acc.y;
+                if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+                    //触发摇一摇
+                    //do sth.
+                }
+                lastX = x;
+                lastY = y;
+            })
+        }
+    } else {
+        console.log('不支持陀螺仪');
     }
 </script>
