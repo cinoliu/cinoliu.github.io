@@ -25,18 +25,11 @@
     <script type="text/javascript" src="../../js1/zexService.js"></script>
     <script type="text/javascript" src="../../js1/wxConfig.js"></script>
 </head>
-<style>
-    .col_red {
-        color: red;
-    }
-    
-    .col_gray {
-        color: gray;
-    }
-</style>
+
 
 <body>
 
+    11111
 </body>
 
 </html>
@@ -45,10 +38,10 @@
         if (typeof(DeviceMotionEvent) !== "undefined" && typeof(DeviceMotionEvent.requestPermission) === "function") {
             DeviceMotionEvent.requestPermission()
                 .then(response => {
-                    console.log(response);
+                    alert(response);
                     if (response == "granted") {
                         window.addEventListener("devicemotion", (e) => {
-                            console.log(e.acceleration);
+                            alert(e.acceleration);
                             //do sth.（同样可以在这里进行摇一摇判断，相当于如果是iOS13+,则执行这里）
                             //进入摇一摇判断
                             var acc = e.acceleration;
@@ -79,7 +72,7 @@
             1)
             permission();
         else {
-            console.log('普通ios或安卓');
+            alert('普通ios或安卓');
             window.addEventListener("devicemotion", (e) => {
                 //进入摇一摇判断
                 var acc = e.acceleration;
@@ -88,12 +81,13 @@
                 if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
                     //触发摇一摇
                     //do sth.
+                    alert("可以")
                 }
                 lastX = x;
                 lastY = y;
             })
         }
     } else {
-        console.log('不支持陀螺仪');
+        alert('不支持陀螺仪');
     }
 </script>
