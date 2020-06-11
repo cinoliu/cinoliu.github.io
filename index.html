@@ -89,20 +89,21 @@
 
 
 
-    function permissionForShake() {
-        if (typeof DeviceMotionEvent.requestPermission === 'function') {
+    function permission() {
+        if (typeof(DeviceMotionEvent) !== "undefined" && typeof(DeviceMotionEvent.requestPermission) === "function") {
+            // (optional) Do something before API request prompt.
             DeviceMotionEvent.requestPermission()
-                .then(permissionState => {
-                    if (permissionState === 'granted') {
-                        window.addEventListener('devicemotion', () => {
-                            alert("摇一摇")
+                .then(response => {
+                    // (optional) Do something after API prompt dismissed.
+                    if (response == "granted") {
+                        window.addEventListener("devicemotion", (e) => {
+                            alert("支持摇一摇")
                         })
                     }
                 })
-                .catch(alert("不支持"));
+                .catch(console.error)
         } else {
-            // ios其他系统可以不通过请求直接摇一摇
-            alert("摇一摇")
+            alert("支持摇一摇2")
         }
     }
 </script>
