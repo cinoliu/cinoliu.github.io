@@ -104,8 +104,11 @@
 
 				DeviceMotionEvent.requestPermission().then(permissionState => {
 					if (permissionState === 'granted') {
-						window.addEventListener('devicemotion', () => {
-   var acceleration = event.accelerationIncludingGravity;
+					   var speed = 10;
+	        var x = y = z = lastX = lastY = lastZ = 0;
+	        window.addEventListener('devicemotion',
+	                function () {
+	                    var acceleration = event.accelerationIncludingGravity;
 	                    x = acceleration.x;
 	                    y = acceleration.y;
 	                    if(!shake_container.isyao){
@@ -117,7 +120,6 @@
 	                    lastX = x;
 	                    lastY = y;
 	                },false);
-						})
 					}
 					//
 				}).catch((err) => {
@@ -139,8 +141,16 @@
 			if (typeof DeviceMotionEvent.requestPermission === 'function') {
 				DeviceMotionEvent.requestPermission().then((permissionState) => {
 					if (permissionState === 'granted') {
-						window.addEventListener('devicemotion', () => {
-   var acceleration = event.accelerationIncludingGravity;
+					
+						
+						
+						
+						
+						   var speed = 10;
+	        var x = y = z = lastX = lastY = lastZ = 0;
+	        window.addEventListener('devicemotion',
+	                function () {
+	                    var acceleration = event.accelerationIncludingGravity;
 	                    x = acceleration.x;
 	                    y = acceleration.y;
 	                    if(!shake_container.isyao){
@@ -152,9 +162,10 @@
 	                    lastX = x;
 	                    lastY = y;
 	                },false);
-							
-							
-						});
+						
+						
+						
+						
 					}
 				}).catch((error) => {
 					alert(error)
