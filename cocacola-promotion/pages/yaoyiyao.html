@@ -80,18 +80,65 @@
 //    };
 	
 	
-function ios13granted() {
-    if (typeof DeviceMotionEvent.requestPermission === 'function') {
-        DeviceMotionEvent.requestPermission().then((permissionState) => {
-            if (permissionState === 'granted') {
-                window.addEventListener('devicemotion', () => {});
-            }
-        }).catch((error) => {
-            alert(error)
-        })
-    } else {
-          // 处理常规的非iOS 13+设备
-     alert("处理常规的非iOS 13+设备")
+
+	
+	
+	let vm = new Vue({ 
+    el:'#app', 
+    data:{ 
+      msg:'fff' ,
+      last_update: 0,
+      last_x: 0,
+      last_y: 0,
+      last_z: 0,
+    },
+    mounted() {
+      this.init();
+    },
+    methods:{
+      // 初始化摇一摇，添加摇动监听
+    init() {
+      this.last_update = new Date().getTime();
+      if (window.DeviceMotionEvent) {
+        window.addEventListener(
+          "devicemotion",
+          this.deviceMotionHandler,
+          false
+        );
+      } else {
+        alert("not support mobile event");
+      }
+    },
+    // 摇一摇事件回调函数
+    deviceMotionHandler(eventData) {
+      var acceleration = eventData.accelerationIncludingGravity;
+      var curTime = new Date().getTime();
+      if (curTime - this.last_update > 100) {
+        var diffTime = curTime - this.last_update;
+        this.last_update = curTime;
+        var x = 0,
+          y = 0,
+          z = 0;
+        x = acceleration.x;
+        y = acceleration.y;
+        z = acceleration.z;
+        var speed =
+          (Math.abs(x + y + z - this.last_x - this.last_y - this.last_z) /
+            diffTime) *
+          10000;
+        if (Number(speed) > Number(this.SHAKE_THRESHOLD)) {
+          // 判断为摇一摇动作
+          alert('摇动')
+        }
+        this.last_x = x;
+        this.last_y = y;
+        this.last_z = z;
+      }
     }
-}
+    }
+  });
+
+
+	
+	
 </script>
