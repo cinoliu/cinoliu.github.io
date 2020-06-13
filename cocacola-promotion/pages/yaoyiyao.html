@@ -102,5 +102,21 @@
     }
 }
 	
+		 
+		 function ios13granted() {
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+        DeviceMotionEvent.requestPermission().then((permissionState) => {
+            if (permissionState === 'granted') {
+                window.addEventListener('devicemotion', () => {});
+            }
+        }).catch((error) => {
+            alert(error)
+        })
+    } else {
+          // 处理常规的非iOS 13+设备
+        console.log("处理常规的非iOS 13+设备")
+    }
+}
+		 
 	
 </script>
