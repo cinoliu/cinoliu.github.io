@@ -74,20 +74,20 @@
 	//        $('#error_cuowu').css('display','-webkit-box');
 	//    };
 
-					if (window.DeviceMotionEvent) {
+	if (window.DeviceMotionEvent) {
 
+alert(window.DeviceMotionEvent)
+		var ua = navigator.userAgent.toLowerCase();
+		if (ua.indexOf("like mac os x") > 0) {
+			var reg = /os [\d._]*/gi;
+			var verinfo = ua.match(reg);
+			var version = (verinfo + "").replace(/[^0-9|_.]/ig, "").replace(/_/ig, ".");
+			var arr = version.split(".");
+			$(".aa").text(arr[0] + "." + arr[1] + "." + arr[2])
+			if (arr[0] > 12 && arr[1] > 2) { //对13.3以后的版本处理,包括13.3,
 
-	var ua = navigator.userAgent.toLowerCase();
-	if (ua.indexOf("like mac os x") > 0) {
-		var reg = /os [\d._]*/gi;
-		var verinfo = ua.match(reg);
-		var version = (verinfo + "").replace(/[^0-9|_.]/ig, "").replace(/_/ig, ".");
-		var arr = version.split(".");
-		$(".aa").text(arr[0] + "." + arr[1] + "." + arr[2])
-		if (arr[0] > 12 && arr[1] > 2) { //对13.3以后的版本处理,包括13.3,
-
-			DeviceMotionEvent.requestPermission().then(permissionState => {
-				if (permissionState === 'granted') {
+				DeviceMotionEvent.requestPermission().then(permissionState => {
+					if (permissionState === 'granted') {
 
 						var speed = 10;
 						var x = y = z = lastX = lastY = lastZ = 0;
@@ -105,23 +105,23 @@
 								lastX = x;
 								lastY = y;
 							}, false);
-					
-				}
-				//
-			}).catch((err) => {
 
-				alert("用户未允许权限")
-				//======这里可以防止重复授权，需要改动，因为获取权限需要点击事件才能触发，所以这里可以改成某个提示框===//
+					}
+					//
+				}).catch((err) => {
 
-				ios13granted();
+					alert("用户未允许权限")
+					//======这里可以防止重复授权，需要改动，因为获取权限需要点击事件才能触发，所以这里可以改成某个提示框===//
 
-			});
+					ios13granted();
 
-		} else { //13.3以前的版本 }
+				});
+
+			} else { //13.3以前的版本 }
+			}
 		}
-	}
 
-}
+	}
 
 	function ios13granted() {
 		if (typeof DeviceMotionEvent.requestPermission === 'function') {
