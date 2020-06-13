@@ -74,21 +74,7 @@
 	//        $('#error_cuowu').css('display','-webkit-box');
 	//    };
 
-
-	if (typeof DeviceMotionEvent.requestPermission === 'function') {
-		DeviceMotionEvent.requestPermission()
-			.then(permissionState => {
-				if (permissionState === 'granted') {
-					window.addEventListener('devicemotion', () => {
-						alert(1111)
-					})
-				}
-			})
-			.catch(console.error);
-	} else {
-		// ios其他系统可以不通过请求直接摇一摇
-
-	}
+					if (window.DeviceMotionEvent) {
 
 
 	var ua = navigator.userAgent.toLowerCase();
@@ -102,7 +88,6 @@
 
 			DeviceMotionEvent.requestPermission().then(permissionState => {
 				if (permissionState === 'granted') {
-					if (window.DeviceMotionEvent) {
 
 						var speed = 10;
 						var x = y = z = lastX = lastY = lastZ = 0;
@@ -120,7 +105,7 @@
 								lastX = x;
 								lastY = y;
 							}, false);
-					}
+					
 				}
 				//
 			}).catch((err) => {
@@ -136,7 +121,7 @@
 		}
 	}
 
-
+}
 
 	function ios13granted() {
 		if (typeof DeviceMotionEvent.requestPermission === 'function') {
