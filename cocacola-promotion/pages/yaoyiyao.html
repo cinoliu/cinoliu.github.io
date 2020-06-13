@@ -80,15 +80,18 @@
 //    };
 	
 	
-DeviceMotionEvent.requestPermission()
-    .then( response => {
-        if ( response == "granted" ) {
-            alert(111)
-        } else {
-            alert(222)
-        }
-    }).catch(() => {
-        // 一般为非用户主动授权
-    })
-	
+function ios13granted() {
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+        DeviceMotionEvent.requestPermission().then((permissionState) => {
+            if (permissionState === 'granted') {
+                window.addEventListener('devicemotion', () => {});
+            }
+        }).catch((error) => {
+            alert(error)
+        })
+    } else {
+          // 处理常规的非iOS 13+设备
+     alert("处理常规的非iOS 13+设备")
+    }
+}
 </script>
