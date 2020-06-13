@@ -112,7 +112,12 @@
 			if (typeof DeviceMotionEvent.requestPermission === 'function') {
 				DeviceMotionEvent.requestPermission().then((permissionState) => {
 					if (permissionState === 'granted') {
-						window.addEventListener('devicemotion', () => {});
+						window.addEventListener('devicemotion', () => {
+							           alert("1111111")
+
+							
+							
+						});
 					}
 				}).catch((error) => {
 					alert(error)
