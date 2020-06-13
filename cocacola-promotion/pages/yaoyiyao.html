@@ -80,33 +80,15 @@
 //    };
 	
 	
-	// 判断系统
-if (typeof DeviceMotionEvent.requestPermission === 'function') {
-  // iOS 13+
-} else {
-  // non iOS 13+
-}
-
-// 事件授权
 DeviceMotionEvent.requestPermission()
-.then(response => {
-  if (response == 'granted') {
-    window.addEventListener('devicemotion', (e) => {
-                         alert("1111111")
+    .then( response => {
+        if ( response == "granted" ) {
+            alert(111)
+        } else {
+            alert(222)
+        }
+    }).catch(() => {
+        // 一般为非用户主动授权
     })
-  }
-})
-.catch(console.error)
-
-DeviceOrientationEvent.requestPermission()
-.then(response => {
-  if (response == 'granted') {
-    window.addEventListener('deviceorientation', (e) => {
-                         alert("22222")
-    })
-  }
-})
-.catch(console.error)
-
 	
 </script>
