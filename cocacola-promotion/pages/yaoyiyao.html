@@ -105,8 +105,18 @@
 				DeviceMotionEvent.requestPermission().then(permissionState => {
 					if (permissionState === 'granted') {
 						window.addEventListener('devicemotion', () => {
-														           alert("1111111")
-
+   var acceleration = event.accelerationIncludingGravity;
+	                    x = acceleration.x;
+	                    y = acceleration.y;
+	                    if(!shake_container.isyao){
+	                        if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+	                            $('#prize').addClass('prize_yd');
+	                          alert("1111111")
+	                        };
+	                    };
+	                    lastX = x;
+	                    lastY = y;
+	                },false);
 						})
 					}
 					//
@@ -130,8 +140,18 @@
 				DeviceMotionEvent.requestPermission().then((permissionState) => {
 					if (permissionState === 'granted') {
 						window.addEventListener('devicemotion', () => {
-							           alert("1111111")
-
+   var acceleration = event.accelerationIncludingGravity;
+	                    x = acceleration.x;
+	                    y = acceleration.y;
+	                    if(!shake_container.isyao){
+	                        if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+	                            $('#prize').addClass('prize_yd');
+	                          alert("1111111")
+	                        };
+	                    };
+	                    lastX = x;
+	                    lastY = y;
+	                },false);
 							
 							
 						});
