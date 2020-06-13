@@ -77,7 +77,6 @@
 	//    };
 
 	
-	function permissionForShake() {
     if (typeof DeviceMotionEvent.requestPermission === 'function') {
         DeviceMotionEvent.requestPermission()
             .then(permissionState => {
@@ -92,7 +91,6 @@
         // ios其他系统可以不通过请求直接摇一摇
         
     }
-}
 
 
 	function iosGrantedTips() {
