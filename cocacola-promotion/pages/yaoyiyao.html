@@ -34,13 +34,8 @@
 <body>
 <div id="shake_container" class="shake_page">
     <div id="page_loading" class="page-loading">
-        <div class="page-loading-control">
-            <div class="rect1"></div>
-            <div class="rect2"></div>
-            <div class="rect3"></div>
-            <div class="rect4"></div>
-            <div class="rect5"></div>
-        </div>
+       
+		<div @click="iosCheck">111</div>
     </div>
   </div>
 </body>
@@ -79,66 +74,33 @@
 //        $('#error_cuowu').css('display','-webkit-box');
 //    };
 	
-	
 
-	
-	
-	let vm = new Vue({ 
-    el:'#app', 
-    data:{ 
-      msg:'fff' ,
-      last_update: 0,
-      last_x: 0,
-      last_y: 0,
-      last_z: 0,
-    },
-    mounted() {
-      this.init();
-    },
-    methods:{
-      // 初始化摇一摇，添加摇动监听
-    init() {
-      this.last_update = new Date().getTime();
-      if (window.DeviceMotionEvent) {
-        window.addEventListener(
-          "devicemotion",
-          this.deviceMotionHandler,
-          false
-        );
-      } else {
-        alert("not support mobile event");
-      }
-    },
-    // 摇一摇事件回调函数
-    deviceMotionHandler(eventData) {
-      var acceleration = eventData.accelerationIncludingGravity;
-      var curTime = new Date().getTime();
-      if (curTime - this.last_update > 100) {
-        var diffTime = curTime - this.last_update;
-        this.last_update = curTime;
-        var x = 0,
-          y = 0,
-          z = 0;
-        x = acceleration.x;
-        y = acceleration.y;
-        z = acceleration.z;
-        var speed =
-          (Math.abs(x + y + z - this.last_x - this.last_y - this.last_z) /
-            diffTime) *
-          10000;
-        if (Number(speed) > Number(this.SHAKE_THRESHOLD)) {
-          // 判断为摇一摇动作
-          alert('摇动')
-        }
-        this.last_x = x;
-        this.last_y = y;
-        this.last_z = z;
-      }
+	 function iosGrantedTips(){
+    var ua = navigator.userAgent.toLowerCase();
+    if(ua.indexOf("like mac os x") > 0){
+        var reg = /os [\d._]*/gi ;
+        var verinfo = ua.match(reg) ;
+        var version = (verinfo+"").replace(/[^0-9|_.]/ig,"").replace(/_/ig,".");
+        var arr=version.split(".");
+        $(".aa").text(arr[0]+"."+arr[1]+"."+arr[2])
+        if (arr[0]>12&&arr[1]>2) {  //对13.3以后的版本处理,包括13.3,
+            
+            DeviceMotionEvent.requestPermission().then(permissionState => {
+               if (permissionState === 'granted') { window.addEventListener('devicemotion', () => {  })}
+                //
+            }).catch((err)=>{
+            
+                //alert("用户未允许权限")
+                //======这里可以防止重复授权，需要改动，因为获取权限需要点击事件才能触发，所以这里可以改成某个提示框===//
+                showLayer("由于IOS系统需要手动获取访问动作与方向的权限，为了保证抽奖正常运行，请在访问提示中点击允许！","","确定",function(index){
+                    ios13granted();
+                    layer.close(index);
+                })
+            });
+            
+        }else{  //13.3以前的版本 }
     }
-    }
-  });
-
-
+}
 	
 	
 </script>
