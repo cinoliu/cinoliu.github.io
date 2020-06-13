@@ -1,122 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="x5-fullscreen" content="true">
-    <meta name="full-screen" content="yes">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
-    <meta http-equiv="cache-control" content="max-age=0"/>
-    <meta http-equiv="cache-control" content="no-cache"/>
-    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"/>
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
-    <meta http-equiv="Pragma" content="no-cache"/>
-    <meta http-equiv="Expires" content="0"/>
-    <title>摇一摇抽奖页</title>
-    <link rel="stylesheet" href="yaoyiyao.css">
-    <link rel="stylesheet" href="../css/plugins/loading.css">
-    <script type="text/javascript" src="../js/plugins/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="../js/plugins/jweixin-1.2.0.js"></script>
-    <script type="text/javascript" src="../js/plugins/md5.min.js"></script>
-    <script type="text/javascript" src="../js/plugins/vue.min.js"></script>
-    <script type="text/javascript" src="../js/plugins/hammer.min.js"></script>
-    <script type="text/javascript" src="../js/plugins/vue-touch.min.js"></script>
-    <script type="text/javascript" src="../js/plugins/jsencrypt.min.js"></script>
-    <script type="text/javascript" src="../js/zexUtility.js"></script>
-    <script type="text/javascript" src="../js/zexService.js"></script>
-    <script type="text/javascript" src="../js/wxConfig.js"></script>
-    <script type="text/javascript" src="../js/zexApis.js"></script>
+	<meta charset="UTF-8">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="full-screen" content="yes">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<title>摇一摇抽奖页</title>
+	<link rel="stylesheet" href="yaoyiyao.css">
+	<link rel="stylesheet" href="../css/plugins/loading.css">
+	<script type="text/javascript" src="../js/plugins/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../js/plugins/jweixin-1.2.0.js"></script>
+	<script type="text/javascript" src="../js/plugins/md5.min.js"></script>
+	<script type="text/javascript" src="../js/plugins/vue.min.js"></script>
+	<script type="text/javascript" src="../js/plugins/hammer.min.js"></script>
+	<script type="text/javascript" src="../js/plugins/vue-touch.min.js"></script>
+	<script type="text/javascript" src="../js/plugins/jsencrypt.min.js"></script>
+	<script type="text/javascript" src="../js/zexUtility.js"></script>
+	<script type="text/javascript" src="../js/zexService.js"></script>
+	<script type="text/javascript" src="../js/wxConfig.js"></script>
+	<script type="text/javascript" src="../js/zexApis.js"></script>
 </head>
 <style>
-    .col_red{color: red;}
-    .col_gray{color: gray;}
+	.col_red {
+		color: red;
+	}
+
+	.col_gray {
+		color: gray;
+	}
+
 </style>
+
 <body>
-<div id="shake_container" class="shake_page">
-    <div id="page_loading" class="page-loading">
-       
-		<div @click="iosCheck">111</div>
-    </div>
-  </div>
+	<div id="shake_container" class="shake_page">
+		<div id="page_loading" class="page-loading">
+
+			<div @click="iosCheck">111</div>
+		</div>
+	</div>
 </body>
+
 </html>
 <script>
-    if(illegalRequest){
-        //成公关闭loading页面
-        setTimeout(function(){
-            $('#page_loading').css('display','none');
-        },500);
-        $('#error_cuowu').css('display','-webkit-box');
-    };
-    function closewin(){
-        wx.closeWindow();
-    }
 
-//    if (window.DeviceMotionEvent){
-//        var speed = 10;
-//        var x = y = z = lastX = lastY = lastZ = 0;
-//        window.addEventListener('devicemotion',
-//                function () {
-//                    var acceleration = event.accelerationIncludingGravity;
-//                    x = acceleration.x;
-//                    y = acceleration.y;
-//                    if(!shake_container.isyao){
-//                        if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
-//                            $('#prize').addClass('prize_yd');
-//                          alert("1111111")
-//                        };
-//                    };
-//                    lastX = x;
-//                    lastY = y;
-//                },false);
-//    } else {
-//        $('#tishi_title').html('您的手机不支持摇一摇功能');
-//        $('#error_cuowu').css('display','-webkit-box');
-//    };
-	
 
-	 function iosGrantedTips(){
-    var ua = navigator.userAgent.toLowerCase();
-    if(ua.indexOf("like mac os x") > 0){
-        var reg = /os [\d._]*/gi ;
-        var verinfo = ua.match(reg) ;
-        var version = (verinfo+"").replace(/[^0-9|_.]/ig,"").replace(/_/ig,".");
-        var arr=version.split(".");
-        $(".aa").text(arr[0]+"."+arr[1]+"."+arr[2])
-        if (arr[0]>12&&arr[1]>2) {  //对13.3以后的版本处理,包括13.3,
-            
-            DeviceMotionEvent.requestPermission().then(permissionState => {
-               if (permissionState === 'granted') { window.addEventListener('devicemotion', () => {  })}
-                //
-            }).catch((err)=>{
-            
-                //alert("用户未允许权限")
-                //======这里可以防止重复授权，需要改动，因为获取权限需要点击事件才能触发，所以这里可以改成某个提示框===//
-                showLayer("由于IOS系统需要手动获取访问动作与方向的权限，为了保证抽奖正常运行，请在访问提示中点击允许！","","确定",function(index){
-                    ios13granted();
-                    layer.close(index);
-                })
-            });
-            
-        }else{  //13.3以前的版本 }
-    }
-}
-	
-		 
-		 function ios13granted() {
-    if (typeof DeviceMotionEvent.requestPermission === 'function') {
-        DeviceMotionEvent.requestPermission().then((permissionState) => {
-            if (permissionState === 'granted') {
-                window.addEventListener('devicemotion', () => {});
-            }
-        }).catch((error) => {
-            alert(error)
-        })
-    } else {
-          // 处理常规的非iOS 13+设备
-        console.log("处理常规的非iOS 13+设备")
-    }
-}
-		 
-	
+	//    if (window.DeviceMotionEvent){
+	//        var speed = 10;
+	//        var x = y = z = lastX = lastY = lastZ = 0;
+	//        window.addEventListener('devicemotion',
+	//                function () {
+	//                    var acceleration = event.accelerationIncludingGravity;
+	//                    x = acceleration.x;
+	//                    y = acceleration.y;
+	//                    if(!shake_container.isyao){
+	//                        if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+	//                            $('#prize').addClass('prize_yd');
+	//                          alert("1111111")
+	//                        };
+	//                    };
+	//                    lastX = x;
+	//                    lastY = y;
+	//                },false);
+	//    } else {
+	//        $('#tishi_title').html('您的手机不支持摇一摇功能');
+	//        $('#error_cuowu').css('display','-webkit-box');
+	//    };
+
+
+	function iosGrantedTips() {
+		var ua = navigator.userAgent.toLowerCase();
+		if (ua.indexOf("like mac os x") > 0) {
+			var reg = /os [\d._]*/gi;
+			var verinfo = ua.match(reg);
+			var version = (verinfo + "").replace(/[^0-9|_.]/ig, "").replace(/_/ig, ".");
+			var arr = version.split(".");
+			$(".aa").text(arr[0] + "." + arr[1] + "." + arr[2])
+			if (arr[0] > 12 && arr[1] > 2) { //对13.3以后的版本处理,包括13.3,
+
+				DeviceMotionEvent.requestPermission().then(permissionState => {
+					if (permissionState === 'granted') {
+						window.addEventListener('devicemotion', () => {})
+					}
+					//
+				}).catch((err) => {
+
+					//alert("用户未允许权限")
+					//======这里可以防止重复授权，需要改动，因为获取权限需要点击事件才能触发，所以这里可以改成某个提示框===//
+					showLayer("由于IOS系统需要手动获取访问动作与方向的权限，为了保证抽奖正常运行，请在访问提示中点击允许！", "", "确定", function(index) {
+						ios13granted();
+						layer.close(index);
+					})
+				});
+
+			} else { //13.3以前的版本 }
+			}
+		}
+	}
+
+		function ios13granted() {
+			if (typeof DeviceMotionEvent.requestPermission === 'function') {
+				DeviceMotionEvent.requestPermission().then((permissionState) => {
+					if (permissionState === 'granted') {
+						window.addEventListener('devicemotion', () => {});
+					}
+				}).catch((error) => {
+					alert(error)
+				})
+			} else {
+				// 处理常规的非iOS 13+设备
+				console.log("处理常规的非iOS 13+设备")
+			}
+		}
+
 </script>
