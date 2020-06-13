@@ -27,7 +27,6 @@
 	<script type="text/javascript" src="../js/zexService.js"></script>
 	<script type="text/javascript" src="../js/wxConfig.js"></script>
 	<script type="text/javascript" src="../js/zexApis.js"></script>
-		<script type="text/javascript" src="../js/layer.js"></script>
 
 	
 </head>
@@ -76,6 +75,24 @@
 	//        $('#tishi_title').html('您的手机不支持摇一摇功能');
 	//        $('#error_cuowu').css('display','-webkit-box');
 	//    };
+
+	
+	function permissionForShake() {
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+        DeviceMotionEvent.requestPermission()
+            .then(permissionState => {
+                if (permissionState === 'granted') {
+                    window.addEventListener('devicemotion', () => {
+						alert(1111)
+					})
+                }
+            })
+            .catch(console.error);
+    } else {
+        // ios其他系统可以不通过请求直接摇一摇
+        
+    }
+}
 
 
 	function iosGrantedTips() {
