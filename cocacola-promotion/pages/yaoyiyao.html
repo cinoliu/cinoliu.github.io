@@ -28,7 +28,7 @@
 	<script type="text/javascript" src="../js/wxConfig.js"></script>
 	<script type="text/javascript" src="../js/zexApis.js"></script>
 
-	
+
 </head>
 <style>
 	.col_red {
@@ -52,8 +52,6 @@
 
 </html>
 <script>
-
-
 	//    if (window.DeviceMotionEvent){
 	//        var speed = 10;
 	//        var x = y = z = lastX = lastY = lastZ = 0;
@@ -76,104 +74,108 @@
 	//        $('#error_cuowu').css('display','-webkit-box');
 	//    };
 
-	
-    if (typeof DeviceMotionEvent.requestPermission === 'function') {
-        DeviceMotionEvent.requestPermission()
-            .then(permissionState => {
-                if (permissionState === 'granted') {
-                    window.addEventListener('devicemotion', () => {
+
+	if (typeof DeviceMotionEvent.requestPermission === 'function') {
+		DeviceMotionEvent.requestPermission()
+			.then(permissionState => {
+				if (permissionState === 'granted') {
+					window.addEventListener('devicemotion', () => {
 						alert(1111)
 					})
-                }
-            })
-            .catch(console.error);
-    } else {
-        // ios其他系统可以不通过请求直接摇一摇
-        
-    }
+				}
+			})
+			.catch(console.error);
+	} else {
+		// ios其他系统可以不通过请求直接摇一摇
+
+	}
 
 
-		var ua = navigator.userAgent.toLowerCase();
-		if (ua.indexOf("like mac os x") > 0) {
-			var reg = /os [\d._]*/gi;
-			var verinfo = ua.match(reg);
-			var version = (verinfo + "").replace(/[^0-9|_.]/ig, "").replace(/_/ig, ".");
-			var arr = version.split(".");
-			$(".aa").text(arr[0] + "." + arr[1] + "." + arr[2])
-			if (arr[0] > 12 && arr[1] > 2) { //对13.3以后的版本处理,包括13.3,
+	var ua = navigator.userAgent.toLowerCase();
+	if (ua.indexOf("like mac os x") > 0) {
+		var reg = /os [\d._]*/gi;
+		var verinfo = ua.match(reg);
+		var version = (verinfo + "").replace(/[^0-9|_.]/ig, "").replace(/_/ig, ".");
+		var arr = version.split(".");
+		$(".aa").text(arr[0] + "." + arr[1] + "." + arr[2])
+		if (arr[0] > 12 && arr[1] > 2) { //对13.3以后的版本处理,包括13.3,
 
-				DeviceMotionEvent.requestPermission().then(permissionState => {
-					if (permissionState === 'granted') {
-					   var speed = 10;
-	        var x = y = z = lastX = lastY = lastZ = 0;
-	        window.addEventListener('devicemotion',
-	                function () {
-	                    var acceleration = event.accelerationIncludingGravity;
-	                    x = acceleration.x;
-	                    y = acceleration.y;
-	                    if(!shake_container.isyao){
-	                        if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
-	                            $('#prize').addClass('prize_yd');
-	                          alert("1111111")
-	                        };
-	                    };
-	                    lastX = x;
-	                    lastY = y;
-	                },false);
+			DeviceMotionEvent.requestPermission().then(permissionState => {
+				if (permissionState === 'granted') {
+					if (window.DeviceMotionEvent) {
+
+						var speed = 10;
+						var x = y = z = lastX = lastY = lastZ = 0;
+						window.addEventListener('devicemotion',
+							function() {
+								var acceleration = event.accelerationIncludingGravity;
+								x = acceleration.x;
+								y = acceleration.y;
+								if (!shake_container.isyao) {
+									if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+										$('#prize').addClass('prize_yd');
+										alert("摇一摇")
+									};
+								};
+								lastX = x;
+								lastY = y;
+							}, false);
 					}
-					//
-				}).catch((err) => {
+				}
+				//
+			}).catch((err) => {
 
 				alert("用户未允许权限")
-					//======这里可以防止重复授权，需要改动，因为获取权限需要点击事件才能触发，所以这里可以改成某个提示框===//
-				
-						ios13granted();
-					
-				});
+				//======这里可以防止重复授权，需要改动，因为获取权限需要点击事件才能触发，所以这里可以改成某个提示框===//
 
-			} else { //13.3以前的版本 }
-			}
+				ios13granted();
+
+			});
+
+		} else { //13.3以前的版本 }
 		}
-	
+	}
 
-	
-		function ios13granted() {
-			if (typeof DeviceMotionEvent.requestPermission === 'function') {
-				DeviceMotionEvent.requestPermission().then((permissionState) => {
-					if (permissionState === 'granted') {
-					
-						
-						
-						
-						
-						   var speed = 10;
-	        var x = y = z = lastX = lastY = lastZ = 0;
-	        window.addEventListener('devicemotion',
-	                function () {
-	                    var acceleration = event.accelerationIncludingGravity;
-	                    x = acceleration.x;
-	                    y = acceleration.y;
-	                    if(!shake_container.isyao){
-	                        if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
-	                            $('#prize').addClass('prize_yd');
-	                          alert("1111111")
-	                        };
-	                    };
-	                    lastX = x;
-	                    lastY = y;
-	                },false);
-						
-						
-						
-						
+
+
+	function ios13granted() {
+		if (typeof DeviceMotionEvent.requestPermission === 'function') {
+			DeviceMotionEvent.requestPermission().then((permissionState) => {
+				if (permissionState === 'granted') {
+
+
+
+					if (window.DeviceMotionEvent) {
+
+
+						var speed = 10;
+						var x = y = z = lastX = lastY = lastZ = 0;
+						window.addEventListener('devicemotion',
+							function() {
+								var acceleration = event.accelerationIncludingGravity;
+								x = acceleration.x;
+								y = acceleration.y;
+								if (!shake_container.isyao) {
+									if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+										$('#prize').addClass('prize_yd');
+										alert("1111111")
+									};
+								};
+								lastX = x;
+								lastY = y;
+							}, false);
+
+
 					}
-				}).catch((error) => {
-					alert(error)
-				})
-			} else {
-				// 处理常规的非iOS 13+设备
-				console.log("处理常规的非iOS 13+设备")
-			}
+
+				}
+			}).catch((error) => {
+				alert(error)
+			})
+		} else {
+			// 处理常规的非iOS 13+设备
+			console.log("处理常规的非iOS 13+设备")
 		}
+	}
 
 </script>
