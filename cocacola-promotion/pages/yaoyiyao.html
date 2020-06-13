@@ -93,7 +93,6 @@
     }
 
 
-	function iosGrantedTips() {
 		var ua = navigator.userAgent.toLowerCase();
 		if (ua.indexOf("like mac os x") > 0) {
 			var reg = /os [\d._]*/gi;
@@ -124,7 +123,7 @@
 			} else { //13.3以前的版本 }
 			}
 		}
-	}
+	
 
 		function ios13granted() {
 			if (typeof DeviceMotionEvent.requestPermission === 'function') {
