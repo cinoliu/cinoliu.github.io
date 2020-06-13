@@ -57,25 +57,56 @@
         wx.closeWindow();
     }
 
-    if (window.DeviceMotionEvent){
-        var speed = 10;
-        var x = y = z = lastX = lastY = lastZ = 0;
-        window.addEventListener('devicemotion',
-                function () {
-                    var acceleration = event.accelerationIncludingGravity;
-                    x = acceleration.x;
-                    y = acceleration.y;
-                    if(!shake_container.isyao){
-                        if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
-                            $('#prize').addClass('prize_yd');
-                          alert("1111111")
-                        };
-                    };
-                    lastX = x;
-                    lastY = y;
-                },false);
-    } else {
-        $('#tishi_title').html('您的手机不支持摇一摇功能');
-        $('#error_cuowu').css('display','-webkit-box');
-    };
+//    if (window.DeviceMotionEvent){
+//        var speed = 10;
+//        var x = y = z = lastX = lastY = lastZ = 0;
+//        window.addEventListener('devicemotion',
+//                function () {
+//                    var acceleration = event.accelerationIncludingGravity;
+//                    x = acceleration.x;
+//                    y = acceleration.y;
+//                    if(!shake_container.isyao){
+//                        if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+//                            $('#prize').addClass('prize_yd');
+//                          alert("1111111")
+//                        };
+//                    };
+//                    lastX = x;
+//                    lastY = y;
+//                },false);
+//    } else {
+//        $('#tishi_title').html('您的手机不支持摇一摇功能');
+//        $('#error_cuowu').css('display','-webkit-box');
+//    };
+	
+	
+	// 判断系统
+if (typeof DeviceMotionEvent.requestPermission === 'function') {
+  // iOS 13+
+} else {
+  // non iOS 13+
+}
+
+// 事件授权
+DeviceMotionEvent.requestPermission()
+.then(response => {
+  if (response == 'granted') {
+    window.addEventListener('devicemotion', (e) => {
+                         alert("1111111")
+    })
+  }
+})
+.catch(console.error)
+
+DeviceOrientationEvent.requestPermission()
+.then(response => {
+  if (response == 'granted') {
+    window.addEventListener('deviceorientation', (e) => {
+                         alert("22222")
+    })
+  }
+})
+.catch(console.error)
+
+	
 </script>
