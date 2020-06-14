@@ -88,7 +88,7 @@
 	.catch(console.error)
 	}
 	else {
-		alert ("您的手机不支持摇一摇功能")
+		alert ("您的手机不支持摇一摇功能1")
 
 	}
 
@@ -99,32 +99,32 @@
 
 
 
-//
-//	if (window.DeviceMotionEvent) {
-//		var speed = 10;
-//		var x = y = z = lastX = lastY = lastZ = 0;
-//		window.addEventListener('devicemotion',
-//			function() {
-//				var acceleration = event.accelerationIncludingGravity;
-//				x = acceleration.x;
-//				y = acceleration.y;
-//				alert ("摇一摇")
-//
-//			if (!shake_container.isyao) {
-//				if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
-//					$('#prize').addClass('prize_yd');
-//					shake_container.isyao = true;
-//					var timeyaoyiyao = setTimeout(function() {
-//						shake_container.luckyDraw();
-//					}, 2000);
-//				};
-//			}; lastX = x; lastY = y;
-//		}, false);
-//	} else {
-//		alert ("您的手机不支持摇一摇功能")
-//
-//	$('#tishi_title').html('您的手机不支持摇一摇功能');
-//	$('#error_cuowu').css('display', '-webkit-box');
-//	};
+
+	if (window.DeviceMotionEvent) {
+		var speed = 10;
+		var x = y = z = lastX = lastY = lastZ = 0;
+		window.addEventListener('devicemotion',
+			function() {
+				var acceleration = event.accelerationIncludingGravity;
+				x = acceleration.x;
+				y = acceleration.y;
+				alert ("摇一摇")
+
+			if (!shake_container.isyao) {
+				if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+					$('#prize').addClass('prize_yd');
+					shake_container.isyao = true;
+					var timeyaoyiyao = setTimeout(function() {
+						shake_container.luckyDraw();
+					}, 2000);
+				};
+			}; lastX = x; lastY = y;
+		}, false);
+	} else {
+		alert ("您的手机不支持摇一摇功能")
+
+	$('#tishi_title').html('您的手机不支持摇一摇功能');
+	$('#error_cuowu').css('display', '-webkit-box');
+	};
 
 </script>
