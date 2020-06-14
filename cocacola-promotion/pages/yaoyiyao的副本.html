@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="full-screen" content="yes">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<title>摇一摇抽奖页</title>
+
+
+
+</head>
+
+
+<body>
+	<div id="shake_container" class="shake_page">
+
+	</div>
+</body>
+
+</html>
+<script>
+	//    if (window.DeviceMotionEvent){
+	//        var speed = 10;
+	//        var x = y = z = lastX = lastY = lastZ = 0;
+	//        window.addEventListener('devicemotion',
+	//                function () {
+	//                    var acceleration = event.accelerationIncludingGravity;
+	//                    x = acceleration.x;
+	//                    y = acceleration.y;
+	//                    if(!shake_container.isyao){
+	//                        if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+	//                            $('#prize').addClass('prize_yd');
+	//                          alert("1111111")
+	//                        };
+	//                    };
+	//                    lastX = x;
+	//                    lastY = y;
+	//                },false);
+	//    } else {
+	//        $('#tishi_title').html('您的手机不支持摇一摇功能');
+	//        $('#error_cuowu').css('display','-webkit-box');
+	//    };
+
+	if (typeof(DeviceMotionEvent) !== "undefined" && typeof(DeviceMotionEvent.requestPermission) === "function") {
+		// (optional) Do something before API request prompt.
+		DeviceMotionEvent.requestPermission()
+			.then(response => {
+				// (optional) Do something after API prompt dismissed.
+				if (response == "granted") {
+					window.addEventListener("devicemotion", (e) => {
+
+					alert("支持摇一摇")
+					})
+				}
+			})
+			.catch(console.error)
+	} else {
+		alert("不支持摇一摇");
+	}
+
+
+
+
+
+
+	//    var ua = navigator.userAgent.toLowerCase();
+	//    if (ua.indexOf("like mac os x") > 0) {
+	//
+	//
+	//        DeviceMotionEvent.requestPermission().then(permissionState => {
+	//            if (permissionState === 'granted') {
+	//                if (window.DeviceMotionEvent) {
+	//                    var speed = 10;
+	//                    var x = y = z = lastX = lastY = lastZ = 0;
+	//                    window.addEventListener('devicemotion',
+	//                        function() {
+	//                            var acceleration = event.accelerationIncludingGravity;
+	//                            x = acceleration.x;
+	//                            y = acceleration.y;
+	//                            if (!shake_container.isyao) {
+	//                                if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+	//                                    $('#prize').addClass('prize_yd');
+	//                                    alert("1111111")
+	//                                };
+	//                            };
+	//                            lastX = x;
+	//                            lastY = y;
+	//                        }, false);
+	//                } else {
+	//                    alert("您的手机不支持摇一摇功能！！")
+	//
+	//                    $('#tishi_title').html('您的手机不支持摇一摇功能');
+	//                    $('#error_cuowu').css('display', '-webkit-box');
+	//                };
+	//            }
+	//            //
+	//        }).catch((err) => {
+	//
+	//            alert("用户未允许权限")
+	//                //======这里可以防止重复授权，需要改动，因为获取权限需要点击事件才能触发，所以这里可以改成某个提示框===//
+	//
+	//            ios13granted();
+	//
+	//        });
+	//
+	//    } else {
+	//        if (window.DeviceMotionEvent) {
+	//            var speed = 10;
+	//            var x = y = z = lastX = lastY = lastZ = 0;
+	//            window.addEventListener('devicemotion',
+	//                function() {
+	//                    var acceleration = event.accelerationIncludingGravity;
+	//                    x = acceleration.x;
+	//                    y = acceleration.y;
+	//                    if (!shake_container.isyao) {
+	//                        if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+	//                            $('#prize').addClass('prize_yd');
+	//                            alert("1111111")
+	//                        };
+	//                    };
+	//                    lastX = x;
+	//                    lastY = y;
+	//                }, false);
+	//        } else {
+	//            alert("您的手机不支持摇一摇功能！！")
+	//            $('#error_cuowu').css('display', '-webkit-box');
+	//        };
+	//
+	//    }
+	//  
+	//
+	//
+	//
+	//
+	//    function ios13granted() {
+	//        if (typeof DeviceMotionEvent.requestPermission === 'function') {
+	//            DeviceMotionEvent.requestPermission().then((permissionState) => {
+	//                if (permissionState === 'granted') {
+	//                    if (window.DeviceMotionEvent) {
+	//                        var speed = 10;
+	//                        var x = y = z = lastX = lastY = lastZ = 0;
+	//                        window.addEventListener('devicemotion',
+	//                            function() {
+	//                                var acceleration = event.accelerationIncludingGravity;
+	//                                x = acceleration.x;
+	//                                y = acceleration.y;
+	//                                if (!shake_container.isyao) {
+	//                                    if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+	//                                        $('#prize').addClass('prize_yd');
+	//                                        alert("摇成功！！")
+	//                                    };
+	//                                };
+	//                                lastX = x;
+	//                                lastY = y;
+	//                            }, false);
+	//
+	//
+	//                    }
+	//
+	//                }
+	//            }).catch((error) => {
+	//                alert(error)
+	//            })
+	//        } else {
+	//            if (window.DeviceMotionEvent) {
+	//                var speed = 10;
+	//                var x = y = z = lastX = lastY = lastZ = 0;
+	//                window.addEventListener('devicemotion',
+	//                    function() {
+	//                        var acceleration = event.accelerationIncludingGravity;
+	//                        x = acceleration.x;
+	//                        y = acceleration.y;
+	//                        if (!shake_container.isyao) {
+	//                            if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+	//                                $('#prize').addClass('prize_yd');
+	//                                alert("1111111")
+	//                            };
+	//                        };
+	//                        lastX = x;
+	//                        lastY = y;
+	//                    }, false);
+	//            } else {
+	//
+	//                alert("您的手机不支持摇一摇功能！！")
+	//
+	//                $('#tishi_title').html('您的手机不支持摇一摇功能');
+	//                $('#error_cuowu').css('display', '-webkit-box');
+	//            };
+	//        }
+	//    }
+
+</script>
