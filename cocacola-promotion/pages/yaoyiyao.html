@@ -14,6 +14,7 @@
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Expires" content="0" />
 	<title>摇一摇抽奖页</title>
+<!--
 	<link rel="stylesheet" href="yaoyiyao.css">
 	<link rel="stylesheet" href="../css/plugins/loading.css">
 	<script type="text/javascript" src="../js/plugins/jquery-2.1.4.min.js"></script>
@@ -27,6 +28,7 @@
 	<script type="text/javascript" src="../js/zexService.js"></script>
 	<script type="text/javascript" src="../js/wxConfig.js"></script>
 	<script type="text/javascript" src="../js/zexApis.js"></script>
+-->
 </head>
 <style>
 	.col_red {
@@ -547,6 +549,10 @@
 			.then(response => {
 					// (optional) Do something after API prompt dismissed.
 					if (response == "granted") {
+						
+	alert ("摇一摇")
+
+						
 						window.addEventListener("devicemotion", (e) => {
 
 								var speed = 10;
