@@ -14,39 +14,15 @@
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Expires" content="0" />
 	<title>摇一摇抽奖页</title>
-	<link rel="stylesheet" href="yaoyiyao.css">
-	<link rel="stylesheet" href="../css/plugins/loading.css">
-	<script type="text/javascript" src="../js/plugins/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/jweixin-1.2.0.js"></script>
-	<script type="text/javascript" src="../js/plugins/md5.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/vue.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/hammer.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/vue-touch.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/jsencrypt.min.js"></script>
-	<script type="text/javascript" src="../js/zexUtility.js"></script>
-	<script type="text/javascript" src="../js/zexService.js"></script>
-	<script type="text/javascript" src="../js/wxConfig.js"></script>
-	<script type="text/javascript" src="../js/zexApis.js"></script>
+
 
 
 </head>
-<style>
-	.col_red {
-		color: red;
-	}
 
-	.col_gray {
-		color: gray;
-	}
-
-</style>
 
 <body>
 	<div id="shake_container" class="shake_page">
-		<div id="page_loading" class="page-loading">
 
-			<div @click="iosCheck">111</div>
-		</div>
 	</div>
 </body>
 
@@ -74,21 +50,7 @@
 	//        $('#error_cuowu').css('display','-webkit-box');
 	//    };
 
-//
-//	if (typeof DeviceMotionEvent.requestPermission === 'function') {
-//		DeviceMotionEvent.requestPermission()
-//			.then(permissionState => {
-//				if (permissionState === 'granted') {
-//					window.addEventListener('devicemotion', () => {
-//						alert(1111)
-//					})
-//				}
-//			})
-//			.catch(console.error);
-//	} else {
-//		// ios其他系统可以不通过请求直接摇一摇
-//
-//	}
+
 
 
 	var ua = navigator.userAgent.toLowerCase();
@@ -103,7 +65,6 @@
 			DeviceMotionEvent.requestPermission().then(permissionState => {
 				if (permissionState === 'granted') {
 					if (window.DeviceMotionEvent) {
-
 						var speed = 10;
 						var x = y = z = lastX = lastY = lastZ = 0;
 						window.addEventListener('devicemotion',
@@ -114,13 +75,18 @@
 								if (!shake_container.isyao) {
 									if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
 										$('#prize').addClass('prize_yd');
-										alert("摇一摇")
+										alert("1111111")
 									};
 								};
 								lastX = x;
 								lastY = y;
 							}, false);
-					}
+					} else {
+																				alert("您的手机不支持摇一摇功能！！")
+
+						$('#tishi_title').html('您的手机不支持摇一摇功能');
+						$('#error_cuowu').css('display', '-webkit-box');
+					};
 				}
 				//
 			}).catch((err) => {
@@ -132,9 +98,32 @@
 
 			});
 
-		} else { //13.3以前的版本 }
+		} else {
+			if (window.DeviceMotionEvent) {
+				var speed = 10;
+				var x = y = z = lastX = lastY = lastZ = 0;
+				window.addEventListener('devicemotion',
+					function() {
+						var acceleration = event.accelerationIncludingGravity;
+						x = acceleration.x;
+						y = acceleration.y;
+						if (!shake_container.isyao) {
+							if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+								$('#prize').addClass('prize_yd');
+								alert("1111111")
+							};
+						};
+						lastX = x;
+						lastY = y;
+					}, false);
+			} else {
+														alert("您的手机不支持摇一摇功能！！")
+				$('#error_cuowu').css('display', '-webkit-box');
+			};
+
 		}
 	}
+
 
 
 
@@ -142,12 +131,7 @@
 		if (typeof DeviceMotionEvent.requestPermission === 'function') {
 			DeviceMotionEvent.requestPermission().then((permissionState) => {
 				if (permissionState === 'granted') {
-
-
-
 					if (window.DeviceMotionEvent) {
-
-
 						var speed = 10;
 						var x = y = z = lastX = lastY = lastZ = 0;
 						window.addEventListener('devicemotion',
@@ -173,8 +157,30 @@
 				alert(error)
 			})
 		} else {
-			// 处理常规的非iOS 13+设备
-			console.log("处理常规的非iOS 13+设备")
+			if (window.DeviceMotionEvent) {
+				var speed = 10;
+				var x = y = z = lastX = lastY = lastZ = 0;
+				window.addEventListener('devicemotion',
+					function() {
+						var acceleration = event.accelerationIncludingGravity;
+						x = acceleration.x;
+						y = acceleration.y;
+						if (!shake_container.isyao) {
+							if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+								$('#prize').addClass('prize_yd');
+								alert("1111111")
+							};
+						};
+						lastX = x;
+						lastY = y;
+					}, false);
+			} else {
+				
+														alert("您的手机不支持摇一摇功能！！")
+
+				$('#tishi_title').html('您的手机不支持摇一摇功能');
+				$('#error_cuowu').css('display', '-webkit-box');
+			};
 		}
 	}
 
