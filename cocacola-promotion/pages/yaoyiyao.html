@@ -90,21 +90,19 @@
             <div class="button" v-if="but_cshow" @click="closewin()" :style="{backgroundImage:'url('+page_info.page.not_wining_btn_img+')'}"></div>
         </div>
     </div>
-
 	
-	 <div class="js_dialog" id="iosDialog2" style="display: none;">
-            <div class="weui-mask"></div>
-            <div class="weui-dialog">
-                <div class="weui-dialog__bd">用户未允许权限,请确认授权333！</div>
-                <div class="weui-dialog__ft">
-                    <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_primary">点击授权</a>
-					
-					          <div   class="weui-dialog__btn weui-dialog__btn_primary" id="getQXbtn">点击授权</div>
-                </div>
+	<div class="error_leixing" v-show="shouquan_show">
+        <div class="error_cuowu_box">
+            <div class="tishi_top">
+                <div class="tishi_title" >用户未允许权限,请确认授权！</div>
+			
             </div>
+           <div class="tishi_queren" onclick="closewin()">确&nbsp;&nbsp;认</div>
+        
+		 
         </div>
+    </div>
 	
-	    
 
 </div>
 </body>
@@ -579,15 +577,7 @@
 //    };
 //	
 //	
-//	
-	  $(function(){
-        var $iosDialog2 = $('#iosDialog2'),
- 
-      
-    });
-	
-	
-	
+
 	
 	     document.getElementById("getQXbtn").addEventListener("click", function() {
             if (typeof DeviceMotionEvent.requestPermission === 'function') {
@@ -601,9 +591,8 @@
                     .catch((err) => {
                         alert("用户未允许权限");
 					 
-        $('#showIOSDialog2').on('click', function(){
-            $iosDialog2.fadeIn(200);
-        });
+    shake_container.shouquan_show=true;
+
 
 					
                     });
@@ -632,10 +621,8 @@
 					
 
                             alert("用户未允许权限");
-						    
-        $('#showIOSDialog2').on('click', function(){
-            $iosDialog2.fadeIn(200);
-        });
+							shake_container.shouquan_show=true;
+
                         });
                 } else {
                     window.addEventListener('devicemotion', deviceMotionHandler, false);
