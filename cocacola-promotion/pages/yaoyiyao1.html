@@ -1,104 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>
-        motion orientation access
-    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 
-<body>
-    <button onclick="testClick()">
-		deviceorientation
-	</button>
+
+<body onload="init()">
+    1
+    <button id="btn">点击授权</button>
     <script type="text/javascript">
-        // 判断是否是 ios 设备    
-        function getIos() {
-            var u = window.navigator.userAgent;
-            return !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-        }
+        document.getElementById("btn").addEventListener("click", function() {
+            if (typeof DeviceMotionEvent.requestPermission === 'function') {
 
-        function requestPermissionsIOS() {
-            requestDeviceMotionIOS();
-            requestDeviceOrientationIOS();
-        }
-
-        function requestDeviceMotionIOS() {
-
-            if (typeof(DeviceMotionEvent).requestPermission === 'function') {
-                (DeviceMotionEvent).requestPermission().then(permissionState => {
-
-                    if (permissionState === 'granted') {
-                        window.addEventListener('devicemotion', () => {
-                            var acceleration = eventData.accelerationIncludingGravity;
-                            var curTime = new Date().getTime();
-                            if ((curTime - last_update) > 100) {
-                                var diffTime = curTime - last_update;
-                                last_update = curTime;
-                                x = acceleration.x;
-                                y = acceleration.y;
-                                z = acceleration.z;
-                                var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
-                                if (speed > SHAKE_THRESHOLD) {
-                                    alert("摇动了");
-                                }
-                                last_x = x;
-                                last_y = y;
-                                last_z = z;
-                            }
-                        });
-                    }
-                }).
-                catch((err) => {
-                    alert(JSON.stringify(err))
-                    alert("用户未允许权限");
-                })
+                DeviceMotionEvent.requestPermission()
+                    .then(permissionState => {
+                        if (permissionState === 'granted') {
+                            window.addEventListener('devicemotion', deviceMotionHandler, false);
+                        }
+                    })
+                    .catch((err) => {
+                        alert("用户未允许权限");
+                    });
             } else {
-                // handle regular non iOS 13+ devices
+                alert("not found")
             }
-        }
+        })
+        var SHAKE_THRESHOLD = 3000;
+        var last_update = 0;
+        var x = y = z = last_x = last_y = last_z = 0;
 
-        // requesting device orientation permission
-        function requestDeviceOrientationIOS() {
+        function init() {
+            if (window.DeviceMotionEvent) {
+                if (typeof DeviceMotionEvent.requestPermission === 'function') {
 
-            if (typeof(DeviceOrientationEvent).requestPermission === 'function') {
-                (DeviceOrientationEvent).requestPermission().then(permissionState => {
-                    if (permissionState === 'granted') {
-                        window.addEventListener('deviceorientation', () => {
-                            var acceleration = eventData.accelerationIncludingGravity;
-                            var curTime = new Date().getTime();
-                            if ((curTime - last_update) > 100) {
-                                var diffTime = curTime - last_update;
-                                last_update = curTime;
-                                x = acceleration.x;
-                                y = acceleration.y;
-                                z = acceleration.z;
-                                var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
-                                if (speed > SHAKE_THRESHOLD) {
-                                    alert("摇动了");
-                                }
-                                last_x = x;
-                                last_y = y;
-                                last_z = z;
+                    DeviceMotionEvent.requestPermission()
+                        .then(permissionState => {
+                            if (permissionState === 'granted') {
+                                window.addEventListener('devicemotion', deviceMotionHandler, false);
                             }
+                        })
+                        .catch((err) => {
+                            alert("用户未允许权限");
                         });
-                    }
-                }).
-                catch((err) => {
-                    alert(JSON.stringify(err))
-                    alert("用户未允许权限");
-                })
+                } else {
+                    window.addEventListener('devicemotion', deviceMotionHandler, false);
+                }
             } else {
-                // handle regular non iOS 13+ devices
+                alert('not support mobile event');
             }
-        }
-
-        function testClick() {
-            requestPermissionsIOS();
         }
 
         function deviceMotionHandler(eventData) {
