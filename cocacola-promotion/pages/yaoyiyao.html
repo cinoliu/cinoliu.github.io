@@ -89,19 +89,8 @@
         </div>
     </div>
 	
-	<div class="error_leixing" v-show="shouquan_show">
-        <div class="error_cuowu_box">
-            <div class="tishi_top">
-                <div class="tishi_title" >用户未允许权限,请确认授权！</div>
-			
-            </div>
-           <div class="tishi_queren" onclick="shouquan_show=false">确&nbsp;&nbsp;认</div>
-        
-		 
-        </div>
-    </div>
+
 	
-  <button id="btn">点击授权</button>
 </div>
 </body>
 </html>
@@ -549,33 +538,18 @@
             }
         }
     });
-//    if (window.DeviceMotionEvent){
-//        var speed = 10;
-//        var x = y = z = lastX = lastY = lastZ = 0;
-//        window.addEventListener('devicemotion',
-//                function () {
-//                    var acceleration = event.accelerationIncludingGravity;
-//                    x = acceleration.x;
-//                    y = acceleration.y;
-//                    if(!shake_container.isyao){
-//                        if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
-//                            $('#prize').addClass('prize_yd');
-//                            shake_container.isyao = true;
-//                            var timeyaoyiyao = setTimeout(function(){
-//                                shake_container.luckyDraw();
-//                            }, 2000);
-//                        };
-//                    };
-//                    lastX = x;
-//                    lastY = y;
-//                },false);
-//    } else {
-//        $('#tishi_title').html('您的手机不支持摇一摇功能');
-//        $('#error_cuowu').css('display','-webkit-box');
-//    };
-//	
-//	
 
+
+	
+	let u = navigator.userAgent;
+        let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+        let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if (isAndroid) {
+          alert("安卓")
+        } else if (isIOS) {
+          alert("ios")
+        }
+	
 	
 	     document.getElementById("getQXbtn").addEventListener("click", function() {
             if (typeof DeviceMotionEvent.requestPermission === 'function') {
@@ -587,11 +561,8 @@
                         }
                     })
                     .catch((err) => {
-//                        alert("用户未允许权限");	 
-    shake_container.shouquan_show=true;
-
-
-					
+                      alert("用户未允许权限");	 
+  
                     });
             } else {
                 alert("not found")
@@ -617,8 +588,8 @@
                         .catch((err) => {
 					
 
-//                            alert("用户未允许权限");
-							shake_container.shouquan_show=true;
+                          alert("用户未允许权限");
+				
 
                         });
                 } else {
@@ -629,6 +600,7 @@
             }
         }
 
+	
         function deviceMotionHandler(eventData) {
             var acceleration = eventData.accelerationIncludingGravity;
             var curTime = new Date().getTime();
