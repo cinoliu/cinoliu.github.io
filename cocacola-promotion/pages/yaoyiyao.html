@@ -86,16 +86,7 @@
         </div>
     </div>
 	
-	<div class="error_leixing" v-show="shouquan_show" style="z-index: 999">
-        <div class="error_cuowu_box">
-            <div class="tishi_top">
-                <div class="tishi_title" >请确认授权5！</div>
-            </div>
-            <div style="width:100%;height:1px;background-color:#b9b9b9;"></div>
-            <div class="tishi_queren" id="btn">点击授权</div>
-		   <button id="btn">点击授权</button>
-        </div>
-    </div>
+	
 	 
 
 	 <button id="btn">点击授权</button>
@@ -590,7 +581,7 @@
                     })
                     .catch((err) => {
                         alert("用户未允许权限");
-					   shake_container.shouquan_show = true;
+					
 
                     });
             } else {
@@ -615,7 +606,7 @@
                             }
                         })
                         .catch((err) => {
-					      shake_container.shouquan_show = true;
+					   
 
                             alert("用户未允许权限");
                         });
