@@ -53,7 +53,7 @@
 				<div class="rect5"></div>
 			</div>
 		</div>
-		<img class="shake_page_img" :src="page_bg">
+		<img class="shake_page_img" src="http://file01.16sucai.com/d/file/2013-11-18/13847520538062.jpg">
 
 		<div id="error_cuowu" class="error_cuowu">
 			<div class="error_cuowu_box">
@@ -82,11 +82,11 @@
 		<div class="show_box" :style='{top: isHightTop ? "30%":"36%"}'>
 			<!-- <div class="kong_box"></div> -->
 			<div class="shake_photo" v-if="!is_show">
-				<img id="prize" class="prize" :src="shake_yao" />
+				<img id="prize" class="prize" src="https://i04piccdn.sogoucdn.com/e6be10c95466b166" />
 			</div>
 
 			<div class="shake_photo" v-if="!is_show_ios">
-				<img id="prize1" class="prize" src="http://ww1.sinaimg.cn/bmiddle/6295643djw1f606eb9cktj20go0mk41b.jpg" />
+				<img id="prize1" class="prize" src="https://i03piccdn.sogoucdn.com/9ce3d75443802460" />
 			</div>
 
 
@@ -613,7 +613,7 @@
 
 
 		alert("ios111")
-		shake_container.is_show = true;
+		shake_container.is_show = false;
 		shake_container.is_show_ios = false;
 
 		$('#prize1').addClass('prize_yd');
