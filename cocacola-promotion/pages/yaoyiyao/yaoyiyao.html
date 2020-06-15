@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="full-screen" content="yes">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<title>摇一摇抽奖页</title>
+	<link rel="stylesheet" href="yaoyiyao.css">
+	<link rel="stylesheet" href="../../css/plugins/loading.css">
+	<script type="text/javascript" src="../../js/plugins/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/jweixin-1.2.0.js"></script>
+	<script type="text/javascript" src="../../js/plugins/md5.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/vue.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/hammer.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/vue-touch.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/jsencrypt.min.js"></script>
+	<script type="text/javascript" src="../../js/zexUtility.js"></script>
+	<script type="text/javascript" src="../../js/zexService.js"></script>
+	<script type="text/javascript" src="../../js/wxConfig.js"></script>
+	<script type="text/javascript" src="../../js/zexApis.js"></script>
+</head>
+<style>
+	.col_red {
+		color: red;
+	}
+
+	.col_gray {
+		color: gray;
+	}
+
+
+	.cake {
+		animation: move 1s 0s 2;
+
+		-webkit-animation: move 3s 0s 2;
+		transform-origin: bottom;
+		-webkit-transform-origin: bottom;
+		display: block;
+	}
+
+	@keyframes move {
+
+		0%,
+		65% {
+			-webkit-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+
+		70% {
+			-webkit-transform: rotate(6deg);
+			transform: rotate(6deg);
+		}
+
+		75% {
+			-webkit-transform: rotate(-6deg);
+			transform: rotate(-6deg);
+		}
+
+		80% {
+			-webkit-transform: rotate(6deg);
+			transform: rotate(6deg);
+		}
+
+		85% {
+			-webkit-transform: rotate(-6deg);
+			transform: rotate(-6deg);
+		}
+
+		90% {
+			-webkit-transform: rotate(6deg);
+			transform: rotate(6deg);
+		}
+
+		95% {
+			-webkit-transform: rotate(-6deg);
+			transform: rotate(-6deg);
+		}
+
+		100% {
+			-webkit-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+	}
+
+	@-webkit-keyframes move {
+
+		0%,
+		65% {
+			-webkit-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+
+		70% {
+			-webkit-transform: rotate(6deg);
+			transform: rotate(6deg);
+		}
+
+		75% {
+			-webkit-transform: rotate(-6deg);
+			transform: rotate(-6deg);
+		}
+
+		80% {
+			-webkit-transform: rotate(6deg);
+			transform: rotate(6deg);
+		}
+
+		85% {
+			-webkit-transform: rotate(-6deg);
+			transform: rotate(-6deg);
+		}
+
+		90% {
+			-webkit-transform: rotate(6deg);
+			transform: rotate(6deg);
+		}
+
+		95% {
+			-webkit-transform: rotate(-6deg);
+			transform: rotate(-6deg);
+		}
+
+		100% {
+			-webkit-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+	}
+
+</style>
+
+<body>
+	<div id="shake_container" class="shake_page">
+
+		<div id="page_loading" class="page-loading">
+			<div class="page-loading-control">
+				<div class="rect1"></div>
+				<div class="rect2"></div>
+				<div class="rect3"></div>
+				<div class="rect4"></div>
+				<div class="rect5"></div>
+			</div>
+		</div>
+
+		<img class="shake_page_img" :src="page_bg">
+
+		<div id="error_cuowu" class="error_cuowu">
+			<div class="error_cuowu_box">
+				<div class="tishi_top">
+					<div id="tishi_title" class="tishi_title">网络不给力,请重新或稍后尝试</div>
+				</div>
+				<div style="width:100%;height:1px;background-color:#b9b9b9;"></div>
+				<div class="tishi_queren" onclick="closewin()">确&nbsp;&nbsp;认</div>
+			</div>
+		</div>
+
+		<div class="error_leixing" v-show="error_show">
+			<div class="error_cuowu_box">
+				<div class="tishi_top">
+					<div class="tishi_title" v-text="error_text"></div>
+				</div>
+				<div style="width:100%;height:1px;background-color:#b9b9b9;"></div>
+				<div class="tishi_queren" onclick="closewin()">确&nbsp;&nbsp;认</div>
+			</div>
+		</div>
+
+		<div class="tanchutishi" v-show="hintModal.is_show">
+			<div class="tanchutishi_box" v-text="hintModal.content"></div>
+		</div>
+
+		<div class="show_box" :style='{top: isHightTop ? "30%":"35%"}'>
+			<!-- <div class="kong_box"></div> -->
+			<div class="shake_photo" v-if="!is_show_anzhuo" id="anzhuoSHow">
+				<img id="prize" class="prize" :src="shake_yao" />
+
+			</div>
+
+			<div class="shake_photo" v-if="!is_show_ios" id="iosSHow">
+				<img id="prize12" class="prize cake" :src="shake_yao" />
+			</div>
+
+			<div class="shake_jieguo" v-if="is_show" >
+				<img class="prize_jieguo" :src="jieguo_bg">
+				<div class="prize_title" :class="autoCol" :style="{color: shake_success_text}" v-if="show_su">恭喜您</div>
+				<div class="prize_title" :class="autoCol" :style="{color: shake_fail_text}" v-if="show_er">很遗憾</div>
+				<div class="prize_wenzi_box">
+					<div style="width: 100%" class="prize_wenzi" :style="{color:show_su?shake_success_text:shake_fail_text}" v-for="text in splitText" v-text="text" :class="autoCol"></div>
+				</div>
+				<div class="button" v-if="but_sshow" @click="envelope()" :style="{backgroundImage:'url('+page_info.page.wining_btn_img+')'}"></div>
+				<div class="button" v-if="but_cshow" @click="closewin()" :style="{backgroundImage:'url('+page_info.page.not_wining_btn_img+')'}"></div>
+			</div>
+		</div>
+
+
+
+	</div>
+</body>
+
+</html>
+<script>
+	if (illegalRequest) {
+		//成公关闭loading页面
+		setTimeout(function() {
+			$('#page_loading').css('display', 'none');
+		}, 500);
+		$('#error_cuowu').css('display', '-webkit-box');
+	};
+
+	function closewin() {
+		wx.closeWindow();
+	}
+	var urlParams = zexService.getUrlParamsInfo();
+
+	var shake_container = new Vue({
+		el: '#shake_container',
+		data: {
+			shouquan_show: false,
+			//摇一摇页面初始化
+			page_info: {
+
+			},
+			shouquan_show: false,
+			//背景图初始化
+			page_bg: '',
+			//中奖结果页面
+			jieguo_bg: '',
+			show_su: false,
+			show_er: false,
+			// 提示弹出框
+			hintModal: {
+				is_show: false,
+				content: ""
+			},
+			//提示的文案和奖品
+			shake_text: '',
+			//摇一摇图
+			shake_yao: '',
+			//判断只摇一次
+			isyao: false,
+			//判断show
+			is_show: false,
+			is_show_anzhuo: false,
+			is_show_ios: true,
+			//是否成功
+			is_success: false,
+			//判断显示按钮
+			but_sshow: false,
+			but_cshow: false,
+			//中奖等级ID
+			prize_level_ids: '',
+			//不能重复点击
+			one_click: true,
+			//判断活动是否开始的显示提示
+			error_show: false,
+			error_text: '',
+			shake_success_text: '', //未中奖字体颜色
+			shake_fail_text: '', //已中奖字体颜色
+			isHightTop: false,
+		},
+
+		computed: {
+			autoCol: function() {
+				return {
+					'col_red': this.is_success,
+					'col_gray': !this.is_success
+				}
+			},
+			splitText: function() {
+				var text = this.shake_text.split(",");
+				var arr = [];
+				text.forEach(function(val, key) {
+					arr.push(val.length > 32 ? val.slice(0, 32) : val);
+				})
+				// text.forEach(element => {
+				//     arr.push(element.length>32 ? element.slice(0,32): element);
+				// });
+				return arr;
+			}
+		},
+		created: function() {
+			if (screen.height > 736) {
+				this.isHightTop = true;
+			}
+			zexWxConfig.runConfig(false, function() {});
+			this.getShakePage();
+		},
+		methods: {
+
+
+
+			getShakePage: function() {
+				var that = this;
+				var reqParams = {
+					open_id: zexService.getOpenId(),
+					promotion_id: urlParams.promotion_id,
+					ticket_pic_id: urlParams.ticket_pic_id,
+					timestamp: zexUtil.getTimestamp()
+				};
+				zexApis.getShakePage(reqParams).done(function(response) {
+					if (response.code == '200' && response.promotion_id) {
+						//成公关闭loading页面
+						setTimeout(function() {
+							$('#page_loading').css('display', 'none');
+						}, 500);
+						that.page_info = response;
+						that.page_bg = response.page.background_img;
+						that.shake_yao = response.page.shake_background_img;
+						that.jieguo_bg = response.page.shake_toast_content_img;
+						that.shake_success_text = response.page.shake_success_text;
+						that.shake_fail_text = response.page.shake_fail_text;
+						var jsonUserFlowStr;
+						if (response.jsonUserFlowStr) {
+							jsonUserFlowStr = JSON.parse(response.jsonUserFlowStr);
+						}
+
+						if (null != jsonUserFlowStr) {
+							var next_page = jsonUserFlowStr.next_page;
+							if (next_page == 'shake_receive_page') {
+
+								window.sessionStorage.setItem('nextPage', next_page);
+								window.sessionStorage.setItem('prize_level_ids', jsonUserFlowStr.prize_level_ids); //存储中奖等级ID
+								window.sessionStorage.setItem('shake_text', jsonUserFlowStr.prize_texts);
+
+								window.sessionStorage.setItem('ticket_pic_id', jsonUserFlowStr.ticket_pic_id);
+
+							} else if (next_page == 'fill_userinfo_page') {
+
+								window.sessionStorage.setItem('ticket_pic_id', jsonUserFlowStr.ticket_pic_id);
+								window.sessionStorage.setItem('prize_level_ids', jsonUserFlowStr.prize_level_ids);
+								window.sessionStorage.setItem('duijiangma', jsonUserFlowStr.verify_code);
+								window.sessionStorage.setItem('public_draw', jsonUserFlowStr.draw_type);
+								window.sessionStorage.setItem('shake_text', jsonUserFlowStr.prize_texts);
+								window.sessionStorage.setItem('draw_check_priority', jsonUserFlowStr.draw_check_priority);
+								window.location.href = '../form/form.html';
+
+							}
+						}
+					} else if (response.code == '4001') {
+						//成公关闭loading页面
+						setTimeout(function() {
+							$('#page_loading').css('display', 'none');
+						}, 500);
+						$('#error_cuowu').css('display', '-webkit-box');
+						return;
+					} else if (response.code == '4003') {
+						//成公关闭loading页面
+						setTimeout(function() {
+							$('#page_loading').css('display', 'none');
+						}, 500);
+						$('#error_cuowu').css('display', '-webkit-box');
+						return;
+					} else if (response.code == '4004') {
+						//成公关闭loading页面
+						setTimeout(function() {
+							$('#page_loading').css('display', 'none');
+						}, 500);
+						$('#error_cuowu').css('display', '-webkit-box');
+						return;
+					} else if (response.code == '4019') {
+						//成公关闭loading页面
+						setTimeout(function() {
+							$('#page_loading').css('display', 'none');
+						}, 500);
+						that.error_show = true;
+						that.error_text = '促销活动不存在';
+						return;
+					} else if (response.code == '4014') {
+						//成公关闭loading页面
+						setTimeout(function() {
+							$('#page_loading').css('display', 'none');
+						}, 500);
+						that.error_show = true;
+						that.error_text = '活动未开始(' + response.promotion_id + ')';
+						return;
+					} else if (response.code == '4015') {
+						//成公关闭loading页面
+						setTimeout(function() {
+							$('#page_loading').css('display', 'none');
+						}, 500);
+						that.error_show = true;
+						that.error_text = '活动已结束';
+						return;
+					} else if (response.code == '4017') {
+						//成公关闭loading页面
+						setTimeout(function() {
+							$('#page_loading').css('display', 'none');
+						}, 500);
+						that.error_show = true;
+						that.error_text = '活动暂停';
+						return;
+					} else if (response.code == '4018') {
+						//成公关闭loading页面
+						setTimeout(function() {
+							$('#page_loading').css('display', 'none');
+						}, 500);
+						that.error_show = true;
+						that.error_text = '活动已下架';
+						return;
+					} else if (response.code == '4035') {
+						//成公关闭loading页面
+						setTimeout(function() {
+							$('#page_loading').css('display', 'none');
+						}, 500);
+						that.error_show = true;
+						that.error_text = '活动未上线';
+						return;
+					} else if (response.code == '499') {
+						//成公关闭loading页面
+						setTimeout(function() {
+							$('#page_loading').css('display', 'none');
+						}, 500);
+						$('#error_cuowu').css('display', '-webkit-box');
+						return;
+					}
+				})
+			},
+			//抽奖接口
+			luckyDraw: function() {
+				var that = this;
+				var ticket_pic_id = null != window.sessionStorage.getItem("ticket_pic_id") ? window.sessionStorage.getItem("ticket_pic_id") : null != zexUtil.GetQueryString("ticket_pic_id") ? zexUtil.GetQueryString("ticket_pic_id") : "";
+				var verify_code = window.sessionStorage.getItem('duijiangma') != null ? window.sessionStorage.getItem('duijiangma') : '';
+				var draw_type = (null != ticket_pic_id && ticket_pic_id != '') ? "ticket_draw" : "code_draw";
+				var reqParams = {
+					open_id: zexService.getOpenId(),
+					promotion_id: urlParams.promotion_id,
+					draw_type: draw_type,
+					verify_code: verify_code,
+					ticket_pic_id: ticket_pic_id,
+					timestamp: zexUtil.getTimestamp()
+				};
+				var isPartake = window.sessionStorage.getItem('isPartake');
+				if (null != isPartake) {
+					that.setHintModal("您已领过");
+					wx.closeWindow();
+					return;
+				}
+				var nextPage = window.sessionStorage.getItem('nextPage');
+				if (null != nextPage && nextPage == 'shake_receive_page') {
+					that.shake_text = window.sessionStorage.getItem('shake_text');
+					that.prize_level_ids = window.sessionStorage.getItem('prize_level_ids');
+					that.is_show = true;
+					that.is_success = true;
+					that.but_sshow = true;
+					that.show_su = true;
+					return;
+				}
+				zexApis.getLuckyDraw(reqParams).done(function(response) {
+
+					if (response.code == '200') {
+
+
+
+
+						that.is_show = true;
+						that.is_success = true;
+						that.but_sshow = true;
+						that.show_su = true;
+						that.shake_text = response.prize_texts;
+						that.prize_level_ids = response.prize_level_ids;
+						window.sessionStorage.setItem('prize_level_ids', that.prize_level_ids);
+						window.sessionStorage.setItem('shake_text', that.shake_text);
+					} else if (response.code == '4030') {
+						that.is_show = true;
+						that.but_cshow = true;
+						that.show_er = true;
+						that.shake_text = '中奖次数超过限制';
+						return;
+					} else if (response.code == '4027') {
+						that.is_show = true;
+						that.but_cshow = true;
+						that.show_er = true;
+						that.shake_text = '未中奖';
+						return;
+					} else if (response.code == '4006') {
+						that.is_show = true;
+						that.but_cshow = true;
+						that.show_er = true;
+						that.shake_text = '重复抽奖';
+						return;
+					} else if (response.code == '4008') {
+						that.is_show = true;
+						that.but_cshow = true;
+						that.show_er = true;
+						that.shake_text = '小票ID已使用';
+						return;
+					} else if (response.code == '4025') {
+						that.is_show = true;
+						that.but_cshow = true;
+						that.show_er = true;
+						that.shake_text = '未中奖';
+					} else if (response.code == '40014') {
+						that.is_show = true;
+						that.but_cshow = true;
+						that.show_er = true;
+						that.shake_text = '重复点击';
+					} else if (response.code == '4001') {
+						$('#error_cuowu').css('display', '-webkit-box');
+						return;
+					} else if (response.code == '4003') {
+						$('#error_cuowu').css('display', '-webkit-box');
+						return;
+					} else if (response.code == '4019') {
+						that.error_show = true;
+						that.error_text = '促销活动不存在';
+						return;
+					} else if (response.code == '4014') {
+						that.error_show = true;
+						that.error_text = '活动未开始(' + response.promotion_id + ')';
+						return;
+					} else if (response.code == '4015') {
+						that.error_show = true;
+						that.error_text = '活动已结束';
+						return;
+					} else if (response.code == '4017') {
+						that.error_show = true;
+						that.error_text = '活动暂停';
+						return;
+					} else if (response.code == '4018') {
+						that.error_show = true;
+						that.error_text = '活动下架';
+						return;
+					} else if (response.code == '4035') {
+						that.error_show = true;
+						that.error_text = '活动未上线';
+						return;
+					} else if (response.code == '499') {
+						$('#error_cuowu').css('display', '-webkit-box');
+						return;
+					}
+				}).always(function(status) {
+					if (status.statusText == 'timeout') {
+						$('#error_cuowu').css('display', '-webkit-box');
+						return;
+					};
+				});
+				reqParams.operator_type = 'shakeJiang';
+				reqParams.source = urlParams.scene;
+				reqParams.note = urlParams.promotion_id;
+				zexApis.promotionLog(reqParams).done(function() {});
+			},
+			//领取接口
+			envelope: function() {
+				var that = this;
+				if (that.one_click) {
+					that.one_click = false;
+					var ticket_pic_id = null != window.sessionStorage.getItem("ticket_pic_id") ? window.sessionStorage.getItem("ticket_pic_id") : null != zexUtil.GetQueryString("ticket_pic_id") ? zexUtil.GetQueryString("ticket_pic_id") : "";
+					var verify_code = window.sessionStorage.getItem('duijiangma') != null ? window.sessionStorage.getItem('duijiangma') : '';
+					var draw_type = (null != ticket_pic_id && ticket_pic_id != '') ? "ticket_draw" : "code_draw";
+					var reqParams = {
+						open_id: zexService.getOpenId(),
+						promotion_id: urlParams.promotion_id,
+						draw_type: draw_type,
+						verify_code: verify_code,
+						prize_level_ids: that.prize_level_ids,
+						ticket_pic_id: ticket_pic_id,
+						timestamp: zexUtil.getTimestamp()
+					};
+					zexApis.getInterfacecode(reqParams).done(function(response) {
+						window.sessionStorage.setItem('isPartake', true); // 标识用户此次已经参与过活动，当从下个页面返回时，不允许再次参与
+						if (response.code == '200') {
+							window.sessionStorage.setItem('ticket_pic_id', ticket_pic_id);
+							window.sessionStorage.setItem('draw_check_priority', response.draw_check_priority);
+							if (response.is_collect_userinfo == 'TRUE') {
+								window.location.href = '../form/form.html';
+								that.one_click = true;
+							} else if (response.is_collect_userinfo == 'FALSE') {
+								//
+								var public_draw = (null != response.draw_type && response.draw_type != '') ? response.draw_type : window.sessionStorage.getItem('public_draw');
+								var draw_check_priority = (null != response.draw_check_priority && response.draw_check_priority != '') ? response.draw_check_priority : window.sessionStorage.getItem('draw_check_priority');
+								if (public_draw == 'code_draw' || (public_draw == 'ticket_draw' && draw_check_priority == 'first_check')) {
+									//去结果页面
+									window.location.href = '../jieguo/jieguo.html';
+									that.one_click = true;
+								} else if (public_draw == 'ticket_draw' && draw_check_priority == 'first_draw') {
+									//审核页面
+									window.location.href = '../review/review.html';
+									that.one_click = true;
+								}
+							}
+						} else if (response.code == '4028') {
+							that.setHintModal("已领完");
+							that.one_click = true;
+							return;
+						} else if (response.code == '4029') {
+							that.setHintModal("请勿重新领取");
+							that.one_click = true;
+							return;
+						} else if (response.code == '40014') {
+							that.setHintModal("重复点击");
+							that.one_click = true;
+							return;
+						} else if (response.code == '4001') {
+							$('#error_cuowu').css('display', '-webkit-box');
+							return;
+						} else if (response.code == '4003') {
+							$('#error_cuowu').css('display', '-webkit-box');
+							return;
+						} else if (response.code == '4019') {
+							that.error_show = true;
+							that.error_text = '促销活动不存在';
+							return;
+						} else if (response.code == '4014(' + response.promotion_id + ')') {
+							that.error_show = true;
+							that.error_text = '活动未开始';
+							return;
+						} else if (response.code == '4015') {
+							that.error_show = true;
+							that.error_text = '活动已结束';
+							return;
+						} else if (response.code == '4017') {
+							that.error_show = true;
+							that.error_text = '活动暂停';
+							return;
+						} else if (response.code == '4018') {
+							that.error_show = true;
+							that.error_text = '活动下架';
+							return;
+						} else if (response.code == '4035') {
+							that.error_show = true;
+							that.error_text = '活动未上线';
+							return;
+						} else if (response.code == '499') {
+							$('#error_cuowu').css('display', '-webkit-box');
+							return;
+						}
+					}).always(function(status) {
+						if (status.statusText == 'timeout') {
+							$('#error_cuowu').css('display', '-webkit-box');
+							return;
+						};
+					});
+					reqParams.operator_type = 'receiveReward';
+					reqParams.source = urlParams.scene;
+					reqParams.note = urlParams.promotion_id;
+					zexApis.promotionLog(reqParams).done(function() {});
+				}
+			},
+			closewin: function() {
+				wx.closeWindow();
+			},
+			setHintModal: function(content) {
+				var that = this;
+				this.hintModal.is_show = true;
+				this.hintModal.content = content;
+				setTimeout(function() {
+					that.hintModal.is_show = false;
+				}, 3000);
+			}
+		}
+	});
+
+
+
+
+	var isMobile = {
+		Android: function() {
+			return navigator.userAgent.match(/Android/i) ? true : false;
+		},
+		Ios: function() {
+			return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+		},
+		BlackBrrey: function() {
+			return navigator.userAgent.match(/BlackBrrey/i) ? true : false;
+		},
+		Windows: function() {
+			return navigator.userAgent.match(/IEMobile/i) ? true : false;
+		},
+		any: function() {
+			return (isMobile.Android() || isMobile.Ios() || isMobile.BlackBrrey || isMobile.Windows());
+		}
+	};
+
+	if (isMobile.Android()) {
+
+		if (window.DeviceMotionEvent) {
+			var speed = 10;
+			var x = y = z = lastX = lastY = lastZ = 0;
+			window.addEventListener('devicemotion',
+				function() {
+					var acceleration = event.accelerationIncludingGravity;
+					x = acceleration.x;
+					y = acceleration.y;
+					if (!shake_container.isyao) {
+						if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+							$('#prize').addClass('prize_yd');
+							shake_container.is_show_anzhuo = false;
+							shake_container.is_show_ios = true;
+
+							shake_container.isyao = true;
+							var timeyaoyiyao = setTimeout(function() {
+								shake_container.is_show_anzhuo = true;
+								shake_container.is_show_ios = true;
+								shake_container.luckyDraw();
+							}, 5000);
+						};
+					};
+					lastX = x;
+					lastY = y;
+				}, false);
+		} else {
+			$('#tishi_title').html('您的手机不支持摇一摇功能');
+			$('#error_cuowu').css('display', '-webkit-box');
+		};
+
+
+	} else {
+
+		shake_container.is_show_anzhuo = true;
+		shake_container.is_show_ios = false;
+		shake_container.isyao = true;
+		var timeyaoyiyao = setTimeout(function() {
+			$("prize12").removeClass("cake");
+			shake_container.is_show_anzhuo = true;
+			shake_container.is_show_ios = true;
+			shake_container.luckyDraw();
+		}, 5000);
+
+	}
+
+</script>

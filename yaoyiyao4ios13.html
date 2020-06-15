@@ -7,14 +7,11 @@
     <title>Document</title>
 </head>
 
-
 <body onload="init()">
-    1
     <button id="btn">点击授权</button>
     <script type="text/javascript">
         document.getElementById("btn").addEventListener("click", function() {
             if (typeof DeviceMotionEvent.requestPermission === 'function') {
-
                 DeviceMotionEvent.requestPermission()
                     .then(permissionState => {
                         if (permissionState === 'granted') {
@@ -35,7 +32,6 @@
         function init() {
             if (window.DeviceMotionEvent) {
                 if (typeof DeviceMotionEvent.requestPermission === 'function') {
-
                     DeviceMotionEvent.requestPermission()
                         .then(permissionState => {
                             if (permissionState === 'granted') {

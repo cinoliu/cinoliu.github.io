@@ -15,21 +15,18 @@
 	<meta http-equiv="Expires" content="0" />
 	<title>摇一摇抽奖页</title>
 	<link rel="stylesheet" href="yaoyiyao.css">
-	<link rel="stylesheet" href="../css/plugins/loading.css">
-
-	<script type="text/javascript" src="../js/plugins/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/jweixin-1.2.0.js"></script>
-	<script type="text/javascript" src="../js/plugins/md5.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/vue.min.js"></script>
-
-
-	<script type="text/javascript" src="../js/plugins/hammer.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/vue-touch.min.js"></script>
-	<script type="text/javascript" src="../js/plugins/jsencrypt.min.js"></script>
-	<script type="text/javascript" src="../js/zexUtility.js"></script>
-	<script type="text/javascript" src="../js/zexService.js"></script>
-	<script type="text/javascript" src="../js/wxConfig.js"></script>
-	<script type="text/javascript" src="../js/zexApis.js"></script>
+	<link rel="stylesheet" href="../../css/plugins/loading.css">
+	<script type="text/javascript" src="../../js/plugins/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/jweixin-1.2.0.js"></script>
+	<script type="text/javascript" src="../../js/plugins/md5.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/vue.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/hammer.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/vue-touch.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/jsencrypt.min.js"></script>
+	<script type="text/javascript" src="../../js/zexUtility.js"></script>
+	<script type="text/javascript" src="../../js/zexService.js"></script>
+	<script type="text/javascript" src="../../js/wxConfig.js"></script>
+	<script type="text/javascript" src="../../js/zexApis.js"></script>
 </head>
 <style>
 	.col_red {
@@ -143,7 +140,7 @@
 
 <body>
 	<div id="shake_container" class="shake_page">
-		
+
 		<div id="page_loading" class="page-loading">
 			<div class="page-loading-control">
 				<div class="rect1"></div>
@@ -153,7 +150,7 @@
 				<div class="rect5"></div>
 			</div>
 		</div>
-		
+
 		<img class="shake_page_img" :src="page_bg">
 
 		<div id="error_cuowu" class="error_cuowu">
@@ -182,16 +179,16 @@
 
 		<div class="show_box" :style='{top: isHightTop ? "30%":"36%"}'>
 			<!-- <div class="kong_box"></div> -->
-			<div class="shake_photo" v-if="!is_show_anzhuo">
+			<div class="shake_photo" v-if="!is_show_anzhuo" id="anzhuoSHow">
 				<img id="prize" class="prize" :src="shake_yao" />
 
 			</div>
 
-			<div class="shake_photo" v-if="!is_show_ios">
+			<div class="shake_photo" v-if="!is_show_ios" id="iosSHow">
 				<img id="prize12" class="prize cake" :src="shake_yao" />
 			</div>
 
-			<div class="shake_jieguo" v-if="is_show">
+			<div class="shake_jieguo" v-if="is_show" style="margin-top: -84%;">
 				<img class="prize_jieguo" :src="jieguo_bg">
 				<div class="prize_title" :class="autoCol" :style="{color: shake_success_text}" v-if="show_su">恭喜您</div>
 				<div class="prize_title" :class="autoCol" :style="{color: shake_fail_text}" v-if="show_er">很遗憾</div>
@@ -222,6 +219,7 @@
 		wx.closeWindow();
 	}
 	var urlParams = zexService.getUrlParamsInfo();
+
 	var shake_container = new Vue({
 		el: '#shake_container',
 		data: {
@@ -428,6 +426,8 @@
 			//抽奖接口
 			luckyDraw: function() {
 				var that = this;
+
+
 				var ticket_pic_id = null != window.sessionStorage.getItem("ticket_pic_id") ? window.sessionStorage.getItem("ticket_pic_id") : null != zexUtil.GetQueryString("ticket_pic_id") ? zexUtil.GetQueryString("ticket_pic_id") : "";
 				var verify_code = window.sessionStorage.getItem('duijiangma') != null ? window.sessionStorage.getItem('duijiangma') : '';
 				var draw_type = (null != ticket_pic_id && ticket_pic_id != '') ? "ticket_draw" : "code_draw";
@@ -459,6 +459,21 @@
 
 					if (response.code == '200') {
 						$('#prize').removeClass('prize_yd');
+
+						that.is_show_anzhuo = true;
+						that.is_show_ios = true;
+
+
+
+						var ui = document.getElementById("prize12");
+						ui.style.opacity = 0;
+
+
+						var ui1 = document.getElementById("prize");
+						ui1.style.opacity = 0;
+
+
+
 						that.is_show = true;
 						that.is_success = true;
 						that.but_sshow = true;
@@ -696,8 +711,10 @@
 
 							shake_container.isyao = true;
 							var timeyaoyiyao = setTimeout(function() {
+								shake_container.is_show_anzhuo = true;
+								shake_container.is_show_ios = true;
 								shake_container.luckyDraw();
-							}, 2000);
+							}, 5000);
 						};
 					};
 					lastX = x;
@@ -716,8 +733,13 @@
 		shake_container.isyao = true;
 		var timeyaoyiyao = setTimeout(function() {
 			$("prize12").removeClass("cake");
+			shake_container.is_show_anzhuo = true;
+			shake_container.is_show_ios = true;
+
+
+
 			shake_container.luckyDraw();
-		}, 2000);
+		}, 5000);
 
 	}
 
