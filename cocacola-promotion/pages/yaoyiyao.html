@@ -143,6 +143,7 @@
 
 <body>
 	<div id="shake_container" class="shake_page">
+		
 		<div id="page_loading" class="page-loading">
 			<div class="page-loading-control">
 				<div class="rect1"></div>
@@ -152,6 +153,7 @@
 				<div class="rect5"></div>
 			</div>
 		</div>
+		
 		<img class="shake_page_img" :src="page_bg">
 
 		<div id="error_cuowu" class="error_cuowu">
@@ -185,13 +187,9 @@
 
 			</div>
 
-
 			<div class="shake_photo" v-if="!is_show_ios">
 				<img id="prize12" class="prize cake" :src="shake_yao" />
 			</div>
-
-
-
 
 			<div class="shake_jieguo" v-if="is_show">
 				<img class="prize_jieguo" :src="jieguo_bg">
@@ -711,21 +709,15 @@
 		};
 
 
-
-
-
 	} else {
-
 
 		shake_container.is_show_anzhuo = true;
 		shake_container.is_show_ios = false;
-
 		shake_container.isyao = true;
 		var timeyaoyiyao = setTimeout(function() {
 			$("prize12").removeClass("cake");
 			shake_container.luckyDraw();
 		}, 2000);
-
 
 	}
 
