@@ -579,7 +579,11 @@
 		}
 	};
 	if (isMobile.Ios()) {
-		alert("ios")
+		$('#prize').addClass('prize_yd');
+		shake_container.isyao = true;
+		var timeyaoyiyao = setTimeout(function() {
+			shake_container.luckyDraw();
+		}, 2000);
 	} else {
 		if (window.DeviceMotionEvent) {
 			var speed = 10;
