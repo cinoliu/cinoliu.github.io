@@ -151,7 +151,7 @@
 				<div class="rect5"></div>
 			</div>
 		</div>
-		<img class="shake_page_img" src="http://file01.16sucai.com/d/file/2013-11-18/13847520538062.jpg">
+		<img class="shake_page_img" :src="page_bg">
 
 		<div id="error_cuowu" class="error_cuowu">
 			<div class="error_cuowu_box">
@@ -180,13 +180,13 @@
 		<div class="show_box" :style='{top: isHightTop ? "30%":"36%"}'>
 			<!-- <div class="kong_box"></div> -->
 			<div class="shake_photo" v-if="!is_show_anzhuo">
-				<img id="prize" class="prize" src="https://i04piccdn.sogoucdn.com/e6be10c95466b166" />
+				<img id="prize" class="prize" :src="shake_yao"/>
 
 			</div>
 
 
 			<div class="shake_photo" v-if="!is_show_ios">
-				<img id="prize12" class="prize cake" src="https://i03piccdn.sogoucdn.com/9ce3d75443802460" />
+				<img id="prize12" class="prize cake" :src="shake_yao"/>
 			</div>
 			
 			
