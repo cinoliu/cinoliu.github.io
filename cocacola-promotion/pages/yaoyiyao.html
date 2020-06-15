@@ -42,8 +42,9 @@
 
 
 	.cake {
-		animation: move 1s 0s infinite;
-		-webkit-animation: move 3s 0s infinite;
+		animation: move 1s 0s 2;
+
+		-webkit-animation: move 3s 0s 2;
 		transform-origin: bottom;
 		-webkit-transform-origin: bottom;
 		display: block;
@@ -180,18 +181,18 @@
 		<div class="show_box" :style='{top: isHightTop ? "30%":"36%"}'>
 			<!-- <div class="kong_box"></div> -->
 			<div class="shake_photo" v-if="!is_show_anzhuo">
-				<img id="prize" class="prize" src="https://i04piccdn.sogoucdn.com/e6be10c95466b166" />
+				<img id="prize" class="prize" :src="shake_yao" />
 
 			</div>
 
 
 			<div class="shake_photo" v-if="!is_show_ios">
-				<img id="prize12" class="prize cake" src="https://i03piccdn.sogoucdn.com/9ce3d75443802460" />
+				<img id="prize12" class="prize cake" :src="shake_yao" />
 			</div>
-			
-			
-			
-			
+
+
+
+
 			<div class="shake_jieguo" v-if="is_show">
 				<img class="prize_jieguo" :src="jieguo_bg">
 				<div class="prize_title" :class="autoCol" :style="{color: shake_success_text}" v-if="show_su">恭喜您</div>
@@ -211,18 +212,18 @@
 
 </html>
 <script>
-	//	if (illegalRequest) {
-	//		//成公关闭loading页面
-	//		setTimeout(function() {
-	//			$('#page_loading').css('display', 'none');
-	//		}, 500);
-	//		$('#error_cuowu').css('display', '-webkit-box');
-	//	};
-	//
-	//	function closewin() {
-	//		wx.closeWindow();
-	//	}
-	//	var urlParams = zexService.getUrlParamsInfo();
+	if (illegalRequest) {
+		//成公关闭loading页面
+		setTimeout(function() {
+			$('#page_loading').css('display', 'none');
+		}, 500);
+		$('#error_cuowu').css('display', '-webkit-box');
+	};
+
+	function closewin() {
+		wx.closeWindow();
+	}
+	var urlParams = zexService.getUrlParamsInfo();
 	var shake_container = new Vue({
 		el: '#shake_container',
 		data: {
@@ -290,11 +291,11 @@
 			}
 		},
 		created: function() {
-			//			if (screen.height > 736) {
-			//				this.isHightTop = true;
-			//			}
-			//			zexWxConfig.runConfig(false, function() {});
-			//			this.getShakePage();
+			if (screen.height > 736) {
+				this.isHightTop = true;
+			}
+			zexWxConfig.runConfig(false, function() {});
+			this.getShakePage();
 		},
 		methods: {
 
@@ -716,15 +717,12 @@
 	} else {
 
 
-	
 		shake_container.is_show_anzhuo = true;
 		shake_container.is_show_ios = false;
 
-
-
 		shake_container.isyao = true;
 		var timeyaoyiyao = setTimeout(function() {
-
+			$("prize12").removeClass("cake");
 			shake_container.luckyDraw();
 		}, 2000);
 
