@@ -15,13 +15,11 @@
     <title>摇一摇抽奖页</title>
     <link rel="stylesheet" href="yaoyiyao.css">
     <link rel="stylesheet" href="../css/plugins/loading.css">
-	    <link rel="stylesheet" href="../css/plugins/wenui.min.css">
 
     <script type="text/javascript" src="../js/plugins/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="../js/plugins/jweixin-1.2.0.js"></script>
     <script type="text/javascript" src="../js/plugins/md5.min.js"></script>
     <script type="text/javascript" src="../js/plugins/vue.min.js"></script>
-	    <script type="text/javascript" src="../js/plugins/wenui.min.js"></script>
 
 	
     <script type="text/javascript" src="../js/plugins/hammer.min.js"></script>
@@ -103,7 +101,7 @@
         </div>
     </div>
 	
-
+  <button id="btn">点击授权</button>
 </div>
 </body>
 </html>
@@ -589,8 +587,7 @@
                         }
                     })
                     .catch((err) => {
-                        alert("用户未允许权限");
-					 
+//                        alert("用户未允许权限");	 
     shake_container.shouquan_show=true;
 
 
@@ -620,7 +617,7 @@
                         .catch((err) => {
 					
 
-                            alert("用户未允许权限");
+//                            alert("用户未允许权限");
 							shake_container.shouquan_show=true;
 
                         });
