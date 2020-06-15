@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ViewUI example</title>
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/view-design/dist/styles/iview.css">
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/view-design/dist/iview.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <i-button @click="show">Click me!</i-button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                visible: false
+            },
+            created() {
+                var SHAKE_THRESHOLD = 3000;
+                var last_update = 0;
+                var x = y = z = last_x = last_y = last_z = 0;
+                this.init();
+            },
+            methods: {
+                init() {
+                    if (window.DeviceMotionEvent) {
+                        if (typeof DeviceMotionEvent.requestPermission === 'function') {
+
+                            DeviceMotionEvent.requestPermission()
+                                .then(permissionState => {
+                                    if (permissionState === 'granted') {
+                                        window.addEventListener('devicemotion', deviceMotionHandler, false);
+                                    }
+                                })
+                                .catch((err) => {
+                                    alert("用户未允许权限");
+                                });
+                        } else {
+                            window.addEventListener('devicemotion', deviceMotionHandler, false);
+                        }
+                    } else {
+                        alert('not support mobile event');
+                    }
+                },
+
+                show() {
+                    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+
+                        DeviceMotionEvent.requestPermission()
+                            .then(permissionState => {
+                                if (permissionState === 'granted') {
+                                    window.addEventListener('devicemotion', deviceMotionHandler, false);
+                                }
+                            })
+                            .catch((err) => {
+                                alert("用户未允许权限");
+                            });
+                    } else {
+                        alert("not found")
+                    }
+                },
+                deviceMotionHandler(eventData) {
+                    var acceleration = eventData.accelerationIncludingGravity;
+                    var curTime = new Date().getTime();
+                    if ((curTime - last_update) > 100) {
+                        var diffTime = curTime - last_update;
+                        last_update = curTime;
+                        x = acceleration.x;
+                        y = acceleration.y;
+                        z = acceleration.z;
+                        var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+                        if (speed > SHAKE_THRESHOLD) {
+                            alert("摇动了");
+                        }
+                        last_x = x;
+                        last_y = y;
+                        last_z = z;
+                    }
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>
