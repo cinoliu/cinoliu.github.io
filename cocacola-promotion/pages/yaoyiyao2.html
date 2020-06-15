@@ -16,9 +16,7 @@
     <script>
         new Vue({
             el: '#app',
-            data: {
-                visible: false
-            },
+            data: {},
             created() {
                 var SHAKE_THRESHOLD = 3000;
                 var last_update = 0;
@@ -34,6 +32,7 @@
                                 .then(permissionState => {
                                     if (permissionState === 'granted') {
                                         window.addEventListener('devicemotion', deviceMotionHandler, false);
+                                        this.deviceMotionHandler()
                                     }
                                 })
                                 .catch((err) => {
@@ -63,6 +62,7 @@
                         alert("not found")
                     }
                 },
+
                 deviceMotionHandler(eventData) {
                     var acceleration = eventData.accelerationIncludingGravity;
                     var curTime = new Date().getTime();
