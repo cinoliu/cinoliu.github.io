@@ -86,7 +86,7 @@
 			</div>
 
 			<div class="shake_photo" v-if="!is_show_ios">
-				<img id="prize" class="prize" src="http://ww1.sinaimg.cn/bmiddle/6295643djw1f606eb9cktj20go0mk41b.jpg" />
+				<img id="prize1" class="prize" src="http://ww1.sinaimg.cn/bmiddle/6295643djw1f606eb9cktj20go0mk41b.jpg" />
 			</div>
 
 
@@ -613,22 +613,16 @@
 
 
 		alert("ios")
-		shake_container.is_show = false;
+		shake_container.is_show = true;
 		shake_container.is_show_ios = false;
 
-		$('#prize').addClass('prize_yd');
+		$('#prize1').addClass('prize_yd');
 		shake_container.isyao = true;
 		var timeyaoyiyao = setTimeout(function() {
 			shake_container.luckyDraw();
 		}, 2000);
 
-		//		$('#prize').addClass('prize_yd');
-		//		shake_container.is_show_ios = true;
-		//		var timeyaoyiyao = setTimeout(function() {
-		//			shake_container.luckyDraw();
-		//		}, 2000);
-
-
+	
 	}
 
 </script>
