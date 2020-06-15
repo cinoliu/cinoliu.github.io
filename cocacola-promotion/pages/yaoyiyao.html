@@ -90,7 +90,7 @@
         <div class="error_cuowu_box">
             <div class="tishi_top">
                 <div class="tishi_title" >请确认授权11222！</div>
-				   <button id="btn" style="z-index: auto">点击授权1</button>
+				   <button id="btn" style="z-index: auto" @click="getSHow">点击授权1</button>
             </div>
             <div style="width:100%;height:1px;background-color:#b9b9b9;"></div>
             <div class="tishi_queren" id="btn">点击授权</div>
@@ -188,7 +188,26 @@
         methods: {
 			
 			
+getSHow(){
+	
+	   if (typeof DeviceMotionEvent.requestPermission === 'function') {
 
+                DeviceMotionEvent.requestPermission()
+                    .then(permissionState => {
+                        if (permissionState === 'granted') {
+                            window.addEventListener('devicemotion', deviceMotionHandler, false);
+                        }
+                    })
+                    .catch((err) => {
+                        alert("用户未允许权限");
+					 shake_container.shouquan_show = true;
+
+					
+                    });
+            } else {
+                alert("not found")
+            }
+},
 			
             getShakePage:function(){
                 var that = this;
