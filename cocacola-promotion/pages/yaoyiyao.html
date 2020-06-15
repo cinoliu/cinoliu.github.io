@@ -81,7 +81,7 @@
 
 		<div class="show_box" :style='{top: isHightTop ? "30%":"36%"}'>
 			<!-- <div class="kong_box"></div> -->
-			<div class="shake_photo" v-if="!is_show">
+			<div class="shake_photo" v-if="!is_show_anzhuo">
 				<img id="prize" class="prize" src="https://i04piccdn.sogoucdn.com/e6be10c95466b166" />
 			</div>
 
@@ -149,7 +149,7 @@
 			isyao: false,
 			//判断show
 			is_show: false,
-			is_show_anzhuo: false,
+			is_show_anzhuo:false,
 			is_show_ios: true,
 			//是否成功
 			is_success: false,
@@ -576,8 +576,8 @@
 			return (isMobile.Android() || isMobile.Ios() || isMobile.BlackBrrey || isMobile.Windows());
 		}
 	};
+	
 	if (isMobile.Android()) {
-
 
 		if (window.DeviceMotionEvent) {
 			var speed = 10;
@@ -590,7 +590,9 @@
 					if (!shake_container.isyao) {
 						if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
 							$('#prize').addClass('prize_yd');
-							shake_container.is_show_ios = false;
+								shake_container.is_show_anzhuo = false;
+								shake_container.is_show_ios = true;
+					
 							shake_container.isyao = true;
 							var timeyaoyiyao = setTimeout(function() {
 								shake_container.luckyDraw();
@@ -613,7 +615,7 @@
 
 
 		alert("ios111")
-		shake_container.is_show = false;
+		shake_container.is_show_anzhuo = true;
 		shake_container.is_show_ios = false;
 
 		$('#prize1').addClass('prize_yd');
