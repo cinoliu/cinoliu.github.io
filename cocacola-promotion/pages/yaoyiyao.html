@@ -586,6 +586,7 @@
 		}
 	};
 	if (isMobile.Ios()) {
+		alert("ios")
 		shake_container.is_show_ios = true;
 //		$('#prize').addClass('prize_yd');
 //		shake_container.is_show_ios = true;
@@ -599,6 +600,7 @@
 		
 		
 	} else {
+		alert("安卓")
 		if (window.DeviceMotionEvent) {
 			var speed = 10;
 			var x = y = z = lastX = lastY = lastZ = 0;
