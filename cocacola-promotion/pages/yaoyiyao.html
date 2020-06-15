@@ -42,7 +42,7 @@
 
 </style>
 
-<body >
+<body>
 	<div id="shake_container" class="shake_page">
 		<div id="page_loading" class="page-loading">
 			<div class="page-loading-control">
@@ -103,18 +103,18 @@
 
 </html>
 <script>
-	if (illegalRequest) {
-		//成公关闭loading页面
-		setTimeout(function() {
-			$('#page_loading').css('display', 'none');
-		}, 500);
-		$('#error_cuowu').css('display', '-webkit-box');
-	};
-
-	function closewin() {
-		wx.closeWindow();
-	}
-	var urlParams = zexService.getUrlParamsInfo();
+	//	if (illegalRequest) {
+	//		//成公关闭loading页面
+	//		setTimeout(function() {
+	//			$('#page_loading').css('display', 'none');
+	//		}, 500);
+	//		$('#error_cuowu').css('display', '-webkit-box');
+	//	};
+	//
+	//	function closewin() {
+	//		wx.closeWindow();
+	//	}
+	//	var urlParams = zexService.getUrlParamsInfo();
 	var shake_container = new Vue({
 		el: '#shake_container',
 		data: {
@@ -180,11 +180,11 @@
 			}
 		},
 		created: function() {
-			if (screen.height > 736) {
-				this.isHightTop = true;
-			}
-			zexWxConfig.runConfig(false, function() {});
-			this.getShakePage();
+			//			if (screen.height > 736) {
+			//				this.isHightTop = true;
+			//			}
+			//			zexWxConfig.runConfig(false, function() {});
+			//			this.getShakePage();
 		},
 		methods: {
 
@@ -581,82 +581,30 @@
 	if (isMobile.Ios()) {
 		alert("ios")
 	} else {
-		alert("安卓")
-	}
-
-
-	document.getElementById("getQXbtn").addEventListener("click", function() {
-		if (typeof DeviceMotionEvent.requestPermission === 'function') {
-
-			DeviceMotionEvent.requestPermission()
-				.then(permissionState => {
-					if (permissionState === 'granted') {
-						window.addEventListener('devicemotion', deviceMotionHandler, false);
-					}
-				})
-				.catch((err) => {
-					alert("用户未允许权限");
-
-				});
-		} else {
-			alert("not found")
-		}
-	})
-
-
-
-	var SHAKE_THRESHOLD = 3000;
-	var last_update = 0;
-	var x = y = z = last_x = last_y = last_z = 0;
-
-	function init() {
 		if (window.DeviceMotionEvent) {
-			if (typeof DeviceMotionEvent.requestPermission === 'function') {
-
-				DeviceMotionEvent.requestPermission()
-					.then(permissionState => {
-						if (permissionState === 'granted') {
-							window.addEventListener('devicemotion', deviceMotionHandler, false);
-						}
-					})
-					.catch((err) => {
-
-
-						alert("用户未允许权限");
-
-
-					});
-			} else {
-				window.addEventListener('devicemotion', deviceMotionHandler, false);
-			}
+			var speed = 10;
+			var x = y = z = lastX = lastY = lastZ = 0;
+			window.addEventListener('devicemotion',
+				function() {
+					var acceleration = event.accelerationIncludingGravity;
+					x = acceleration.x;
+					y = acceleration.y;
+					if (!shake_container.isyao) {
+						if (Math.abs(x - lastX) > speed || Math.abs(y - lastY) > speed) {
+							$('#prize').addClass('prize_yd');
+							shake_container.isyao = true;
+							var timeyaoyiyao = setTimeout(function() {
+								shake_container.luckyDraw();
+							}, 2000);
+						};
+					};
+					lastX = x;
+					lastY = y;
+				}, false);
 		} else {
-			alert('not support mobile event');
-		}
-	}
-
-
-	function deviceMotionHandler(eventData) {
-		var acceleration = eventData.accelerationIncludingGravity;
-		var curTime = new Date().getTime();
-		if ((curTime - last_update) > 100) {
-			var diffTime = curTime - last_update;
-			last_update = curTime;
-			x = acceleration.x;
-			y = acceleration.y;
-			z = acceleration.z;
-			var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
-			if (speed > SHAKE_THRESHOLD) {
-				alert("摇动了");
-				$('#prize').addClass('prize_yd');
-				shake_container.isyao = true;
-				var timeyaoyiyao = setTimeout(function() {
-					shake_container.luckyDraw();
-				}, 2000);
-			}
-			last_x = x;
-			last_y = y;
-			last_z = z;
-		}
+			$('#tishi_title').html('您的手机不支持摇一摇功能');
+			$('#error_cuowu').css('display', '-webkit-box');
+		};
 	}
 
 </script>
