@@ -22,6 +22,7 @@
             },
             created: function() {
                 var ua = window.navigator.userAgent.toLowerCase();
+				alert(ua)
                 //判断是不是微信
                 if (ua.indexOf("micromessenger") > 0) {
                     this.text1 = '微信扫码';
