@@ -186,12 +186,12 @@
 
 
 		<div class="next_btn" @click="next()" v-show="!course_show">
-			<img :src="page_info.upload_btn_img2" alt="" />
+			<img :src="page_info.upload_btn_img2" alt=""  @click="next()" />
 		</div>
 
 
 		<div class="next_text" @click="course_show=true" v-show="!course_show">
-			活动规则</div>
+			<span @click="course_show=true"> 活动规则</span></div>
 
 		<div class="next_time" v-show="!course_show">
 			活动时间: {{promotionBaseInfo.start_date}} 至 {{promotionBaseInfo.end_date}}</div>
