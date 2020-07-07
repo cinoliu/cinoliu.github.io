@@ -31,7 +31,7 @@
 	<style>
 		.act_rule_wrap {
 			width: 100%;
-			position: absolute;
+			position: fixed;
 			z-index: 100;
 			top: 0;
 			left: 0;
@@ -221,8 +221,8 @@
 					</div>
 
 					<div class="rule_btn_wrap">
-						<div class="rule_not_btn" v-touch:tap="is_agree = false">我不同意</div>
-						<div class="rule_agree_btn" v-touch:tap="getAgree">我同意</div>
+						<div class="rule_not_btn" @click="is_agree = false">我不同意</div>
+						<div class="rule_agree_btn" @click="getAgree">我同意</div>
 					</div>
 				</div>
 				<!--</transition>
@@ -232,8 +232,8 @@
 						由于您不同意我们的“消费者隐私声明”，您将不能参与活动。
 					</div>
 					<div class="rule_btn_wrap" style="height: 40%">
-						<div class="rule_not_btn" v-touch:tap="closeWindow()">确认</div>
-						<div class="rule_agree_btn" v-touch:tap="act_rule_show=true,is_agree=true">取消</div>
+						<div class="rule_not_btn" @click="closeWindow()">确认</div>
+						<div class="rule_agree_btn" @click="act_rule_show=true,is_agree=true">取消</div>
 					</div>
 				</div>
 				<!--            </transition>-->
