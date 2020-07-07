@@ -126,7 +126,7 @@
 
 		.act_rule_top {
 			width: 100%;
-			height: 100%;
+			height: 90%;
 			-webkit-overflow-scrolling: touch;
 			overflow-y: auto;
 			background: #ffffff;
@@ -234,10 +234,10 @@
 
 	</div>
 	<div class="act_rule" v-show="course_show" >
-		<div class="act_rule_top" @click="course_show = !course_show">
+		<div class="act_rule_top" >
 			<img :src="page_info.camp_desc_img" alt="" />
 		</div>
-<!--		<div class="close_btn" v-touch:tap="course_show = !course_show">关闭活动规则</div>-->
+		<div class="close_btn" v-touch:tap="course_show = !course_show">关闭活动规则</div>
 	</div>
 
 </body>
@@ -327,6 +327,8 @@
 			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams));
 			//
 			this.getTicketImg()
+										this.alertInfo('提示', '该手机号码已参加过活动！', '好的呢', true);
+
 		},
 		methods: {
 
