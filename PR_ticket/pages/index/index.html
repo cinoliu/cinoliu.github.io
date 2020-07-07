@@ -29,14 +29,15 @@
 	<script type="text/javascript" src="../../js/wxConfig.js"></script>
 	<script type="text/javascript" src="../../js/zexApis.js"></script>
 	<style>
-		.act_rule_wrap{
-				width: 100%;
-	position: absolute;
-	z-index: 100;
-	top: 0;
-	left: 0;
-	overflow: hidden;
+		.act_rule_wrap {
+			width: 100%;
+			position: absolute;
+			z-index: 100;
+			top: 0;
+			left: 0;
+			overflow: hidden;
 		}
+
 		.rule_wrap {
 			width: 100%;
 			height: 100%;
@@ -186,7 +187,7 @@
 
 
 		<div class="next_btn" @click="next()" v-show="!course_show">
-			<img :src="page_info.upload_btn_img2" alt=""  @click="next()" />
+			<img :src="page_info.upload_btn_img2" alt="" @click="next()" />
 		</div>
 
 
@@ -204,11 +205,11 @@
 
 
 		<!-- 是否同意协议 start-->
-		<div class="act_rule_wrap" v-show="act_rule_show" >
+		<div class="act_rule_wrap" v-show="act_rule_show">
 			<div class="weui-mask" style="z-index: 100;"></div>
 			<div class="rule_wrap">
 				<div class="rule_container" v-show="is_agree">
-					<div class="rule_content" >
+					<div class="rule_content">
 						是的！我要注册并同意接收由宝洁公司发出或推送的有关宝洁公司品牌以及与宝洁公司具有合作关系的其他品牌的不定期商业信息（包括电子邮件、短信、微信、天猫消息通知以及支付宝服务窗等），从而获得以下益处：
 						－成为宝洁生活家会员，并使用个性化优惠券节省费用；
 						－获得有关品牌、产品以及服务等的实用技巧和启发；
@@ -226,7 +227,7 @@
 				</div>
 				<!--</transition>
             <transition name="fade" >-->
-				<div class="rule_container" v-show="!is_agree" style="height: 30%" >
+				<div class="rule_container" v-show="!is_agree" style="height: 30%">
 					<div class="rule_content" style="font-size: 1.6rem; height: 50%;text-align: center;">
 						由于您不同意我们的“消费者隐私声明”，您将不能参与活动。
 					</div>
@@ -258,37 +259,39 @@
 				loading: true,
 				course_show: false,
 				page_info: {
-					main_page_id: "",
-					main_title: "",
 					input_btn_img1: "",
-					upload_btn_img2: "",
+					upload_btn_img2: "http://image.sweetmartmarketing.com/wxcamp_thumb/aq1GroeIwa.png",
 					input_btn_img2: "",
-					is_form_page: "",
-					camp_desc_color: "",
-					background_img: "",
-					camp_desc_img: "",
-					upload_btn_shape: "",
-					upload_btn_img1: ""
+					is_form_page: "false",
+					camp_desc_color: "#333333",
+					background_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/lOOPmoyKLJ.png",
+					main_page_id: "MP00000000672",
+					camp_desc_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/wXDGxI6v8A.jpg",
+					upload_btn_shape: "500*88",
+					main_title: "促销活动主页",
+					upload_btn_img1: "",
 				},
 
 				promotionBaseInfo: {
-					promotion_id: "",
-					promotion_name: "",
-					brand_id: "",
-					promotion_type: "",
-					participate_obj: "",
-					contract_id: "",
-					allow_everyday_error_verify_code_cnt: "",
-					lottery_rule: "",
-					user_lottery_cnt: "",
-					user_win_cnt: "",
-					is_collect_userinfo: "",
-					draw_check_priority: "",
+					end_date: "2020-07-12 23:59:59",
+					promotion_type: "upload_ticket",
+					participate_obj: "consumer",
+					contract_id: "GZTEST-202007061328",
+					allow_everyday_error_verify_code_cnt: "5",
+					promotion_id: "1000791",
+					user_lottery_cnt: "1",
+					user_win_cnt: "1",
+					brand_id: "726",
+					is_collect_userinfo: "TRUE",
+					promotion_name: "宝洁飘柔7-9月上传小票活动",
+					draw_check_priority: "first_draw",
 					template_msg_first_value: "",
-					lottery_type: "",
-					start_date: "",
-					end_date: "",
-					status: ""
+					lottery_type: "receive",
+					lottery_rule: "D_1",
+					start_date ""
+					2020 - 07 - 06 00: 00: 00 ",
+					status: "START"
+
 				},
 				promotion_id: "",
 				shouquan_show: true,
@@ -296,35 +299,35 @@
 				one_click: true,
 				act_rule_show: true,
 				is_agree: true,
-				urlParams:{},
+				urlParams: {},
 
 			};
 		},
 		created: function() {
 
 			this.loading = false;
-			 var net_agree =  window.sessionStorage.getItem('is_agree');
+			var net_agree = window.sessionStorage.getItem('is_agree');
 			console.log(net_agree)
-//			if(net_agree =='true'){
-//				 this.act_rule_show =false;
-//			}else{
-//			 this.act_rule_show =true;
-//
-//			}
-			 
+			//			if(net_agree =='true'){
+			//				 this.act_rule_show =false;
+			//			}else{
+			//			 this.act_rule_show =true;
+			//
+			//			}
 
-//			this.urlParams = {
-//				component_appid: zexUtil.GetQueryString("component_appid"),
-//				appid: zexUtil.GetQueryString("appid"), //"wx1b1c192fd7847f43",  
-//				open_id:  zexService.getOpenId(),
-//				promotion_id: zexUtil.GetQueryString("promotion_id"),
-//				scene_str: zexUtil.GetQueryString("scene_str"),
-//
-//			};
-//
-//			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams ));
-//			//
-//			this.getTicketImg()
+
+			//			this.urlParams = {
+			//				component_appid: zexUtil.GetQueryString("component_appid"),
+			//				appid: zexUtil.GetQueryString("appid"), //"wx1b1c192fd7847f43",  
+			//				open_id:  zexService.getOpenId(),
+			//				promotion_id: zexUtil.GetQueryString("promotion_id"),
+			//				scene_str: zexUtil.GetQueryString("scene_str"),
+			//
+			//			};
+			//
+			//			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams ));
+			//			//
+			//			this.getTicketImg()
 		},
 		methods: {
 
@@ -452,10 +455,10 @@
 			closeWindow: function() {
 				wx.closeWindow();
 			},
-			getAgree(){
+			getAgree() {
 				this.act_rule_show = false;
-			   window.sessionStorage.setItem('is_agree', true);
-				
+				window.sessionStorage.setItem('is_agree', true);
+
 			},
 
 
