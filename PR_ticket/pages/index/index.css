@@ -20,6 +20,7 @@ input:focus, input:click, input:hover {
     width: 100%;
     height: auto;
 }
+
 .page_box{
     width: 100%;
     position: absolute;
