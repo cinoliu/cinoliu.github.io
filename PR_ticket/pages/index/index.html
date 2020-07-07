@@ -304,29 +304,29 @@
 
 		},
 		created: function() {
-			this.loading = false;
-			var net_agree = window.sessionStorage.getItem('is_agree');
-			console.log(net_agree)
-			if (net_agree == 'true') {
-				this.act_rule_show = false;
-			} else {
-				this.act_rule_show = true;
-
-			}
-
-
-			this.urlParams = {
-				component_appid: zexUtil.GetQueryString("component_appid"),
-				appid: zexUtil.GetQueryString("appid"), //"wx1b1c192fd7847f43",  
-				open_id: zexService.getOpenId(),
-				promotion_id: zexUtil.GetQueryString("promotion_id"),
-				scene_str: zexUtil.GetQueryString("scene_str"),
-
-			};
-
-			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams));
-			//
-			this.getTicketImg()
+//			this.loading = false;
+//			var net_agree = window.sessionStorage.getItem('is_agree');
+//			console.log(net_agree)
+//			if (net_agree == 'true') {
+//				this.act_rule_show = false;
+//			} else {
+//				this.act_rule_show = true;
+//
+//			}
+//
+//
+//			this.urlParams = {
+//				component_appid: zexUtil.GetQueryString("component_appid"),
+//				appid: zexUtil.GetQueryString("appid"), //"wx1b1c192fd7847f43",  
+//				open_id: zexService.getOpenId(),
+//				promotion_id: zexUtil.GetQueryString("promotion_id"),
+//				scene_str: zexUtil.GetQueryString("scene_str"),
+//
+//			};
+//
+//			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams));
+//			//
+//			this.getTicketImg()
 										this.alertInfo('提示', '该手机号码已参加过活动！', '好的呢', true);
 
 		},
