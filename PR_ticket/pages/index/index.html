@@ -233,8 +233,8 @@
 			活动时间为7月10日-9月30日</div>
 
 	</div>
-	<div class="act_rule" v-show="course_show">
-		<div class="act_rule_top">
+	<div class="act_rule" v-show="course_show" >
+		<div class="act_rule_top" @click="course_show = !course_show">
 			<img :src="page_info.camp_desc_img" alt="" />
 		</div>
 <!--		<div class="close_btn" v-touch:tap="course_show = !course_show">关闭活动规则</div>-->
