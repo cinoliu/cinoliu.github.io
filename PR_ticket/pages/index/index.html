@@ -179,11 +179,11 @@
 
 
 	<!-- 是否同意协议 start-->
-	<div class="act_rule_wrap" v-show="act_rule_show" @touchstart.prevent>
+	<div class="act_rule_wrap" v-show="act_rule_show" >
 		<div class="weui-mask" style="z-index: 100;"></div>
 		<div class="rule_wrap">
-			<div class="rule_container" v-show="is_agree" @touchstart.prevent>
-				<div class="rule_content" @touchstart.stop>
+			<div class="rule_container" v-show="is_agree" >
+				<div class="rule_content" >
 					是的！我要注册并同意接收由宝洁公司发出或推送的有关宝洁公司品牌以及与宝洁公司具有合作关系的其他品牌的不定期商业信息（包括电子邮件、短信、微信、天猫消息通知以及支付宝服务窗等），从而获得以下益处：
 					－成为宝洁生活家会员，并使用个性化优惠券节省费用；
 					－获得有关品牌、产品以及服务等的实用技巧和启发；
@@ -195,19 +195,19 @@
 				</div>
 
 				<div class="rule_btn_wrap">
-					<div class="rule_not_btn" v-touch:tap="is_agree = false">我不同意</div>
-					<div class="rule_agree_btn" v-touch:tap="act_rule_show = false">我同意</div>
+					<div class="rule_not_btn" @click="is_agree = false">我不同意</div>
+					<div class="rule_agree_btn" @click="act_rule_show = false">我同意</div>
 				</div>
 			</div>
 			<!--</transition>
             <transition name="fade" >-->
-			<div class="rule_container" v-show="!is_agree" style="height: 30%" @touchstart.prevent>
+			<div class="rule_container" v-show="!is_agree" style="height: 30%" >
 				<div class="rule_content" style="font-size: 1.6rem; height: 50%;text-align: center;">
 					由于您不同意我们的“消费者隐私声明”，您将不能参与活动。
 				</div>
 				<div class="rule_btn_wrap" style="height: 40%">
-					<div class="rule_not_btn" v-touch:tap="closeWindow()">确认</div>
-					<div class="rule_agree_btn" v-touch:tap="act_rule_show=true,is_agree=true">取消</div>
+					<div class="rule_not_btn" @click="closeWindow()">确认</div>
+					<div class="rule_agree_btn"@click="act_rule_show=true,is_agree=true">取消</div>
 				</div>
 			</div>
 			<!--            </transition>-->
@@ -307,29 +307,29 @@
 
 		},
 		created: function() {
-			this.loading = false;
-			//			var net_agree = window.sessionStorage.getItem('is_agree');
-			//			console.log(net_agree)
-			//			if(net_agree =='true'){
-			//				 this.act_rule_show =false;
-			//			}else{
-			//			 this.act_rule_show =true;
-			//
-			//			}
-
-
-			//			this.urlParams = {
-			//				component_appid: zexUtil.GetQueryString("component_appid"),
-			//				appid: zexUtil.GetQueryString("appid"), //"wx1b1c192fd7847f43",  
-			//				open_id:  zexService.getOpenId(),
-			//				promotion_id: zexUtil.GetQueryString("promotion_id"),
-			//				scene_str: zexUtil.GetQueryString("scene_str"),
-			//
-			//			};
-			//
-			//			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams ));
-			//			//
-			//			this.getTicketImg()
+//			this.loading = false;
+//			var net_agree = window.sessionStorage.getItem('is_agree');
+//			console.log(net_agree)
+//			if (net_agree == 'true') {
+//				this.act_rule_show = false;
+//			} else {
+//				this.act_rule_show = true;
+//
+//			}
+//
+//
+//			this.urlParams = {
+//				component_appid: zexUtil.GetQueryString("component_appid"),
+//				appid: zexUtil.GetQueryString("appid"), //"wx1b1c192fd7847f43",  
+//				open_id: zexService.getOpenId(),
+//				promotion_id: zexUtil.GetQueryString("promotion_id"),
+//				scene_str: zexUtil.GetQueryString("scene_str"),
+//
+//			};
+//
+//			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams));
+//			//
+//			this.getTicketImg()
 		},
 		methods: {
 
