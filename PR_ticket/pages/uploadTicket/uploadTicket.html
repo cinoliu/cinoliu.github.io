@@ -168,26 +168,13 @@
 							timestamp: zexUtil.getTimestamp(),
 						};
 
+						if (res.code == "200") {
+							self.alertInfo("提示", "上传成功！", "我知道了", false);
 
-						zexApis.getLuckyDraw(drawPrizeLevelReq).done((function(res) {
+							window.location.href = '../result/result.html';
+						}
 
-							if (res.code == "200") {
 
-								self.page_info = res;
-
-								window.sessionStorage.setItem("prize_level_ids", res
-									.prize_level_ids);
-								window.sessionStorage.setItem("prizeInfo", JSON.stringify(
-									res));
-
-								self.alertInfo("提示", "上传成功！", "我知道了", false);
-
-								window.location.href = '../result/result.html';
-
-							} else {
-								self.alertInfo("提示", res.msg, "我知道了", false);
-							}
-						}).bind(this));
 
 
 

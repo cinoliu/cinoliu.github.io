@@ -1,286 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="x5-fullscreen" content="true">
-    <meta name="full-screen" content="yes">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
-    <meta http-equiv="cache-control" content="max-age=0"/>
-    <meta http-equiv="cache-control" content="no-cache"/>
-    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"/>
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
-    <meta http-equiv="Pragma" content="no-cache"/>
-    <meta http-equiv="Expires" content="0"/>
-    <title>活动页</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="../../css/plugins/loading.css">
-    <script type="text/javascript" src="../../js/plugins/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="../../js/plugins/jweixin-1.2.0.js"></script>
-    <script type="text/javascript" src="../../js/plugins/md5.min.js"></script>
-    <script type="text/javascript" src="../../js/plugins/vue.min.js"></script>
-    <script type="text/javascript" src="../../js/plugins/hammer.min.js"></script>
-    <script type="text/javascript" src="../../js/plugins/vue-touch.min.js"></script>
-    <script type="text/javascript" src="../../js/plugins/jsencrypt.min.js"></script>
-    <script type="text/javascript" src="../../js/zexUtility.js"></script>
-    <script type="text/javascript" src="../../js/zexService.js"></script>
-    <script type="text/javascript" src="../../js/wxConfig.js"></script>
-    <script type="text/javascript" src="../../js/zexApis.js"></script>
-    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">
-    <script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.3/weui.min.js"></script>
-  
-<style>
-.rule_wrap {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    z-index: 101;
-    display: flex;
-    display: -webkit-flex;
-    align-items: center;
-    -webkit-align-items: center;
-    justify-content: center;
-    -webkit-justify-content: center;
-    flex-direction: column-reverse;
-    -webkit-flex-direction: column-reverse;
+	<meta charset="UTF-8">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="full-screen" content="yes">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<title>活动页</title>
+	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="../../css/plugins/loading.css">
+	<script type="text/javascript" src="../../js/plugins/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/jweixin-1.2.0.js"></script>
+	<script type="text/javascript" src="../../js/plugins/md5.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/vue.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/hammer.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/vue-touch.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/jsencrypt.min.js"></script>
+	<script type="text/javascript" src="../../js/zexUtility.js"></script>
+	<script type="text/javascript" src="../../js/zexService.js"></script>
+	<script type="text/javascript" src="../../js/wxConfig.js"></script>
+	<script type="text/javascript" src="../../js/zexApis.js"></script>
+	<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">
+	<script type="text/javascript" src="https://res.wx.qq.com/open/libs/weuijs/1.1.3/weui.min.js"></script>
 
-    border: 1px solid #000;
-}
+	<style>
+		.rule_wrap {
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			z-index: 101;
+			display: flex;
+			display: -webkit-flex;
+			align-items: center;
+			-webkit-align-items: center;
+			justify-content: center;
+			-webkit-justify-content: center;
+			flex-direction: column-reverse;
+			-webkit-flex-direction: column-reverse;
 
-.rule_container{
-    width: 88%;
-    height: 72.5%;
-    background: #ffffff;
-    border-radius: 1rem;
-    padding: 2rem;
+			border: 1px solid #000;
+		}
 
-}
+		.rule_container {
+			width: 88%;
+			height: 72.5%;
+			background: #ffffff;
+			border-radius: 1rem;
+			padding: 2rem;
 
-.rule_content{
-    width: 100%;
-    max-height: 75%;
-    overflow-y: auto;
-    font-size: 1.4rem;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 .5rem;
-}
+		}
 
-.rule_btn_wrap{
-    width: 100%;
-    height: 15%;
-    max-height: 4rem;
-    /*min-height: 4rem;*/
-    margin-top: 15%;
-    /*border: 1px solid #000;*/
-    display: flex;
-    display: -webkit-flex;
-    justify-content: space-between;
-    -webkit-justify-content: space-between;
-}
+		.rule_content {
+			width: 100%;
+			max-height: 75%;
+			overflow-y: auto;
+			font-size: 1.4rem;
+			-webkit-overflow-scrolling: touch;
+			padding: 0 .5rem;
+		}
+
+		.rule_btn_wrap {
+			width: 100%;
+			height: 15%;
+			max-height: 4rem;
+			/*min-height: 4rem;*/
+			margin-top: 15%;
+			/*border: 1px solid #000;*/
+			display: flex;
+			display: -webkit-flex;
+			justify-content: space-between;
+			-webkit-justify-content: space-between;
+		}
 
 
 
-.rule_not_btn,.rule_agree_btn{
-    width: 48%;
-    height: 100%;
-    border: 2px solid #666;
-    border-radius: 1rem;
-    display: inline-flex;
-    display: -webkit-inline-flex;
-    align-items: center;
-    -webkit-align-items: center;
-    justify-content: center;
-    -webkit-justify-content: center;
-    font-size: 1.8rem;
-    font-weight: bold;
-    background: #ffffff;
-    transition: all .3s;
-    -webkit-transition: all .3s;
-    color: rgb(121,121,121);
-}
+		.rule_not_btn,
+		.rule_agree_btn {
+			width: 48%;
+			height: 100%;
+			border: 2px solid #666;
+			border-radius: 1rem;
+			display: inline-flex;
+			display: -webkit-inline-flex;
+			align-items: center;
+			-webkit-align-items: center;
+			justify-content: center;
+			-webkit-justify-content: center;
+			font-size: 1.8rem;
+			font-weight: bold;
+			background: #ffffff;
+			transition: all .3s;
+			-webkit-transition: all .3s;
+			color: rgb(121, 121, 121);
+		}
 
-.rule_not_btn:active,.rule_agree_btn:active{
-    background: #e5e5e5;
-    transition: all .3s;
-    -webkit-transition: all .3s;
-}
+		.rule_not_btn:active,
+		.rule_agree_btn:active {
+			background: #e5e5e5;
+			transition: all .3s;
+			-webkit-transition: all .3s;
+		}
 
-.rule_agree_btn{
-    color: rgb(241,103,103);
-    border-color: rgb(241,103,103);
-}
+		.rule_agree_btn {
+			color: rgb(241, 103, 103);
+			border-color: rgb(241, 103, 103);
+		}
 
-/** 活动规则  **/
-.act_rule {
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	background: #ffffff;
-	z-index: 101;
-}
+		/** 活动规则  **/
+		.act_rule {
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+			background: #ffffff;
+			z-index: 101;
+		}
 
-.act_rule_top {
-	width: 100%;
-	height: 90%;
-	-webkit-overflow-scrolling: touch;
-	overflow-y: auto;
-	background: #ffffff;
-}
-.act_rule_top img {
-	width: 100%;
-	height: auto;
-}
+		.act_rule_top {
+			width: 100%;
+			height: 90%;
+			-webkit-overflow-scrolling: touch;
+			overflow-y: auto;
+			background: #ffffff;
+		}
 
-.close_btn {
-	width: 100%;
-	height: 10%;
-	/*border: 1px solid red;*/
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	font-weight: 500;
-	color: #666666;
-	font-size: 2rem;
-	text-align: center;
-	background: #ffffff;
-	display: inline-flex;
-	display: -webkit-inline-flex;
-	align-items: center;
-	-webkit-align-items: center;
-	justify-content: center;
-	-webkit-justify-content: center;
-	user-select: none;
-	-webkit-user-select: none;
-	box-shadow: -4px 4px 8px 4px rgba(0, 0, 0, .2);
-}
+		.act_rule_top img {
+			width: 100%;
+			height: auto;
+		}
 
-</style>
+		.close_btn {
+			width: 100%;
+			height: 10%;
+			/*border: 1px solid red;*/
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			font-weight: 500;
+			color: #666666;
+			font-size: 2rem;
+			text-align: center;
+			background: #ffffff;
+			display: inline-flex;
+			display: -webkit-inline-flex;
+			align-items: center;
+			-webkit-align-items: center;
+			justify-content: center;
+			-webkit-justify-content: center;
+			user-select: none;
+			-webkit-user-select: none;
+			box-shadow: -4px 4px 8px 4px rgba(0, 0, 0, .2);
+		}
+
+	</style>
 </head>
 <style>
 
 </style>
+
 <body id="container" class="page_bg" :style="{backgroundImage:'url('+page_bg+')'}" style="height: 100%;">
-    <div id="page_loading" class="page-loading">
-        <div class="page-loading-control">
-            <div class="rect1"></div>
-            <div class="rect2"></div>
-            <div class="rect3"></div>
-            <div class="rect4"></div>
-            <div class="rect5"></div>
-        </div>
-    </div>
-
-
-  <!-- 是否同意协议 start-->
-    <div class="act_rule_wrap" v-show="act_rule_show" @touchstart.prevent>
-        <div class="weui-mask" style="z-index: 100;" ></div>
-        <div class="rule_wrap" >
-            <div class="rule_container" v-show="is_agree" @touchstart.prevent>
-                <div class="rule_content" @touchstart.stop>
-                    是的！我要注册并同意接收由宝洁公司发出或推送的有关宝洁公司品牌以及与宝洁公司具有合作关系的其他品牌的不定期商业信息（包括电子邮件、短信、微信、天猫消息通知以及支付宝服务窗等），从而获得以下益处：
-                    －成为宝洁生活家会员，并使用个性化优惠券节省费用；
-                    －获得有关品牌、产品以及服务等的实用技巧和启发；
-                    －了解和随机获得由宝洁公司和其他精选合作伙伴提供的免费样品，新产品，促销活动和其他信息。
-                    我同意宝洁公司及经其授权的第三方可以将我提供的个人信息与其他有关我的信息或数据进行收集和以整合分析等方式使用，以便为我提供更多个性化的产品和服务。
-                    如果您需要退订宝洁生活家微信服务，请直接取消微信关注。如果您需要退订宝洁生活家天猫会员消息，请直接通过天猫会员中心解绑。如果您需要退订宝洁生活家支付宝服务窗服务，请直接删除该服务窗。对于通过电子邮件、短信接收到的上述商业信息，
-                    如需要退订，请通过登录宝洁生活家网站【http://la.shenghuojia.com】或通过电子邮件、短信发送时提供的渠道进行相应退订。
-                    宝洁公司将妥善保管您提供给我们的个人信息，保证不被外泄。详见 <a href="https://www.pg.com/privacy/chineseS/privacy_notice.shtml" >隐私声明</a>。
-                </div>
-
-                <div class="rule_btn_wrap">
-                    <div class="rule_not_btn"  v-touch:tap="is_agree = false">我不同意</div>
-                    <div class="rule_agree_btn" v-touch:tap="act_rule_show = false">我同意</div>
-                </div>
-            </div>
-            <!--</transition>
-            <transition name="fade" >-->
-            <div class="rule_container" v-show="!is_agree" style="height: 30%" @touchstart.prevent>
-                <div class="rule_content" style="font-size: 1.6rem; height: 50%;text-align: center;">
-                    由于您不同意我们的“消费者隐私声明”，您将不能参与活动。
-                </div>
-                <div class="rule_btn_wrap" style="height: 40%">
-                    <div class="rule_not_btn" v-touch:tap="closeWindow()">确认</div>
-                    <div class="rule_agree_btn" v-touch:tap="act_rule_show=true,is_agree=true">取消</div>
-                </div>
-            </div>
-<!--            </transition>-->
-
-        </div>
-    </div>
-    <!-- 是否同意协议 end-->
-
-	<!-- 活动说明 start-->
-    <div class="act_rule" v-show="hdgz_isShow">
-		<div class="act_rule_top">
-			<img :src="camp_desc_img" alt="" />
+	<div id="page_loading" class="page-loading">
+		<div class="page-loading-control">
+			<div class="rect1"></div>
+			<div class="rect2"></div>
+			<div class="rect3"></div>
+			<div class="rect4"></div>
+			<div class="rect5"></div>
 		</div>
-		<div class="close_btn" v-touch:tap="hdgz_isShow = !hdgz_isShow">关闭活动说明</div>
 	</div>
-	<!-- 活动说明 end-->    
 
-    <div class="error_leixing" v-show="error_show" style="display: none;">
-        <div class="error_cuowu_box">
-            <div class="tishi_top">
-                <div class="tishi_title" v-text="error_text"></div>
-            </div>
-            <div style="width:100%;height:1px;background-color:#b9b9b9;"></div>
-            <div class="tishi_queren" onclick="closewin()">确&nbsp;&nbsp;认</div>
-        </div>
-    </div>
 
-    <div class="tanchutishi" v-show="hintModal.is_show" style="display: none;">
-        <div class="tanchutishi_box" v-text="hintModal.content"></div>
-    </div>
+	<!-- 是否同意协议 start-->
+	<div class="act_rule_wrap" v-show="act_rule_show" @touchstart.prevent>
+		<div class="weui-mask" style="z-index: 100;"></div>
+		<div class="rule_wrap">
+			<div class="rule_container" v-show="is_agree" @touchstart.prevent>
+				<div class="rule_content" @touchstart.stop>
+					是的！我要注册并同意接收由宝洁公司发出或推送的有关宝洁公司品牌以及与宝洁公司具有合作关系的其他品牌的不定期商业信息（包括电子邮件、短信、微信、天猫消息通知以及支付宝服务窗等），从而获得以下益处：
+					－成为宝洁生活家会员，并使用个性化优惠券节省费用；
+					－获得有关品牌、产品以及服务等的实用技巧和启发；
+					－了解和随机获得由宝洁公司和其他精选合作伙伴提供的免费样品，新产品，促销活动和其他信息。
+					我同意宝洁公司及经其授权的第三方可以将我提供的个人信息与其他有关我的信息或数据进行收集和以整合分析等方式使用，以便为我提供更多个性化的产品和服务。
+					如果您需要退订宝洁生活家微信服务，请直接取消微信关注。如果您需要退订宝洁生活家天猫会员消息，请直接通过天猫会员中心解绑。如果您需要退订宝洁生活家支付宝服务窗服务，请直接删除该服务窗。对于通过电子邮件、短信接收到的上述商业信息，
+					如需要退订，请通过登录宝洁生活家网站【http://la.shenghuojia.com】或通过电子邮件、短信发送时提供的渠道进行相应退订。
+					宝洁公司将妥善保管您提供给我们的个人信息，保证不被外泄。详见 <a href="https://www.pg.com/privacy/chineseS/privacy_notice.shtml">隐私声明</a>。
+				</div>
 
-    <img class="bg_img" v-bind:src="page_bg">
+				<div class="rule_btn_wrap">
+					<div class="rule_not_btn" v-touch:tap="is_agree = false">我不同意</div>
+					<div class="rule_agree_btn" v-touch:tap="act_rule_show = false">我同意</div>
+				</div>
+			</div>
+			<!--</transition>
+            <transition name="fade" >-->
+			<div class="rule_container" v-show="!is_agree" style="height: 30%" @touchstart.prevent>
+				<div class="rule_content" style="font-size: 1.6rem; height: 50%;text-align: center;">
+					由于您不同意我们的“消费者隐私声明”，您将不能参与活动。
+				</div>
+				<div class="rule_btn_wrap" style="height: 40%">
+					<div class="rule_not_btn" v-touch:tap="closeWindow()">确认</div>
+					<div class="rule_agree_btn" v-touch:tap="act_rule_show=true,is_agree=true">取消</div>
+				</div>
+			</div>
+			<!--            </transition>-->
 
-  
+		</div>
+	</div>
+	<!-- 是否同意协议 end-->
+
+
+
+
+	<img class="bg_img" v-bind:src="page_info.background_img">
+
+
+
+
+	<div class="next_btn" @click="next()" v-show="!course_show">
+		<img :src="page_info.upload_btn_img2" alt="" @click="next()" />
+	</div>
+
+
+	<div class="next_text" @click="course_show=true" v-show="!course_show">
+		<span @click="course_show=true"> 活动规则</span></div>
+
+	<div class="next_time" v-show="!course_show">
+		活动时间: {{promotionBaseInfo.start_date}} 至 {{promotionBaseInfo.end_date}}</div>
+
+
+	<div class="act_rule" v-show="course_show">
+		<div class="act_rule_top">
+			<img :src="page_info.camp_desc_img" alt="" />
+		</div>
+		<div class="close_btn" v-touch:tap="course_show = !course_show">关闭活动规则</div>
+	</div>
+
 </body>
+
 </html>
 <script>
- 
-        //成公关闭loading页面
-        setTimeout(function(){
-            $('#page_loading').css('display','none');
-        },500);
-  
-    function closewin(){
-        wx.closeWindow();
-    };
+	//成公关闭loading页面
+	setTimeout(function() {
+		$('#page_loading').css('display', 'none');
+	}, 500);
 
-    var container = new Vue({
-        el: '#container',
-        data: {
-            //loading显示
-            loading_show:true,
-            //初始化接口
-            page_info: {
+	function closewin() {
+		wx.closeWindow();
+	};
 
-            },
-            //初始化背景
-            page_bg: 'http://image.sweetmartmarketing.com/wxcamp_thumb/lOOPmoyKLJ.png',
-         
-            
-            //不能重复点击
-            one_click:true,
-            act_rule_show: true,
-            is_agree: true,
-            
-            hdgz_isShow: false,
-            camp_desc_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/wXDGxI6v8A.jpg",
-        },
-        created: function () {
-        
-        },
-        methods: {
-       
-         
-            closeWindow: function () {
-                wx.closeWindow();
-            }
-        }
-    })
+	var container = new Vue({
+		el: '#container',
+		data: {
+			loading: true,
+			course_show: false,
+			page_info: {
+				input_btn_img1: "",
+				upload_btn_img2: "http://image.sweetmartmarketing.com/wxcamp_thumb/aq1GroeIwa.png",
+				input_btn_img2: "",
+				is_form_page: "false",
+				camp_desc_color: "#333333",
+				background_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/lOOPmoyKLJ.png",
+				main_page_id: "MP00000000672",
+				camp_desc_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/wXDGxI6v8A.jpg",
+				upload_btn_shape: "500*88",
+				main_title: "促销活动主页",
+				upload_btn_img1: "",
+			},
+
+			promotionBaseInfo: {
+				end_date: "2020-07-12 23:59:59",
+				promotion_type: "upload_ticket",
+				participate_obj: "consumer",
+				contract_id: "GZTEST-202007061328",
+				allow_everyday_error_verify_code_cnt: "5",
+				promotion_id: "1000791",
+				user_lottery_cnt: "1",
+				user_win_cnt: "1",
+				brand_id: "726",
+				is_collect_userinfo: "TRUE",
+				promotion_name: "宝洁飘柔7-9月上传小票活动",
+				draw_check_priority: "first_draw",
+				template_msg_first_value: "",
+				lottery_type: "receive",
+				lottery_rule: "D_1",
+				start_date: "2020 - 07 - 06 00: 00: 00",
+
+				status: "START"
+
+			},
+			promotion_id: "",
+			shouquan_show: true,
+			//不能重复点击
+			one_click: true,
+			act_rule_show: true,
+			is_agree: true,
+			urlParams: {},
+
+
+		},
+		created: function() {
+			this.loading = false;
+			//			var net_agree = window.sessionStorage.getItem('is_agree');
+			//			console.log(net_agree)
+			//			if(net_agree =='true'){
+			//				 this.act_rule_show =false;
+			//			}else{
+			//			 this.act_rule_show =true;
+			//
+			//			}
+
+
+			//			this.urlParams = {
+			//				component_appid: zexUtil.GetQueryString("component_appid"),
+			//				appid: zexUtil.GetQueryString("appid"), //"wx1b1c192fd7847f43",  
+			//				open_id:  zexService.getOpenId(),
+			//				promotion_id: zexUtil.GetQueryString("promotion_id"),
+			//				scene_str: zexUtil.GetQueryString("scene_str"),
+			//
+			//			};
+			//
+			//			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams ));
+			//			//
+			//			this.getTicketImg()
+		},
+		methods: {
+
+			getTicketImg() {
+
+				var self = this;
+
+				var reqParams = {
+					open_id: this.urlParams.open_id,
+					promotion_id: this.urlParams.promotion_id,
+					timestamp: zexUtil.getTimestamp(),
+
+				};
+				//存储门店ID
+				if (urlParams.shop_id) {
+					window.sessionStorage.setItem('shop_id', urlParams.shop_id);
+				}
+
+
+				zexApis.statInformation(reqParams).done(function(response) {
+					self.loading = false;
+					if (response.code == '200') {
+						//成公关闭loading页面
+						setTimeout(function() {
+							$('#page_loading').css('display', 'none');
+						}, 500);
+
+						self.page_info = response.page;
+						self.promotionBaseInfo = response.promotionBaseInfo;
+						self.promotion_id = response.promotion_id;
+
+						self.promotionBaseInfo.start_date = self.promotionBaseInfo.start_date.substring(0, 10);
+
+						self.promotionBaseInfo.end_date = self.promotionBaseInfo.end_date.substring(0, 10);
+
+						// 存储基本信息
+						window.sessionStorage.setItem("base_info", JSON.stringify(self.promotionBaseInfo));
+						// 存储页面信息
+						window.sessionStorage.setItem("page_info", JSON.stringify(self.page_info));
+
+
+						var jsonUserFlowStr = JSON.parse(response.jsonUserFlowStr);
+
+						if (null != jsonUserFlowStr) {
+							window.sessionStorage.setItem('ticket_pic_id',
+								jsonUserFlowStr.ticket_pic_id);
+							window.sessionStorage.setItem('prize_level_ids',
+								jsonUserFlowStr.prize_level_ids);
+							window.sessionStorage.setItem('duijiangma',
+								jsonUserFlowStr.verify_code);
+							window.sessionStorage.setItem('public_draw',
+								jsonUserFlowStr.draw_type);
+							window.sessionStorage.setItem('shake_text',
+								jsonUserFlowStr.prize_texts);
+
+						}
+
+
+					} else if (response.code == '4019') {
+						self.alertInfo("提示", "促销活动不存在", "我知道了", true);
+						return;
+					} else if (response.code == '4014') {
+						self.alertInfo("提示", "活动未开始", "我知道了", true);
+						return;
+					} else if (response.code == '4015') {
+						self.alertInfo("提示", "活动已结束", "我知道了", true);
+						return;
+					} else if (response.code == '4017') {
+						self.alertInfo("提示", "活动暂停", "我知道了", true);
+						return;
+					} else if (response.code == '4018') {
+						self.alertInfo("提示", "活动下架", "我知道了", true);
+						return;
+					} else if (response.code == '4035') {
+						self.alertInfo("提示", "活动未上线", "我知道了", true);
+						return;
+					} else if (response.code == '4016') {
+						self.alertInfo("提示", "用户抽奖次数超过限制", "我知道了", true);
+						return;
+					} else if (response.code == '499') {
+						self.alertInfo("提示", "网络不好,请重试", "我知道了", true);
+						return;
+					} else if (response.code == '4001') {
+						self.alertInfo("提示", "网络不好,请重试", "我知道了", true);
+						return;
+					} else if (response.code == '4003') {
+						self.alertInfo("提示", "网络不好,请重试", "我知道了", true);
+						return;
+					} else if (response.code == '4004') {
+						self.alertInfo("提示", "网络不好,请重试", "我知道了", true);
+						return;
+					}
+				}).always(function(status) {
+					if (status.statusText == 'timeout') {
+						self.alertInfo("提示", "网络不好,请重试", "我知道了", true);
+					};
+				});
+
+			},
+
+			next: function() {
+
+
+				window.location.href = "../userInfo/userInfo.html";
+
+			},
+
+			// weUI Alert => clickBtn -> closeWindow()
+			alertInfo: function(title, content, btnTxt, isCloseWindow) {
+				weui.alert(content, {
+					title: title,
+					buttons: [{
+						label: btnTxt,
+						type: 'primary',
+						onClick: (function() {
+							if (isCloseWindow) {
+								this.closeWindow()
+							}
+						}).bind(this)
+					}]
+				});
+			},
+
+			// wx SDK clickWindow
+			closeWindow: function() {
+				wx.closeWindow();
+			},
+			getAgree() {
+				this.act_rule_show = false;
+				window.sessionStorage.setItem('is_agree', true);
+
+			},
+
+
+		}
+	})
 
 </script>
