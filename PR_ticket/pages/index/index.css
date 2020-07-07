@@ -1,0 +1,176 @@
+@import "../../css/reset.css";
+#container {
+	width: 100%;
+	height: auto;
+	position: relative;
+}
+
+.page_bg {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.page_bg img {
+	width: 100%;
+	height: auto;
+}
+
+.select_ticket_warp {
+	position: absolute;
+	top: 40%;
+	width: 90%;
+	height: 7%;
+	font-size: 1.4rem;
+	left: 5%;
+	background: #FFFFFF;
+	border-radius: .4rem;
+	/*border: 1px solid #000;*/
+	overflow: hidden;
+}
+
+.select_label {
+	width: 30%;
+	height: 100%;
+	text-align: center;
+	background: #999;
+	color: #ffffff;
+}
+
+.select_value {
+	width: 70%;
+	height: 100%;
+	overflow-y: hidden;
+}
+
+.ticket_course {
+	width: 100%;
+	position: absolute;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.ticket_course img {
+	width: 100%;
+	height: auto;
+	pointer-events: none;
+}
+
+.upload_btn_wrap {
+	width: 100%;
+	height: 50%;
+	position: absolute;
+	z-index: 101;
+	bottom: 0;
+	left: 0;
+}
+
+.font-14 {
+	font-size: 1.4rem;
+}
+
+.flex_align_center {
+	display: inline-flex;
+	display: -webkit-inline-flex;
+	align-items: center;
+	-webkit-align-items: center;
+	justify-content: center;
+	-webkit-justify-content: center;
+}
+
+.next_btn {
+	position: absolute;
+	width: 20rem;
+	left: calc((100% - 20rem)/2);
+	top: 63%;
+	/* 	top: 102%; */
+	height: 5rem;
+	/*    border: 1px solid #000; */
+	z-index: 10;
+	text-align: center;
+	/*    opacity: 1;
+    transition: all .5s;
+    -webkit-transition: all .5s; */
+}
+
+.next_text {
+	position: absolute;
+	width: 23rem;
+	left: calc((100% - 23rem)/2);
+	top: 72%;
+	/* 	top: 102%; */
+	height: 5rem;
+	/*    border: 1px solid #000; */
+	z-index: 10;
+	text-align: center;
+/*	color: #fff;*/
+	font-size: 16px;
+ text-decoration: underline
+
+}
+
+.next_time {
+	position: absolute;
+	width: 100%;
+	top: 77%;
+	height: 5rem;
+	z-index: 10;
+	text-align: center;
+
+/*	color: #fff;*/
+}
+
+.next_btn:active {
+	/*    opacity: .85;
+    transition: all .3s;
+    -webkit-transition: all .3s; */
+}
+
+.next_btn img {
+	width: 100%;
+	height: 100%;
+}
+
+.upload_box {
+	position: absolute;
+	height: 9rem;
+	width: 100%;
+	/* 	top: 61%; */
+	top: 50%;
+	/* 	border: 1px solid red; */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 8.5%;
+}
+
+.box_left,
+.box_right {
+	height: 100%;
+	width: 14.5rem;
+	border-radius: 1rem;
+}
+
+.box_left img,
+.box_right img {
+	height: 100%;
+	width: 100%;
+	border-radius: 1rem;
+}
+
+.goback {
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    top: 45%;
+    left: 80%;
+}
+
+

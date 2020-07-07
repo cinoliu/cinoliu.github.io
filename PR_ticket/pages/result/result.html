@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="x5-fullscreen" content="true" />
+	<meta name="full-screen" content="yes" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<title>上传成功</title>
+	<link rel="stylesheet" href="../../css/plugins/loading.css" />
+	<link rel="stylesheet" href="../../css/plugins/weui.min.css" />
+	<link rel="stylesheet" href="result.css" />
+	<script type="text/javascript" src="../../js/plugins/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/vue.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/fastclick.js"></script>
+	<script type="text/javascript" src="../../js/plugins/jweixin-1.2.0.js"></script>
+	<script type="text/javascript" src="../../js/plugins/md5.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/jsencrypt.min.js"></script>
+	<script type="text/javascript" src="../../js/plugins/weui.min.js"></script>
+	<script type="text/javascript" src="../../js/zexUtility.js"></script>
+	<script type="text/javascript" src="../../js/zexService.js"></script>
+	<script type="text/javascript" src="../../js/wxConfig.js"></script>
+	<script type="text/javascript" src="../../js/zexApis.js"></script>
+</head>
+
+<body>
+	<div id="container">
+		<div class="page-loading" v-show="loading">
+			<div class="page-loading-control">
+				<div class="rect1"></div>
+				<div class="rect2"></div>
+				<div class="rect3"></div>
+				<div class="rect4"></div>
+			</div>
+		</div>
+		<div class="page_bg">
+			<img src="../../images/bg4@2x.png" alt="" />
+		</div>
+
+
+		<div class="text_box">
+
+			<div class="prize_title"> 小票上传成功！</div>
+
+			<div class="prize_texts"> 
+				感谢您的参与,请耐心等候工作人员审核,周一至周五上传的小票审核时间最长24小时,周六、周日及法定假日上传的小票最长需要72小时,请耐心等候！
+				审核结果由短信通知,届时请留意。收到审核通过的短信后,请尽快点击领奖链接并领取奖品。具体领奖及使用方式,请点击首页【活动说明】进行查看。
+				如小票通过审核,您将于24~72小时内收到短信告知审核结果并发放“省心礼包”。
+				如有疑问,请拨打客服电话: 400-088-0325（工作时间：周一 至 周日 9:00-18:00 ）</div>
+
+		</div>
+
+		<div class="next" @click="next()">
+
+			<img src="../../images/button7@2x.png" alt="" />
+		</div>
+
+
+
+	</div>
+</body>
+<script>
+	new Vue({
+		el: "#container",
+		data: function() {
+			return {
+				loading: false,
+				page: {
+
+				},
+				Height: ""
+			};
+		},
+		created: function() {
+
+
+		},
+		methods: {
+
+
+			next: function() {
+
+				wx.closeWindow();
+			},
+
+
+
+		}
+	});
+
+</script>
+
+</html>
