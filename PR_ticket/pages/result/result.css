@@ -65,7 +65,7 @@
 	position: absolute;
 	top: 65%;
 	left: calc((100% - 20rem) / 2);
-	height: 5rem;
+	height: 10%;
 	width: 20rem;
 	/* 	border: 1px solid red; */
 }

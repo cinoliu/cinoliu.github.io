@@ -25,10 +25,10 @@
 
 .input_wrap{
     position: absolute;
-    width: 90%;
+    width: 80%;
     height: auto;
-    left: 5%;
-    top: 8%;
+    left: 10%;
+    top: 25%;
 	text-align: center;
 /*    padding-top: 15%; */
 }
@@ -40,9 +40,9 @@
 }
 
 .input{
-    width: 26rem;
+    width: 100%;
     border-radius: .4rem;
-    height: 3.5rem;
+    height: 4rem;
     outline: none;
     font-size: 1.5rem;
     padding-left: 3%;
@@ -57,9 +57,9 @@
 }
 
 .sms_box{
-    width: 26rem;
+    width:100%;
     border-radius: .4rem;
-    height: 3.5rem;
+    height: 4rem;
     outline: none;
     font-size: 1.5rem;
 	margin: 0 auto;
@@ -208,9 +208,9 @@
 
 .next {
     position: absolute;
-    top: 64%;
+    top: 60%;
     left: calc((100% - 20rem) / 2);
-    height: 5rem;
+    height:10%;
     width: 20rem;
     /* 	border: 1px solid red; */
 }

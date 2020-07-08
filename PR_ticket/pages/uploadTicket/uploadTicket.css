@@ -94,9 +94,9 @@
     position: absolute;
     width: 20rem;
     left: calc((100% - 20rem)/2);
-    top: 80%;
+    top: 67%;
 /* 	top: 102%; */
-    height: 5rem;
+    height: 10%;
 /*    border: 1px solid #000; */
 	z-index: 102;
 	

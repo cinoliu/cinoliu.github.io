@@ -141,15 +141,11 @@
 				var self = this;
 				self.loading = true;
 				var req = {
-
 					open_id: this.urlParams.open_id,
 					promotion_id: this.urlParams.promotion_id,
-
 					mobile: JSON.parse(window.sessionStorage.getItem("mobile")),
 					appid: this.urlParams.appid,
-
 					mediaId: serverId,
-
 					timestamp: zexUtil.getTimestamp(),
 
 				};

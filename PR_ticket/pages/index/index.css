@@ -121,11 +121,11 @@
 
 .next_btn {
 	position: absolute;
-	width: 20rem;
-	left: calc((100% - 20rem)/2);
+	width: 70%;
+	left: calc((100% - 70%)/2);
 	top: 63%;
 	/* 	top: 102%; */
-	height: 5.5rem;
+	height: 10%;
 	/*    border: 1px solid #000; */
 	z-index: 10;
 	text-align: center;
@@ -138,14 +138,14 @@
 	position: absolute;
 	width: 23rem;
 	left: calc((100% - 23rem)/2);
-	top: 72%;
+	top: 73%;
 	/* 	top: 102%; */
 	height: 5rem;
 	/*    border: 1px solid #000; */
 	z-index: 10;
 	text-align: center;
 	/*	color: #fff;*/
-	font-size: 1.5rem;
+	font-size: 1.6rem;
 	text-decoration: underline;
 	font-weight: 600;
 
@@ -154,12 +154,12 @@
 .next_time {
 	position: absolute;
 	width: 100%;
-	top: 77%;
+	top: 78%;
 	height: 5rem;
 	z-index: 10;
 	text-align: center;
 
-	font-size: 1.2rem;
+	font-size: 1.4rem;
 	font-weight: 500;
 }
 
