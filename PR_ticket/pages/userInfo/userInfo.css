@@ -210,7 +210,7 @@
     position: absolute;
     top: 60%;
     left: calc((100% - 20rem) / 2);
-    height:10%;
+    height: 15%;
     width: 20rem;
     /* 	border: 1px solid red; */
 }
