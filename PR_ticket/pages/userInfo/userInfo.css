@@ -209,9 +209,9 @@
 .next {
     position: absolute;
     top: 60%;
-    left: calc((100% - 20rem) / 2);
+    left: calc((100% -60%) / 2);
     height: 10%;
-    width: 20rem;
+    width: 60%;
     /* 	border: 1px solid red; */
 }
 
