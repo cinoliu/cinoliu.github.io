@@ -1,27 +1,32 @@
 @import "../../css/reset.css";
 
 
-#container{
-    width: 100%;
-    height: auto;
-    position: relative;	
+
+#container {
+	width: 100%;
+	height: auto;
+	overflow: scroll;
+	position: relative;
 }
 
-.page_bg{
-    position: relative;
+
+.page_bg {
+	/*position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    overflow: hidden;
-    pointer-events: none;
-	
+    left: 0;*/
+	width: 100%;
+	height: auto;
+
+
 }
 
-.page_bg img{
+
+img{
     width: 100%;
     height: auto;
+    display: block;
+    /* min-height: 100%;
+    display: -webkit-box; */
 }
 
 .select_ticket_warp{

@@ -3,9 +3,31 @@
 
 
 
-.page_bg {
+#container {
 	width: 100%;
 	height: auto;
+	overflow: scroll;
+	position: relative;
+}
+
+
+.page_bg {
+	/*position: fixed;
+    top: 0;
+    left: 0;*/
+	width: 100%;
+	height: auto;
+
+
+}
+
+
+img{
+    width: 100%;
+    height: auto;
+    display: block;
+    /* min-height: 100%;
+    display: -webkit-box; */
 }
 
 .page_box {
