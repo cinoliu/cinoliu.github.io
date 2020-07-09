@@ -1,19 +1,19 @@
 @import "../../css/reset.css";
 
 
-/*
 #container {
 	width: 100%;
 	height: auto;
 	overflow: scroll;
 	position: relative;
 }
-*/
 
 html,
 body {
 	margin: 0;
 	padding: 0;
+	
+	background: #08dfb6;
 }
 
 .page_bg {
@@ -23,8 +23,8 @@ body {
 	width: 100%;
 	height: auto;
 	display: block;
-	    overflow: hidden;
-
+	   pointer-events: none;
+	background: #08dfb6;
 }
 
 .page_bg img {
