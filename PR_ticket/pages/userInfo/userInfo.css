@@ -17,14 +17,14 @@ body {
 }
 
 .page_bg {
-	/*position: fixed;
+	position: fixed;
     top: 0;
-    left: 0;*/
+    left: 0;
 	width: 100%;
 	height: auto;
 	display: block;
-	/*    overflow: hidden;*/
-	background: #08dfb6
+	    overflow: hidden;
+
 }
 
 .page_bg img {
