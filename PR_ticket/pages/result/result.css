@@ -6,24 +6,25 @@
 
 }
 
+
 .page_bg {
-	/*    position: fixed; */
-	top: 0;
-	left: 0;
+	/*position: fixed;
+    top: 0;
+    left: 0;*/
 	width: 100%;
 	height: auto;
-	display: block;
-	overflow: hidden;
-	pointer-events: none;
-	position: relative;
+
 
 }
 
-.page_bg img {
-	width: 100%;
-	height: 100%;
-}
 
+img{
+    width: 100%;
+    height: auto;
+    display: block;
+    /* min-height: 100%;
+    display: -webkit-box; */
+}
 .page_box,
 .info_list {
 	height: 49.5rem;
