@@ -79,11 +79,11 @@ background-attachment: fixed;">
 			return {
 				loading: true,
 				page: {
-					"commit_btn_img": "http://image.sweetmartmarketing.com/wxcamp_thumb/ycfpsQ8bna.png",
-					"is_form_page": "FALSE",
-					"background_img": "http://image.sweetmartmarketing.com/wxcamp_thumb/k5RGIKSG7o.jpg",
-					"userinfo_page_id": "UP00000000448",
-					"userinfo_page_title": "填写信息页"
+//					"commit_btn_img": "http://image.sweetmartmarketing.com/wxcamp_thumb/ycfpsQ8bna.png",
+//					"is_form_page": "FALSE",
+//					"background_img": "http://image.sweetmartmarketing.com/wxcamp_thumb/k5RGIKSG7o.jpg",
+//					"userinfo_page_id": "UP00000000448",
+//					"userinfo_page_title": "填写信息页"
 				},
 				base_info: {},
 				input_req: {
@@ -110,10 +110,10 @@ background-attachment: fixed;">
 		},
 		created: function() {
 
-//			this.rotate_result = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
-//			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
-//
-//			this.getTnitUser();
+			this.rotate_result = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
+			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
+
+			this.getTnitUser();
 			this.loading = false;
 
 		},
