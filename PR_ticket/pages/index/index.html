@@ -282,12 +282,39 @@
 		data: {
 			loading: true,
 			course_show: false,
-			page_info: {
-				
+				page_info: {
+				input_btn_img1: "",
+				upload_btn_img2: "http://image.sweetmartmarketing.com/wxcamp_thumb/aq1GroeIwa.png",
+				input_btn_img2: "",
+				is_form_page: "false",
+				camp_desc_color: "#333333",
+				background_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/lOOPmoyKLJ.png",
+				main_page_id: "MP00000000672",
+				camp_desc_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/wXDGxI6v8A.jpg",
+				upload_btn_shape: "500*88",
+				main_title: "促销活动主页",
+				upload_btn_img1: "",
 			},
 
 			promotionBaseInfo: {
-				
+				end_date: "2020-07-12 23:59:59",
+				promotion_type: "upload_ticket",
+				participate_obj: "consumer",
+				contract_id: "GZTEST-202007061328",
+				allow_everyday_error_verify_code_cnt: "5",
+				promotion_id: "1000791",
+				user_lottery_cnt: "1",
+				user_win_cnt: "1",
+				brand_id: "726",
+				is_collect_userinfo: "TRUE",
+				promotion_name: "宝洁飘柔7-9月上传小票活动",
+				draw_check_priority: "first_draw",
+				template_msg_first_value: "",
+				lottery_type: "receive",
+				lottery_rule: "D_1",
+				start_date: "2020 - 07 - 06 00: 00: 00",
+
+				status: "START"
 
 			},
 			promotion_id: "",
@@ -301,28 +328,28 @@
 
 		},
 		created: function() {
-			this.loading = false;
-			var net_agree = window.sessionStorage.getItem('is_agree');
-			console.log(net_agree)
-			if (net_agree == 'true') {
-				this.act_rule_show = false;
-			} else {
-				this.act_rule_show = true;
-
-			}
-
-
-			this.urlParams = {
-				component_appid: zexUtil.GetQueryString("component_appid"),
-				appid: zexUtil.GetQueryString("appid"),
-				open_id: zexService.getOpenId() || '1',
-				promotion_id: zexUtil.GetQueryString("promotion_id"),
-				scene_str: zexUtil.GetQueryString("scene_str"),
-			};
-
-			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams));
-			//
-			this.getTicketImg()
+//			this.loading = false;
+//			var net_agree = window.sessionStorage.getItem('is_agree');
+//			console.log(net_agree)
+//			if (net_agree == 'true') {
+//				this.act_rule_show = false;
+//			} else {
+//				this.act_rule_show = true;
+//
+//			}
+//
+//
+//			this.urlParams = {
+//				component_appid: zexUtil.GetQueryString("component_appid"),
+//				appid: zexUtil.GetQueryString("appid"),
+//				open_id: zexService.getOpenId() || '1',
+//				promotion_id: zexUtil.GetQueryString("promotion_id"),
+//				scene_str: zexUtil.GetQueryString("scene_str"),
+//			};
+//
+//			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams));
+//			//
+//			this.getTicketImg()
 		},
 		methods: {
 
