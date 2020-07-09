@@ -8,13 +8,6 @@
 	position: relative;
 }
 
-html,
-body {
-	margin: 0;
-	padding: 0;
-	
-	background: #08dfb6;
-}
 
 .page_bg {
 	/*position: fixed;
@@ -23,8 +16,8 @@ body {
 	width: 100%;
 	height: auto;
 	display: block;
-	   pointer-events: none;
-	background: #08dfb6;
+	    overflow: hidden;
+
 }
 
 .page_bg img {
