@@ -92,8 +92,8 @@
 
 .next_btn{
     position: absolute;
-    width: 20rem;
-    left: calc((100% - 20rem)/2);
+    width: 70%;
+    left: calc((100% - 70%)/2);
     top: 67%;
 /* 	top: 102%; */
     height: 10%;

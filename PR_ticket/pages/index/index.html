@@ -13,7 +13,7 @@
 	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Expires" content="0" />
-	<title>活动页</title>
+	<title>飘柔</title>
 	<link rel="stylesheet" href="index.css">
 	<link rel="stylesheet" href="../../css/plugins/loading.css">
 	<script type="text/javascript" src="../../js/plugins/jquery-2.1.4.min.js"></script>
@@ -250,11 +250,11 @@
 		</div>
 
 
-		<div class="next_text" @click="course_show=true" v-show="!course_show">
-			<span @click="course_show=true"> 活动规则1</span></div>
+		<div class="next_text" @click="course_show=true" v-show="!course_show" >
+			<span @click="course_show=true"  style=" color: #6E6118;"> 活动规则</span></div>
 
-		<div class="next_time" v-show="!course_show">
-			活动时间为7月10日-9月30日</div>
+		<div class="next_time" v-show="!course_show" :styele="{color: page_info.camp_desc_color}">
+		<span  style=" color: #6E6118;">	活动时间: 7月10日-9月30日</span></div>
 
 	</div>
 	<div class="act_rule" v-show="course_show">
@@ -283,38 +283,11 @@
 			loading: true,
 			course_show: false,
 			page_info: {
-				input_btn_img1: "",
-				upload_btn_img2: "http://image.sweetmartmarketing.com/wxcamp_thumb/aq1GroeIwa.png",
-				input_btn_img2: "",
-				is_form_page: "false",
-				camp_desc_color: "#333333",
-				background_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/lOOPmoyKLJ.png",
-				main_page_id: "MP00000000672",
-				camp_desc_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/wXDGxI6v8A.jpg",
-				upload_btn_shape: "500*88",
-				main_title: "促销活动主页",
-				upload_btn_img1: "",
+				
 			},
 
 			promotionBaseInfo: {
-				end_date: "2020-07-12 23:59:59",
-				promotion_type: "upload_ticket",
-				participate_obj: "consumer",
-				contract_id: "GZTEST-202007061328",
-				allow_everyday_error_verify_code_cnt: "5",
-				promotion_id: "1000791",
-				user_lottery_cnt: "1",
-				user_win_cnt: "1",
-				brand_id: "726",
-				is_collect_userinfo: "TRUE",
-				promotion_name: "宝洁飘柔7-9月上传小票活动",
-				draw_check_priority: "first_draw",
-				template_msg_first_value: "",
-				lottery_type: "receive",
-				lottery_rule: "D_1",
-				start_date: "2020 - 07 - 06 00: 00: 00",
-
-				status: "START"
+				
 
 			},
 			promotion_id: "",

@@ -28,7 +28,7 @@
     width: 80%;
     height: auto;
     left: 10%;
-    top: 25%;
+    top: 10%;
 	text-align: center;
 /*    padding-top: 15%; */
 }
@@ -75,7 +75,7 @@
 }
 
 .sms_box > .input{
-	width: 60%;
+	width: 61%;
 	border: none;
 	margin: 0;
     height: 100%;
@@ -97,7 +97,7 @@
 .get_check_code, .img_code{
     width: 39%;
     height: 100%;
-	background-color: #a7888b;		
+	background-color: #a6a6a6;		
     color: #fff;
     /*border-radius: .4rem;*/
     font-size: 1.5rem;
@@ -209,9 +209,9 @@
 .next {
     position: absolute;
     top: 60%;
-    left: calc((100% -60%) / 2);
+    left: calc((100% - 70%) / 2);
     height: 10%;
-    width: 60%;
+    width: 70%;
     /* 	border: 1px solid red; */
 }
 

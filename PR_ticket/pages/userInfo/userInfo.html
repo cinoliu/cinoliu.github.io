@@ -13,7 +13,7 @@
 	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Expires" content="0" />
-	<title>信息填写</title>
+	<title>飘柔</title>
 	<link rel="stylesheet" href="../../css/plugins/loading.css">
 	<link rel="stylesheet" href="../../css/plugins/weui.min.css">
 	<link rel="stylesheet" href="userInfo.css">
@@ -76,11 +76,7 @@
 		data: function() {
 			return {
 				loading: true,
-				page: {
-					background_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/k5RGIKSG7o.jpg",
-					commit_btn_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/ycfpsQ8bna.png"
-
-				},
+				page: {},
 				base_info: {},
 				input_req: {
 					realName: "",
@@ -106,11 +102,11 @@
 		},
 		created: function() {
 
-//			this.rotate_result = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
-//			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
-//
-//			this.getTnitUser();
-//			this.loading = false;
+			this.rotate_result = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
+			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
+
+			this.getTnitUser();
+			this.loading = false;
 
 		},
 
@@ -212,7 +208,7 @@
 					promotion_id: this.urlParams.promotion_id,
 
 					mobile: this.input_req.mobile.trim(),
-					sms_verify_code: this.input_req.sms_verify_code,
+					sms_verify_code:this.input_req.sms_verify_code,			
 					timestamp: zexUtil.getTimestamp()
 				};
 
@@ -235,7 +231,7 @@
 
 
 
-						} else if (res.code == 4029) {
+						}  else if (res.code == 4029) {
 							this.alertInfo('提示', '信息已提交过啦，请勿重复提交哦~ ', '好的呢', true);
 						} else if (res.code == 4001) {
 							this.alertInfo('提示', '哎呀... 网络有点繁忙 ~', '好的呢', false);

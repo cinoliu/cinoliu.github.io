@@ -64,9 +64,9 @@
 .next {
 	position: absolute;
 	top: 65%;
-	left: calc((100% - 20rem) / 2);
+	left: calc((100% -  70%) / 2);
 	height: 10%;
-	width: 20rem;
+	width: 70%;
 	/* 	border: 1px solid red; */
 }
 
