@@ -44,13 +44,15 @@
 
 
 
-		<div class="page_bg">
+		<div class="page_bg" style="background-repeat:no-repeat ;
+background-size:100% 100%;
+background-attachment: fixed;">
 			<img :src="page.background_img" alt="" />
 		</div>
 
 		<div class="input_wrap">
 
-			<input class="input" id="input" type="text" v-model="input_req.mobile" placeholder="请输入手机号2" />
+			<input class="input" id="input" type="text" v-model="input_req.mobile" placeholder="请输入手机号" />
 
 			<div class="sms_box">
 				<input class="input" id="inputTwo" type="tel" v-model="input_req.sms_verify_code" placeholder="请输入手机验证码" maxlength="6" />
@@ -77,7 +79,7 @@
 			return {
 				loading: true,
 				page: {
-					"commit_btn_img": "../../images/bg.jpg",
+					"commit_btn_img": "http://image.sweetmartmarketing.com/wxcamp_thumb/ycfpsQ8bna.png",
 					"is_form_page": "FALSE",
 					"background_img": "http://image.sweetmartmarketing.com/wxcamp_thumb/k5RGIKSG7o.jpg",
 					"userinfo_page_id": "UP00000000448",

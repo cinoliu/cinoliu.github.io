@@ -15,9 +15,17 @@
     left: 0;*/
 	width: 100%;
 	height: auto;
-	display: block;
-	    overflow: hidden;
 
+
+}
+
+
+img{
+    width: 100%;
+    height: auto;
+    display: block;
+    /* min-height: 100%;
+    display: -webkit-box; */
 }
 
 .page_bg img {
