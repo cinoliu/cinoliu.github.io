@@ -1,16 +1,13 @@
 @import "../../css/reset.css";
 
 
-/*
 #container{
     width: 100%;
     height: auto;
 	overflow: scroll;    
 	position: relative;       
 }
-*/
 
-html, body { margin:0; padding:0; }
 .page_bg{
     /*position: fixed;
     top: 0;
@@ -19,6 +16,7 @@ html, body { margin:0; padding:0; }
     height: auto;
     display: block;
 /*    overflow: hidden;*/
+	background: #08dfb6
 }
 
 .page_bg img{
