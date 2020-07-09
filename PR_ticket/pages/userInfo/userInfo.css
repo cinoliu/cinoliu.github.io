@@ -1,12 +1,15 @@
 @import "../../css/reset.css";
 
 
+/*
 #container{
     width: 100%;
     height: auto;
 	overflow: scroll;    
 	position: relative;       
 }
+*/
+
 
 .page_bg{
     /*position: fixed;
