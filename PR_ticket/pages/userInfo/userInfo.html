@@ -55,7 +55,7 @@ background-attachment: fixed;">
 			<input class="input" id="input" type="text" v-model="input_req.mobile" placeholder="请输入手机号" />
 
 			<div class="sms_box">
-				<input class="input" id="inputTwo" type="tel" v-model="input_req.sms_verify_code" placeholder="请输入手机验证码" maxlength="6" />
+				<input class="input1" id="inputTwo" type="tel" v-model="input_req.sms_verify_code" placeholder="请输入手机验证码" maxlength="6" />
 
 				<button class="get_check_code" @click="getPhoneCode()" :disabled="time_num < 60" v-text="get_code_txt">
 
