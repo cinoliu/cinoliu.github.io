@@ -186,12 +186,21 @@
 		}
 
 
+		.act_huodong_wrap {
+
+	width: 100%;
+	margin: 0 auto;
+	/*border: 1px solid #000;*/
+	text-align: center;
+}
+
+		
 		.huodong_wrap {
 			width: 100%;
 			height: 100%;
 			position: fixed;
 			z-index: 101;
-			display: flex;
+
 			display: -webkit-flex;
 			align-items: center;
 			-webkit-align-items: center;
@@ -200,7 +209,7 @@
 			flex-direction: column-reverse;
 			-webkit-flex-direction: column-reverse;
 
-			border: 1px solid #000;
+		
 		}
 
 
@@ -213,8 +222,8 @@
 
 		.huodong_content {
 			width: 100%;
-			max-height: 85%;
-			overflow-y: auto;
+			height: 100%;
+		
 			border-radius: .6rem;
 			-webkit-overflow-scrolling: touch;
 		
@@ -224,7 +233,7 @@
 
 		.huodong_content_img {
 			width: 100%;
-			max-height: 80%;
+		    height: 90%;
 			overflow-y: auto;
 			font-size: 1.4rem;
 			-webkit-overflow-scrolling: touch;
@@ -316,7 +325,7 @@
 
 
 
-	<div class="act_rule_wrap" v-show="course_show">
+	<div class="act_huodong_wrap" v-show="course_show">
 		<div class="weui-mask" style="z-index: 100;"></div>
 		<div class="huodong_wrap">
 			<div class="huodong_container">
@@ -326,9 +335,9 @@
 					</div>
 
 				
-				</div>
+				
 				<img src="../../images/cuo.png" alt=""  v-touch:tap="course_show = !course_show" style="padding-top: 10%;    width: 10%;margin: auto" />
-					
+					</div>
 			</div>
 		</div>
 	</div>
