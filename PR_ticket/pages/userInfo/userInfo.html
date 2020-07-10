@@ -42,11 +42,7 @@
 			</div>
 		</div>
 
-
-
-		<div class="page_bg" style="background-repeat:no-repeat ;
-background-size:100% 100%;
-background-attachment: fixed;">
+		<div class="page_bg" style="background-repeat:no-repeat;background-size:100% 100%;background-attachment: fixed;">
 			<img :src="page.background_img" alt="" />
 		</div>
 
@@ -79,11 +75,8 @@ background-attachment: fixed;">
 			return {
 				loading: true,
 				page: {
-										"commit_btn_img": "http://image.sweetmartmarketing.com/wxcamp_thumb/ycfpsQ8bna.png",
-										"is_form_page": "FALSE",
-										"background_img": "http://image.sweetmartmarketing.com/wxcamp_thumb/k5RGIKSG7o.jpg",
-										"userinfo_page_id": "UP00000000448",
-										"userinfo_page_title": "填写信息页"
+					"commit_btn_img": "http://image.sweetmartmarketing.com/wxcamp_thumb/ycfpsQ8bna.png",
+					"background_img": "http://image.sweetmartmarketing.com/wxcamp_thumb/k5RGIKSG7o.jpg",
 				},
 				base_info: {},
 				input_req: {
@@ -110,10 +103,10 @@ background-attachment: fixed;">
 		},
 		created: function() {
 
-//			this.rotate_result = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
-//			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
-//
-//			this.getTnitUser();
+			this.rotate_result = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
+			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
+
+			this.getTnitUser();
 			this.loading = false;
 
 		},
@@ -132,10 +125,8 @@ background-attachment: fixed;">
 					if (res.code == 200) {
 						this.page = res.page;
 						for (var k in res.formFields) {
-
 							this.res_form_fields.push(res.formFields[k].field_name);
 						}
-
 						window.sessionStorage.setItem("prize_type", res.prize_type);
 						window.sessionStorage.setItem("outcode_type", res.outcode_type);
 
@@ -210,7 +201,6 @@ background-attachment: fixed;">
 				}
 				window.sessionStorage.setItem('mobile', this.input_req.mobile.trim());
 
-
 				var req = {
 					open_id: this.urlParams.open_id,
 					promotion_id: this.urlParams.promotion_id,
@@ -236,8 +226,6 @@ background-attachment: fixed;">
 						} else if (res.code == 10002 || res.code == '10002') {
 
 							this.alertInfo('提示', '该手机号码已参加过活动！', '好的呢', true);
-
-
 
 						} else if (res.code == 4029) {
 							this.alertInfo('提示', '信息已提交过啦，请勿重复提交哦~ ', '好的呢', true);

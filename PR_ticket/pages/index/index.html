@@ -295,11 +295,11 @@
 		</div>
 
 		<div class="next_text" @click="course_show=true" v-show="!course_show">
-			<span @click="course_show=true" style=" color: #6E6118;font-size: 1.6rem"> 活动规则</span>
+			<span @click="course_show=true"> 活动规则</span>
 		</div>
 
-		<div class="next_time" v-show="!course_show" :styele="{color: page_info.camp_desc_color}">
-			<span style=" color: #6E6118;font-size: 1.4rem"> 活动时间: 7月10日-9月30日</span>
+		<div class="next_time" v-show="!course_show">
+			<span style="font-size: 1.4rem"> 活动时间: 7月10日-9月30日</span>
 		</div>
 
 	</div>
@@ -346,17 +346,17 @@
 			loading: true,
 			course_show: false,
 			page_info: {
-				//				input_btn_img1: "",
-				//				upload_btn_img2: "http://image.sweetmartmarketing.com/wxcamp_thumb/aq1GroeIwa.png",
-				//				input_btn_img2: "",
-				//				is_form_page: "false",
-				//				camp_desc_color: "#333333",
-				//				background_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/lOOPmoyKLJ.png",
-				//				main_page_id: "MP00000000672",
-				//				camp_desc_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/wXDGxI6v8A.jpg",
-				//				upload_btn_shape: "500*88",
-				//				main_title: "促销活动主页",
-				//				upload_btn_img1: "",
+				input_btn_img1: "",
+				upload_btn_img2: "http://image.sweetmartmarketing.com/wxcamp_thumb/aq1GroeIwa.png",
+				input_btn_img2: "",
+				is_form_page: "false",
+				camp_desc_color: "#333333",
+				background_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/lOOPmoyKLJ.png",
+				main_page_id: "MP00000000672",
+				camp_desc_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/wXDGxI6v8A.jpg",
+				upload_btn_shape: "500*88",
+				main_title: "促销活动主页",
+				upload_btn_img1: "",
 			},
 
 			promotionBaseInfo: {
@@ -391,25 +391,24 @@
 		},
 		created: function() {
 			this.loading = false;
-			var net_agree = window.sessionStorage.getItem('is_agree');
-			console.log(net_agree)
-			if (net_agree == 'true') {
-				this.act_rule_show = false;
-			} else {
-				this.act_rule_show = true;
-
-			}
-			this.urlParams = {
-				component_appid: zexUtil.GetQueryString("component_appid"),
-				appid: zexUtil.GetQueryString("appid"),
-				open_id: zexService.getOpenId() || '1',
-				promotion_id: zexUtil.GetQueryString("promotion_id"),
-				scene_str: zexUtil.GetQueryString("scene_str"),
-			};
-
-			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams));
-
-			this.getTicketImg()
+			//			var net_agree = window.sessionStorage.getItem('is_agree');
+			//			console.log(net_agree)
+			//			if (net_agree == 'true') {
+			//				this.act_rule_show = false;
+			//			} else {
+			//				this.act_rule_show = true;
+			//
+			//			}
+			//			this.urlParams = {
+			//				component_appid: zexUtil.GetQueryString("component_appid"),
+			//				appid: zexUtil.GetQueryString("appid"),
+			//				open_id: zexService.getOpenId() || '1',
+			//				promotion_id: zexUtil.GetQueryString("promotion_id"),
+			//				scene_str: zexUtil.GetQueryString("scene_str"),
+			//			};
+			//
+			//			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams));
+			//			this.getTicketImg()
 		},
 		methods: {
 
