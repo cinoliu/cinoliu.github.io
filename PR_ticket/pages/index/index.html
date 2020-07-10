@@ -44,7 +44,6 @@
 			-webkit-justify-content: center;
 			flex-direction: column-reverse;
 			-webkit-flex-direction: column-reverse;
-
 			border: 1px solid #000;
 		}
 
@@ -188,7 +187,6 @@
 
 
 		.act_huodong_wrap {
-
 			width: 100%;
 			margin: 0 auto;
 			/*border: 1px solid #000;*/
@@ -201,7 +199,6 @@
 			height: 100%;
 			position: fixed;
 			z-index: 101;
-
 			display: -webkit-flex;
 			align-items: center;
 			-webkit-align-items: center;
@@ -209,25 +206,18 @@
 			-webkit-justify-content: center;
 			flex-direction: column-reverse;
 			-webkit-flex-direction: column-reverse;
-
-
 		}
 
 
 		.huodong_container {
 			width: 90%;
 			height: 90%;
-
-
 		}
 
 		.huodong_content {
 			width: 100%;
 			height: 100%;
 			border-radius: .6rem;
-
-
-
 		}
 
 
@@ -275,7 +265,7 @@
 				</div>
 
 				<div class="rule_btn_wrap">
-					<div class="rule_not_btn" @click="is_agree = false">我不同意1</div>
+					<div class="rule_not_btn" @click="is_agree = false">我不同意</div>
 					<div class="rule_agree_btn" @click="getAgree">我同意</div>
 				</div>
 			</div>
@@ -304,12 +294,13 @@
 			<img :src="page_info.upload_btn_img2" alt="" @click="next()" />
 		</div>
 
-
 		<div class="next_text" @click="course_show=true" v-show="!course_show">
-			<span @click="course_show=true" style=" color: #6E6118;font-size: 1.6rem"> 活动规则</span></div>
+			<span @click="course_show=true" style=" color: #6E6118;font-size: 1.6rem"> 活动规则</span>
+		</div>
 
 		<div class="next_time" v-show="!course_show" :styele="{color: page_info.camp_desc_color}">
-			<span style=" color: #6E6118;font-size: 1.4rem"> 活动时间: 7月10日-9月30日</span></div>
+			<span style=" color: #6E6118;font-size: 1.4rem"> 活动时间: 7月10日-9月30日</span>
+		</div>
 
 	</div>
 
@@ -322,9 +313,6 @@
 	</div>
 -->
 
-
-
-
 	<div class="act_huodong_wrap" v-show="course_show">
 		<div class="weui-mask" style="z-index: 100;"></div>
 		<div class="huodong_wrap">
@@ -333,18 +321,11 @@
 					<div class="huodong_content_img">
 						<img :src="page_info.camp_desc_img" alt="" />
 					</div>
-
-
-
 					<img src="../../images/cuo.png" alt="" v-touch:tap="course_show = !course_show" style="padding-top: 10%;    width: 10%;margin: auto" />
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-
-
 
 </body>
 
@@ -365,38 +346,37 @@
 			loading: true,
 			course_show: false,
 			page_info: {
-				input_btn_img1: "",
-				upload_btn_img2: "http://image.sweetmartmarketing.com/wxcamp_thumb/aq1GroeIwa.png",
-				input_btn_img2: "",
-				is_form_page: "false",
-				camp_desc_color: "#333333",
-				background_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/lOOPmoyKLJ.png",
-				main_page_id: "MP00000000672",
-				camp_desc_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/wXDGxI6v8A.jpg",
-				upload_btn_shape: "500*88",
-				main_title: "促销活动主页",
-				upload_btn_img1: "",
+				//				input_btn_img1: "",
+				//				upload_btn_img2: "http://image.sweetmartmarketing.com/wxcamp_thumb/aq1GroeIwa.png",
+				//				input_btn_img2: "",
+				//				is_form_page: "false",
+				//				camp_desc_color: "#333333",
+				//				background_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/lOOPmoyKLJ.png",
+				//				main_page_id: "MP00000000672",
+				//				camp_desc_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/wXDGxI6v8A.jpg",
+				//				upload_btn_shape: "500*88",
+				//				main_title: "促销活动主页",
+				//				upload_btn_img1: "",
 			},
 
 			promotionBaseInfo: {
-				end_date: "2020-07-12 23:59:59",
-				promotion_type: "upload_ticket",
-				participate_obj: "consumer",
-				contract_id: "GZTEST-202007061328",
-				allow_everyday_error_verify_code_cnt: "5",
-				promotion_id: "1000791",
-				user_lottery_cnt: "1",
-				user_win_cnt: "1",
-				brand_id: "726",
-				is_collect_userinfo: "TRUE",
-				promotion_name: "宝洁飘柔7-9月上传小票活动",
-				draw_check_priority: "first_draw",
-				template_msg_first_value: "",
-				lottery_type: "receive",
-				lottery_rule: "D_1",
-				start_date: "2020 - 07 - 06 00: 00: 00",
-
-				status: "START"
+				//				end_date: "2020-07-12 23:59:59",
+				//				promotion_type: "upload_ticket",
+				//				participate_obj: "consumer",
+				//				contract_id: "GZTEST-202007061328",
+				//				allow_everyday_error_verify_code_cnt: "5",
+				//				promotion_id: "1000791",
+				//				user_lottery_cnt: "1",
+				//				user_win_cnt: "1",
+				//				brand_id: "726",
+				//				is_collect_userinfo: "TRUE",
+				//				promotion_name: "宝洁飘柔7-9月上传小票活动",
+				//				draw_check_priority: "first_draw",
+				//				template_msg_first_value: "",
+				//				lottery_type: "receive",
+				//				lottery_rule: "D_1",
+				//				start_date: "2020 - 07 - 06 00: 00: 00",
+				//				status: "START"
 
 			},
 			promotion_id: "",
@@ -410,26 +390,26 @@
 
 		},
 		created: function() {
-			//			this.loading = false;
-			//			var net_agree = window.sessionStorage.getItem('is_agree');
-			//			console.log(net_agree)
-			//			if (net_agree == 'true') {
-			//				this.act_rule_show = false;
-			//			} else {
-			//				this.act_rule_show = true;
-			//
-			//			}
-			//			this.urlParams = {
-			//				component_appid: zexUtil.GetQueryString("component_appid"),
-			//				appid: zexUtil.GetQueryString("appid"),
-			//				open_id: zexService.getOpenId() || '1',
-			//				promotion_id: zexUtil.GetQueryString("promotion_id"),
-			//				scene_str: zexUtil.GetQueryString("scene_str"),
-			//			};
-			//
-			//			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams));
-			//			//
-			//			this.getTicketImg()
+			this.loading = false;
+			var net_agree = window.sessionStorage.getItem('is_agree');
+			console.log(net_agree)
+			if (net_agree == 'true') {
+				this.act_rule_show = false;
+			} else {
+				this.act_rule_show = true;
+
+			}
+			this.urlParams = {
+				component_appid: zexUtil.GetQueryString("component_appid"),
+				appid: zexUtil.GetQueryString("appid"),
+				open_id: zexService.getOpenId() || '1',
+				promotion_id: zexUtil.GetQueryString("promotion_id"),
+				scene_str: zexUtil.GetQueryString("scene_str"),
+			};
+
+			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams));
+
+			this.getTicketImg()
 		},
 		methods: {
 
@@ -464,12 +444,10 @@
 						self.promotionBaseInfo.start_date = self.promotionBaseInfo.start_date.substring(0, 10);
 
 						self.promotionBaseInfo.end_date = self.promotionBaseInfo.end_date.substring(0, 10);
-
 						// 存储基本信息
 						window.sessionStorage.setItem("base_info", JSON.stringify(self.promotionBaseInfo));
 						// 存储页面信息
 						window.sessionStorage.setItem("page_info", JSON.stringify(self.page_info));
-
 
 						var jsonUserFlowStr = JSON.parse(response.jsonUserFlowStr);
 
@@ -531,7 +509,6 @@
 			},
 
 			next: function() {
-
 
 				window.location.href = "../userInfo/userInfo.html";
 
