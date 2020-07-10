@@ -238,7 +238,7 @@ img{
 
 .next {
 	position: absolute;
-	top: 60%;
+	top: 65%;
 	left: calc((100% - 70%) / 2);
 	height: 10%;
 	width: 70%;
