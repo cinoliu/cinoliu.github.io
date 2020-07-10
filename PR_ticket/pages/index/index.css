@@ -167,10 +167,11 @@ img {
 	border-radius: 5rem;
 	width: 22%;
 	font-size: 13px;
-	background: #666666;
+	background: #222222;
 	line-height: 3rem;
 	font-weight: 400;
-
+	opacity: 0.7;
+	filter: alpha(opacity=70);
 }
 
 .next_time {
