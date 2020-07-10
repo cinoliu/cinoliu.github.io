@@ -290,13 +290,16 @@
 
 		<img class="bg_img" v-bind:src="page_info.background_img">
 
-		<div class="next_btn" @click="next()" v-show="!course_show">
-			<img :src="page_info.upload_btn_img2" alt="" @click="next()" />
-		</div>
 
 		<div class="next_text" @click="course_show=true" v-show="!course_show">
 			<span @click="course_show=true"> 活动规则</span>
 		</div>
+
+		<div class="next_btn" @click="next()" v-show="!course_show">
+			<img :src="page_info.upload_btn_img2" alt="" @click="next()" />
+		</div>
+
+
 
 		<div class="next_time" v-show="!course_show">
 			<span style="font-size: 1.4rem"> 活动时间: 7月10日-9月30日</span>
