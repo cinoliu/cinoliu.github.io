@@ -168,7 +168,7 @@ img {
 	width: 20%;
 	font-size: 13px;
 	background: #222222;
-	line-height: 3rem;
+	line-height: 2.5rem;
 	font-weight: 400;
 	opacity: 0.7;
 	filter: alpha(opacity=70);
@@ -181,7 +181,7 @@ img {
 	height: 5rem;
 	z-index: 10;
 	text-align: center;
-	font-weight: 500;
+	font-weight: 900;
 }
 
 .next_btn:active {
