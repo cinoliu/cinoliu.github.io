@@ -146,7 +146,7 @@ img {
 	position: absolute;
 	width: 70%;
 	left: calc((100% - 70%)/2);
-	top: 33%;
+	top: 30%;
 	/* 	top: 102%; */
 	height: 9.5%;
 	/*    border: 1px solid #000; */
@@ -159,13 +159,13 @@ img {
 
 .next_text {
 	position: absolute;
-	left: 81%;
+	left: 80%;
 	top: 3%;
 	z-index: 10;
 	text-align: center;
 	color: #fff;
 	border-radius: 5rem;
-	width: 22%;
+	width: 25%;
 	font-size: 13px;
 	background: #222222;
 	line-height: 3rem;
@@ -177,7 +177,7 @@ img {
 .next_time {
 	position: absolute;
 	width: 100%;
-	top: 43.5%;
+	top: 41%;
 	height: 5rem;
 	z-index: 10;
 	text-align: center;
