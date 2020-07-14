@@ -31,52 +31,77 @@
 	<!--    <script type="text/javascript" src="../../js/DMP_S_zexApis.js"></script> -->
 </head>
 
-<body>
-	<div id="container">
-		<div class="page-loading" v-show="loading">
-			<div class="page-loading-control">
-				<div class="rect1"></div>
-				<div class="rect2"></div>
-				<div class="rect3"></div>
-				<div class="rect4"></div>
-			</div>
+<body id="container" class="page_bg">
+
+	<div id="page_loading" class="page-loading">
+		<div class="page-loading-control">
+			<div class="rect1"></div>
+			<div class="rect2"></div>
+			<div class="rect3"></div>
+			<div class="rect4"></div>
+			<div class="rect5"></div>
+		</div>
+	</div>
+
+
+	<div class="page_bg">
+		<img :src="page.background_img" alt="" />
+	</div>
+
+	
+	<div class="input_wrap">
+
+		<div class="name_box">
+			<div class="name_title">收货人姓名:</div>
+			<input class="name_input" id="input" type="tel" v-model="input_req.realName" placeholder="请输入收货人姓名" />
 		</div>
 
-		<div class="page_bg" style="background-repeat:no-repeat;background-size:100% 100%;background-attachment: fixed;">
-			<img :src="page.background_img" alt="" />
-		</div>
 
-		<div class="input_wrap">
+		<div class="phone_box">
+			<div class="phone_text"> 手机号码:</div>
 
-			<input class="input" id="input" type="text" v-model="input_req.mobile" placeholder="请输入手机号" />
-
-			<div class="sms_box">
-				<input class="input1" id="inputTwo" type="tel" v-model="input_req.sms_verify_code" placeholder="请输入手机验证码" maxlength="6" />
-
+		<input class="phone_input" id="inputTwo" type="tel" v-model="input_req.mobile" placeholder="请输入手机号码"      maxlength="11" />
+			<div class="phoneButton_box">
 				<button class="get_check_code" @click="getPhoneCode()" :disabled="time_num < 60" v-text="get_code_txt">
-
 			</div>
 		</div>
 
-		<div class="next" @click="next()">
-			<img :src="page.commit_btn_img" alt="" />
+
+		<div class="name_box">
+			<div class="name_title">验证码:</div>
+		<input class="name_input" id="inputThree" type="tel" v-model="input_req.sms_verify_code" placeholder="请输入验证码" />
+		</div>
+
+
+		<div class="addr_box">
+			<div class="addr_title">收货地址:</div>
+		<textarea class="addr_input" cols="2" id="inputFour" rows="2" v-model="input_req.address" placeholder="请输入收货地址"></textarea>
 		</div>
 
 	</div>
+
+	<div class="next" @click="next()">
+		<img :src="page.commit_btn_img" alt="" />
+	</div>
+
+	</div>
 </body>
-<script>
+<script>	
 	document.addEventListener('touchstart', function() {});
+	
 	// $(function() {FastClick.attach(document.body);});
 	// $(".input_wrap").css("min-height",document.body.clientHeight + "px");
-
+	
+	
+    
 	new Vue({
 		el: "#container",
 		data: function() {
 			return {
 				loading: true,
 				page: {
-					"commit_btn_img": "http://image.sweetmartmarketing.com/wxcamp_thumb/ycfpsQ8bna.png",
-					"background_img": "http://image.sweetmartmarketing.com/wxcamp_thumb/k5RGIKSG7o.jpg",
+					"commit_btn_img": "../../images/userInfoButton.png",
+					"background_img": "../../images/userInfoBg.jpg",
 				},
 				base_info: {},
 				input_req: {
@@ -101,13 +126,21 @@
 			};
 
 		},
+
 		created: function() {
 
 			this.rotate_result = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
+		
 			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
 
 			this.getTnitUser();
+			
 			this.loading = false;
+			
+			setTimeout(function() {
+				$('#page_loading').css('display', 'none');
+			}, 500);
+
 
 		},
 
@@ -125,8 +158,10 @@
 					if (res.code == 200) {
 						this.page = res.page;
 						for (var k in res.formFields) {
+
 							this.res_form_fields.push(res.formFields[k].field_name);
 						}
+
 						window.sessionStorage.setItem("prize_type", res.prize_type);
 						window.sessionStorage.setItem("outcode_type", res.outcode_type);
 
@@ -134,9 +169,9 @@
 				}).bind(this));
 			},
 
-
 			// 获取手机验证码
 			getPhoneCode: function() {
+
 				if (!zexUtil.isMobile(this.input_req.mobile)) {
 					this.alertInfo("提示", "请输入正确的手机号码哦~", "好的", false);
 					return;
@@ -204,7 +239,6 @@
 				var req = {
 					open_id: this.urlParams.open_id,
 					promotion_id: this.urlParams.promotion_id,
-
 					mobile: this.input_req.mobile.trim(),
 					sms_verify_code: this.input_req.sms_verify_code,
 					timestamp: zexUtil.getTimestamp()
@@ -219,32 +253,32 @@
 						self.loading = false;
 
 						if (res.code == 10000 || res.code == '10000') {
-							this.toastInfo('提交成功', 2000);
+							self.toastInfo('提交成功', 2000);
 							window.location.href =
 								"../uploadTicket/uploadTicket.html";
 
 						} else if (res.code == 10002 || res.code == '10002') {
 
-							this.alertInfo('提示', '该手机号码已参加过活动！', '好的呢', true);
+							self.alertInfo('提示', '该手机号码已参加过活动！', '好的呢', true);
 
 						} else if (res.code == 4029) {
-							this.alertInfo('提示', '信息已提交过啦，请勿重复提交哦~ ', '好的呢', true);
+							self.alertInfo('提示', '信息已提交过啦，请勿重复提交哦~ ', '好的呢', true);
 						} else if (res.code == 4001) {
-							this.alertInfo('提示', '哎呀... 网络有点繁忙 ~', '好的呢', false);
+							self.alertInfo('提示', '哎呀... 网络有点繁忙 ~', '好的呢', false);
 						} else if (res.code == 40014) {
-							this.alertInfo('提示', '重复点击啦~ 再慢点...', '好的呢', false);
+							self.alertInfo('提示', '重复点击啦~ 再慢点...', '好的呢', false);
 						} else if (res.code == 4034) {
-							this.alertInfo('提示', '短信验证码不正确哦，再检查检查...', '好的呢',
+							self.alertInfo('提示', '短信验证码不正确哦，再检查检查...', '好的呢',
 								false);
 						} else {
-							this.alertInfo('提示', res.code + ' 服务器有点繁忙哦~ 请稍后再试试看...',
+							self.alertInfo('提示', res.code + ' 服务器有点繁忙哦~ 请稍后再试试看...',
 								'好的呢', false);
 						}
 					}).bind(this), 1000);
 
 				}).bind(this)).always((function(status) {
 					if (status.statusText == 'timeout') {
-						this.alertInfo('提示', 'timeout 服务器有点繁忙哦~ 请稍后再试试看...', '好的呢', false);
+						self.alertInfo('提示', 'timeout 服务器有点繁忙哦~ 请稍后再试试看...', '好的呢', false);
 					}
 				}).bind(this));
 			},
@@ -287,10 +321,20 @@
 	});
 
 	window.onload = function() {
+		
 		document.getElementById('input').addEventListener('blur', function() {
 			window.scrollTo(0, 0) //页面滚动到顶部
 		}, false)
+		
 		document.getElementById('inputTwo').addEventListener('blur', function() {
+			window.scrollTo(0, 0) //页面滚动到顶部
+		}, false)
+		
+		document.getElementById('inputThree').addEventListener('blur', function() {
+			window.scrollTo(0, 0) //页面滚动到顶部
+		}, false)
+		
+		document.getElementById('inputFour').addEventListener('blur', function() {
 			window.scrollTo(0, 0) //页面滚动到顶部
 		}, false)
 

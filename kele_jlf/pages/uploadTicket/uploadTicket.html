@@ -13,7 +13,7 @@
 	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Expires" content="0" />
-	<title>飘柔</title>
+	<title>可口可乐</title>
 	<link rel="stylesheet" href="../../css/plugins/loading.css">
 	<link rel="stylesheet" href="../../css/plugins/weui.min.css">
 	<link rel="stylesheet" href="uploadTicket.css">
@@ -46,7 +46,7 @@
 		</div>
 
 		<div class="next_btn" @click="uploadTicketImg()">
-			<img src="../../images/button3@2x.png" alt="" />
+			<img src="../../images/uploadTicketButton.png" alt="" />
 		</div>
 
 	</div>
@@ -62,7 +62,9 @@
 			return {
 				loading: true,
 				course_show: false,
-				page: {},
+				page: {
+					course_img: "../../images/uploadTicketBG.jpg",
+				},
 				base_info: {},
 				money_selected: "", //选择小票金额
 				shop_selected: "", //选择卖场:{},
@@ -167,12 +169,8 @@
 						if (res.code == "200") {
 							self.alertInfo("提示", "上传成功！", "我知道了", false);
 
-							window.location.href = '../result/result.html';
+							window.location.href = '../rewardPrize/rewardPrize.html';
 						}
-
-
-
-
 
 					} else if (res.code == 4031) {
 						self.alertInfo("提示", "您上传次数超过限制啦~", "我知道了", true);

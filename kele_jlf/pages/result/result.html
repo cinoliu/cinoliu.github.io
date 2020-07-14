@@ -29,42 +29,28 @@
 	<script type="text/javascript" src="../../js/zexApis.js"></script>
 </head>
 
-<body>
-	<div id="container">
-		<div class="page-loading" v-show="loading">
-			<div class="page-loading-control">
-				<div class="rect1"></div>
-				<div class="rect2"></div>
-				<div class="rect3"></div>
-				<div class="rect4"></div>
-			</div>
+
+<body id="container" class="page_bg">
+	<div id="page_loading" class="page-loading">
+		<div class="page-loading-control">
+			<div class="rect1"></div>
+			<div class="rect2"></div>
+			<div class="rect3"></div>
+			<div class="rect4"></div>
+			<div class="rect5"></div>
 		</div>
-		<div class="page_bg">
-			<img :src="page_info.background_img" alt="" />
-		</div>
+	</div>
 
 
-		<!--
-		<div class="text_box">
-
-			<div class="prize_title"> 小票上传成功！</div>
-
-			<div class="prize_texts">
-				感谢您的参与,请耐心等候工作人员审核,周一至周五上传的小票审核时间最长24小时,周六、周日及法定假日上传的小票最长需要72小时,请耐心等候！
-				审核结果由短信通知,届时请留意。收到审核通过的短信后,请尽快点击领奖链接并领取奖品。具体领奖及使用方式,请点击首页【活动说明】进行查看。
-				如小票通过审核,您将于24~72小时内收到短信告知审核结果并发放“省心礼包”。
-				如有疑问,请拨打客服电话: 400-088-0325（工作时间：周一 至 周日 9:00-18:00 ）</div>
-
-		</div>
--->
+	<div class="page_box">
+		<img class="bg_img" v-bind:src="page_info.background_img">
 		<div class="next" @click="next()">
-
-			<img :src="page_info.complete_btn_img" alt="" />
+			<img :src="page_info.complete_btn_img" alt="" @click="next()" />
 		</div>
-
-
 
 	</div>
+
+
 </body>
 <script>
 	new Vue({
@@ -73,32 +59,30 @@
 			return {
 				loading: false,
 				page_info: {
-//				     background_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/1IgO7bLkGe.jpg",
-//					complete_btn_img: "http://image.sweetmartmarketing.com/wxcamp_thumb/EkrxFmgeOg.png"
+					background_img: "../../images/resultBg.jpg",
+					complete_btn_img: "../../images/resultButton.png"
 
 				},
-				Height: ""
+
 			};
 		},
-		created: function() {
 
+		created: function() {
 			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
 			this.getReview();
-
+			setTimeout(function() {
+				$('#page_loading').css('display', 'none');
+			}, 500);
 		},
 		methods: {
 			getReview() {
-
 				var self = this;
-
 				var reqParams = {
 					open_id: this.urlParams.open_id,
 					promotion_id: this.urlParams.promotion_id,
 					timestamp: zexUtil.getTimestamp(),
 					result_type: "ticket_check_notice",
-
 				};
-
 
 				zexApis.getReview(reqParams).done(function(response) {
 					self.loading = false;
@@ -126,8 +110,6 @@
 			next: function() {
 				wx.closeWindow();
 			},
-
-
 
 		}
 	});
