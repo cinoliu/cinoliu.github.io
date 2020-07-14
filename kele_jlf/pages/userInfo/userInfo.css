@@ -153,9 +153,9 @@ img {
 
 .next {
 	position: absolute;
-	top: 60%;
+	top: 71%;
 	left: calc((100% - 70%) / 2);
-	height: 10%;
+	height: 8%;
 	width: 70%;
 	/* 	border: 1px solid red; */
 }
