@@ -100,9 +100,9 @@ img{
     position: absolute;
     width: 70%;
     left: calc((100% - 70%)/2);
-    top: 69%;
+    top: 71%;
 /* 	top: 102%; */
-    height: 10%;
+    height: 8%;
 /*    border: 1px solid #000; */
 	z-index: 102;
 	

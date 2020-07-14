@@ -42,9 +42,9 @@ html{font-size:13.33333333vw}
 
 .next{
 	position: absolute;
-	top: 10.9rem;
+	top: 71%;
 	left: calc((100% - 5rem) / 2);
-	height: 1rem;
+	height: 8%;
 	width: 5rem;
 /* 	border: 1px solid red; */
 }
