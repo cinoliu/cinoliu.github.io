@@ -148,7 +148,7 @@ img {
 	left: calc((100% - 70%)/2);
 	top: 73%;
 	/* 	top: 102%; */
-	height: 9.5%;
+	height: 8%;
 	/*    border: 1px solid #000; */
 	z-index: 10;
 	text-align: center;
@@ -160,7 +160,7 @@ img {
 .next_text {
 	position: absolute;
 	left: 80%;
-	top: 2%;
+	top: 3%;
 	z-index: 10;
 	text-align: center;
 	color: #fff;
