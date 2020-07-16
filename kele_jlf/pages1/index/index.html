@@ -95,10 +95,10 @@
 
 	<div class="page_box">
 
-		<img class="bg_img" v-bind:src="page_info.background_img">
+		<img class="bg_img" v-bind:src="page_info.page.background_img">
 
 		<div class="next_btn" @click="next()" v-show="!course_show">
-			<img :src="page_info.upload_btn_img2" alt="" @click="next()" />
+			<img :src="page_info.page.upload_btn_img2" alt="" @click="next()" />
 		</div>
 
 		<div class="next_text" @click="course_show=true" v-show="!course_show">
@@ -118,7 +118,7 @@
 			<div class="huodong_container">
 				<div class="huodong_content">
 					<div class="huodong_content_img">
-						<img :src="page_info.camp_desc_img" alt="" />
+						<img :src="page_info.page.camp_desc_img" alt="" />
 					</div>
 					<img src="../../images/cuo.png" alt="" v-touch:tap="course_show = !course_show" style="padding-top: 10%; width: 10%;margin: auto" />
 				</div>
@@ -146,34 +146,22 @@
 			loading: true,
 			course_show: false,
 			page_info: {
-				upload_btn_img2: "../../images/indexButton.png",
-				background_img: "../../images/indexBg.jpg",
-				camp_desc_img: "../../images/hdsm.jpg",
+				page: {
+					upload_btn_img2: "../../images/indexButton.png",
+					background_img: "../../images/indexBg.jpg",
+					camp_desc_img: "../../images/hdsm.jpg",
+				}
 			},
-
 			promotionBaseInfo: {},
 			promotion_id: "",
-			shouquan_show: true,
-			//不能重复点击
 			one_click: true,
-			act_rule_show: true,
-			is_agree: true,
 			urlParams: {},
-
 		},
 
 		created: function() {
 			this.loading = false;
-			var net_agree = window.sessionStorage.getItem('is_agree');
-			console.log(net_agree)
-			if (net_agree == 'true') {
-				this.act_rule_show = false;
-			} else {
-				this.act_rule_show = true;
-
-			}
 			this.urlParams = {
-				component_appid: zexUtil.GetQueryString("appid"),
+				component_appid: zexUtil.GetQueryString("component_appid"),
 				appid: zexUtil.GetQueryString("appid"),
 				open_id: zexService.getOpenId() || '1',
 				promotion_id: zexUtil.GetQueryString("promotion_id"),
@@ -192,12 +180,10 @@
 				var reqParams = {
 					open_id: this.urlParams.open_id,
 					promotion_id: this.urlParams.promotion_id,
+					scene_str: this.urlParams.scene,
+
 					timestamp: zexUtil.getTimestamp(),
 				};
-				//存储门店ID
-				if (urlParams.shop_id) {
-					window.sessionStorage.setItem('shop_id', urlParams.shop_id);
-				}
 
 
 				zexApis.statInformation(reqParams).done(function(response) {
@@ -355,11 +341,7 @@
 				wx.closeWindow();
 			},
 
-			getAgree() {
-				this.act_rule_show = false;
-				window.sessionStorage.setItem('is_agree', true);
 
-			},
 
 
 		}

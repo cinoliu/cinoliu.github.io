@@ -146,9 +146,9 @@ img {
 	position: absolute;
 	width: 70%;
 	left: calc((100% - 70%)/2);
-	top: 71%;
+	top: 73%;
 	/* 	top: 102%; */
-	height: 7.5%;
+	height: 8%;
 	/*    border: 1px solid #000; */
 	z-index: 10;
 	text-align: center;

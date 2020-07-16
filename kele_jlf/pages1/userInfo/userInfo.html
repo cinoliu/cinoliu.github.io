@@ -13,7 +13,7 @@
 	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Expires" content="0" />
-	<title>飘柔</title>
+	<title>可口可乐</title>
 	<link rel="stylesheet" href="../../css/plugins/loading.css">
 	<link rel="stylesheet" href="../../css/plugins/weui.min.css">
 	<link rel="stylesheet" href="userInfo.css">
@@ -53,7 +53,7 @@
 
 		<div class="name_box">
 			<div class="name_title">收货人姓名:</div>
-			<input class="name_input" id="input" type="tel" v-model="input_req.realName" placeholder="请输入收货人姓名" />
+			<input class="name_input" id="input" type="text" v-model="input_req.realName" placeholder="请输入收货人姓名" />
 		</div>
 
 
@@ -69,7 +69,7 @@
 
 		<div class="name_box">
 			<div class="name_title">验证码:</div>
-			<input class="name_input" id="inputThree" type="tel" v-model="input_req.sms_verify_code" placeholder="请输入验证码" />
+			<input class="name_input" id="inputThree" type="text" v-model="input_req.sms_verify_code" placeholder="请输入验证码" maxlength="6" />
 		</div>
 
 
@@ -218,121 +218,85 @@
 				}).bind(this));
 			},
 
-
-
 			next: function() {
 
-				if (this.res_form_fields.indexOf("realName") >= 0) {
-					if (!zexUtil.isName(this.input_req.realName.trim())) {
-						this.alertInfo('提示', '请输入正确的姓名...', '好的呢', false);
-						return;
-					}
+				var self = this;
+
+				if (!this.input_req.realName.trim()) {
+					this.alertInfo('提示', '请输入收货人姓名...', '好的呢', false);
+					return;
 				}
 
-				if (this.res_form_fields.indexOf("mobile") >= 0) {
-					if (!this.input_req.mobile.trim()) {
-						this.alertInfo('提示', '请输入手机号...', '好的呢', false);
-						return;
-					}
-					if (!zexUtil.isMobile(this.input_req.mobile.trim())) {
-						this.alertInfo('提示', '请输入正确的手机号码哦...', '好的呢', false);
-						return;
-					}
-
+				if (!this.input_req.mobile.trim()) {
+					this.alertInfo('提示', '请输入手机号...', '好的呢', false);
+					return;
 				}
-
+				if (!zexUtil.isMobile(this.input_req.mobile.trim())) {
+					this.alertInfo('提示', '请输入正确的手机号码哦...', '好的呢', false);
+					return;
+				}
 				if (!this.input_req.sms_verify_code.trim()) {
 					this.alertInfo('提示', '请输入短信验证码哦...', '好的呢', false);
 					return;
 				}
 
-				if (this.res_form_fields.indexOf("address") >= 0) {
-					if (!this.input_req.address.trim()) {
-						this.alertInfo('提示', '请输入收货地址...', '好的呢', false);
-						return;
-					}
+				if (!this.input_req.address.trim()) {
+					this.alertInfo('提示', '请输入收货地址...', '好的呢', false);
+					return;
 				}
 
+
+				window.sessionStorage.setItem('mobile', this.input_req.mobile.trim());
 
 				var req = {
 					open_id: this.urlParams.open_id,
 					promotion_id: this.urlParams.promotion_id,
-					prize_level_ids: window.sessionStorage.getItem("prize_level_ids") || "",
-					draw_type: "code_draw",
-					prize_verify_code: window.sessionStorage.getItem("verify_code"),
-
-					ticket_pic_id: window.sessionStorage.getItem("ticket_pic_id"),
-
-					realName: this.input_req.realName.trim(),
+					realName: this.input_req.realName,
+					address: this.input_req.address,
 					mobile: this.input_req.mobile.trim(),
+
 					sms_verify_code: this.input_req.sms_verify_code,
-					address: this.input_req.address.trim(),
 					timestamp: zexUtil.getTimestamp()
 				};
-				console.log(req);
-				var loading = weui.loading('正在提交...', {
-					className: 'font-14'
-				});
 
-				zexApis.saveUserInformation(req).done((function(res) {
+
+				self.loading = true;
+
+				zexApis.validateTicketByMobile(req).done((function(res) {
 					setTimeout((function() {
-						loading.hide();
-						if (res.code == 200) {
-							this.toastInfo('提交成功', 2000);
-							var self = this;
 
-							var getReq = {
-								open_id: this.urlParams.open_id,
-								promotion_id: this.urlParams.promotion_id,
-								prize_level_ids: window.sessionStorage.getItem("prize_level_ids"),
-								draw_type: "code_draw",
-								verify_code: window.sessionStorage.getItem("verify_code"),
-								ticket_pic_id: "",
-								timestamp: zexUtil.getTimestamp()
-							};
+						self.loading = false;
 
-							zexApis.getInterfacecode(getReq).done((function(getRes) {
-								console.log(getRes);
-								if (getRes.code == 200 || getRes.code == "200") {
-									setTimeout(function() {
-										// 如果是先审核后抽奖 或者 促销方式为输入兑奖码 跳转至结果页
-										if (self.base_info.draw_check_priority == 'first_check' || self.base_info.promotion_type == 'prize_code') {
-											window.location.href = "../result/result.html";
-										}
-										// 如果是先抽奖后审核 或者 促销方式为小票上传 跳转至审核告知结果页
-										if (self.base_info.draw_check_priority == 'first_draw' || self.base_info.promotion_type == 'upload_ticket') {
-											window.location.href = "../checkInform/checkInform.html";
-										}
-									}, 1000);
-								}
-							}).bind(this));
+						if (res.code == 10000 || res.code == '10000') {
+							self.toastInfo('提交成功', 2000);
+							window.location.href =
+								"../uploadTicket/uploadTicket.html";
 
+						} else if (res.code == 10002 || res.code == '10002') {
 
+							self.alertInfo('提示', '该手机号码已参加过活动！', '好的呢', true);
 
 						} else if (res.code == 4029) {
-							this.alertInfo('提示', '信息已提交过啦，请勿重复提交哦~ ', '好的呢', true);
+							self.alertInfo('提示', '信息已提交过啦，请勿重复提交哦~ ', '好的呢', true);
 						} else if (res.code == 4001) {
-							this.alertInfo('提示', '哎呀... 网络有点繁忙 ~', '好的呢', false);
+							self.alertInfo('提示', '哎呀... 网络有点繁忙 ~', '好的呢', false);
 						} else if (res.code == 40014) {
-							this.alertInfo('提示', '重复点击啦~ 再慢点...', '好的呢', false);
+							self.alertInfo('提示', '重复点击啦~ 再慢点...', '好的呢', false);
 						} else if (res.code == 4034) {
-							this.alertInfo('提示', '短信验证码不正确哦，再检查检查...', '好的呢', false);
+							self.alertInfo('提示', '短信验证码不正确哦，再检查检查...', '好的呢',
+								false);
 						} else {
-							this.alertInfo('提示', res.code + ' 服务器有点繁忙哦~ 请稍后再试试看...', '好的呢', false);
+							self.alertInfo('提示', res.code + ' 服务器有点繁忙哦~ 请稍后再试试看...',
+								'好的呢', false);
 						}
 					}).bind(this), 1000);
 
 				}).bind(this)).always((function(status) {
 					if (status.statusText == 'timeout') {
-						this.alertInfo('提示', 'timeout 服务器有点繁忙哦~ 请稍后再试试看...', '好的呢', false);
+						self.alertInfo('提示', 'timeout 服务器有点繁忙哦~ 请稍后再试试看...', '好的呢', false);
 					}
 				}).bind(this));
-
-
-
 			},
-
-
 
 			// weUI Alert => clickBtn -> closeWindow()
 			alertInfo: function(title, content, btnTxt, isCloseWindow) {

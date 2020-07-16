@@ -29,12 +29,11 @@
 	<script type="text/javascript" src="../../js/zexService.js"></script>
 	<script type="text/javascript" src="../../js/wxConfig.js"></script>
 	<script type="text/javascript" src="../../js/zexApis.js"></script>
-
+	
 	<script type="text/javascript">
 		// zexWxConfig.runConfig(true,function(){});
-
 	</script>
-
+	
 	<style>
 		.weui-dialog__hd,
 		.weui-dialog__bd {
@@ -79,7 +78,7 @@
 		<div class="prize_info">
 			<img src="../../images/zj/oneZJ.png" alt="" style="width: 100%;" v-if="prize_texts.indexOf('一等奖')>0">
 			<img src="../../images/zj/twoZJ.png" alt="" style="  width: 100%;" v-if="prize_texts.indexOf('二等奖')>0">
-			<img src="../../images/zj/threeZJ.png" alt="" style=" width: 100%;" v-if="prize_texts.indexOf('三等奖')>0">
+		<img src="../../images/zj/threeZJ.png" alt="" style=" width: 100%;" v-if="prize_texts.indexOf('三等奖')>0">
 		</div>
 
 		<!-- 按钮处 -->
@@ -114,7 +113,7 @@
 					receive_bg: "../../images/zj/bg.jpg",
 					wining_btn_img: "../../images//zj/ZJButton.png",
 					not_wining_btn_img: "../../images/zj/threeButton1.png",
-
+					
 				},
 				prize_texts: "获得一等奖",
 				base_info: {},
@@ -123,35 +122,36 @@
 				one_click: false,
 				actid: "", //  活动卡券id
 				prize_level_ids: "",
-				urlParams: {},
+
 			};
 		},
 		created: function() {
-			var self = this;
-			self.loading = false;
+			var _this = this;
+			_this.loading = false;
 
-
-			self.getPageInfo();
-			self.page_info = JSON.parse(window.sessionStorage.getItem("prizeInfo")) || {};
-			self.loading = false;
-
-
-			this.prize_level_ids = window.sessionStorage.getItem("prize_level_ids") || "";
-			this.prize_texts = window.sessionStorage.getItem("prize_texts") || "";
-
-			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
-			// 日志
-			// var logReq = {};
-			// logReq.open_id = zexService.getOpenId();
-			// logReq.operator_type = 'winning';
-			// logReq.source = urlParams.scene;
-			// if (this.prize_code == "4025") {
-			//     logReq.note = "未中奖";
-			// } else {
-			//     logReq.note = window.sessionStorage.getItem("prize_texts");
-			// }
-			// zexApis.promotionLog(logReq).done(function() {});
-
+				        zexWxConfig.runConfig(function () {
+							_this.getPageInfo();
+							_this.page_info = JSON.parse(window.sessionStorage.getItem("prizeInfo")) || {}; 
+							_this.loading = false;	
+												
+						});			
+						this.prize_level_ids = window.sessionStorage.getItem("prize_level_ids") || "";
+						this.prize_texts = window.sessionStorage.getItem("prize_texts") || "";
+					
+				
+			
+			
+						var logReq = {};
+						logReq.open_id = zexService.getOpenId();				
+						logReq.operator_type = 'winning';
+						logReq.source = urlParams.scene;
+						if( this.prize_code == "4025"){
+							logReq.note = "未中奖";
+						}else{
+							logReq.note = window.sessionStorage.getItem("prize_texts");				
+						}
+						zexApis.promotionLog(logReq).done(function () {});		
+			//			
 
 		},
 
@@ -162,8 +162,8 @@
 			getPageInfo: function() {
 				var that = this;
 				var reqParams = {
-					open_id: this.urlParams.open_id,
-					promotion_id: this.urlParams.promotion_id,
+					open_id: zexService.getOpenId(),
+					promotion_id: urlParams.promotion_id,
 					ticket_pic_id: window.sessionStorage.getItem("ticket_pic_id"),
 					timestamp: zexUtil.getTimestamp()
 				};
@@ -175,7 +175,8 @@
 							$('#page_loading').css('display', 'none');
 						}, 500);
 						// that.luckyDraw();
-						that.page_info = response;
+						that.page_if = response;
+						// that.advert_bg = response.page.advert_background_img;
 						that.receive_bg = response.page.receive_background_img;
 						that.wining_success_text = response.page.wining_success_text;
 						that.wining_btn_img = response.page.wining_btn_img;
@@ -248,22 +249,21 @@
 
 			// 跳转至上传小票页
 			next: function() {
-				console.log(this.prize_texts.indexOf('一等奖') > 0)
 
 				if (!this.one_click) {
 					this.one_click = true;
 
-					if (this.prize_texts.indexOf('一等奖') > 0) {
+					if (this.page_info.prize_texts.indexOf('一等奖') > 0) {
 
 						this.getPrize();
 
 
-					} else if (this.prize_texts.indexOf('二等奖') > 0) {
+					} else if (this.page_info.prize_texts.indexOf('二等奖') > 0) {
 
 
 						this.getPrize();
 
-					} else if (this.prize_texts.indexOf('三等奖') > 0) { // 三等奖				
+					} else if (this.page_info.prize_texts.indexOf('三等奖') > 0) { // 三等奖				
 
 						window.location.href = '../threePrize/threePrize.html';
 
@@ -277,7 +277,7 @@
 
 			// 领取奖励				
 			getPrize: function() {
-				var self = this;
+				var _this = this;
 
 				if (!this.one_click) {
 					this.one_click = true;
@@ -292,8 +292,8 @@
 				}
 
 				var receivePrizeLevelReq = {
-					open_id: this.urlParams.open_id,
-					promotion_id: this.urlParams.promotion_id,
+					open_id: zexService.getOpenId(),
+					promotion_id: urlParams.promotion_id,
 					prize_level_ids: this.prize_level_ids,
 					// draw_type: "code_draw",
 					// verify_code: window.sessionStorage.getItem('duijiangma') || "",		
@@ -309,6 +309,8 @@
 					if (receivePrizeLevelRes.code == "200" || receivePrizeLevelRes.code == 200) {
 
 						setTimeout(function() {
+
+
 							window.location.href = "../userInfo/userInfo.html";
 						}, 1500);
 

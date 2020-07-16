@@ -13,7 +13,7 @@
 	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Expires" content="0" />
-	<title>飘柔</title>
+	<title>可口可乐</title>
 	<link rel="stylesheet" href="../../css/plugins/loading.css" />
 	<link rel="stylesheet" href="../../css/plugins/weui.min.css" />
 	<link rel="stylesheet" href="result.css" />
@@ -31,7 +31,6 @@
 
 
 <body id="container" class="page_bg">
-	
 	<div id="page_loading" class="page-loading">
 		<div class="page-loading-control">
 			<div class="rect1"></div>
@@ -64,16 +63,14 @@
 					complete_btn_img: "../../images/resultButton.png"
 
 				},
-				urlParams: {},
+
 			};
 		},
 
 		created: function() {
 			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
 			this.getReview();
-			setTimeout(function() {
-				$('#page_loading').css('display', 'none');
-			}, 500);
+
 		},
 		methods: {
 			getReview() {

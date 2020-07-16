@@ -78,7 +78,6 @@
 			this.loading = false,
 				zexWxConfig.runConfig(function() {});
 			this.upReceipts();
-			console.log(this.base_info.draw_check_priority)
 		},
 
 
@@ -139,73 +138,85 @@
 
 
 			// 上传小票
-			uploadReceiptsIMG: function(serverId) {
-
-				var self = this;
-				self.loading = true;
+			// 上传小票
+			uploadTicketImg: function() {
 
 
-				var req = {
-					component_appid: self.urlParams.component_appid,
-					appid: self.urlParams.appid,
-					open_id: self.urlParams.open_id,
-					promotion_id: self.urlParams.promotion_id,
-					source: self.urlParams.scene,
+				var sourceType = [];
+				if (this.page.is_select_photo_album == 1) {
+					sourceType.push('camera'); // 拍照上传
+				}
+				if (this.page.is_select_photo_album == 2) {
+					sourceType.push('album'); // 选择相册
+				}
+				if (this.page.is_select_photo_album == 3) {
+					sourceType.push('camera'); // 拍照上传
+					sourceType.push('album'); // 选择相册
+				}
+				// 通过wx SDK获取serverId成功后调用上传小票接口
+				this.getServerImageID(sourceType, (function(serverId) {
+					var loading = weui.loading('小票上传中...', {
+						className: 'font-14'
+					});
+					var req = {
+						component_appid: this.urlParams.component_appid,
+						appid: this.urlParams.appid,
+						open_id: this.urlParams.open_id,
+						promotion_id: this.urlParams.promotion_id,
+						mediaId: serverId,
+						shop_id: this.shop_selected,
+						promotion_level_id: this.money_selected,
+						timestamp: zexUtil.getTimestamp(),
+						draw_check_priority: this.base_info.draw_check_priority,
+						source: this.urlParams.scene
+					};
 
-					mediaId: serverId,
-					shop_id: "",
-					promotion_level_id: "",
-					timestamp: zexUtil.getTimestamp(),
-					draw_check_priority: this.base_info.draw_check_priority,
-				};
+					zexApis.uploadReceipts(req).done((function(res) {
+						loading.hide();
+						if (res.code == 200) {
+							// 保存上传成功后返回的小票ID
+							window.sessionStorage.setItem("ticket_pic_id", res.ticket_pic_id);
+
+							var drawPrizeLevelReq = {
+								open_id: this.urlParams.open_id,
+								promotion_id: this.urlParams.promotion_id,
+								draw_type: "ticket_draw",
+								ticket_pic_id: res.ticket_pic_id,
+								timestamp: zexUtil.getTimestamp(),
+							};
+
+							zexApis.getLuckyDraw(drawPrizeLevelReq).done((function(drawPrizeLevelRes) {
+								// alert( JSON.stringify(drawPrizeLevelRes) );
+
+								if (drawPrizeLevelRes.code == "200") {
+
+									var receivePrizeLevelReq = {
+										open_id: this.urlParams.open_id,
+										promotion_id: this.urlParams.promotion_id,
+										prize_level_ids: drawPrizeLevelRes.prize_level_ids,
+										draw_type: "ticket_draw",
+										ticket_pic_id: res.ticket_pic_id,
+										timestamp: zexUtil.getTimestamp(),
+									};
+
+									window.sessionStorage.setItem("prize_level_ids", drawPrizeLevelRes.prize_level_ids);
+									window.sessionStorage.setItem("prize_texts", drawPrizeLevelRes.prize_texts);
+
+									window.location.href = '../rewardPrize/rewardPrize.html';
+
+								}
+							}).bind(this));
 
 
+						} else if (res.code == 4031) {
+							this.alertInfo("提示", "您上传次数超过限制啦~", "我知道了", true);
+						} else {
+							this.alertInfo("提示", "哎呀..服务器有点繁忙~ " + res.code, "我知道了");
+						}
 
-
-				zexApis.uploadReceipts(req).done((function(res) {
-					self.loading = false;
-					if (res.code == 200) {
-						// 保存上传成功后返回的小票ID
-						window.sessionStorage.setItem("ticket_pic_id", res.ticket_pic_id);
-
-						var drawPrizeLevelReq = {
-							open_id: this.urlParams.open_id,
-							promotion_id: this.urlParams.promotion_id,
-							draw_type: "ticket_draw",
-							ticket_pic_id: res.ticket_pic_id,
-							timestamp: zexUtil.getTimestamp(),
-						};
-
-						zexApis.getLuckyDraw(drawPrizeLevelReq).done((function(drawPrizeLevelRes) {
-							// alert( JSON.stringify(drawPrizeLevelRes) );
-
-							if (drawPrizeLevelRes.code == "200") {
-
-								var receivePrizeLevelReq = {
-									open_id: this.urlParams.open_id,
-									promotion_id: this.urlParams.promotion_id,
-									prize_level_ids: drawPrizeLevelRes.prize_level_ids,
-									draw_type: "ticket_draw",
-									ticket_pic_id: res.ticket_pic_id,
-									timestamp: zexUtil.getTimestamp(),
-								};
-
-								window.sessionStorage.setItem("prize_level_ids", drawPrizeLevelRes.prize_level_ids);
-								window.sessionStorage.setItem("prize_texts", drawPrizeLevelRes.prize_texts);
-
-								window.location.href = '../rewardPrize/rewardPrize.html';
-
-							}
-						}).bind(this));
-
-					} else if (res.code == 4031) {
-						self.alertInfo("提示", "您上传次数超过限制啦~", "我知道了", true);
-					} else {
-						self.alertInfo("提示", "哎呀..服务器有点繁忙~ " + res.code, "我知道了");
-					}
+					}).bind(this));
 
 				}).bind(this));
-
 			},
 
 			// weUI Alert => clickBtn -> closeWindow()
