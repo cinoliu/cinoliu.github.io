@@ -38,7 +38,6 @@
 			text-align: center;
 		}
 
-
 		.huodong_wrap {
 			width: 100%;
 			height: 100%;
@@ -53,7 +52,6 @@
 			-webkit-flex-direction: column-reverse;
 		}
 
-
 		.huodong_container {
 			width: 90%;
 			height: 70%;
@@ -65,7 +63,6 @@
 			border-radius: .6rem;
 		}
 
-
 		.huodong_content_img {
 			width: 85%;
 			height: 72%;
@@ -73,7 +70,6 @@
 			-webkit-overflow-scrolling: touch;
 			border-radius: .6rem;
 			margin-left: 7.5%;
-
 		}
 
 		.huodong_button {
@@ -104,7 +100,7 @@
 
 	<div class="page_box">
 
-		<img class="bg_img" v-bind:src="page_info.receive_bg">
+		<img class="bg_img" v-bind:src="page_info.receive_background_img">
 
 		<div class="next_btn" @click="course_show=true">
 			<img :src="page_info.not_wining_btn_img" alt="" />
@@ -121,9 +117,9 @@
 				<div class="huodong_content">
 					<div class="huodong_content_img">
 
-						<img src="../../images/zj/threeCG.png" alt="" />
+						<img src="../../images/zj/threeCG.png" alt="" v-if="is_CG" />
 
-						<!--						<img src="../../images/zj/threeSB.png" alt="" />-->
+						<img src="../../images/zj/threeSB.png" alt="" v-if="!is_CG" />
 
 						<img src="../../images/zj/threeButton3.png" class="huodong_button" @click="course_show=false">
 
@@ -158,10 +154,10 @@
 				loading: true,
 				act_rule_show: false,
 				page_info: {
-					receive_bg: "../../images/zj/sdjbg.jpg",
-					wining_btn_img: "../../images//zj/ZJButton.png", // 按钮图
-					not_wining_btn_img: "../../images/zj/threeButton2.png",
-					prize_img: "",
+					//					receive_bg: "../../images/zj/sdjbg.jpg",
+					//					wining_btn_img: "../../images//zj/ZJButton.png", // 按钮图
+					//					not_wining_btn_img: "../../images/zj/threeButton2.png",
+					//					prize_img: "",
 
 				},
 
@@ -174,16 +170,19 @@
 				prize_level_ids: "",
 				course_show: false,
 
+				is_CG: true,
 			};
 		},
 		created: function() {
 
 			this.loading = false;
 
-			setTimeout(function() {
-				$('#page_loading').css('display', 'none');
-			}, 500);
 
+
+			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
+
+			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
+			this.getPageInfo()
 
 			//	        zexWxConfig.runConfig(function () {
 			//				_this.getPageInfo();
@@ -221,15 +220,21 @@
 			//			}
 			//			zexApis.promotionLog(logReq).done(function () {});		
 
+			this.getPageInfo();
+
+			setTimeout(function() {
+				$('#page_loading').css('display', 'none');
+			}, 500);
+
 		},
 		methods: {
 
 			//页面初始化
 			getPageInfo: function() {
-				var that = this;
+				var self = this;
 				var reqParams = {
-					open_id: zexService.getOpenId(),
-					promotion_id: urlParams.promotion_id,
+					open_id: this.urlParams.open_id,
+					promotion_id: this.urlParams.promotion_id,
 					ticket_pic_id: window.sessionStorage.getItem("ticket_pic_id"),
 					timestamp: zexUtil.getTimestamp()
 				};
@@ -240,92 +245,65 @@
 						setTimeout(function() {
 							$('#page_loading').css('display', 'none');
 						}, 500);
-						// that.luckyDraw();
-						that.page_if = response;
-						// that.advert_bg = response.page.advert_background_img;
-						that.receive_bg = response.page.receive_background_img;
-						that.wining_success_text = response.page.wining_success_text;
-						that.wining_btn_img = response.page.wining_btn_img;
-						that.not_wining_btn_img = response.page.not_wining_btn_img;
-						that.not_wining_fail_text = response.page.not_wining_fail_text;
-						var jsonUserFlowStr;
-						if (response.jsonUserFlowStr) {
-							jsonUserFlowStr = JSON.parse(response.jsonUserFlowStr);
-						};
+						// self.luckyDraw();
 
-						if (null != jsonUserFlowStr) {
-							var next_page = jsonUserFlowStr.next_page;
-							if (next_page == 'receive_receive_page') {
+						self.page_info = response.page;
 
-								window.sessionStorage.setItem('nextPage', next_page);
-								window.sessionStorage.setItem('prize_level_ids', jsonUserFlowStr.prize_level_ids); //存储中奖等级ID
-								window.sessionStorage.setItem('shake_text', jsonUserFlowStr.prize_texts);
 
-								window.sessionStorage.setItem('ticket_pic_id', jsonUserFlowStr.ticket_pic_id);
 
-							} else if (next_page == 'fill_userinfo_page') {
-
-								window.sessionStorage.setItem('ticket_pic_id', jsonUserFlowStr.ticket_pic_id);
-								window.sessionStorage.setItem('prize_level_ids', jsonUserFlowStr.prize_level_ids);
-								window.sessionStorage.setItem('duijiangma', jsonUserFlowStr.verify_code);
-								window.sessionStorage.setItem('public_draw', jsonUserFlowStr.draw_type);
-								window.sessionStorage.setItem('shake_text', jsonUserFlowStr.prize_texts);
-								window.sessionStorage.setItem('draw_check_priority', jsonUserFlowStr.draw_check_priority);
-								window.location.href = '../form/form.html';
-
-							}
-						}
 
 					} else if (response.code == '4001') {
-						that.alertInfo("提示", "网络不好,请重试", "我知道了", true);
+						self.alertInfo("提示", "网络不好,请重试", "我知道了", true);
 						return;
 					} else if (response.code == '4003') {
-						that.alertInfo("提示", "网络不好,请重试", "我知道了", true);
+						self.alertInfo("提示", "网络不好,请重试", "我知道了", true);
 						return;
 					} else if (response.code == '4004') {
-						that.alertInfo("提示", "网络不好,请重试", "我知道了", true);
+						self.alertInfo("提示", "网络不好,请重试", "我知道了", true);
 						return;
 					} else if (response.code == '4019') {
-						that.alertInfo("提示", "促销活动不存在", "我知道了", true);
+						self.alertInfo("提示", "促销活动不存在", "我知道了", true);
 						return;
 					} else if (response.code == '4014') {
-						that.alertInfo("提示", "活动未开始", "我知道了", true);
+						self.alertInfo("提示", "活动未开始", "我知道了", true);
 						return;
 					} else if (response.code == '4015') {
-						that.alertInfo("提示", "活动已结束", "我知道了", true);
+						self.alertInfo("提示", "活动已结束", "我知道了", true);
 						return;
 					} else if (response.code == '4017') {
-						that.alertInfo("提示", "活动暂停", "我知道了", true);
+						self.alertInfo("提示", "活动暂停", "我知道了", true);
 						return;
 					} else if (response.code == '4018') {
-						that.alertInfo("提示", "活动已下架", "我知道了", true);
+						self.alertInfo("提示", "活动已下架", "我知道了", true);
 						return;
 					} else if (response.code == '4035') {
-						that.alertInfo("提示", "活动未上线", "我知道了", true);
+						self.alertInfo("提示", "活动未上线", "我知道了", true);
 						return;
 					} else if (response.code == '499') {
 						//成公关闭loading页面
 						setTimeout(function() {
-							that.alertInfo("提示", "促销活动不存在", "我知道了", true);
+							self.alertInfo("提示", "促销活动不存在", "我知道了", true);
 						}, 500);
 						return;
 					}
 				})
 			},
 
+
+
+
 			// 领取卡券				
 			addCard: function() {
 
-
 				var self = this;
 				var reqParams = {
-					component_appid: urlParams.component_appid,
-					appid: urlParams.appid,
-					actId: this.actid,
+					component_appid: this.urlParams.component_appid,
+					appid: this.urlParams.appid,
+					actId: this.urlParams.actid,
 					outer_str: "cola_costa_wxcard",
-					timestamp: zexUtil.getTimestamp()
+					timestamp: zexUtil.getTimestamp(),
+
 				};
-				// self.is_loading = true;
 				console.log("请求参数", JSON.stringify(reqParams));
 				zexApis.batchAddWxCard(reqParams).done((function(resJson) {
 					console.log("接口返回", resJson);
@@ -335,49 +313,45 @@
 							card.cardExt = JSON.stringify(card.cardExt);
 						});
 
+
 						var delReq = {
-							promotion_id: urlParams.promotion_id,
-							// draw_type: "ticket_draw",
-							// ticket_pic_id: window.sessionStorage.getItem("ticket_pic_id"),
-							draw_type: "code_draw",
-							verify_code: window.sessionStorage.getItem('duijiangma') || "",
-							open_id: zexService.getOpenId(),
+							open_id: this.urlParams.open_id,
+							promotion_id: this.urlParams.promotion_id,
+							draw_type: "ticket_draw",
+							ticket_pic_id: window.sessionStorage.getItem("ticket_pic_id"),
+
 							timestamp: zexUtil.getTimestamp(),
 							// verify_code: window.sessionStorage.getItem('duijiangma') || "",		
 						}
 
 
-						wx.addCard({
-							cardList: cardList, // 需要添加的卡券列表
-							success: function(res) {
-								console.log('success=>', JSON.stringify(res));
-								// self.alertInfo("提示", '请至 " 我-卡包-我的票券 " 查看', "我知道了", true);													
-
-								zexApis.delUserPromotionProduce(delReq).done((function(delRes) {
-									if (delRes.code == "200" || delRes.code == 200) {
-										// wx.closeWindow();
+						zexApis.delUserPromotionProduce(delReq).done((function(delRes) {
+							if (delRes.code == "200" || delRes.code == 200) {
+								// wx.closeWindow();
+								// self.alertInfo("提示", '请至 " 我-卡包-我的票券 " 查看', "我知道了", true);	
+								wx.addCard({
+									cardList: cardList, // 需要添加的卡券列表
+									success: function(res) {
+										console.log('success=>', JSON.stringify(res));
 										self.alertInfo("提示", '请至 " 我-卡包-我的票券 " 查看', "我知道了", true);
-									} else {
-										this.alertInfo("提示", "系统繁忙   -" + delRes.code, "我知道了", false);
+									},
+									cancel: function(res) {
+										console.log('cancel=>', JSON.stringify(res));
+										// alert(JSON.stringify(res));							
+									},
+									fail: function(res) {
+										console.log('fail=>', JSON.stringify(res));
+										// alert(JSON.stringify(res));								
+									},
+									complete: function(res) {
+										console.log('complete=>', JSON.stringify(res));
+										self.alertInfo("提示", '请至 " 我-卡包-我的票券 " 查看', "我知道了", true);
 									}
-								}).bind(this));
-							},
-							cancel: function(res) {
-								console.log('cancel=>', JSON.stringify(res));
-								self.one_click = false;
-								// alert(JSON.stringify(res));							
-							},
-							fail: function(res) {
-								console.log('fail=>', JSON.stringify(res));
-								// alert(JSON.stringify(res));								
-							},
-							complete: function(res) {
-								console.log('complete=>', JSON.stringify(res));
-								self.one_click = false;
-								// self.alertInfo("提示", '请至 " 我-卡包-我的票券2 " 查看', "我知道了", true);											
+								});
+							} else {
+								this.alertInfo("提示", "系统繁忙   -" + delRes.code, "我知道了", false);
 							}
-						});
-
+						}).bind(this));
 					} else if (resJson.code == 4003) {
 						this.alertInfo("提示", "活动未开始或已下架  -" + reqParams.actId, "我知道了", true);
 					} else {
@@ -385,6 +359,11 @@
 					}
 				}).bind(this));
 			},
+
+
+
+
+
 
 			// weUI Alert => clickBtn -> closeWindow()
 			alertInfo: function(title, content, btnTxt, isCloseWindow) {

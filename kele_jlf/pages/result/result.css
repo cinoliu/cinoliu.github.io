@@ -68,24 +68,25 @@ img {
 	-webkit-justify-content: center;
 }
 
-
+.next_btn {
+	position: absolute;
+	width: 100%;
+	left: 10%;
+	height: auto;
+	/*border: 1px solid #000;*/
+	opacity: 1;
+	transition: all .5s;
+	-webkit-transition: all .5s;
+}
 
 .next {
 	position: absolute;
-	width: 70%;
-	left: calc((100% - 70%)/2);
-	top: 73%;
-	/* 	top: 102%; */
+	top: 71%;
+	left: calc((100% -  70%) / 2);
 	height: 8%;
-	/*    border: 1px solid #000; */
-	z-index: 10;
-	text-align: center;
-	/*    opacity: 1;
-    transition: all .5s;
-    -webkit-transition: all .5s; */
+	width: 70%;
+	/* 	border: 1px solid red; */
 }
-
-
 
 .next img {
 	height: 100%;

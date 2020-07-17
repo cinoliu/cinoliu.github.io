@@ -71,7 +71,7 @@
 		</div>
 
 		<div class="page_bg">
-			<img :src="page_info.receive_bg" alt="">
+			<img :src="page_info.receive_background_img" alt="">
 
 		</div>
 
@@ -111,9 +111,9 @@
 				loading: true,
 				act_rule_show: false,
 				page_info: {
-					receive_bg: "../../images/zj/bg.jpg",
-					wining_btn_img: "../../images//zj/ZJButton.png",
-					not_wining_btn_img: "../../images/zj/threeButton1.png",
+					//					receive_background_img: "../../images/zj/bg.jpg",
+					//					wining_btn_img: "../../images//zj/ZJButton.png",
+					//					not_wining_btn_img: "../../images/zj/threeButton1.png",
 
 				},
 				prize_texts: "获得一等奖",
@@ -131,27 +131,26 @@
 			self.loading = false;
 
 
-			self.getPageInfo();
-			self.page_info = JSON.parse(window.sessionStorage.getItem("prizeInfo")) || {};
-			self.loading = false;
 
 
 			this.prize_level_ids = window.sessionStorage.getItem("prize_level_ids") || "";
 			this.prize_texts = window.sessionStorage.getItem("prize_texts") || "";
 
+			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
 			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
-			// 日志
-			// var logReq = {};
-			// logReq.open_id = zexService.getOpenId();
-			// logReq.operator_type = 'winning';
-			// logReq.source = urlParams.scene;
-			// if (this.prize_code == "4025") {
-			//     logReq.note = "未中奖";
-			// } else {
-			//     logReq.note = window.sessionStorage.getItem("prize_texts");
-			// }
-			// zexApis.promotionLog(logReq).done(function() {});
 
+
+			self.getPageInfo();
+
+			var reqParams = {
+				open_id: this.urlParams.open_id,
+				operator_type: 'receiveReward',
+				note: this.prize_texts,
+				source: this.urlParams.scene
+			};
+
+
+			zexApis.promotionLog(reqParams).done(function() {});
 
 		},
 
@@ -160,7 +159,7 @@
 
 			//页面初始化
 			getPageInfo: function() {
-				var that = this;
+				var self = this;
 				var reqParams = {
 					open_id: this.urlParams.open_id,
 					promotion_id: this.urlParams.promotion_id,
@@ -174,13 +173,9 @@
 						setTimeout(function() {
 							$('#page_loading').css('display', 'none');
 						}, 500);
-						// that.luckyDraw();
-						that.page_info = response;
-						that.receive_bg = response.page.receive_background_img;
-						that.wining_success_text = response.page.wining_success_text;
-						that.wining_btn_img = response.page.wining_btn_img;
-						that.not_wining_btn_img = response.page.not_wining_btn_img;
-						that.not_wining_fail_text = response.page.not_wining_fail_text;
+
+						self.page_info = response.page;
+
 						var jsonUserFlowStr;
 						if (response.jsonUserFlowStr) {
 							jsonUserFlowStr = JSON.parse(response.jsonUserFlowStr);
@@ -204,42 +199,42 @@
 								window.sessionStorage.setItem('public_draw', jsonUserFlowStr.draw_type);
 								window.sessionStorage.setItem('shake_text', jsonUserFlowStr.prize_texts);
 								window.sessionStorage.setItem('draw_check_priority', jsonUserFlowStr.draw_check_priority);
-								window.location.href = '../form/form.html';
+								window.location.href = '../userInfo/userInfo.html';
 
 							}
 						}
 
 					} else if (response.code == '4001') {
-						that.alertInfo("提示", "网络不好,请重试", "我知道了", true);
+						self.alertInfo("提示", "网络不好,请重试", "我知道了", true);
 						return;
 					} else if (response.code == '4003') {
-						that.alertInfo("提示", "网络不好,请重试", "我知道了", true);
+						self.alertInfo("提示", "网络不好,请重试", "我知道了", true);
 						return;
 					} else if (response.code == '4004') {
-						that.alertInfo("提示", "网络不好,请重试", "我知道了", true);
+						self.alertInfo("提示", "网络不好,请重试", "我知道了", true);
 						return;
 					} else if (response.code == '4019') {
-						that.alertInfo("提示", "促销活动不存在", "我知道了", true);
+						self.alertInfo("提示", "促销活动不存在", "我知道了", true);
 						return;
 					} else if (response.code == '4014') {
-						that.alertInfo("提示", "活动未开始", "我知道了", true);
+						self.alertInfo("提示", "活动未开始", "我知道了", true);
 						return;
 					} else if (response.code == '4015') {
-						that.alertInfo("提示", "活动已结束", "我知道了", true);
+						self.alertInfo("提示", "活动已结束", "我知道了", true);
 						return;
 					} else if (response.code == '4017') {
-						that.alertInfo("提示", "活动暂停", "我知道了", true);
+						self.alertInfo("提示", "活动暂停", "我知道了", true);
 						return;
 					} else if (response.code == '4018') {
-						that.alertInfo("提示", "活动已下架", "我知道了", true);
+						self.alertInfo("提示", "活动已下架", "我知道了", true);
 						return;
 					} else if (response.code == '4035') {
-						that.alertInfo("提示", "活动未上线", "我知道了", true);
+						self.alertInfo("提示", "活动未上线", "我知道了", true);
 						return;
 					} else if (response.code == '499') {
 						//成公关闭loading页面
 						setTimeout(function() {
-							that.alertInfo("提示", "促销活动不存在", "我知道了", true);
+							self.alertInfo("提示", "促销活动不存在", "我知道了", true);
 						}, 500);
 						return;
 					}
@@ -248,7 +243,6 @@
 
 			// 跳转至上传小票页
 			next: function() {
-				console.log(this.prize_texts.indexOf('一等奖') > 0)
 
 				if (!this.one_click) {
 					this.one_click = true;
@@ -272,43 +266,42 @@
 					this.alertInfo("提示", '已领取，请勿重复点击', "我知道了", false);
 				}
 
+
+
+
+
+				var reqParams = {
+					open_id: this.urlParams.open_id,
+					operator_type: 'receiveReward',
+					note: this.urlParams.promotion_id,
+					source: this.urlParams.scene
+				};
+
+				zexApis.promotionLog(reqParams).done(function() {});
+
 			},
 
 
 			// 领取奖励				
 			getPrize: function() {
 				var self = this;
-
-				if (!this.one_click) {
-					this.one_click = true;
-				} else {
-					this.alertInfo("提示", "您手速太快了！请勿重复领取~", "好的", false);
-					return
-				}
-
-				if (this.noPrize == true) {
-					wx.closeWindow();
-					return
-				}
-
 				var receivePrizeLevelReq = {
 					open_id: this.urlParams.open_id,
 					promotion_id: this.urlParams.promotion_id,
 					prize_level_ids: this.prize_level_ids,
-					// draw_type: "code_draw",
-					// verify_code: window.sessionStorage.getItem('duijiangma') || "",		
+
+					verify_code: window.sessionStorage.getItem('duijiangma') || "",
 					draw_type: "ticket_draw", // code_draw -- 兑奖码,	
 					ticket_pic_id: window.sessionStorage.getItem("ticket_pic_id"),
 					timestamp: zexUtil.getTimestamp(),
 				};
-				console.log(receivePrizeLevelReq);
 
 				zexApis.getInterfacecode(receivePrizeLevelReq).done((function(receivePrizeLevelRes) {
-					// alert( JSON.stringify(receivePrizeLevelRes) );
 
 					if (receivePrizeLevelRes.code == "200" || receivePrizeLevelRes.code == 200) {
 
 						setTimeout(function() {
+
 							window.location.href = "../userInfo/userInfo.html";
 						}, 1500);
 

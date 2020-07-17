@@ -146,9 +146,9 @@
 			loading: true,
 			course_show: false,
 			page_info: {
-				upload_btn_img2: "../../images/indexButton.png",
-				background_img: "../../images/indexBg.jpg",
-				camp_desc_img: "../../images/hdsm.jpg",
+				//				upload_btn_img2: "../../images/indexButton.png",
+				//				background_img: "../../images/indexBg.jpg",
+				//				camp_desc_img: "../../images/hdsm.jpg",
 			},
 
 			promotionBaseInfo: {},
@@ -156,35 +156,38 @@
 			shouquan_show: true,
 			//不能重复点击
 			one_click: true,
-			act_rule_show: true,
-			is_agree: true,
+
+
 			urlParams: {},
 
 		},
 
 		created: function() {
-			this.loading = false;
-			var net_agree = window.sessionStorage.getItem('is_agree');
-			console.log(net_agree)
-			if (net_agree == 'true') {
-				this.act_rule_show = false;
-			} else {
-				this.act_rule_show = true;
 
-			}
+
 			this.urlParams = {
 				component_appid: zexUtil.GetQueryString("appid"),
 				appid: zexUtil.GetQueryString("appid"),
 				open_id: zexService.getOpenId() || '1',
 				promotion_id: zexUtil.GetQueryString("promotion_id"),
 				scene: zexUtil.GetQueryString("scene"),
+				actid:zexUtil.GetQueryString("actid"),
 			};
 
 			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams));
-			this.getTicketImg()
+			this.getTicketImg();
+			var reqParams = {
+				open_id: this.urlParams.open_id,
+				operator_type: 'login',
+				note: this.urlParams.promotion_id,
+				source: this.urlParams.scene,
+				
+			};
+			zexApis.promotionLog(reqParams).done(function(response) {});
 		},
 
 		methods: {
+
 
 			getTicketImg() {
 
@@ -194,10 +197,7 @@
 					promotion_id: this.urlParams.promotion_id,
 					timestamp: zexUtil.getTimestamp(),
 				};
-				//存储门店ID
-				if (urlParams.shop_id) {
-					window.sessionStorage.setItem('shop_id', urlParams.shop_id);
-				}
+
 
 
 				zexApis.statInformation(reqParams).done(function(response) {
@@ -355,11 +355,6 @@
 				wx.closeWindow();
 			},
 
-			getAgree() {
-				this.act_rule_show = false;
-				window.sessionStorage.setItem('is_agree', true);
-
-			},
 
 
 		}

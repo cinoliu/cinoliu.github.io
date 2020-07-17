@@ -42,7 +42,7 @@
 		</div>
 
 		<div class="page_bg">
-			<img :src="page.course_img" alt="" />
+			<img :src="page_info.course_img" alt="" />
 		</div>
 
 		<div class="next_btn" @click="uploadTicketImg()">
@@ -62,13 +62,16 @@
 			return {
 				loading: true,
 				course_show: false,
-				page: {
-					course_img: "../../images/uploadTicketBG.jpg",
+				page_info: {
+					//	course_img: "../../images/uploadTicketBG.jpg",
 				},
 				base_info: {},
 				money_selected: "", //选择小票金额
 				shop_selected: "", //选择卖场:{},
 				urlParams: {},
+				promotion_level_id: "",
+				upload_text: "",
+				is_select_photo_album: "",
 			};
 		},
 
@@ -96,7 +99,18 @@
 					this.loading = false;
 
 					if (res.code == 200) {
-						this.page = res.page;
+
+
+						setTimeout(function() {
+							$('#page_loading').css('display', 'none');
+						}, 500);
+
+
+						this.page_info = res.page;
+						this.page_bg = res.page.course_img;
+
+						this.promotion_level_id = res.promotion_level_id;
+
 
 					}
 				}).bind(this));
@@ -144,7 +158,7 @@
 				var self = this;
 				self.loading = true;
 
-
+				var money_id = window.sessionStorage.getItem('money_id');
 				var req = {
 					component_appid: self.urlParams.component_appid,
 					appid: self.urlParams.appid,
@@ -153,10 +167,10 @@
 					source: self.urlParams.scene,
 
 					mediaId: serverId,
-					shop_id: "",
-					promotion_level_id: "",
+					shop_id: (window.sessionStorage.getItem('shop_id') != null && window.sessionStorage.getItem('shop_id') != 'undefined') ? window.sessionStorage.getItem('shop_id') : "",
+					promotion_level_id: (money_id != null && money_id != '') ? money_id : self.promotion_level_id,
 					timestamp: zexUtil.getTimestamp(),
-					draw_check_priority: this.base_info.draw_check_priority,
+					draw_check_priority: self.base_info.draw_check_priority,
 				};
 
 
@@ -174,26 +188,32 @@
 							draw_type: "ticket_draw",
 							ticket_pic_id: res.ticket_pic_id,
 							timestamp: zexUtil.getTimestamp(),
+							verify_code: "",
 						};
 
-						zexApis.getLuckyDraw(drawPrizeLevelReq).done((function(drawPrizeLevelRes) {
+
+						zexApis.getLuckyDraw(drawPrizeLevelReq).done((function(response) {
 							// alert( JSON.stringify(drawPrizeLevelRes) );
 
-							if (drawPrizeLevelRes.code == "200") {
+							if (response.code == "200") {
 
 								var receivePrizeLevelReq = {
 									open_id: this.urlParams.open_id,
 									promotion_id: this.urlParams.promotion_id,
-									prize_level_ids: drawPrizeLevelRes.prize_level_ids,
+									prize_level_ids: response.prize_level_ids,
 									draw_type: "ticket_draw",
 									ticket_pic_id: res.ticket_pic_id,
 									timestamp: zexUtil.getTimestamp(),
 								};
 
-								window.sessionStorage.setItem("prize_level_ids", drawPrizeLevelRes.prize_level_ids);
-								window.sessionStorage.setItem("prize_texts", drawPrizeLevelRes.prize_texts);
+								window.sessionStorage.setItem("prize_level_ids", response.prize_level_ids);
+								window.sessionStorage.setItem("prize_texts", response.prize_texts);
 
 								window.location.href = '../rewardPrize/rewardPrize.html';
+
+							} else {
+
+								self.alertInfo("提示", response.msg, "我知道了", true);
 
 							}
 						}).bind(this));
@@ -205,6 +225,16 @@
 					}
 
 				}).bind(this));
+
+				var reqParams = {
+					open_id: this.urlParams.open_id,
+					operator_type: 'uploadTicket',
+					note: this.urlParams.promotion_id,
+					source: this.urlParams.scene
+				};
+
+
+				zexApis.promotionLog(reqParams).done(function() {});
 
 			},
 
