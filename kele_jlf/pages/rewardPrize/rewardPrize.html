@@ -127,20 +127,15 @@
 			};
 		},
 		created: function() {
+
 			var self = this;
+
 			self.loading = false;
-
-
-
 
 			this.prize_level_ids = window.sessionStorage.getItem("prize_level_ids") || "";
 			this.prize_texts = window.sessionStorage.getItem("prize_texts") || "";
-
 			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
 			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
-
-
-			self.getPageInfo();
 
 			var reqParams = {
 				open_id: this.urlParams.open_id,
@@ -149,13 +144,13 @@
 				source: this.urlParams.scene
 			};
 
-
 			zexApis.promotionLog(reqParams).done(function() {});
+
+			self.getPageInfo();
 
 		},
 
 		methods: {
-
 
 			//页面初始化
 			getPageInfo: function() {
@@ -244,31 +239,13 @@
 			// 跳转至上传小票页
 			next: function() {
 
-				if (!this.one_click) {
-					this.one_click = true;
-
-					if (this.prize_texts.indexOf('一等奖') > 0) {
-
-						this.getPrize();
-
-
-					} else if (this.prize_texts.indexOf('二等奖') > 0) {
-
-
-						this.getPrize();
-
-					} else if (this.prize_texts.indexOf('三等奖') > 0) { // 三等奖				
-
-						window.location.href = '../threePrize/threePrize.html';
-
-					}
-				} else {
-					this.alertInfo("提示", '已领取，请勿重复点击', "我知道了", false);
+				if (this.prize_texts.indexOf('一等奖') > 0) {
+					this.getPrize();
+				} else if (this.prize_texts.indexOf('二等奖') > 0) {
+					this.getPrize();
+				} else if (this.prize_texts.indexOf('三等奖') > 0) {
+					window.location.href = '../threePrize/threePrize.html';
 				}
-
-
-
-
 
 				var reqParams = {
 					open_id: this.urlParams.open_id,
@@ -289,19 +266,16 @@
 					open_id: this.urlParams.open_id,
 					promotion_id: this.urlParams.promotion_id,
 					prize_level_ids: this.prize_level_ids,
-
-					verify_code: window.sessionStorage.getItem('duijiangma') || "",
+//					verify_code: window.sessionStorage.getItem('duijiangma') || "",
 					draw_type: "ticket_draw", // code_draw -- 兑奖码,	
 					ticket_pic_id: window.sessionStorage.getItem("ticket_pic_id"),
-					timestamp: zexUtil.getTimestamp(),
+					timestamp: zexUtil.getTimestamp(),					
 				};
 
 				zexApis.getInterfacecode(receivePrizeLevelReq).done((function(receivePrizeLevelRes) {
 
 					if (receivePrizeLevelRes.code == "200" || receivePrizeLevelRes.code == 200) {
-
 						setTimeout(function() {
-
 							window.location.href = "../userInfo/userInfo.html";
 						}, 1500);
 

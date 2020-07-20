@@ -415,4 +415,31 @@ var zexApis = {
 		});
 	},
 	
+	
+		//微信单品券初始化接口
+	getWxCouponH5actPageDetail: function (data) {
+		data = data || {};
+		data.sign = zexUtil.generateSign(data, zexUtil.getSignKey());
+		return $.ajax({
+			method: 'POST',
+			dataType: 'json',
+			data: data,
+			url: httpServiceURL + "/mmpay/getWxCouponH5actPageDetail.do"
+		});
+	},
+	
+	
+		// 微信代金券接口
+	sendCouponStock: function(data){
+		data = data || {};
+		data.sign = zexUtil.generateSign(data,zexUtil.getSignKey());
+        return $.ajax({
+            method: "POST",
+            dataType: "json",
+            data: data,
+			url: wechatSrvServiceURL + "/mmpay/sendCouponStock.do",	
+		});
+	},
+	
+	
 };

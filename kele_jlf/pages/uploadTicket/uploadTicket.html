@@ -79,7 +79,7 @@
 			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
 			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
 			this.loading = false,
-				zexWxConfig.runConfig(function() {});
+			zexWxConfig.runConfig(function() {});
 			this.upReceipts();
 			console.log(this.base_info.draw_check_priority)
 		},
@@ -88,7 +88,7 @@
 		methods: {
 
 
-			// 获取选择小票下拉数据源
+			// 初始化页面接口
 			upReceipts: function() {
 				var req = {
 					open_id: this.urlParams.open_id,
@@ -173,9 +173,6 @@
 					draw_check_priority: self.base_info.draw_check_priority,
 				};
 
-
-
-
 				zexApis.uploadReceipts(req).done((function(res) {
 					self.loading = false;
 					if (res.code == 200) {
@@ -190,7 +187,6 @@
 							timestamp: zexUtil.getTimestamp(),
 							verify_code: "",
 						};
-
 
 						zexApis.getLuckyDraw(drawPrizeLevelReq).done((function(response) {
 							// alert( JSON.stringify(drawPrizeLevelRes) );

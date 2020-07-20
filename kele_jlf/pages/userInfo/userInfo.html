@@ -100,8 +100,8 @@
 			return {
 				loading: true,
 				page: {
-					//					"commit_btn_img": "../../images/userInfoButton.png",
-					//					"background_img": "../../images/userInfoBg.jpg",
+					//		"commit_btn_img": "../../images/userInfoButton.png",
+					//		"background_img": "../../images/userInfoBg.jpg",
 				},
 				base_info: {},
 				input_req: {
@@ -136,8 +136,6 @@
 			this.getTnitUser();
 
 			this.loading = false;
-
-
 
 		},
 
@@ -246,9 +244,9 @@
 
 				window.sessionStorage.setItem('mobile', this.input_req.mobile.trim());
 
-
-				var ticket_pic_id = null != window.sessionStorage.getItem("ticket_pic_id") ? window.sessionStorage.getItem("ticket_pic_id") : null != zexUtil.GetQueryString("ticket_pic_id") ? zexUtil.GetQueryString("ticket_pic_id") : "";
-
+				//				var ticket_pic_id = null != window.sessionStorage.getItem("ticket_pic_id") ? window.sessionStorage.getItem("ticket_pic_id") : null != zexUtil.GetQueryString("ticket_pic_id") ? zexUtil.GetQueryString("ticket_pic_id") : "";
+				//				var verify_code = window.sessionStorage.getItem('duijiangma') != null ? window.sessionStorage.getItem('duijiangma') : '';
+				//				var draw_type = (null != ticket_pic_id && ticket_pic_id != '') ? "ticket_draw" : "code_draw";
 
 
 				var req = {
@@ -257,19 +255,13 @@
 					realName: this.input_req.realName,
 					address: this.input_req.address,
 					mobile: this.input_req.mobile.trim(),
-
 					sms_verify_code: this.input_req.sms_verify_code,
 					timestamp: zexUtil.getTimestamp(),
 					prize_level_ids: window.sessionStorage.getItem('prize_level_ids'),
-					ticket_pic_id: ticket_pic_id,
-
+					ticket_pic_id: window.sessionStorage.getItem("ticket_pic_id"),
 					prize_verify_code: "",
-
 					draw_type: "ticket_draw",
 				};
-
-
-
 
 				self.loading = true;
 
