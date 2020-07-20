@@ -100,8 +100,8 @@
 			return {
 				loading: true,
 				page: {
-					//		"commit_btn_img": "../../images/userInfoButton.png",
-					//		"background_img": "../../images/userInfoBg.jpg",
+						commit_btn_img: "../../images/userInfoButton.png",
+						background_img: "../../images/userInfoBg.jpg",
 				},
 				base_info: {},
 				input_req: {
@@ -128,14 +128,14 @@
 		},
 
 		created: function() {
-
-			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
-
-			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
-
-			this.getTnitUser();
-
-			this.loading = false;
+//
+//			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
+//
+//			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
+//
+//			this.getTnitUser();
+//
+//			this.loading = false;
 
 		},
 
@@ -158,28 +158,23 @@
 						this.page = res.page;
 						console.log(JSON.stringify(res));
 						this.page_bg = res.page.background_img;
-
 					}
-
 				}).bind(this));
 
 			},
 
 			// 获取手机验证码
 			getPhoneCode: function() {
-
 				if (!zexUtil.isMobile(this.input_req.mobile)) {
 					this.alertInfo("提示", "请输入正确的手机号码哦~", "好的", false);
 					return;
 				}
-
 				var req = {
 					open_id: this.urlParams.open_id,
 					promotion_id: this.urlParams.promotion_id,
 					phoneNum: this.input_req.mobile,
 					timestamp: zexUtil.getTimestamp()
 				};
-
 				this.get_code_txt = "正在发送";
 				// 获取短信验证码接口
 				zexApis.getverificationcode(req).done((function(res) {
@@ -244,9 +239,9 @@
 
 				window.sessionStorage.setItem('mobile', this.input_req.mobile.trim());
 
-				//				var ticket_pic_id = null != window.sessionStorage.getItem("ticket_pic_id") ? window.sessionStorage.getItem("ticket_pic_id") : null != zexUtil.GetQueryString("ticket_pic_id") ? zexUtil.GetQueryString("ticket_pic_id") : "";
-				//				var verify_code = window.sessionStorage.getItem('duijiangma') != null ? window.sessionStorage.getItem('duijiangma') : '';
-				//				var draw_type = (null != ticket_pic_id && ticket_pic_id != '') ? "ticket_draw" : "code_draw";
+				//	var ticket_pic_id = null != window.sessionStorage.getItem("ticket_pic_id") ? window.sessionStorage.getItem("ticket_pic_id") : null != zexUtil.GetQueryString("ticket_pic_id") ? zexUtil.GetQueryString("ticket_pic_id") : "";
+				//	var verify_code = window.sessionStorage.getItem('duijiangma') != null ? window.sessionStorage.getItem('duijiangma') : '';
+				//	var draw_type = (null != ticket_pic_id && ticket_pic_id != '') ? "ticket_draw" : "code_draw";
 
 
 				var req = {

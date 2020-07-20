@@ -109,17 +109,16 @@
 		data: function() {
 			return {
 				loading: true,
-				act_rule_show: false,
+			
 				page_info: {
 					//					receive_background_img: "../../images/zj/bg.jpg",
 					//					wining_btn_img: "../../images//zj/ZJButton.png",
 					//					not_wining_btn_img: "../../images/zj/threeButton1.png",
 
 				},
-				prize_texts: "获得一等奖",
+				prize_texts: "",
 				base_info: {},
-				referrer_check: false,
-				checkCodeImg: "",
+			
 				one_click: false,
 				actid: "", //  活动卡券id
 				prize_level_ids: "",
@@ -266,10 +265,10 @@
 					open_id: this.urlParams.open_id,
 					promotion_id: this.urlParams.promotion_id,
 					prize_level_ids: this.prize_level_ids,
-//					verify_code: window.sessionStorage.getItem('duijiangma') || "",
+					//					verify_code: window.sessionStorage.getItem('duijiangma') || "",
 					draw_type: "ticket_draw", // code_draw -- 兑奖码,	
 					ticket_pic_id: window.sessionStorage.getItem("ticket_pic_id"),
-					timestamp: zexUtil.getTimestamp(),					
+					timestamp: zexUtil.getTimestamp(),
 				};
 
 				zexApis.getInterfacecode(receivePrizeLevelReq).done((function(receivePrizeLevelRes) {
