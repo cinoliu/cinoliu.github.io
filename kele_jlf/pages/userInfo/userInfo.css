@@ -319,8 +319,8 @@ input::-ms-input-placeholder {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	-webkit-appearance: none;
-	padding-top: 7%;
+	padding-top: 6%;
 	font-weight: 900;
-	margin-top: -2%;
+	margin-top: 0%;
 
 }
