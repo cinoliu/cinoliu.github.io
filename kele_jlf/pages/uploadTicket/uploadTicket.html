@@ -78,7 +78,6 @@
 			this.loading = false,
 				zexWxConfig.runConfig(function() {});
 			this.upReceipts();
-			console.log(this.base_info.draw_check_priority)
 		},
 
 
@@ -161,7 +160,6 @@
 					open_id: self.urlParams.open_id,
 					promotion_id: self.urlParams.promotion_id,
 					source: self.urlParams.scene,
-
 					mediaId: serverId,
 					shop_id: (window.sessionStorage.getItem('shop_id') != null && window.sessionStorage.getItem('shop_id') != 'undefined') ? window.sessionStorage.getItem('shop_id') : "",
 					promotion_level_id: self.promotion_level_id,
@@ -172,9 +170,7 @@
 				zexApis.uploadReceipts(req).done((function(res) {
 					self.loading = false;
 					if (res.code == 200) {
-						// 保存上传成功后返回的小票ID
 						window.sessionStorage.setItem("ticket_pic_id", res.ticket_pic_id);
-
 						var drawPrizeLevelReq = {
 							open_id: this.urlParams.open_id,
 							promotion_id: this.urlParams.promotion_id,
@@ -185,10 +181,7 @@
 						};
 
 						zexApis.getLuckyDraw(drawPrizeLevelReq).done((function(response) {
-							// alert( JSON.stringify(drawPrizeLevelRes) );
-
 							if (response.code == "200") {
-
 								var receivePrizeLevelReq = {
 									open_id: this.urlParams.open_id,
 									promotion_id: this.urlParams.promotion_id,
@@ -200,22 +193,16 @@
 
 								window.sessionStorage.setItem("prize_level_ids", response.prize_level_ids);
 								window.sessionStorage.setItem("prize_texts", response.prize_texts);
-
 								window.location.href = '../rewardPrize/rewardPrize.html';
-
 							} else {
-
 								self.alertInfo("提示", response.msg, "我知道了", true);
-
 							}
 						}).bind(this));
-
 					} else if (res.code == 4031) {
 						self.alertInfo("提示", "您上传次数超过限制啦~", "我知道了", true);
 					} else {
 						self.alertInfo("提示", "哎呀..服务器有点繁忙~ " + res.code, "我知道了");
 					}
-
 				}).bind(this));
 
 				var reqParams = {
@@ -225,9 +212,7 @@
 					source: this.urlParams.scene
 				};
 
-
 				zexApis.promotionLog(reqParams).done(function() {});
-
 			},
 
 			// weUI Alert => clickBtn -> closeWindow()

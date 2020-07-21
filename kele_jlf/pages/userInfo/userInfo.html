@@ -100,8 +100,8 @@
 			return {
 				loading: true,
 				page: {
-						commit_btn_img: "../../images/userInfoButton.png",
-						background_img: "../../images/userInfoBg.jpg",
+					//					commit_btn_img: "../../images/userInfoButton.png",
+					//					background_img: "../../images/userInfoBg.jpg",
 				},
 				base_info: {},
 				input_req: {
@@ -128,17 +128,15 @@
 		},
 
 		created: function() {
-//
-//			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
-//
-//			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
-//
-//			this.getTnitUser();
-//
-//			this.loading = false;
-				setTimeout(function() {
-							$('#page_loading').css('display', 'none');
-						}, 500);
+
+			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
+
+			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
+
+			this.getTnitUser();
+
+			this.loading = false;
+
 
 		},
 
@@ -306,9 +304,7 @@
 					source: this.urlParams.scene
 				};
 
-
 				zexApis.promotionLog(reqParams).done(function() {});
-
 
 			},
 

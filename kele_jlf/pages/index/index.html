@@ -162,14 +162,14 @@
 
 
 			this.urlParams = {
-				component_appid: zexUtil.GetQueryString("appid"),
+				component_appid: zexUtil.GetQueryString("component_appid"),
 				appid: zexUtil.GetQueryString("appid"),
-				open_id: zexService.getOpenId() || '1',
+				open_id: zexService.getOpenId() ,
 				promotion_id: zexUtil.GetQueryString("promotion_id"),
 				scene: zexUtil.GetQueryString("scene"),
 				actid: zexUtil.GetQueryString("actid"),
-				coupon_stock_id: zexUtil.GetQueryString('coupon_stock_id') || '10811197',
-				brand_id: zexUtil.GetQueryString('brand_id') || '2',
+				coupon_stock_id: zexUtil.GetQueryString('coupon_stock_id'),
+				brand_id: zexUtil.GetQueryString('brand_id') ,
 
 			};
 
@@ -230,10 +230,10 @@
 								jsonUserFlowStr.verify_code);
 							window.sessionStorage.setItem('public_draw',
 								jsonUserFlowStr.draw_type);
-							window.sessionStorage.setItem('shake_text',
+							window.sessionStorage.setItem('prize_texts',
 								jsonUserFlowStr.prize_texts);
 
-							var user_flow = JSON.parse(res.jsonUserFlowStr) || {};
+							var user_flow = JSON.parse(response.jsonUserFlowStr) || {};
 							// 存储上次上传成功返回的小票ID
 							window.sessionStorage.setItem("ticket_pic_id", user_flow.ticket_pic_id);
 							var awards_result = {
@@ -241,36 +241,19 @@
 								prize_texts: user_flow.prize_texts || ""
 							};
 
+							console.log(user_flow.next_page)
+							
 							switch (user_flow.next_page) {
-								case "guagua_draw_page":
-									//    window.location.href = "../scraping/scraping.html";
-									window.location.href = "../rotate/rotate.html";
-									break;
-								case "shake_draw_page":
-									//    window.location.href = "../shake/shake.html";
-									window.location.href = "../rotate/rotate.html";
-									break;
-								case "receive_draw_page":
-									//     window.location.href = "../awards/awards.html";
-									window.location.href = "../rotate/rotate.html";
-									break;
-								case "guagua_receive_page":
-									window.sessionStorage.setItem("awards_result", JSON.stringify(awards_result));
-									window.sessionStorage.setItem("verify_code", user_flow.verify_code);
-									//    window.location.href = "../scraping/scraping.html";
-									window.location.href = "../rotate/rotate.html";
-									break;
-								case "shake_receive_page":
-									window.sessionStorage.setItem("awards_result", JSON.stringify(awards_result));
-									window.sessionStorage.setItem("verify_code", user_flow.verify_code);
-									//     window.location.href = "../shake/shake.html";
-									window.location.href = "../rotate/rotate.html";
-									break;
+						
 								case "receive_receive_page":
 									window.sessionStorage.setItem("awards_result", JSON.stringify(awards_result));
+									
+								window.sessionStorage.setItem("prize_level_ids", awards_result.prize_level_ids);
+								window.sessionStorage.setItem("prize_texts", awards_result.prize_texts);
+									
 									window.sessionStorage.setItem("verify_code", user_flow.verify_code);
 									//     window.location.href = "../awards/awards.html";
-									window.location.href = "../rotate/rotate.html";
+									window.location.href = "../rewardPrize/rewardPrize.html";
 									break;
 								case "fill_userinfo_page":
 									window.sessionStorage.setItem("awards_result", JSON.stringify(awards_result));

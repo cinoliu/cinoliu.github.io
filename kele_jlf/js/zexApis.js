@@ -437,9 +437,10 @@ var zexApis = {
             method: "POST",
             dataType: "json",
             data: data,
-			url: wechatSrvServiceURL + "/mmpay/sendCouponStock.do",	
+			url: httpServiceURL + "/mmpay/sendCouponStock.do",	
 		});
 	},
+	
 	
 	
 };

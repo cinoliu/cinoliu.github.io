@@ -48,8 +48,25 @@ html{font-size:13.33333333vw}
 	width: 5rem;
 /* 	border: 1px solid red; */
 }
-
 .next img{
+	height: 100%;
+	width: 100%;
+	display: block;
+}
+
+
+
+.next1{
+	position: absolute;
+	top: 71%;
+	left: calc((100% - 5rem) / 2);
+	height: 8%;
+	width: 5rem;
+/* 	border: 1px solid red; */
+}
+
+
+.next1 img{
 	height: 100%;
 	width: 100%;
 	display: block;

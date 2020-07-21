@@ -108,6 +108,7 @@ img {
 	background-color: #a6a6a6;
 	border-radius: 0 .4rem 0.4rem 0;
 	color: #fff;
+	border:0;
 }
 
 .get_check_code,
@@ -117,7 +118,7 @@ img {
 	background-color: #a6a6a6;
 	color: #fff;
 	/*border-radius: .4rem;*/
-	font-size: 1rem;
+	font-size: 1.3rem;
 	border: 0;
 	/*	border-left: 1px solid #e3e3e3;*/
 	text-align: center;
@@ -319,7 +320,7 @@ input::-ms-input-placeholder {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	-webkit-appearance: none;
-	padding-top: 6%;
+	padding-top: 5.5%;
 	font-weight: 900;
 	margin-top: 0%;
 
