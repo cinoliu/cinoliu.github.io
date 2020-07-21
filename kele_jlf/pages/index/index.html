@@ -153,7 +153,7 @@
 
 			promotionBaseInfo: {},
 			promotion_id: "",
-	
+
 			urlParams: {},
 
 		},
@@ -164,12 +164,12 @@
 			this.urlParams = {
 				component_appid: zexUtil.GetQueryString("component_appid"),
 				appid: zexUtil.GetQueryString("appid"),
-				open_id: zexService.getOpenId() ,
+				open_id: zexService.getOpenId(),
 				promotion_id: zexUtil.GetQueryString("promotion_id"),
 				scene: zexUtil.GetQueryString("scene"),
 				actid: zexUtil.GetQueryString("actid"),
 				coupon_stock_id: zexUtil.GetQueryString('coupon_stock_id'),
-				brand_id: zexUtil.GetQueryString('brand_id') ,
+				brand_id: zexUtil.GetQueryString('brand_id'),
 
 			};
 
@@ -242,15 +242,15 @@
 							};
 
 							console.log(user_flow.next_page)
-							
+
 							switch (user_flow.next_page) {
-						
+
 								case "receive_receive_page":
 									window.sessionStorage.setItem("awards_result", JSON.stringify(awards_result));
-									
-								window.sessionStorage.setItem("prize_level_ids", awards_result.prize_level_ids);
-								window.sessionStorage.setItem("prize_texts", awards_result.prize_texts);
-									
+
+									window.sessionStorage.setItem("prize_level_ids", awards_result.prize_level_ids);
+									window.sessionStorage.setItem("prize_texts", awards_result.prize_texts);
+
 									window.sessionStorage.setItem("verify_code", user_flow.verify_code);
 									//     window.location.href = "../awards/awards.html";
 									window.location.href = "../rewardPrize/rewardPrize.html";

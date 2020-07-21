@@ -14,7 +14,6 @@
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Expires" content="0" />
 	<title>可口可乐</title>
-
 	<link rel="stylesheet" href="threePrize.css">
 	<link rel="stylesheet" href="../../css/plugins/loading.css">
 	<script type="text/javascript" src="../../js/plugins/jquery-2.1.4.min.js"></script>
@@ -137,18 +136,30 @@
 	</div>
 </body>
 <script>
-	if (history && history.pushState) {
-		history.pushState({
-			title: document.title,
-			url: location.href
-		}, document.title, location.href);
-	}
-	//添加退弹事件
-	window.addEventListener("popstate", function(e) {
-		// alert("我监听到了浏览器的返回按钮事件啦1"); 
-		location.href = 'rewardPrize.html'; //在这里指定其返回的地址
-	});
+	
+	//	if (history && history.pushState) {
+	//		history.pushState({
+	//			title: document.title,
+	//			url: location.href
+	//		}, document.title, location.href);
+	//	}
+	//	//添加退弹事件
+	//	window.addEventListener("popstate", function(e) {
+	//		// alert("我监听到了浏览器的返回按钮事件啦1"); 
+	//		location.href = 'rewardPrize.html'; //在这里指定其返回的地址
+	//	});
 
+
+	var urlParams = {
+		'component_appid': zexUtil.GetQueryString('component_appid') || "",
+		'appid': zexUtil.GetQueryString('appid'),
+		'actId': zexUtil.GetQueryString('actId'),
+		'brand_id': zexUtil.GetQueryString('brand_id'),
+		'openid': zexUtil.GetQueryString('openid'),
+		'coupon_stock_id': zexUtil.GetQueryString('coupon_stock_id')
+	};
+
+	var realOpenid = zexUtil.rsaDecrypt(urlParams.openid, zexUtil.getRsaClientPrivateKey());
 
 
 	var container = new Vue({
@@ -166,10 +177,10 @@
 
 				base_info: {},
 				actid: "", //  活动卡券id
-				prize_level_ids: "",
+
 				course_show: false,
 				is_success_show: "",
-				prize_texts: "",
+
 				cardList: {},
 				urlParams: {},
 				buttonHeight: "",
@@ -191,29 +202,14 @@
 				this.cuoTop = "15%";
 			}
 
-
 			this.loading = false;
 
-			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
-
-			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
-
-			this.prize_level_ids = window.sessionStorage.getItem("prize_level_ids") || "";
-
-			this.prize_texts = window.sessionStorage.getItem("prize_texts") || "";
-
-			//						var reqParams = {
-			//							open_id: this.urlParams.open_id,
-			//							operator_type: 'receiveReward',
-			//							note: this.prize_texts,
-			//							source: this.urlParams.scene
-			//						};
-			//			
-			//						zexApis.promotionLog(reqParams).done(function() {});
+			//			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
+			//			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
 
 			var wxConfigParams = {
-				component_appid: this.urlParams.component_appid,
-				appid: this.urlParams.appid,
+				component_appid: urlParams.component_appid,
+				appid: urlParams.appid,
 				url: window.location.href,
 				type: "jsapi"
 			};
@@ -227,9 +223,6 @@
 					signature: resJson.signature,
 					jsApiList: ['hideOptionMenu', 'addCard', 'openCard']
 				});
-
-
-
 				wx.ready(function(res) {
 					wx.hideOptionMenu();
 					self.getPageInfoDetail();
@@ -239,15 +232,13 @@
 				});
 			});
 
-
-
 		},
 		methods: {
 
 			getPageInfoDetail: function() {
 				var self = this;
 				var reqParams = {
-					coupon_stock_id: this.urlParams.coupon_stock_id
+					coupon_stock_id: urlParams.coupon_stock_id
 				};
 
 				zexApis.getWxCouponH5actPageDetail(reqParams).done(function(response) {
@@ -269,13 +260,16 @@
 
 			addCard: function() {
 				var self = this;
+
+
 				var req = {
-					appid: this.urlParams.appid,
-					coupon_stock_id: this.urlParams.coupon_stock_id,
-					brand_id: this.urlParams.brand_id,
-					openid: this.urlParams.open_id,
+					appid: urlParams.appid,
+					coupon_stock_id: urlParams.coupon_stock_id,
+					brand_id: urlParams.brand_id,
+					openid: realOpenid,
 					timestamp: zexUtil.getTimestamp()
 				}
+
 				zexApis.sendCouponStock(req).done(function(resJson) {
 					if (resJson.code == "200" || resJson.code == 200) {
 						self.course_show = true;
