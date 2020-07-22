@@ -202,10 +202,10 @@
 				loading: true,
 
 				page_info: {
-					//	receive_bg: "../../images/zj/sdjbg.jpg",
-					//	wining_btn_img: "../../images//zj/ZJButton.png", // 按钮图
-					//	not_wining_btn_img: "../../images/zj/threeButton2.png",
-					//	prize_img: "",
+						receive_bg: "../../images/zj/sdjbg.jpg",
+						wining_btn_img: "../../images//zj/ZJButton.png", // 按钮图
+						not_wining_btn_img: "../../images/zj/threeButton2.png",
+						prize_img: "",
 				},
 
 				base_info: {},
@@ -224,48 +224,56 @@
 		created: function() {
 
 			var self = this;
-			console.log(window.innerHeight)
+//			console.log(window.innerHeight)
+//
+//			if (window.innerHeight >= 724) {
+//
+//				this.buttonHeight = "20%";
+//				this.cuoTop = "80px";
+//			} else {
+//
+//				this.buttonHeight = "25%";
+//				this.cuoTop = "80px";
+//			}
+//
+//			this.loading = false;
+//
+//			//			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
+//			//			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
+//
+//			var wxConfigParams = {
+//				component_appid: urlParams.component_appid,
+//				appid: urlParams.appid,
+//				url: window.location.href,
+//				type: "jsapi"
+//			};
+//			zexApis.httpWxCheck(wxConfigParams).done(function(resJson) {
+//				console.log('wx.config resJson:' + JSON.stringify(resJson));
+//				wx.config({ //微信权限验证
+//					debug: false,
+//					appId: wxConfigParams.appid,
+//					timestamp: resJson.timestamp,
+//					nonceStr: resJson.noncestr,
+//					signature: resJson.signature,
+//					jsApiList: ['hideOptionMenu', 'addCard', 'openCard']
+//				});
+//				wx.ready(function(res) {
+//					wx.hideOptionMenu();
+//					self.getPageInfoDetail();
+//				});
+//				wx.error(function(res) {
+//					console.log("配置失败");
+//				});
+//			});
 
-			if (window.innerHeight >= 724) {
-
-				this.buttonHeight = "20%";
-				this.cuoTop = "80px";
-			} else {
-
-				this.buttonHeight = "25%";
-				this.cuoTop = "80px";
-			}
-
-			this.loading = false;
-
-			//			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
-			//			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
-
-			var wxConfigParams = {
-				component_appid: urlParams.component_appid,
-				appid: urlParams.appid,
-				url: window.location.href,
-				type: "jsapi"
-			};
-			zexApis.httpWxCheck(wxConfigParams).done(function(resJson) {
-				console.log('wx.config resJson:' + JSON.stringify(resJson));
-				wx.config({ //微信权限验证
-					debug: false,
-					appId: wxConfigParams.appid,
-					timestamp: resJson.timestamp,
-					nonceStr: resJson.noncestr,
-					signature: resJson.signature,
-					jsApiList: ['hideOptionMenu', 'addCard', 'openCard']
-				});
-				wx.ready(function(res) {
-					wx.hideOptionMenu();
-					self.getPageInfoDetail();
-				});
-				wx.error(function(res) {
-					console.log("配置失败");
-				});
-			});
-
+				setTimeout(function() {
+						$('#page_loading').css('display', 'none');
+					}, 500);
+			
+			
+			self.msg="111";
+						self.course_show = true;
+						self.is_success_show = false;
 		},
 		methods: {
 
