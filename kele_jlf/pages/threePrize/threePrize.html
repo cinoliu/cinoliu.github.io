@@ -202,8 +202,8 @@
 				loading: true,
 
 				page_info: {
-						receive_bg: "../../images/zj/sdjbg.jpg",
-						wining_btn_img: "../../images//zj/ZJButton.png", // 按钮图
+						bg_pic_url: "../../images/zj/sdjbg.jpg",
+						btn_pic_url: "../../images//zj/ZJButton.png", // 按钮图
 						not_wining_btn_img: "../../images/zj/threeButton2.png",
 						prize_img: "",
 				},
@@ -226,16 +226,16 @@
 			var self = this;
 //			console.log(window.innerHeight)
 //
-//			if (window.innerHeight >= 724) {
-//
-//				this.buttonHeight = "20%";
-//				this.cuoTop = "80px";
-//			} else {
-//
-//				this.buttonHeight = "25%";
-//				this.cuoTop = "80px";
-//			}
-//
+			if (window.innerHeight >= 724) {
+
+				this.buttonHeight = "20%";
+				this.cuoTop = "70px";
+			} else {
+
+				this.buttonHeight = "25%";
+				this.cuoTop = "70px";
+			}
+
 //			this.loading = false;
 //
 //			//			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
@@ -271,7 +271,7 @@
 					}, 500);
 			
 			
-			self.msg="111";
+			self.msg="ces";
 						self.course_show = true;
 						self.is_success_show = false;
 		},
