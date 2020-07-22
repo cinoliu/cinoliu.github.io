@@ -44,7 +44,7 @@ html{font-size:13.33333333vw}
 	position: absolute;
 	top: 71%;
 	left: calc((100% - 5rem) / 2);
-	height: 8%;
+	height: 7%;
 	width: 5rem;
 /* 	border: 1px solid red; */
 }

@@ -146,9 +146,9 @@
 			loading: true,
 			course_show: false,
 			page_info: {
-				//				upload_btn_img2: "../../images/indexButton.png",
-				//				background_img: "../../images/indexBg.jpg",
-				//				camp_desc_img: "../../images/hdsm.jpg",
+								upload_btn_img2: "../../images/indexButton.png",
+								background_img: "../../images/indexBg.jpg",
+								camp_desc_img: "../../images/hdsm.jpg",
 			},
 
 			promotionBaseInfo: {},
@@ -161,28 +161,28 @@
 		created: function() {
 
 
-			this.urlParams = {
-				component_appid: zexUtil.GetQueryString("component_appid"),
-				appid: zexUtil.GetQueryString("appid"),
-				open_id: zexService.getOpenId(),
-				promotion_id: zexUtil.GetQueryString("promotion_id"),
-				scene: zexUtil.GetQueryString("scene"),
-				actid: zexUtil.GetQueryString("actid"),
-				coupon_stock_id: zexUtil.GetQueryString('coupon_stock_id'),
-				brand_id: zexUtil.GetQueryString('brand_id'),
-
-			};
-
-			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams));
-			this.getTicketImg();
-			var reqParams = {
-				open_id: this.urlParams.open_id,
-				operator_type: 'login',
-				note: this.urlParams.promotion_id,
-				source: this.urlParams.scene,
-
-			};
-			zexApis.promotionLog(reqParams).done(function(response) {});
+//			this.urlParams = {
+//				component_appid: zexUtil.GetQueryString("component_appid"),
+//				appid: zexUtil.GetQueryString("appid"),
+//				open_id: zexService.getOpenId(),
+//				promotion_id: zexUtil.GetQueryString("promotion_id"),
+//				scene: zexUtil.GetQueryString("scene"),
+//				actid: zexUtil.GetQueryString("actid"),
+//				coupon_stock_id: zexUtil.GetQueryString('coupon_stock_id'),
+//				brand_id: zexUtil.GetQueryString('brand_id'),
+//
+//			};
+//
+//			window.sessionStorage.setItem("urlParams", JSON.stringify(this.urlParams));
+//			this.getTicketImg();
+//			var reqParams = {
+//				open_id: this.urlParams.open_id,
+//				operator_type: 'login',
+//				note: this.urlParams.promotion_id,
+//				source: this.urlParams.scene,
+//
+//			};
+//			zexApis.promotionLog(reqParams).done(function(response) {});
 		},
 
 		methods: {
@@ -221,6 +221,7 @@
 
 						var jsonUserFlowStr = JSON.parse(response.jsonUserFlowStr);
 
+					
 						if (null != jsonUserFlowStr) {
 							window.sessionStorage.setItem('ticket_pic_id',
 								jsonUserFlowStr.ticket_pic_id);
