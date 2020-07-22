@@ -160,7 +160,7 @@ img {
 .next_text {
 	position: absolute;
 	left: 80%;
-	top: 40px;
+	top: 20px;
 	z-index: 10;
 	text-align: center;
 	color: #fff;
