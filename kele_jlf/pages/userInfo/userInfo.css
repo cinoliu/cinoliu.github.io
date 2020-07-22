@@ -304,3 +304,8 @@ input::-ms-input-placeholder {
     font-weight: 900;
     margin-top: 5%;
 }
+.title{
+	color:#fff;
+	    font-size: 2rem;
+    margin-bottom: 1.2rem;
+}

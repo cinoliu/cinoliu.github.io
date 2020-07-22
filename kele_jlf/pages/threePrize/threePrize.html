@@ -144,7 +144,6 @@
 
 					</div>
 
-
 					<div class="huodong_content_img" v-if="!is_success_show">
 
 						<img src="../../images/zj/threeSB.png" alt="" />
@@ -154,7 +153,6 @@
 						<img src="../../images/zj/threeButton3.png" class="huodong_text_button" @click="next()" :style="{ height:buttonHeight }">
 
 					</div>
-
 
 					<img src="../../images/cuo.png" alt="" v-touch:tap="next()" :style=" { paddingTop:cuoTop}" class="cuo_img" />
 				</div>
@@ -185,7 +183,8 @@
 		'actId': zexUtil.GetQueryString('actId'),
 		'brand_id': zexUtil.GetQueryString('brand_id'),
 		'openid': zexUtil.GetQueryString('openid'),
-		'coupon_stock_id': zexUtil.GetQueryString('coupon_stock_id')
+		'coupon_stock_id': zexUtil.GetQueryString('coupon_stock_id'),
+		'promotion_id': zexUtil.GetQueryString('promotion_id'),
 	};
 
 	var realOpenid = zexUtil.rsaDecrypt(urlParams.openid, zexUtil.getRsaClientPrivateKey());
@@ -220,9 +219,9 @@
 		created: function() {
 
 			var self = this;
-			
+
 			//		console.log(window.innerHeight)
-			
+
 			if (window.innerHeight >= 724) {
 
 				this.buttonHeight = "20%";
@@ -236,7 +235,7 @@
 			this.loading = false;
 
 			//			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
-			//			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
+			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
 
 			var wxConfigParams = {
 				component_appid: urlParams.component_appid,
@@ -268,9 +267,9 @@
 		methods: {
 
 			getPageInfoDetail: function() {
-				
+
 				var self = this;
-				
+
 				var reqParams = {
 					coupon_stock_id: urlParams.coupon_stock_id
 				};
@@ -304,16 +303,34 @@
 				}
 
 				zexApis.sendCouponStock(req).done(function(resJson) {
+
+
 					if (resJson.code == "200" || resJson.code == 200) {
+
+
 						self.course_show = true;
 						self.is_success_show = true;
+
+
+
+
 					} else {
 						self.msg = resJson.msg;
 						self.course_show = true;
 						self.is_success_show = false;
 					}
 				});
+
+
+
+
+
 			},
+
+
+
+
+
 
 			next: function() {
 				wx.closeWindow();

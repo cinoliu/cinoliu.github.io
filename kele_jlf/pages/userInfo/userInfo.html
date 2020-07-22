@@ -50,6 +50,10 @@
 
 
 	<div class="input_wrap">
+		
+		
+		<div class="title">请输入您的个人信息</div>
+		
 
 		<div class="name_box">
 			<div class="name_title">收货人姓名:</div>
@@ -58,6 +62,8 @@
 
 
 		<div class="phone_box">
+			
+			
 			<div class="phone_text"> 手机号码:</div>
 
 			<input class="phone_input" id="inputTwo" type="tel" v-model="input_req.mobile" placeholder="请输入手机号码" maxlength="11" />
@@ -100,8 +106,8 @@
 			return {
 				loading: true,
 				page: {
-					//					commit_btn_img: "../../images/userInfoButton.png",
-					//					background_img: "../../images/userInfoBg.jpg",
+										commit_btn_img: "../../images/userInfoButton.png",
+										background_img: "../../images/userInfoBg.jpg",
 				},
 				base_info: {},
 				input_req: {
@@ -129,15 +135,17 @@
 
 		created: function() {
 
-			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
+//			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
+//
+//			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
+//
+//			this.getTnitUser();
+//
+//			this.loading = false;
 
-			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
-
-			this.getTnitUser();
-
-			this.loading = false;
-
-
+setTimeout(function() {
+							$('#page_loading').css('display', 'none');
+						}, 500);
 		},
 
 		methods: {

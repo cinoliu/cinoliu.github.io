@@ -246,21 +246,25 @@
 				} else if (this.prize_texts.indexOf('二等奖') > 0) {
 					this.getPrize();
 				} else if (this.prize_texts.indexOf('三等奖') > 0) {
-//					window.location.href = '../threePrize/threePrize.html';
+					//			window.location.href = '../threePrize/threePrize.html';
 
-					window.location.href ="https://w.url.cn/s/AieOBQK";
+					var delReq = {
+						open_id: this.urlParams.open_id,
+						promotion_id: this.urlParams.promotion_id,
+						draw_type: "ticket_draw",
+						ticket_pic_id: window.sessionStorage.getItem("ticket_pic_id"),
+						timestamp: zexUtil.getTimestamp(),
+					}
+
+					zexApis.delUserPromotionProduce(delReq).done((function(delRes) {
+						if (delRes.code == "200" || delRes.code == 200) {
+							window.location.href = "https://w.url.cn/s/AieOBQK";
+						} else {
+							this.alertInfo("提示", "系统繁忙   -" + delRes.code, "我知道了", false);
+						}
+					}).bind(this));
 
 				}
-
-
-				//			var reqParams = {
-				//				open_id: this.urlParams.open_id,
-				//				operator_type: 'receiveReward',
-				//				note: this.prize_texts,
-				//				source: this.urlParams.scene
-				//			};
-				//
-				//				zexApis.promotionLog(reqParams).done(function() {});
 
 			},
 
