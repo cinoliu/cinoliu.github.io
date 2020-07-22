@@ -1,313 +1,381 @@
 @import "../../css/reset.css";
+
 #container {
-    width: 100%;
-    height: auto;
-    overflow: scroll;
-    position: relative;
+	width: 100%;
+	height: auto;
+	overflow: scroll;
+	position: relative;
 }
 
 .page_bg {
-    /*position: fixed;
+	/*position: fixed;
     top: 0;
     left: 0;*/
-    width: 100%;
-    height: auto;
+	width: 100%;
+	height: auto;
 }
 
 img {
-    width: 100%;
-    height: auto;
-    display: block;
-    /* min-height: 100%;
+	width: 100%;
+	height: auto;
+	display: block;
+	/* min-height: 100%;
     display: -webkit-box; */
 }
 
 .page_bg img {
-    width: 100%;
-    height: auto;
+	width: 100%;
+	height: auto;
 }
 
 .input_wrap {
-    position: absolute;
-    width: 80%;
-    height: auto;
-    left: 10%;
-    top: 10%;
-    text-align: center;
-    /*    padding-top: 15%; */
+	position: absolute;
+	width: 90%;
+	height: auto;
+	left: calc((100% - 90%)/2);
+	top: 10%;
+
+	/*    padding-top: 15%; */
 }
 
 .img_temp {
-    width: 100%;
-    height: auto;
-    margin-bottom: 3%;
+	width: 100%;
+	height: auto;
+	margin-bottom: 3%;
 }
 
 .phone_box {
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-    -moz-box-pack: center;
-    -moz-box-align: center;
-    -webkit-box-orient: horizontal;
-    -moz-box-orient: horizontal;
-    width: 100%;
-    height: 5rem;
-    font-size: 1.5rem;
-    background-color: #fff;
-    margin-bottom: 1.5rem;
-    border-radius: .4rem;
-    padding-left: 3%;
-    font-family: Lato, "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	-webkit-box-orient: horizontal;
+	-moz-box-orient: horizontal;
+	width: 100%;
+	height: 5rem;
+	font-size: 1.5rem;
+	background-color: #fff;
+	margin-bottom: 1.5rem;
+	border-radius: .4rem;
+	padding-left: 1.5rem;
+	font-family: Lato, "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .phone_text {
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-    -moz-box-pack: center;
-    -moz-box-align: center;
-    width: 30%;
-    height: 5rem;
-    font-size: 1.4rem;
-    font-weight: 900;
-    color: #666666;
-    font-family: Lato, "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	display: -webkit-box;
+	/*    -webkit-box-pack: center;*/
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	width: 25%;
+	height: 5rem;
+	font-size: 1.4rem;
+	font-weight: 900;
+	color: #333333;
+	font-family: Lato, "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .phone_input {
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-    -moz-box-pack: center;
-    -moz-box-align: center;
-    text-align: left;
-    width: 44%;
-    height: 5rem;
-    font-size: 1.4rem;
-    background: none;
-    outline: none;
-    border: none;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    font-weight: 900;
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	text-align: left;
+	width: 49%;
+	height: 5rem;
+	font-size: 1.4rem;
+	background: none;
+	outline: none;
+	border: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	font-weight: 900;
+	color: #000000;
 }
 
 .phoneButton_box {
-    width: 26.1%;
-    background-color: #a6a6a6;
-    border-radius: 0 .4rem 0.4rem 0;
-    color: #fff;
-    border: 0;
+	width: 26.1%;
+	background-color: #ECECEC;
+	border-radius: 0 .4rem 0.4rem 0;
+	color: #fff;
+	border: 0;
 }
 
 .get_check_code,
 .img_code {
-    width: 6.5rem;
-    height: 5rem;
-    background-color: #a6a6a6;
-    color: #fff;
-    /*border-radius: .4rem;*/
-    font-size: 1.3rem;
-    border: 0;
-    /*	border-left: 1px solid #e3e3e3;*/
-    text-align: center;
-    transition: all .3s;
-    -webkit-transition: all .3s;
-    font-weight: 900;
-    border-radius: 0 .4rem 0.4rem 0;
+	width: 6.5rem;
+	height: 5rem;
+	background-color: #ECECEC;
+	color: #D1D1D1;
+	/*border-radius: .4rem;*/
+	font-size: 1.3rem;
+	border: 0;
+	/*	border-left: 1px solid #e3e3e3;*/
+	text-align: center;
+	transition: all .3s;
+	-webkit-transition: all .3s;
+	font-weight: 900;
+	border-radius: 0 .4rem 0.4rem 0;
 }
 
 .get_check_code:active {
-    background: #c5c5c5;
-    transition: all .3s;
-    -webkit-transition: all .3s;
+	background: #c5c5c5;
+	transition: all .3s;
+	-webkit-transition: all .3s;
 }
 
 .img_code img {
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .next_btn {
-    position: absolute;
-    width: 80%;
-    left: 10%;
-    height: auto;
-    /*border: 1px solid #000;*/
-    opacity: 1;
-    transition: all .5s;
-    -webkit-transition: all .5s;
+	position: absolute;
+	width: 80%;
+	left: 10%;
+	height: auto;
+	/*border: 1px solid #000;*/
+	opacity: 1;
+	transition: all .5s;
+	-webkit-transition: all .5s;
 }
 
 .next {
-    position: absolute;
-    top: 71%;
-    left: calc((100% - 70%) / 2);
-    height: 7%;
-    width: 70%;
-    /* 	border: 1px solid red; */
+	position: absolute;
+	top: 71%;
+	left: calc((100% - 70%) / 2);
+	height: 7%;
+	width: 70%;
+	/* 	border: 1px solid red; */
 }
 
 .next img {
-    height: 100%;
-    width: 100%;
+	height: 100%;
+	width: 100%;
 }
 
 .flex_align_center {
-    display: flex;
-    display: -webkit-flex;
-    align-items: center;
-    -webkit-align-items: center;
-    justify-content: center;
-    -webkit-justify-content: center;
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+	-webkit-align-items: center;
+	justify-content: center;
+	-webkit-justify-content: center;
 }
 
 input:hover {
-    background-color: rgb(255, 255, 255);
-    outline: none;
-    box-shadow: none;
+	background-color: rgb(255, 255, 255);
+	outline: none;
+	box-shadow: none;
 }
 
 .prizeText {
-    height: 9.5%;
-    width: 60%;
-    position: absolute;
-    top: 50%;
-    left: 20%;
-    text-align: center;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    color: rgb(224, 5, 28);
-    color: transparent;
-    -webkit-text-stroke: 1px #fff;
+	height: 9.5%;
+	width: 60%;
+	position: absolute;
+	top: 50%;
+	left: 20%;
+	text-align: center;
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	color: rgb(224, 5, 28);
+	color: transparent;
+	-webkit-text-stroke: 1px #fff;
 }
 
 input::-webkit-input-placeholder {
-    color: #ccc;
+	color: #ccc;
 }
 
 input::-moz-input-placeholder {
-    color: #ccc;
+	color: #ccc;
 }
 
 input::-ms-input-placeholder {
-    color: #ccc;
+	color: #ccc;
 }
 
 .name_box {
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-    -moz-box-pack: center;
-    -moz-box-align: center;
-    -webkit-box-orient: horizontal;
-    -moz-box-orient: horizontal;
-    width: 100%;
-    height: 5rem;
-    font-size: 1.5rem;
-    background-color: #fff;
-    margin-bottom: 1.5rem;
-    border-radius: .4rem;
-    padding-left: 3%;
-    font-family: Lato, "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	-webkit-box-orient: horizontal;
+	-moz-box-orient: horizontal;
+	width: 100%;
+	height: 5rem;
+	font-size: 1.5rem;
+	background-color: #fff;
+	margin-bottom: 1.5rem;
+	border-radius: .4rem;
+	padding-left: 1.5rem;
+	font-family: Lato, "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .name_title {
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-    -moz-box-pack: center;
-    -moz-box-align: center;
-    width: 30%;
-    height: 5rem;
-    font-size: 1.4rem;
-    font-weight: 900;
-    color: #666666;
-    font-family: Lato, "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+	display: -webkit-box;
+
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	width: 30%;
+	height: 5rem;
+	font-size: 1.4rem;
+	font-weight: 900;
+	color: #333333;
+	font-family: Lato, "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .name_input {
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-    -moz-box-pack: center;
-    -moz-box-align: center;
-    text-align: left;
-    width: 70%;
-    height: 5rem;
-    font-size: 1.4rem;
-    background: none;
-    outline: none;
-    border: none;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    font-weight: 900;
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	text-align: left;
+	width: 70%;
+	height: 5rem;
+	font-size: 1.4rem;
+	background: none;
+	outline: none;
+	border: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	font-weight: 900;
+	color: #000000;
 }
 
 .addr_box {
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    /*	-webkit-box-align: center;*/
-    -moz-box-pack: center;
-    -moz-box-align: center;
-    -webkit-box-orient: horizontal;
-    -moz-box-orient: horizontal;
-    width: 100%;
-    height: 8rem;
-    font-size: 1.5rem;
-    background-color: #fff;
-    margin-bottom: 1.5rem;
-    border-radius: .4rem;
-    padding-left: 3%;
-    font-family: Lato, "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	/*	-webkit-box-align: center;*/
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	-webkit-box-orient: horizontal;
+	-moz-box-orient: horizontal;
+	width: 100%;
+	height: 7rem;
+	font-size: 1.5rem;
+	background-color: #fff;
+	margin-bottom: 1.5rem;
+	border-radius: .4rem;
+	padding-left: 1.5rem;
+	font-family: Lato, "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .addr_title {
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-    -moz-box-pack: center;
-    -moz-box-align: center;
-    width: 30%;
-    height: 5rem;
-    font-size: 1.4rem;
-    font-weight: 900;
-    color: #666666;
-    font-family: Lato, "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	display: -webkit-box;
+	/*    -webkit-box-pack: center;*/
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	width: 25%;
+	height: 5rem;
+	font-size: 1.4rem;
+	font-weight: 900;
+	color: #333333;
+	font-family: Lato, "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .addr_input {
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-    -moz-box-pack: center;
-    -moz-box-align: center;
-    text-align: left;
-    width: 70%;
-    height: 6rem;
-    font-size: 1.4rem;
-    background: none;
-    outline: none;
-    border: none;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    font-weight: 900;
-    margin-top: 5%;
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	text-align: left;
+	width: 75%;
+	height: 5rem;
+	font-size: 1.4rem;
+	background: none;
+	outline: none;
+	border: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	font-weight: 900;
+	margin-top: 5%;
+	padding-right: 1rem;
 }
-.title{
-	color:#fff;
-	    font-size: 2rem;
-    margin-bottom: 1.2rem;
-	font-weight: 700;
+
+.title {
+	color: #fff;
+	font-size: 2rem;
+	margin-bottom: 1.2rem;
+	font-weight: 400;
 	margin-top: 1rem;
+	text-align: center;
 }
+
+
+
+
+.yz_box {
+
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	-webkit-box-orient: horizontal;
+	-moz-box-orient: horizontal;
+	width: 100%;
+	height: 5rem;
+	font-size: 1.5rem;
+	background-color: #fff;
+	margin-bottom: 1.5rem;
+	border-radius: .4rem;
+	padding-left: 1.5rem;
+	font-family: Lato, "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.yz_title {
+
+	display: -webkit-box;
+
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	width: 25%;
+	height: 5rem;
+	font-size: 1.4rem;
+	font-weight: 900;
+	color: #333333;
+	font-family: Lato, "Monospaced Number", "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.yz_input {
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	text-align: left;
+	width: 75%;
+	height: 5rem;
+	font-size: 1.4rem;
+	background: none;
+	outline: none;
+	border: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	font-weight: 900;
+	color: #000000;
+}
+
+
