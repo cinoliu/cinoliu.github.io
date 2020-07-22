@@ -291,6 +291,7 @@
 
 			},
 
+
 			addCard: function() {
 				var self = this;
 
@@ -303,30 +304,16 @@
 				}
 
 				zexApis.sendCouponStock(req).done(function(resJson) {
-
-
 					if (resJson.code == "200" || resJson.code == 200) {
-
-
 						self.course_show = true;
 						self.is_success_show = true;
-
-
-
-
 					} else {
 						self.msg = resJson.msg;
 						self.course_show = true;
 						self.is_success_show = false;
 					}
 				});
-
-
-
-
-
 			},
-
 
 
 

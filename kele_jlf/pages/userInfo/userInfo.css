@@ -308,4 +308,5 @@ input::-ms-input-placeholder {
 	color:#fff;
 	    font-size: 2rem;
     margin-bottom: 1.2rem;
+	font-weight: 700;
 }
