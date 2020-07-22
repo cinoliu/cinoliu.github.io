@@ -62,7 +62,7 @@
 			return {
 				loading: true,
 				page_info: {
-					//	course_img: "../../images/uploadTicketBG.jpg",
+						course_img: "../../images/uploadTicketBG.jpg",
 				},
 				base_info: {},
 				urlParams: {},
@@ -73,11 +73,11 @@
 		},
 
 		created: function() {
-			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
-			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
-			this.loading = false,
-				zexWxConfig.runConfig(function() {});
-			this.upReceipts();
+//			this.base_info = JSON.parse(window.sessionStorage.getItem("base_info")) || {};
+//			this.urlParams = JSON.parse(window.sessionStorage.getItem("urlParams")) || {};
+//			this.loading = false,
+//				zexWxConfig.runConfig(function() {});
+//			this.upReceipts();
 		},
 
 

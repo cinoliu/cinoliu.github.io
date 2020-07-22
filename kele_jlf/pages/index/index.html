@@ -183,6 +183,10 @@
 //
 //			};
 //			zexApis.promotionLog(reqParams).done(function(response) {});
+			setTimeout(function() {
+							$('#page_loading').css('display', 'none');
+						}, 500);
+
 		},
 
 		methods: {
@@ -254,12 +258,12 @@
 
 									window.sessionStorage.setItem("verify_code", user_flow.verify_code);
 									//     window.location.href = "../awards/awards.html";
-									window.location.href = "../rewardPrize/rewardPrize.html";
+									window.location.replace = "../rewardPrize/rewardPrize.html";
 									break;
 								case "fill_userinfo_page":
 									window.sessionStorage.setItem("awards_result", JSON.stringify(awards_result));
 									window.sessionStorage.setItem("verify_code", user_flow.verify_code);
-									window.location.href = "../userInfo/userInfo.html";
+									window.location.replace = "../userInfo/userInfo.html";
 									break;
 								default:
 									break;
@@ -313,7 +317,7 @@
 
 			next: function() {
 
-				window.location.href = "../uploadTicket/uploadTicket.html";
+				window.location.replace = "../uploadTicket/uploadTicket.html";
 
 			},
 

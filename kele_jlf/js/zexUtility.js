@@ -125,6 +125,15 @@ var zexUtil = {
         return sign_key;
     },
 
+	
+	  // 获取签名秘钥
+    getSignKey2: function () {
+        var sign_key = "Au2PFGDxVFI8ZPeN1yKCyI6qknigDxp2";
+        return sign_key;
+    },
+
+  
+	
     // 参数签名方法
     generateSign: function (obj, sign_key) {
         var keys = Object.keys(obj);

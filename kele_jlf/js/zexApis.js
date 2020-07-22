@@ -432,7 +432,7 @@ var zexApis = {
 		// 微信代金券接口
 	sendCouponStock: function(data){
 		data = data || {};
-		data.sign = zexUtil.generateSign(data,zexUtil.getSignKey());
+		data.sign = zexUtil.generateSign(data,zexUtil.getSignKey2());
         return $.ajax({
             method: "POST",
             dataType: "json",
