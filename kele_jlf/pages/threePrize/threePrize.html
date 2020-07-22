@@ -64,7 +64,7 @@
 
 		.huodong_content_img {
 			width: 85%;
-			height: 70%;
+		
 			font-size: 1.4rem;
 			-webkit-overflow-scrolling: touch;
 			border-radius: .6rem;
@@ -73,7 +73,7 @@
 
 		.huodong_button {
 			z-index: 999;
-			margin-top: -32%;
+	        margin-top: -29% ;
 			width: 50%;
 			margin-left: calc((100% - 50%)/2);
 			padding-top: 10%;
@@ -86,6 +86,26 @@
 			margin: auto;
 		}
 
+		.huodong_text{
+			z-index: 999;
+			margin-top: -60%;
+			width: 70%;
+			margin-left: calc((100% - 70%)/2);
+			padding-top: 12%;
+			color:#800513;
+			height: 75px;
+		}
+		
+			.huodong_text_button {
+			z-index: 999;
+	   
+			width: 50%;
+			margin-left: calc((100% - 50%)/2);
+			padding-top: 15%;
+
+
+		}
+		
 	</style>
 </head>
 </head>
@@ -116,15 +136,28 @@
 		<div class="huodong_wrap">
 			<div class="huodong_container">
 				<div class="huodong_content">
-					<div class="huodong_content_img">
+					<div class="huodong_content_img" v-if="is_success_show" >
 
-						<img src="../../images/zj/threeCG.png" alt="" v-if="is_success_show" />
+						<img src="../../images/zj/threeCG.png" alt=""  />
 
-						<img src="../../images/zj/threeSB.png" alt="" v-if="!is_success_show" />
-
-						<img src="../../images/zj/threeButton3.png" class="huodong_button" @click="next()" :style="{ height:buttonHeight }">
+						<img src="../../images/zj/threeButton3.png" class="huodong_button" @click="next()" :style="{ height:buttonHeight }" >
 
 					</div>
+					
+					
+						<div class="huodong_content_img" v-if="!is_success_show" >
+
+					
+
+						<img src="../../images/zj/threeSB.png" alt="" />
+						
+						<div v-if="!is_success_show" class="huodong_text"> {{msg}} </div>
+
+						<img src="../../images/zj/threeButton3.png" class="huodong_text_button" @click="next()" :style="{ height:buttonHeight }" >
+
+					</div>
+					
+					
 
 					<img src="../../images/cuo.png" alt="" v-touch:tap="next()" :style=" { paddingTop:cuoTop}" class="cuo_img" />
 				</div>
@@ -185,6 +218,7 @@
 				urlParams: {},
 				buttonHeight: "",
 				cuoTop: "",
+				msg:"",
 			};
 		},
 		created: function() {
@@ -275,6 +309,7 @@
 						self.course_show = true;
 						self.is_success_show = true;
 					} else {
+						self.msg=resJson.msg;
 						self.course_show = true;
 						self.is_success_show = false;
 					}
