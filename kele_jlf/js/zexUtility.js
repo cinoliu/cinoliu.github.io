@@ -125,15 +125,6 @@ var zexUtil = {
         return sign_key;
     },
 
-	
-	  // 获取签名秘钥
-    getSignKey2: function () {
-        var sign_key = "Au2PFGDxVFI8ZPeN1yKCyI6qknigDxp2";
-        return sign_key;
-    },
-
-  
-	
     // 参数签名方法
     generateSign: function (obj, sign_key) {
         var keys = Object.keys(obj);
@@ -179,19 +170,6 @@ var zexUtil = {
     	decrypt.setPrivateKey(clientPrivateKey);
     	return decrypt.decrypt(content);
     },
-
-	// 美汁源rsa加密公钥
-	mzyGetRsaSrvPublicKey: function(){
-    	var srvPublicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCh5Nk2GLiyQFMIU+h3OEA4UeFbu3dCH5sjd/sLTxxvwjXq7JLqJbt2rCIdzpAXOi4jL+FRGQnHaxUlHUBZsojnCcHvhrz2knV6rXNogt0emL7f7ZMRo8IsQGV8mlKIC9xLnlOQQdRNUssmrROrCG99wpTRRNZjOmLvkcoXdeuaCQIDAQAB";
-    	return srvPublicKey;		
-	},
-
-	// 美汁源利用服务端公钥进行rsa加密
-	mzyRsaEncrypt: function(content,srvPublicKey){
-    	var encrypt = new JSEncrypt();
-    	encrypt.setPublicKey(srvPublicKey);
-    	return encrypt.encrypt(content);		
-	},
 
     // 生成时间戳
     getTimestamp: function () {

@@ -3,8 +3,8 @@
 	box-sizing: border-box;
 }
 *:active{
-/* 	background-color:transparent ;
-	background:transparent; */
+	background-color:transparent ;
+	background:transparent;
 }
 html{
 	font-size: 62.5%;
