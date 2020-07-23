@@ -333,7 +333,7 @@ input::-webkit-inner-spin-button {
 	width: 271px;
 	height: 41px;
 	text-align: center;
-		margin-top: 15px;
+	margin-top: 15px;
 }
 
 
@@ -366,4 +366,15 @@ input::-webkit-inner-spin-button {
 	padding-left: 3%;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
+}
+
+.city_selcet_text {
+	-webkit-box-orient: horizontal;
+	-moz-box-orient: horizontal;
+	border: none;
+	width: 271px;
+	height: 41px;
+	text-align: left;
+	margin-top: 12px;
+	color: #1e59a0;
 }
