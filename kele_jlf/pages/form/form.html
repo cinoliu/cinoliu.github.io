@@ -85,9 +85,9 @@
 					<input type="text" placeholder="请输入所在城市" v-model="formInput.city" class="inputclss" />
 				</div>
 -->
+v-if="page_if.formFields.city"
 
-
-				<div class="city_selcet" v-if="page_if.formFields.city">
+				<div class="city_selcet" >
 					<select v-model="province_selected" class="left_selcet">
 						<option value="" disabled selected style='display:none;'>请选择省份</option>
 						<option v-for="item in province_list" :value="item.value">{{item.name}}</option>
