@@ -68,7 +68,8 @@
 					<input type="number" placeholder="请输入手机号" v-model="formInput.phone" class="inputclss" />
 				</div>
 
-            <div class="form_vertion" v-if="page_if.formFields.sms_verify_code && page_if.formFields.phoneNum">
+				v-if="page_if.formFields.sms_verify_code && page_if.formFields.phoneNum"
+				<div class="form_vertion" >
 					<div class="vertion_box">
 						<input type="tel" placeholder="请输入手机号" v-model="formInput.phone" class="input_phone" />
 						<div id="yanzm" class="vertion_obtain">
@@ -79,20 +80,22 @@
 					<input style="margin-top: 15px;" type="text" placeholder="请输入短信验证码" v-model="formInput.phoneCode" class="inputclss" />
 				</div>
 				
+<!--
 				<div class="form_city" v-if="page_if.formFields.city">
 					<input type="text" placeholder="请输入所在城市" v-model="formInput.city" class="inputclss" />
 				</div>
+-->
 
 
-				<div class="city_selcet">
-					<select v-model="province_selected" class="left_selcet" >
-						<option value=""  disabled selected style='display:none;'>请选择省份</option>
+				<div class="city_selcet" v-if="page_if.formFields.city">
+					<select v-model="province_selected" class="left_selcet">
+						<option value="" disabled selected style='display:none;'>请选择省份</option>
 						<option v-for="item in province_list" :value="item.value">{{item.name}}</option>
 					</select>
 
 
-					<select v-model="formInput.city" class="right_selcet" >
-						<option value="" disabled selected style='display:none;' >请选择城市</option>
+					<select v-model="formInput.city" class="right_selcet">
+						<option value="" disabled selected style='display:none;'>请选择城市</option>
 						<option v-for="item in city_list" :value="item.value" v-if="item.province_id ==province_selected ">{{item.name}}</option>
 					</select>
 
