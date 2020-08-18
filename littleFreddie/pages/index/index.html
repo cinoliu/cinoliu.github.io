@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="full-screen" content="yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
+    <meta http-equiv="cache-control" content="max-age=0"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"/>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <title>小皮米粉10元返现活动</title>
+    <link rel="stylesheet" href="../../css/plugins/loading.css">
+    <link rel="stylesheet" href="../../css/plugins/weui.min.css">
+    <link rel="stylesheet" href="index.css">	
+    <script type="text/javascript" src="../../js/plugins/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../../js/plugins/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="../../js/plugins/md5.min.js"></script>
+    <script type="text/javascript" src="../../js/plugins/vue.min.js"></script>
+    <script type="text/javascript" src="../../js/plugins/hammer.min.js"></script>
+    <script type="text/javascript" src="../../js/plugins/vue-touch.min.js"></script>
+    <script type="text/javascript" src="../../js/plugins/jsencrypt.min.js"></script>
+    <script type="text/javascript" src="../../js/plugins/weui.min.js"></script>	
+    <script type="text/javascript" src="../../js/zexUtility.js"></script>
+	<script type="text/jscript">
+		sessionStorage.clear();
+	</script>
+    <script type="text/javascript" src="../../js/zexService.js"></script>
+    <script type="text/javascript" src="../../js/wxConfig.js"></script>
+    <script type="text/javascript" src="../../js/zexApis.js"></script>
+</head>
+<body>
+<div id="container">
+    <div class="page-loading" v-show="loading">
+        <div class="page-loading-control">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+        </div>
+    </div>
+	
+   <div class="page_bg">
+        <img src="https://image.sweetmartmarketing.com/wxcamp_thumb/PZpovOL48n.jpg" alt=""/>
+		<img src="https://image.sweetmartmarketing.com/wxcamp_thumb/7F5r3ijiaP.jpg" alt="">
+		<img src="https://image.sweetmartmarketing.com/wxcamp_thumb/veId6D10HH.jpg" alt="">		
+		<img src="https://image.sweetmartmarketing.com/wxcamp_thumb/4tlnZmzyCB.jpg" alt="">			
+    </div>
+
+	<!-- 活动规则 -->
+	<div class="rule_wrap" @click="act_rule_show = true"></div>
+
+    <!-- 按钮处 -->
+    <div class="btm_wrap">
+        <div class="btm_btn_wrap" @click="linkUploadTicketPage()">
+            <img class="btn" src="https://image.sweetmartmarketing.com/wxcamp_thumb/LvsK4vgQTG.png"/>
+        </div>		
+    </div>
+	
+    <!--活动说明图片-->
+    <div class="weui-mask" v-show="act_rule_show" style="display: none;"></div>
+    <transition name="fade" >
+    <div class="act_rule_img_wrap" v-show="act_rule_show" >
+        <div class="act_rule_img" >
+            <img src="https://image.sweetmartmarketing.com/wxcamp_thumb/Hho3j2RTzO.jpg" alt="" />
+        </div>
+        <div class="close_act_rule_btn" @click.stop="act_rule_show = false" >确 定</div>
+    </div>
+    </transition>
+    <!--活动说明图片 end-->	
+	
+</div>
+</body>
+<script>
+		
+	$(function () {
+		var u = navigator.userAgent, app = navigator.appVersion;
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+		var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		if (isAndroid) {
+		   //这个是安卓操作系统
+			// 1080 * 2160 尺寸适配	
+			if(document.documentElement.clientHeight >= 630){ $('.btm_wrap').css("top","64%")}
+		}
+		if (isIOS) {
+	　　　　//这个是ios操作系统
+		   console.log("ios");
+		}
+	});
+				
+	// X、XS
+	if($(window).width() === 375 && $(window).height() === 724 && window.devicePixelRatio === 3){ $('.btm_wrap').css("top","64%");}
+	
+	// xr
+	if(window.devicePixelRatio === 2 && window.screen.width === 414 && window.screen.height === 896){ $('.btm_wrap').css("top","64%");}
+
+	// xs max
+	if(window.devicePixelRatio === 3 && window.screen.width === 414 && window.screen.height === 896){ $('.btm_wrap').css("top","64%");}
+
+
+		
+	var container = new Vue({
+		el: "#container",
+        data: function () {
+            return {
+                loading: false,
+                act_rule_show: false,
+				page_bg: "",
+                page: {},
+                base_info: {},
+				page_info: {},
+				act_rule_img: "",
+                referrer_check: false,
+            };
+        },
+       created: function () {
+        	
+        	this.loading = false;
+        	                    
+            if(illegalRequest){
+                weui.alert('非法请求', {
+                    title: '提示',
+                    buttons: [{
+                        label: '我知道了',
+                        type: 'primary',
+                        onClick: function () {
+                            wx.closeWindow();
+                        }
+                    }]
+                });
+            }else {
+	            zexWxConfig.runConfig(function () {});
+            }
+			
+			this.getPageInfo();
+        },		
+		methods: {
+			
+            //页面初始化
+            getPageInfo: function () {
+                var that = this;
+                var openid = zexService.getOpenId();
+                var reqParams = {
+                    open_id: openid,
+                    promotion_id: urlParams.promotion_id,
+                    scene_str: urlParams.scene,
+                    timestamp:zexUtil.getTimestamp()
+                };
+				//存储门店ID
+                if(urlParams.shop_id){
+                    window.sessionStorage.setItem('shop_id',urlParams.shop_id);
+                }
+
+            	zexApis.statInformation(reqParams).done(function (response) {
+                    if (response.code == '200'){
+                        //成公关闭loading页面
+                        setTimeout(function(){
+                            $('#page_loading').css('display','none');
+                        },500);
+												
+                        that.page_info = response;
+
+                        //存储上传小票审核方式
+                        window.sessionStorage.setItem('draw_check_priority',response.promotionBaseInfo.draw_check_priority);
+
+                        //存储门店的ID
+                        window.sessionStorage.setItem('shop_id',response.shop_id);
+                        
+                        that.page_bg = response.page.background_img;
+						that.act_rule_img = response.page.camp_desc_img;
+				
+                        that.lottery_type = response.promotionBaseInfo.lottery_type;
+                        that.base_info = response.promotionBaseInfo;
+                        that.base_info.start_date = that.base_info.start_date.substring(0, 10);
+                        that.base_info.end_date = that.base_info.end_date.substring(0, 10);
+                        //活动说明URL
+                        // var camp_desc_img = response.page.camp_desc_img;
+                        that.camp_desc_img = response.page.camp_desc_img;
+                        // window.sessionStorage.setItem('camp_desc_img',camp_desc_img);
+
+                        // 存储基本信息
+                        window.sessionStorage.setItem("base_info",JSON.stringify(that.base_info));
+                        // 存储页面信息
+                        window.sessionStorage.setItem("page",JSON.stringify(that.page));
+                        //存储上传小票审核方式
+                        window.sessionStorage.setItem('draw_check_priority', that.base_info.draw_check_priority);
+                        //存储门店的ID
+                        window.sessionStorage.setItem('shop_id', response.shop_id);
+
+                        //存储抽奖类型
+                        window.sessionStorage.setItem('lottery_type',that.lottery_type);
+
+                        var jsonUserFlowStr = JSON.parse(response.jsonUserFlowStr);
+
+						// loading.hide();
+						that.loading = false;
+
+                    } else if(response.code == '4019'){
+                        //成公关闭loading页面
+                        // setTimeout(function(){
+                        //     $('#page_loading').css('display','none');
+                        // },500);
+
+						$(".prize_draw_box").css("display","none");						
+
+						that.alertInfo("提示", "促销活动不存在", "我知道了",true);	
+						
+                        // that.error_show = true;
+                        // that.error_text = '促销活动不存在';
+                        return;
+                    } else if(response.code == '4014'){
+                        //成公关闭loading页面
+                        setTimeout(function(){
+                            $('#page_loading').css('display','none');
+                        },500);
+						
+						$(".prize_draw_box").css("display","none");
+
+						that.alertInfo("提示", "活动未开始", "我知道了",true);	
+						
+                        return;
+                    } else if(response.code == '4015'){
+                        //成公关闭loading页面
+                        setTimeout(function(){
+                            $('#page_loading').css('display','none');
+                        },500);
+						
+						$(".prize_draw_box").css("display","none");
+
+						that.alertInfo("提示", "活动已结束", "我知道了",true);							
+						
+                        return;
+                    } else if(response.code == '4017'){
+                        //成公关闭loading页面
+                        setTimeout(function(){
+                            $('#page_loading').css('display','none');
+                        },500);
+                        // that.error_show = true;
+                        // that.error_text = '活动暂停('+response.promotion_id+')';
+						
+						$(".prize_draw_box").css("display","none");
+
+						that.alertInfo("提示", "活动暂停", "我知道了",true);	
+						
+                        return;
+                    } else if(response.code == '4018'){
+                        //成公关闭loading页面
+                        setTimeout(function(){
+                            $('#page_loading').css('display','none');
+                        },500);
+                        // that.error_show = true;
+                        // that.error_text = '活动下架';
+						
+						$(".prize_draw_box").css("display","none");
+
+						that.alertInfo("提示", "活动下架", "我知道了",true);							
+						
+                        return;
+                    } else if(response.code == '4035'){
+                        //成公关闭loading页面
+                        setTimeout(function(){
+                            $('#page_loading').css('display','none');
+                        },500);
+                        // that.error_show = true;
+                        // that.error_text = '活动未上线('+response.promotion_id+')';
+						
+						$(".prize_draw_box").css("display","none");
+						// loading.hide();
+						that.alertInfo("提示", "活动未上线", "我知道了",true);								
+						
+                        return;
+                    } else if(response.code == '4016'){
+                        //成公关闭loading页面
+                        setTimeout(function(){
+                            $('#page_loading').css('display','none');
+                        },500);
+                        // that.error_show = true;
+                        // that.error_text = '用户抽奖次数超过限制';
+						
+						$(".prize_draw_box").css("display","none");
+
+						that.alertInfo("提示", "用户抽奖次数超过限制", "我知道了",true);								
+						
+                        return;
+                    } else if(response.code == '499'){
+                        //成公关闭loading页面
+                        setTimeout(function(){
+                            $('#page_loading').css('display','none');
+                        },500);
+                        // that.error_show = true;
+                        // that.error_text = '网络不好,请重试';
+						
+						$(".prize_draw_box").css("display","none");
+
+						that.alertInfo("提示", "网络不好,请重试", "我知道了",true);							
+						
+                        return;
+                    } else if(response.code == '4001'){
+                        //成公关闭loading页面
+                        setTimeout(function(){
+                            $('#page_loading').css('display','none');
+                        },500);
+                        // that.error_show = true;
+                        // that.error_text = '网络不好,请重试';
+
+						$(".prize_draw_box").css("display","none");
+
+						that.alertInfo("提示", "网络不好,请重试", "我知道了",true);							
+                        return;
+                    } else if(response.code == '4003'){
+                        //成公关闭loading页面
+                        setTimeout(function(){
+                            $('#page_loading').css('display','none');
+                        },500);
+                        // that.error_show = true;
+                        // that.error_text = '网络不好,请重试';
+						
+						$(".prize_draw_box").css("display","none");
+
+						that.alertInfo("提示", "网络不好,请重试", "我知道了",true);								
+                        return;
+                    } else if(response.code == '4004'){
+                        //成公关闭loading页面
+                        setTimeout(function(){
+                            $('#page_loading').css('display','none');
+                        },500);
+                        // that.error_show = true;
+                        // that.error_text = '网络不好,请重试';
+						
+						$(".prize_draw_box").css("display","none");
+
+						that.alertInfo("提示", "网络不好,请重试", "我知道了",true);	
+                        return;
+                    }
+                }).always(function(status) {
+                    if(status.statusText == 'timeout'){
+                        //成公关闭loading页面
+                        setTimeout(function(){
+                            $('#page_loading').css('display','none');
+                        },500);
+                        // that.error_show = true;
+                        // that.error_text = '网络不好,请重试';
+						
+						$(".prize_draw_box").css("display","none");
+
+						that.alertInfo("提示", "网络不好,请重试", "我知道了",true);	
+                    };
+                });
+                
+            },
+			
+            // 跳转至上传小票页
+            linkUploadTicketPage: function (){
+                window.location.href = '../userInfo/userInfo.html';
+            },
+
+			// 活动规则
+			rule: function() {
+				window.location.href = "../rule/rule.html";
+			},
+									
+			// weUI Alert => clickBtn -> closeWindow()
+            alertInfo: function (title,content,btnTxt,isCloseWindow) {
+                weui.alert(content, {
+                    title: title,
+                    buttons: [{
+                        label: btnTxt,
+                        type: 'primary',
+                        onClick: (function () {if(isCloseWindow){this.closeWindow()}}).bind(this)
+                    }]
+                });
+            },
+
+            // wx SDK clickWindow
+            closeWindow: function () {
+                wx.closeWindow();
+            },			
+		},
+	});
+	
+</script>
+</html>
