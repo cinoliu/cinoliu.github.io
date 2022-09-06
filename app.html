@@ -31,18 +31,18 @@
                 var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
                 if (isAndroid) {
                     this.schemeUrl = "weixin://";
-                    this.downloadUrl = '你的安卓app下载地址';
+
                 } else {
 
                     this.schemeUrl = "weixin://";
-                    this.downloadUrl = '你的iosapp下载地址';
+
                 }
-                this.open(this.schemeUrl, this.downloadUrl)
+                this.open(this.schemeUrl)
             },
 
             methods: {
                 watchVisibility() {
-                    window.addEventListener('visibilitychange', () => { 
+                    window.addEventListener('visibilitychange', () => {
                         if (document.hidden) {
                             clearTimeout(timer)
                         }
@@ -50,7 +50,7 @@
                 },
                 open(schemeUrl, downloadUrl) {
                     timer = setTimeout(() => {
-                        window.location.href = downloadUrl
+                        alert('请安装天融信VPN')
                     }, 3000)
                     window.location.href = schemeUrl
                 }
