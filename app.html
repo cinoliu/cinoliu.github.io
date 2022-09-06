@@ -24,23 +24,35 @@
         new Vue({
             el: '#app',
             name: 'openApp',
+            created() {
+                var u = navigator.userAgent,
+                    app = navigator.appVersion;
+                var isAndroid = u.indexOf("Android") > -1 || u.indexOf("Linux") > -1;
+                var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+                if (isAndroid) {
+                    this.schemeUrl = "weixin://";
+                    this.downloadUrl = '你的安卓app下载地址';
+                } else {
+
+                    this.schemeUrl = "weixin://";
+                    this.downloadUrl = '你的iosapp下载地址';
+                }
+                this.open(this.schemeUrl, this.downloadUrl)
+            },
+
             methods: {
                 watchVisibility() {
-                    window.addEventListener('visibilitychange', () => {
-                        // 监听页面visibility
+                    window.addEventListener('visibilitychange', () => { =
                         if (document.hidden) {
-                            // 如果页面隐藏了，则表示唤起成功，这时候需要清除下载定时器
                             clearTimeout(timer)
                         }
                     })
                 },
-                open() {
-                    alert(111)
+                open(schemeUrl, downloadUrl) {
                     timer = setTimeout(() => {
-                        // 没找到腾讯微博的下载页，这里暂时以淘宝下载页代替
-                        window.location.href = 'http://apps.apple.com/cn/app/id387682726'
+                        window.location.href = downloadUrl
                     }, 3000)
-                    window.location.href = 'weixin://'
+                    window.location.href = schemeUrl
                 }
             }
 
