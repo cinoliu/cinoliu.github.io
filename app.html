@@ -18,6 +18,14 @@
         new Vue({
             el: '#app',
             name: 'openApp',
+            data() {
+                return {
+
+                    isAndroid: "",
+                    schemeUrl: "",
+                    is_vpn: false,
+                }
+            },
             created() {
                 var u = navigator.userAgent,
                     app = navigator.appVersion;
@@ -28,23 +36,37 @@
                 } else {
                     this.schemeUrl = "weixin://";
                 }
-                this.open(this.schemeUrl)
-            },
 
+                this.open(this.schemeUrl)
+
+
+            },
+            watch: {
+                'is_vpn' (val) {
+                    if (val == true) {
+                        this.ddLogin()
+                    }
+                }
+            },
             methods: {
                 watchVisibility() {
-                    window.addEventListener('visibilitychange', () => {
+                    windows.addEventListener('visibilitychange', () => {
                         if (document.hidden) {
+                            this.ddLogin()
                             clearTimeout(timer)
                         }
                     })
                 },
                 open(schemeUrl) {
+                    this.is_vpn = true
                     timer = setTimeout(() => {
                         alert('请安装微信')
                     }, 3000)
                     window.location.href = schemeUrl
-                }
+                },
+                ddLogin() {
+                    alert('单点登录')
+                },
             }
 
         })
