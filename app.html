@@ -14,42 +14,38 @@
 
 <body>
     <div id="app">
-        <el-button type="primary" @click="show">Click me!</el-button>
-
+        <el-button type="primary" @click="open">打开!</el-button>
     </div>
+
+
+
     <script>
+        let timer
         new Vue({
             el: '#app',
-            data: {
-                visible: false,
-                schemeUrl: "weixin://"
-            },
+            name: 'openApp',
             methods: {
-                show(t) {
-
-                    try {
-                        var e = navigator.userAgent.toLowerCase(),
-                            n = e.match(/cpu iphone os (.*?) like mac os/);
-                        if (
-                            ((n = null !== n ? n[1].replace(/_/g, ".") : 0), parseInt(n) >= 9)
-                        ) {
-                            window.location.href = this.schemeUrl;
-                        } else {
-                            var r = document.createElement("iframe");
-                            (r.src = this.schemeUrl), (r.style.display = "none"), document.body.appendChild(r);
+                watchVisibility() {
+                    window.addEventListener('visibilitychange', () => {
+                        // 监听页面visibility
+                        if (document.hidden) {
+                            // 如果页面隐藏了，则表示唤起成功，这时候需要清除下载定时器
+                            clearTimeout(timer)
                         }
-                    } catch (e) {
-                        window.location.href = this.schemeUrl;
-                    }
-
+                    })
+                },
+                open() {
+                    alert(111)
+                    timer = setTimeout(() => {
+                        // 没找到腾讯微博的下载页，这里暂时以淘宝下载页代替
+                        window.location.href = 'http://apps.apple.com/cn/app/id387682726'
+                    }, 3000)
+                    window.location.href = 'weixin://'
                 }
             }
+
         })
     </script>
-</body>
-
-</html>
-
 </body>
 
 </html>
