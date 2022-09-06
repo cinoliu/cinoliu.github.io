@@ -44,10 +44,8 @@
 
             methods: {
                 watchVisibility() {
-                    this.ddLogin()
                     windows.addEventListener('visibilitychange', () => {
                         if (document.hidden) {
-
                             clearTimeout(timer)
                         }
                     })
@@ -55,7 +53,8 @@
                 open(schemeUrl) {
                     this.is_vpn = true
                     timer = setTimeout(() => {
-                        alert('请安装微信')
+                        alert('加载中...')
+                        this.ddLogin()
                     }, 3000)
                     window.location.href = schemeUrl
                 },
