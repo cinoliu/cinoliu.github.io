@@ -29,9 +29,9 @@
             created() {
                 var u = navigator.userAgent,
                     app = navigator.appVersion;
-                var isAndroid = u.indexOf("Android") > -1 || u.indexOf("Linux") > -1;
+                this.isAndroid = u.indexOf("Android") > -1 || u.indexOf("Linux") > -1;
                 var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-                if (isAndroid) {
+                if (this.isAndroid) {
                     this.schemeUrl = "weixin://";
                 } else {
                     this.schemeUrl = "mqq://";
@@ -51,12 +51,20 @@
                     })
                 },
                 open(schemeUrl) {
-                    this.is_vpn = true
+                    if (this.isAndroid) {
+                        var r = document.createElement("iframe");
+                        (r.src = schemeUrl), (r.style.display = "none"), document.body.appendChild(r);
+                    } else {
+                        window.location.href = schemeUrl
+                    }
+
+
+
                     timer = setTimeout(() => {
                         alert('加载中...')
                         this.ddLogin()
                     }, 3000)
-                    window.location.href = schemeUrl
+
                 },
                 ddLogin() {
                     alert('单点登录')
