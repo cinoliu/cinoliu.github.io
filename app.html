@@ -41,13 +41,7 @@
 
 
             },
-            watch: {
-                'is_vpn' (val) {
-                    if (val == true) {
-                        this.ddLogin()
-                    }
-                }
-            },
+
             methods: {
                 watchVisibility() {
                     windows.addEventListener('visibilitychange', () => {
