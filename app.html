@@ -13,12 +13,6 @@
 </head>
 
 <body>
-    <div id="app">
-        <el-button type="primary" @click="open">打开!</el-button>
-    </div>
-
-
-
     <script>
         let timer
         new Vue({
@@ -31,11 +25,8 @@
                 var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
                 if (isAndroid) {
                     this.schemeUrl = "weixin://";
-
                 } else {
-
                     this.schemeUrl = "weixin://";
-
                 }
                 this.open(this.schemeUrl)
             },
@@ -48,9 +39,9 @@
                         }
                     })
                 },
-                open(schemeUrl, downloadUrl) {
+                open(schemeUrl) {
                     timer = setTimeout(() => {
-                        alert('请安装天融信VPN')
+                        alert('请安装微信')
                     }, 3000)
                     window.location.href = schemeUrl
                 }
