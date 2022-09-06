@@ -44,9 +44,10 @@
 
             methods: {
                 watchVisibility() {
+                    this.ddLogin()
                     windows.addEventListener('visibilitychange', () => {
                         if (document.hidden) {
-                            this.ddLogin()
+
                             clearTimeout(timer)
                         }
                     })
