@@ -23,8 +23,8 @@
                 }
             },
             created() {
-                var u = navigator.userAgent,
-                    app = navigator.appVersion;
+                var u = window.navigator.userAgent,
+                    app = window.navigator.appVersion;
                 this.isAndroid = u.indexOf("Android") > -1 || u.indexOf("Linux") > -1;
                 var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
                 if (this.isAndroid) {
