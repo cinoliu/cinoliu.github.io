@@ -23,14 +23,14 @@
                 }
             },
             created() {
-                var u = navigator.userAgent,
+                var u = navigator.userAgent;
                 this.isAndroid = u.indexOf("Android") > -1 || u.indexOf("Linux") > -1;
                 var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
                 if (this.isAndroid) {
                     this.schemeUrl = "weixin://";   //替换为vpn安卓的URL Scheme
                     this.open(this.schemeUrl)
                 } else {
-                    alert("ios端请手动打开vpn")
+                    alert("请手动打开vpn")
                     return;
           
                 }
@@ -42,9 +42,8 @@
                         r.src = schemeUrl;
                         r.style.display = "none";
                         document.body.appendChild(r);
-
                            setTimeout(function () {
-                             alert('对不起，暂时无法打开')
+                             alert('请手动打开vpn')
                             }, 500)
                       
                 },
