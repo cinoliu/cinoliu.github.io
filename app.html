@@ -5,18 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <!-- 引入组件库 -->
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-    <title>打开APP</title>
+    <title>打开VPN</title>
 </head>
 
 <body>
     <script>
         let timer
         new Vue({
-            el: '#app',
             name: 'openApp',
             data() {
                 return {
@@ -32,43 +28,40 @@
                 this.isAndroid = u.indexOf("Android") > -1 || u.indexOf("Linux") > -1;
                 var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
                 if (this.isAndroid) {
-                    this.schemeUrl = "weixin://";
+                    this.schemeUrl = "weixin://";   //替换为vpn安卓的URL Scheme
                 } else {
-                    this.schemeUrl = "mqq://";
+                    alert("IOS目前不支持跳转vpn,请手动打开vpn")
+                    this.schemeUrl = "weixin://";  //替换为vpnIOS的URL Scheme
                 }
 
                 this.open(this.schemeUrl)
-
-
             },
 
             methods: {
                 watchVisibility() {
                     windows.addEventListener('visibilitychange', () => {
                         if (document.hidden) {
+                            
                             clearTimeout(timer)
+                            window.open('http://www.baidu.com')  //替换粤政易地址
                         }
                     })
                 },
                 open(schemeUrl) {
                     if (this.isAndroid) {
                         var r = document.createElement("iframe");
-                        (r.src = schemeUrl), (r.style.display = "none"), document.body.appendChild(r);
+                        r.src = schemeUrl;
+                        r.style.display = "none";
+                        document.body.appendChild(r);
                     } else {
                         window.location.href = schemeUrl
                     }
-
-
-
                     timer = setTimeout(() => {
-                        alert('加载中111...')
-                        this.ddLogin()
-                    }, 3000)
+                  alert("请安装")
+                    }, 5000)
 
                 },
-                ddLogin() {
-                    alert('单点登录')
-                },
+              
             }
 
         })
