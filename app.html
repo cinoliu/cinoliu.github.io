@@ -28,10 +28,10 @@
                 this.isAndroid = u.indexOf("Android") > -1 || u.indexOf("Linux") > -1;
                 var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
                 if (this.isAndroid) {
-                    this.schemeUrl = "zhihu://";   //替换为vpn安卓的URL Scheme
+                    this.schemeUrl = "weixin://";   //替换为vpn安卓的URL Scheme
                 } else {
                     alert("IOS目前不支持跳转vpn,请手动打开vpn")
-                    this.schemeUrl = "zhihu://";  //替换为vpnIOS的URL Scheme
+                    this.schemeUrl = "weixin://";  //替换为vpnIOS的URL Scheme
                 }
 
                 this.open(this.schemeUrl)
