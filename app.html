@@ -19,7 +19,7 @@
 
                     isAndroid: "",
                     schemeUrl: "",
-                    is_vpn: false,
+                    isIOS: false,
                 }
             },
             created() {
@@ -31,28 +31,23 @@
                     this.schemeUrl = "weixin://";   //替换为vpn安卓的URL Scheme
                     this.open(this.schemeUrl)
                 } else {
-                    // alert("ios端请手动打开vpn")
-                    // return;
+                    alert("ios端请手动打开vpn")
+                    return;
                 this.schemeUrl = "weixin://";  //替换为vpnIOS的URL Scheme
                 }
-                this.open(this.schemeUrl)
-             
             },
 
             methods: {
-             
                 open(schemeUrl) {
-                    if (this.isAndroid) {
+                         let loadDateTime = new Date()
+                           setTimeout(function () {
+                              let timeOutDateTime = new Date()
+                             alert('对不起，暂时无法打开')
+                            }, 25)
                         var r = document.createElement("iframe");
                         r.src = schemeUrl;
                         r.style.display = "none";
                         document.body.appendChild(r);
-                    } else {
-                        window.location.href = schemeUrl
-                    }
-                    timer = setTimeout(() => {
-                    alert("请下载vpn")
-                    }, 200)
                 },
               
             }
@@ -61,16 +56,21 @@
         const isIos = /ipad|iPhone|Mac/i.test(window.navigator.userAgent) 
         if(isIos) {
         window.addEventListener('pageshow', function(event) {
+            alert(11111)
             window.open('http://www.baidu.com')  //替换粤政易地址
         }) 
-        }
-
-        document.addEventListener("visibilitychange", () => { 
-        if(document.hidden) {} // 页面被挂起
+        }else{
+            document.addEventListener("visibilitychange", () => { 
+        if(document.hidden) {
+            alert(11111)
+        } // 页面被挂起
         else {  // 页面呼出
             window.open('http://www.baidu.com')  //替换粤政易地址
         }
         });
+        }
+
+      
 
     </script>
 </body>
