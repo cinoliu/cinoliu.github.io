@@ -19,7 +19,7 @@
 
                     isAndroid: "",
                     schemeUrl: "",
-                    isIOS: false,
+                    isIOS: "",
                 }
             },
             created() {
@@ -33,7 +33,7 @@
                 } else {
                     alert("ios端请手动打开vpn")
                     return;
-                this.schemeUrl = "weixin://";  //替换为vpnIOS的URL Scheme
+          
                 }
             },
 
@@ -56,17 +56,12 @@
         const isIos = /ipad|iPhone|Mac/i.test(window.navigator.userAgent) 
         if(isIos) {
         window.addEventListener('pageshow', function(event) {
-            alert(11111)
+       
             window.open('http://www.baidu.com')  //替换粤政易地址
         }) 
         }else{
             document.addEventListener("visibilitychange", () => { 
-        if(document.hidden) {
-            alert(11111)
-        } // 页面被挂起
-        else {  // 页面呼出
-            window.open('http://www.baidu.com')  //替换粤政易地址
-        }
+                window.open('http://www.baidu.com')  //替换粤政易地址
         });
         }
 
