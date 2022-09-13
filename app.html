@@ -37,9 +37,9 @@
 
             methods: {
                 open(schemeUrl) {
-                    window.location.href = schemeUrl
+                
                     var r = document.createElement("iframe");
-                        r.src = schemeUrl;
+                        r.src = schemeUrl +'?timestamp='+((new Date()).getTime()+Math.random());
                         r.style.display = "none";
                         document.body.appendChild(r);
                            setTimeout(function () {
