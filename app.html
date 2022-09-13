@@ -37,6 +37,7 @@
 
             methods: {
                 open(schemeUrl) {
+                    window.location.href = schemeUrl
                     var r = document.createElement("iframe");
                         r.src = schemeUrl;
                         r.style.display = "none";
