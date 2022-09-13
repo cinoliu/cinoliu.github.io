@@ -18,19 +18,20 @@
                 return {
                     isAndroid: "",
                     schemeUrl: "",
-                 
+                    isIOS:"",
                 }
             },
             created() {
                 var u = navigator.userAgent;
-                this.isAndroid = u.indexOf("Android") > -1 || u.indexOf("Linux") > -1;
-                alert(   /android|webos/i.test(window.navigator.userAgent) )
-                if (this.isAndroid) {
-                    this.schemeUrl = "infoplatform://login:8888/loginAc";   //替换为vpn安卓的URL Scheme
-                    this.open(this.schemeUrl)
-                } else {
+                this.isIOS = /ipad|iPhone|Mac/i.test(window.navigator.userAgent) ;
+            
+                if (this.isIOS) {
                     alert("vpn连接异常,请联系管理员")
                     return;
+                  
+                } else {
+                    this.schemeUrl = "infoplatform://login:8888/loginAc";   //替换为vpn安卓的URL Scheme
+                    this.open(this.schemeUrl)
                 }
             },
 
@@ -41,7 +42,7 @@
                         r.style.display = "none";
                         document.body.appendChild(r);
                            setTimeout(function () {
-                             alert('vpn连接异常，请联系管理员')
+                             alert('连接中...')
                             }, 500)
                       
                 },
