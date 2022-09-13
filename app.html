@@ -25,11 +25,11 @@
                 var u = navigator.userAgent;
                 this.isIOS = /ipad|iPhone|Mac/i.test(window.navigator.userAgent) ;
                 var isWeixin = u.toLowerCase().indexOf('micromessenger') !== -1; // 微信内
-                 // 微信内
-    //  if(isWeixin) {
-    //                 alert('请在浏览器上打开')
-    //                 return;
-    //             }
+               //  微信内
+                if(isWeixin) {
+                    alert('请在浏览器上打开')
+                    return;
+                }
                 if (this.isIOS) {
                     alert("vpn连接异常,请联系管理员")
                     return;
