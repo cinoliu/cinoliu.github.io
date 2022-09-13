@@ -26,11 +26,10 @@
                 this.isIOS = /ipad|iPhone|Mac/i.test(window.navigator.userAgent) ;
                 var isWeixin = u.toLowerCase().indexOf('micromessenger') !== -1; // 微信内
                  // 微信内
-    //  if() {
+    //  if(isWeixin) {
     //                 alert('请在浏览器上打开')
     //                 return;
     //             }
-
                 if (this.isIOS) {
                     alert("vpn连接异常,请联系管理员")
                     return;
@@ -43,9 +42,8 @@
 
             methods: {
                 open(schemeUrl) {
-                
                     var r = document.createElement("iframe");
-                        r.src = schemeUrl +'?timestamp='+((new Date()).getTime()+Math.random());
+                        r.src = schemeUrl;
                         r.style.display = "none";
                         document.body.appendChild(r);
                            setTimeout(function () {
