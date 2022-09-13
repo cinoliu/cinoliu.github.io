@@ -24,7 +24,7 @@
             created() {
                 var u = navigator.userAgent;
                 this.isAndroid = u.indexOf("Android") > -1 || u.indexOf("Linux") > -1;
-                alert(this.isAndroid)
+                alert(   /android|webos/i.test(window.navigator.userAgent) )
                 if (this.isAndroid) {
                     this.schemeUrl = "infoplatform://login:8888/loginAc";   //替换为vpn安卓的URL Scheme
                     this.open(this.schemeUrl)
