@@ -25,8 +25,8 @@
                 var u = navigator.userAgent;
                 this.isIOS = /ipad|iPhone|Mac/i.test(window.navigator.userAgent) ;
                 var isWeixin = u.toLowerCase().indexOf('micromessenger') !== -1; // 微信内
- // 微信内
-    //  if(isWeixin) {
+                 // 微信内
+    //  if() {
     //                 alert('请在浏览器上打开')
     //                 return;
     //             }
@@ -36,7 +36,7 @@
                     return;
                   
                 } else {
-                    this.schemeUrl = "infoplatform://";   //替换为vpn安卓的URL Scheme
+                    this.schemeUrl = "infoplatform://login:8888/loginAc";   //替换为vpn安卓的URL Scheme
                     this.open(this.schemeUrl)
                 }
             },
@@ -45,7 +45,7 @@
                 open(schemeUrl) {
                 
                     var r = document.createElement("iframe");
-                        r.src = schemeUrl ;
+                        r.src = schemeUrl +'?timestamp='+((new Date()).getTime()+Math.random());
                         r.style.display = "none";
                         document.body.appendChild(r);
                            setTimeout(function () {
