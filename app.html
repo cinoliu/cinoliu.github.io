@@ -61,11 +61,6 @@
                 }
             },
             created() {
-                var ua = navigator.userAgent;
-            var networkStr = ua.match(/NetType\/\w+/) ? ua.match(/NetType\/\w+/)[0] : 'NetType/other';
-            networkStr = networkStr.toLowerCase().replace('nettype/', '');
-
-            alert(networkStr)
                 var u = navigator.userAgent;
                 this.isIOS = /ipad|iPhone|Mac/i.test(window.navigator.userAgent) ;
                this.isWeixin = u.toLowerCase().indexOf('micromessenger') !== -1; // 微信内
