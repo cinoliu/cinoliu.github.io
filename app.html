@@ -20,7 +20,7 @@
       .wxtip-txt{padding-top: 107px; color: #fff; font-size: 16px; line-height: 1.5;}
     </style>
 <body>
-    <div id="weixin-tip" v-if="isWeixin">
+    <div id="weixin-tip" v-show="isWeixin">
        <img src="live_weixin.png" width="100%" alt="微信打开"/>
       </div>
     </body> 
@@ -40,7 +40,8 @@
                 var u = navigator.userAgent;
                 this.isIOS = /ipad|iPhone|Mac/i.test(window.navigator.userAgent) ;
                this.isWeixin = u.toLowerCase().indexOf('micromessenger') !== -1; // 微信内
-               //  微信内
+               alert('111',this.isWeixin)
+                //  微信内
                 if( this.isWeixin) {
                     return;
                 }else{
@@ -57,6 +58,7 @@
                 }
             },
 
+            
             methods: {
                 open(schemeUrl) {
                     var r = document.createElement("iframe");
