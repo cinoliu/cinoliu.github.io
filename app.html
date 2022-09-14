@@ -23,8 +23,9 @@
     <div id="weixin-tip" v-if="isWeixin">
        <img src="live_weixin.png" width="100%" alt="微信打开"/>
       </div>
-    <script>
-        let timer
+    </body> 
+   <script>
+
         new Vue({
             name: 'openApp',
             data() {
@@ -39,7 +40,6 @@
                 var u = navigator.userAgent;
                 this.isIOS = /ipad|iPhone|Mac/i.test(window.navigator.userAgent) ;
                this.isWeixin = u.toLowerCase().indexOf('micromessenger') !== -1; // 微信内
-                alert(this.isWeixin)
                //  微信内
                 if( this.isWeixin) {
                     return;
@@ -85,6 +85,6 @@
       
 
     </script>
-</body>
+
 
 </html>
