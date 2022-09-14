@@ -20,13 +20,16 @@
       .wxtip-txt{padding-top: 107px; color: #fff; font-size: 16px; line-height: 1.5;}
     </style>
 <body>
-    <div id="weixin-tip" v-show="isWeixin">
+    <div  id="app">
+    {{isWeixin}}
+    <div id="weixin-tip" v-if="isWeixin">
        <img src="live_weixin.png" width="100%" alt="微信打开"/>
       </div>
-    </body> 
+    </div>
    <script>
 
         new Vue({
+            el: '#app',
             name: 'openApp',
             data() {
                 return {
@@ -40,14 +43,13 @@
                 var u = navigator.userAgent;
                 this.isIOS = /ipad|iPhone|Mac/i.test(window.navigator.userAgent) ;
                this.isWeixin = u.toLowerCase().indexOf('micromessenger') !== -1; // 微信内
-               alert('111',this.isWeixin)
-                //  微信内
+               //  微信内
                 if( this.isWeixin) {
                     return;
                 }else{
                     this.isWeixin=false
                 }
-              
+           
                 if (this.isIOS) {
                     alert("vpn连接异常,请联系管理员")
                     return;
@@ -88,5 +90,5 @@
 
     </script>
 
-
+</body> 
 </html>
